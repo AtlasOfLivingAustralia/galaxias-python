@@ -2,6 +2,7 @@ import os
 import requests
 import pandas as pd
 from .metadata import read_dwc_terms
+import difflib
 
 '''
 from bs4 import BeautifulSoup
