@@ -13,7 +13,7 @@ $ pip install galaxias
 ```
 from galaxias import CsvFileType
 from galaxias import DwcaHandler
-core_csv = CsvFileType(files=['/tmp/occurrence.csv'], type='occurrence', keys='occurrenceID')
+core_csv = CsvFileType(files=['/tmp/occurrence.csv'], type='occurrence', keys=['occurrenceID'])
 ext_csvs = [CsvFileType(files=['/tmp/multimedia.csv'], type='multimedia')]
 
 DwcaHandler.create_dwca(core_csv=core_csv, ext_csv_list=ext_csvs, output_dwca_path='/tmp/dwca.zip')
