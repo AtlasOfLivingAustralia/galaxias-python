@@ -3,6 +3,7 @@ from importlib.metadata import version
 __version__ = version("galaxias")
 
 # functions in package
-from .galaxias import *
-from .metadata import *
-from .dwc_data import *
+from .dwca import *
+#from .galaxias import *
+#from .metadata import *
+#from .dwc_data import *

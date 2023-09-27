@@ -2,7 +2,28 @@
 
 Code repository for the galaxias-python package, which will create Darwin Core Archives and ship them to the ALA
 
+## Packaging
+
+```
+poetry build
+```
+
+## Publishing
+
+```
+
+```
+
 ## Installation
+
+#### Use locally built package in a virtual environment:
+```
+pip install <folder>/galaxias-python/galaxias/dist/galaxias-<version>.tar.gz
+```
+
+
+####To install published package:
+
 
 ```bash
 $ pip install galaxias
@@ -10,7 +31,17 @@ $ pip install galaxias
 
 ## Usage
 
-- TODO
+#### Create Darwin Core Archive
+```
+from galaxias import CsvFileType
+from galaxias import DwcaHandler
+
+core_csv = CsvFileType(files=['/tmp/occurrence.csv'], type='occurrence', keys='occurrenceID')
+ext_csvs = [CsvFileType(files=['/tmp/multimedia.csv'], type='multimedia')]
+
+DwcaHandler.create_dwca(core_csv=core_csv, ext_csv_list=ext_csvs, output_dwca_path='/tmp/dwca.zip')
+```
+
 
 ## Contributing
 
