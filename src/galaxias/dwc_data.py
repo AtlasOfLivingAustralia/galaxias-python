@@ -159,6 +159,7 @@ def rename_dwc_columns(dataframe=None,
         raise ValueError("Please provide a dataframe, as well as a dictionary of current and desired names.")
 
 def check_dwca_column_formatting(dataframe=None):
+    '''Function to do a basic check on whether or not the column has the correct formatting associated with its title'''
 
     column_names = list(dataframe.columns)
     print(column_names)
