@@ -44,7 +44,7 @@ class BaseDwca(IDwca):
         pass
 
     @abstractmethod
-    def _generate_eml(self):
+    def _generate_eml(self, eml_content: str = ""):
         """Generate an EML metadata file for this archive.
 
         An Ecological Markup Language file is an XML file that contains dataset
@@ -118,7 +118,8 @@ class BaseDwca(IDwca):
         self._write_dwca(output_dwca_path)
 
     def create_dwca(self, core_csv: CsvFileType, ext_csv_list: list[CsvFileType],
-                    output_dwca_path: str = './dwca/output/', validate_content: bool = True):
+                    output_dwca_path: str = './dwca/output/', validate_content: bool = True,
+                    eml_content: str = ''):
         self._extract_csv_content(core_csv, CoreOrExtType.CORE)
 
         # Only validate core content
@@ -134,7 +135,7 @@ class BaseDwca(IDwca):
         for ext in ext_csv_list:
             self._extract_csv_content(ext, CoreOrExtType.EXTENSION)
 
-        self._generate_eml()
+        self._generate_eml(eml_content)
         self._generate_meta()
         self._write_dwca(output_dwca_path)
 

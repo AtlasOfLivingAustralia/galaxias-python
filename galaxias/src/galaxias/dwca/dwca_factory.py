@@ -143,7 +143,8 @@ class DwcaHandler:
     @staticmethod
     def create_dwca(core_csv: CsvFileType, ext_csv_list: list[CsvFileType] = [],
                     output_dwca_path: str = './dwca/output/', work_dir: str = './dwca/output/pickle',
-                    use_chunking: bool = False, chunk_size=1000, calculate_size=True, validate_content: bool = True):
+                    use_chunking: bool = False, chunk_size=1000, calculate_size=True, validate_content: bool = True,
+                    eml_content: str = ''):
         """Create a suitable DwCA from a list of CSV files
 
         :param dr: The data resource id
@@ -160,7 +161,7 @@ class DwcaHandler:
                                                     work_dir=work_dir,
                                                     chunk_size=chunk_size, calculate_size=calculate_size)
         dwca.create_dwca(core_csv=core_csv, ext_csv_list=ext_csv_list, output_dwca_path=output_dwca_path,
-                         validate_content=validate_content)
+                         validate_content=validate_content, eml_content=eml_content)
 
     @staticmethod
     def remove_extension_files(dwca_file: str, ext_files: list, output_dwca_path: str = './dwca/output/'):

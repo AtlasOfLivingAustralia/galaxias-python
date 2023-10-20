@@ -66,13 +66,15 @@ class Dwca(BaseDwca):
     def __post_init__(self):
         self.meta_content = MetaDwCA(EML_XML_FILENAME=self.EML_XML_FILENAME)
 
-    def _generate_eml(self):
+    def _generate_eml(self, eml_content: str = ""):
         """
         Create the EML for the data source.
 
         The EML file is retrieved from the collectory and placed in the
         eml_content attribute.
         """
+        if eml_content:
+            self.eml_content = eml_content
 
     def _generate_meta(self):
         """Create a meta-file description for the DwCA.
@@ -513,18 +515,18 @@ class Dwca(BaseDwca):
         :param records_to_delete: A CSV file of records to delete, keyed to the DwCA file
          """
         delete_content = self._combine_contents(records_to_delete.files, records_to_delete.csv_encoding, use_chunking=False)
-        valid_delete_file = all(col in delete_content.columns for col in records_to_delete.field_lookup) or len(delete_content) > 0
+        valid_delete_file = all(col in delete_content.columns for col in records_to_delete.keys) or len(delete_content) > 0
         if not valid_delete_file:
-            log.info("No records removed. Delete file does not contain any records or it doesn't contain the columns: %s ", ','.join(records_to_delete.field_lookup))
+            log.info("No records removed. Delete file does not contain any records or it doesn't contain the columns: %s ", ','.join(records_to_delete.keys))
             return
 
-        self._build_index_for_content(delete_content, records_to_delete.field_lookup)
+        self._build_index_for_content(delete_content, records_to_delete.keys)
         dwca_content, core_or_ext = self._get_content(MetaElementTypes.get_element(records_to_delete.type).row_type_ns)
         log.info("Removing records from %s", core_or_ext)
         if core_or_ext == CoreOrExtType.CORE:
-            self.core_content.keys = records_to_delete.field_lookup
+            self.core_content.keys = records_to_delete.keys
             for ext in self.ext_content:
-                ext.keys = records_to_delete.field_lookup
+                ext.keys = records_to_delete.keys
             self._build_indexes()
         else:
             self._build_index_for_content(dwca_content.df_content)
@@ -659,7 +661,7 @@ class Dwca(BaseDwca):
             if len(image_df) > 0:
                 self._update_meta_fields(self.core_content)
                 log.info("%s associated media extracted", str(len(image_df)))
-                return CsvFileType(files=[image_df], type='multimedia', field_lookup=image_df.index.names)
+                return CsvFileType(files=[image_df], type='multimedia', keys=image_df.index.names)
             else:
                 log.info("Nothing to extract from associated media")
 
@@ -809,7 +811,7 @@ class Dwca(BaseDwca):
 
         csv_content = self._combine_contents(csv_info.files, csv_info.csv_encoding)
 
-        keys = csv_info.field_lookup if self.__check_csv_info_value(csv_info, 'field_lookup') else self.identifier_keys
+        keys = csv_info.keys if self.__check_csv_info_value(csv_info, 'keys') else self.identifier_keys
         if core_ext_type == CoreOrExtType.CORE:
             self._update_core_ids(csv_content)
             self._build_index_for_content(csv_content, keys)
