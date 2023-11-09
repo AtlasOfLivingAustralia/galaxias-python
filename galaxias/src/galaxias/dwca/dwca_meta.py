@@ -13,6 +13,7 @@ from . import CSVEncoding, CoreOrExtType
 import urllib
 from pathlib import Path
 from dataclasses import dataclass, field, asdict
+from typing import ClassVar
 from typing import Optional
 import os
 import re
@@ -30,17 +31,17 @@ class Element():
 @dataclass
 class MetaElementTypes:
     """Named row types that map common DwCA row types onto URIs"""
-    occurrence: Element = Element("occurrence", "http://rs.tdwg.org/dwc/terms/Occurrence")
-    organism: Element = Element("organism", "http://rs.tdwg.org/dwc/terms/Organism")
-    materialsample: Element = Element("materialsample", "http://rs.tdwg.org/dwc/terms/MaterialSample")
-    location: Element = Element("location", "http://rs.tdwg.org/dwc/terms/Location")
-    event: Element = Element("event", "http://rs.tdwg.org/dwc/terms/Event")
+    occurrence: ClassVar[Element] = Element("occurrence", "http://rs.tdwg.org/dwc/terms/Occurrence")
+    multimedia: ClassVar[Element] = Element("multimedia", "http://rs.gbif.org/terms/1.0/Multimedia")
+    organism: ClassVar[Element] = Element("organism", "http://rs.tdwg.org/dwc/terms/Organism")
+    materialsample: ClassVar[Element] = Element("materialsample", "http://rs.tdwg.org/dwc/terms/MaterialSample")
+    location: ClassVar[Element] = Element("location", "http://rs.tdwg.org/dwc/terms/Location")
+    event: ClassVar[Element] = Element("event", "http://rs.tdwg.org/dwc/terms/Event")
     # types: Element = Element("types", "http://rs.gbif.org/terms/1.0/Types")
-    taxon: Element = Element("taxon", "http://rs.tdwg.org/dwc/terms/Taxon")
-    measurementorfact: Element = Element("measurementorfact", "http://rs.tdwg.org/dwc/terms/MeasurementOrFact")
-    resourcerelationship: Element = Element("resourcerelationship", "http://rs.tdwg.org/dwc/terms/ResourceRelationship")
-    chronometricage: Element = Element("chronometricage", "http://rs.tdwg.org/dwc/terms/ChronometricAge")
-    multimedia: Element = Element("multimedia", "http://rs.gbif.org/terms/1.0/Multimedia")
+    taxon: ClassVar[Element] = Element("taxon", "http://rs.tdwg.org/dwc/terms/Taxon")
+    measurementorfact: ClassVar[Element] = Element("measurementorfact", "http://rs.tdwg.org/dwc/terms/MeasurementOrFact")
+    resourcerelationship: ClassVar[Element] = Element("resourcerelationship", "http://rs.tdwg.org/dwc/terms/ResourceRelationship")
+    chronometricage: ClassVar[Element] = Element("chronometricage", "http://rs.tdwg.org/dwc/terms/ChronometricAge")
 
     def get_element(name: str):
         """Find a row type by name
@@ -49,7 +50,7 @@ class MetaElementTypes:
         :return: The element corresponding to the row name
         """
         try:
-            return MetaElementTypes.__dataclass_fields__[name.lower()].default
+            return MetaElementTypes.__dict__[name.lower()]
         except KeyError:
             return MetaElementTypes.get_element_by_row_type(name)
 
@@ -188,7 +189,7 @@ class MetaDwCA():
         :param element" The element
         "return: The namespace for the element
         """
-        m = re.match('\{.*\}', element.tag)
+        m = re.match("\\{.*\\}", element.tag)
         return m.group(0) if m else ''
 
     def read_meta_file(self, meta_file):
