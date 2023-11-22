@@ -104,7 +104,33 @@ def check_for_update_dwc():
 
 def check_dwca_column_names(dataframe=None,
                             return_invalid_values=False):
-    '''Check all Darwin Core column names and provides alternatives to ones that are incorrect/invalid'''
+    """
+    Check all Darwin Core column names and provides alternatives to ones that are incorrect/invalid.  Also checks for required
+    terms for each atlas
+
+    Parameters
+    ----------
+        dataframe : `pandas` dataframe
+            Dataframe containing species name you want to turn into a Darwin Core Archive. 
+        return_invalid_values : logical
+            choose whether or not to return all invalid and missing values as a list or to print to screen.  Default to `False` and will print to screen.
+
+    Returns
+    -------
+        Either `True`, `False` or a dictionary object containing species names and alternatives.
+
+    Examples
+    --------
+
+    Something here.
+
+    # .. prompt:: python
+
+    #     import galaxias
+    #     X
+
+    # .. program-output:: python -c "import galaxias;"
+    """
 
     # configs
     configs = readConfig()
@@ -115,9 +141,12 @@ def check_dwca_column_names(dataframe=None,
     # get all variables for checking
     dwc_terms_df = read_dwc_terms()
     dwc_terms = list(dwc_terms_df['term'])
-    #print(dwc_terms)
+
+    # get column names of data frame and check if the columns are compatible with current dwca terms
     column_names = list(dataframe.columns)
     bool_list = list(map(lambda v: v in dwc_terms, column_names))
+
+    # check for required columns
     missing_requirements = []
     check_required_dwca_terms = list(map(lambda v: v in column_names, REQUIRED_DWCA_TERMS[atlas]))
     for check,term in zip(check_required_dwca_terms,REQUIRED_DWCA_TERMS[atlas]):
@@ -157,11 +186,34 @@ def check_dwca_column_names(dataframe=None,
             print("\nYou might be missing geospatial requirements:\n")
             for key in missing_geo_requirements:
                 print(key)
-            return
+            return False
     return True
     
 def check_for_duplicates(dataframe=None):
-    '''Make sure there are no duplicate column names'''
+    """
+    Check all Darwin Core column names and see if there are any duplicates.
+
+    Parameters
+    ----------
+        dataframe : `pandas` dataframe
+            Dataframe containing species name you want to turn into a Darwin Core Archive. 
+
+    Returns
+    -------
+        Logical dictating if the data frame passed.
+
+    Examples
+    --------
+
+    Something here.
+
+    # .. prompt:: python
+
+    #     import galaxias
+    #     X
+
+    # .. program-output:: python -c "import galaxias;"
+    """
     
     if dataframe is not None:
         columns = list(dataframe.columns)
@@ -174,7 +226,32 @@ def check_for_duplicates(dataframe=None):
 
 def rename_dwc_columns(dataframe=None,
                        names=None):
-    '''Function for automatically renaming dwc columns'''
+    """
+    Renames all columns in the data to names that are Darwin Core Archive compliant
+
+    Parameters
+    ----------
+        dataframe : `pandas` dataframe
+            Dataframe containing species name you want to turn into a Darwin Core Archive.
+        names : dict
+            Dictionary containing pairwise relationships between old column names and new column names, i.e. {"species":"scientificName"} 
+
+    Returns
+    -------
+        `pandas` dataframe with renamed columns
+
+    Examples
+    --------
+
+    Something here.
+
+    # .. prompt:: python
+
+    #     import galaxias
+    #     X
+
+    # .. program-output:: python -c "import galaxias;"
+    """
 
     if names is not None and dataframe is not None:
 
@@ -197,6 +274,30 @@ def rename_dwc_columns(dataframe=None,
         raise ValueError("Please provide a dataframe, as well as a dictionary of current and desired names.")
 
 def check_dwca_column_formatting(dataframe=None):
+    """
+    X
+
+    Parameters
+    ----------
+        dataframe : `pandas` dataframe
+            Dataframe containing species name you want to turn into a Darwin Core Archive.
+
+    Returns
+    -------
+        `pandas` dataframe with reformatted columns
+
+    Examples
+    --------
+
+    Something here.
+
+    # .. prompt:: python
+
+    #     import galaxias
+    #     X
+
+    # .. program-output:: python -c "import galaxias;"
+    """
 
     column_names = list(dataframe.columns)
     print(column_names)
@@ -304,11 +405,35 @@ def check_species_names(dataframe=None,
     return True
 
 def check_spatial_validity(dataframe=None):
+    """
+    Checks the spatial validity of the data.
 
+    Parameters
+    ----------
+        dataframe : `pandas` dataframe
+            Dataframe containing species name you want to turn into a Darwin Core Archive.
+
+    Returns
+    -------
+        `True` if the data frame has spatially valid data, `False` if it does not.
+
+    Examples
+    --------
+
+    Something here.
+
+    # .. prompt:: python
+
+    #     import galaxias
+    #     X
+
+    # .. program-output:: python -c "import galaxias;"
+    """
     columns_list = list(dataframe.columns)
 
     if "decimalLatitude" not in columns_list or "decimalLongitude" not in columns_list:
         raise ValueError("Before checking the spatial validity of your data, ensure all your column names comply to DwCA standard.  decimalLatitude and decimalLongitude are the column names you are looking for.")
+    
     
 
     n=1
