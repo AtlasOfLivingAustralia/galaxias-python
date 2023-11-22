@@ -170,7 +170,7 @@ def check_dwca_column_names(dataframe=None,
                     print("here")
                     invalid_dwca_terms[name] = difflib.get_close_matches("scientific",dwc_terms)
                 elif "date" in name.lower():
-                    invalid_dwca_terms[name] = difflib.get_close_matches("dateIde",dwc_terms)
+                    invalid_dwca_terms[name] = difflib.get_close_matches("event",dwc_terms)
                     invalid_dwca_terms[name] += (difflib.get_close_matches(name,dwc_terms))
                 else:
                     invalid_dwca_terms[name] = difflib.get_close_matches(name,dwc_terms)
@@ -434,6 +434,6 @@ def check_spatial_validity(dataframe=None):
     if "decimalLatitude" not in columns_list or "decimalLongitude" not in columns_list:
         raise ValueError("Before checking the spatial validity of your data, ensure all your column names comply to DwCA standard.  decimalLatitude and decimalLongitude are the column names you are looking for.")
     
-    
+
 
     n=1
