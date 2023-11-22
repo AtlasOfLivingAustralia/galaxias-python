@@ -6,14 +6,11 @@ def read_dwc_terms():
 
     # read file and generate pandas dataframe
     dwc_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'darwin_core-terms.csv')
-    dublin_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'dublincore-terms.csv')
-    
-    # get terms in pandas dataframe
-    dwc_terms = pd.read_csv(dwc_file)
-    dublin_terms = pd.read_csv(dublin_file)
-
-    # return terms as dataframe 
-    return pd.concat([dwc_terms,dublin_terms]).reset_index(drop=True)
+    dublicore_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'dublincore-terms.csv')
+    dwc = pd.read_csv(dwc_file)
+    dbc = pd.read_csv(dublicore_file)
+    dwc_terms = pd.concat([dwc,dbc],ignore_index=True)
+    return dwc_terms
 
 def update_dwc_terms():
     '''Checks for new DarwinCore terms and updates them accordingly'''

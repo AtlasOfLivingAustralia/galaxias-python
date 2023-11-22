@@ -16,6 +16,10 @@ def create_dwca(datafile="data.csv",
     
     os.system("zip {} {} {} {}".format(filename,datafile,eml,meta))
 
+def validate_dwca_ala(dwca=None):
+
+    n=1
+
 def post_dwca_ala(dwca=None):
     '''Function for posting completed DwCA to the ALA'''
 
