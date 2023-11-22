@@ -17,3 +17,8 @@ NAME_MATCHING_TERMS = {
     "Australia": ["scientificName","scientificNameAuthorship","rank","species","genus","family","order","classs","phylum","kingdom"],
     "ALA": ["scientificName","scientificNameAuthorship","rank","species","genus","family","order","classs","phylum","kingdom"]
 }
+
+TAXON_TERMS = {
+    "Australia": ["scientificName","rank","species","genus","family","order","classs","phylum","kingdom"],
+    "ALA": ["scientificName","rank","species","genus","family","order","classs","phylum","kingdom"]
+}

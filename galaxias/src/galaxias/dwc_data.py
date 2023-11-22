@@ -8,7 +8,8 @@ from operator import itemgetter
 import difflib
 import json
 import uuid
-from .common_dictionaries import REQUIRED_DWCA_TERMS,NAME_MATCHING_TERMS,ID_REQUIRED_DWCA_TERMS,GEO_REQUIRED_DWCA_TERMS
+from .common_dictionaries import REQUIRED_DWCA_TERMS,NAME_MATCHING_TERMS,ID_REQUIRED_DWCA_TERMS
+from .common_dictionaries import GEO_REQUIRED_DWCA_TERMS,TAXON_TERMS
 
 # testing
 import sys
@@ -469,4 +470,63 @@ def add_column(dataframe=None,
     
 def add_taxonomic_information(dataframe=None):
 
-    n=1
+    # configs
+    configs = readConfig()
+
+    # get atlas
+    atlas = configs["galaxiasSettings"]["atlas"]
+
+    if dataframe is None:
+        raise ValueError("Please provide a dataframe to the function.")
+
+    # check for scientificName, as users should check that they have the correct column names
+    if "scientificName" not in list(dataframe.columns):
+        raise ValueError("Before checking species names, ensure all your column names comply to DwCA standard.  scientificName is the correct title for species")
+    
+    # make a list of all scientific names in the dataframe
+    scientific_names_list = list(set(dataframe["scientificName"]))
+    
+    # taxonomic information
+    taxon_information = {name: [] for name in TAXON_TERMS[atlas]}
+    print(taxon_information)
+    sys.exit()
+
+    # send list of scientific names to ALA to check their validity
+    payload = [{"scientificName": name} for name in scientific_names_list]
+    response = requests.request("POST","https://api.ala.org.au/namematching/api/searchAllByClassification",data=json.dumps(payload))
+    response_json = response.json()
+    verification_list = {"scientificName": scientific_names_list, "issues": [None for i in range(len(scientific_names_list))]}
+    
+    # loop over list of names and ensure we have gotten all the issues - might need to do single name search
+    # to ensure we get everything
+    for i,item in enumerate(scientific_names_list):
+        item_index = next((index for (index, d) in enumerate(response_json) if "scientificName" in d and d["scientificName"] == item), None)
+        if item_index is not None:
+            verification_list["issues"][i] = response_json[item_index]["issues"]
+        else:
+            response_single = requests.get("https://api.ala.org.au/namematching/api/search?q={}".format("%20".join(item.split(" "))))
+            response_json_single = response_single.json()
+            if response_json_single['success']:
+                verification_list["issues"][i] = response_json_single["issues"]
+            else:
+                verification_list["issues"][i] = response_json_single["issues"]
+
+def change_species_names(dataframe=None,
+                         species_changes=None):
+    
+    if dataframe is None:
+        raise ValueError("Please provide a dataframe to the function.")
+    
+    if species_changes is None:
+        raise ValueError("Please provide a dictionary with the species names to change.")
+    
+    if "scientificName" not in dataframe:
+        raise ValueError("Check your column names - scientificName is the title to use for species names.  If yours is something different, please change it to scientificName.")
+
+    for species in species_changes:
+        #indices = dataframe.loc[dataframe["scientificName"] == species]["scientificName"].index
+        #for index in indices:
+        #    print(dataframe.loc[dataframe["scientificName"] == species]["scientificName"][index])
+        dataframe['scientificName'] = dataframe['scientificName'].replace(regex=species, value=species_changes[species])
+
+    return dataframe
