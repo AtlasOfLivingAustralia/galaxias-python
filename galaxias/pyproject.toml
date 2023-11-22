@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "galaxias"
+version = "0.1.0"
+description = "Code repository for the galaxias-python package, which will create Darwin Core Archives and ship them to the ALA"
+authors = ["Amanda Buyan"]
+maintainers = ["Amanda Buyan <amanda.buyan@csiro.au>","Martin Westgate <martin.westgate@csiro.au>"]
+license = "GNU General Public License v3.0"
+readme = "README.md"
+homepage = "galaxias.ala.org.au/Python"
+repository = ""
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pandas = "^2.0.3"
+beautifulsoup4 = "^4.12.2"
+
+[tool.poetry.dev-dependencies]
+
+[tool.poetry.group.dev.dependencies]
+python-semantic-release = "^8.0.8"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
