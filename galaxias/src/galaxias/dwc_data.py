@@ -164,7 +164,7 @@ def check_dwca_column_names(dataframe=None,
     invalid_dwca_terms = {}
 
     # check if terms are valid, and if not, provide suggestions
-    if not all(bool_list):
+    if (not all(bool_list)) or len(missing_geo_requirements) > 0 or len(missing_requirements) > 0:
         for name,check in zip(column_names,bool_list):
             if check is False:
                 if "species" in name.lower():
@@ -173,6 +173,8 @@ def check_dwca_column_names(dataframe=None,
                     invalid_dwca_terms[name] = difflib.get_close_matches("eventDate",dwc_terms)
                     invalid_dwca_terms[name] += difflib.get_close_matches("date",dwc_terms)
                     invalid_dwca_terms[name] += (difflib.get_close_matches(name,dwc_terms))
+                elif "site" in name.lower():
+                    invalid_dwca_terms[name] = difflib.get_close_matches("locat",dwc_terms)
                 else:
                     invalid_dwca_terms[name] = difflib.get_close_matches(name,dwc_terms)
         if return_invalid_values:
@@ -184,12 +186,14 @@ def check_dwca_column_names(dataframe=None,
             print("\nYou are missing these required fields.  These may not exist in the data, or need their title changed.\n")
             for key in missing_requirements:
                 print(key)
-            if "decimalLatitude" in column_names or "decimalLongitude" in column_names or "geodeticDatum" in column_names or "coordinateUncertaintyInMeters" in column_names:
+            if "decimalLatitude" not in column_names or "decimalLongitude" not in column_names or "geodeticDatum" not in column_names or "coordinateUncertaintyInMeters" not in column_names:
                 print("\nYou are missing the following geospatial requirements:\n")
+                for key in missing_geo_requirements:
+                    print(key)
             else:
                 print("\nYou might be missing geospatial requirements:\n")
-            for key in missing_geo_requirements:
-                print(key)
+                for key in missing_geo_requirements:
+                    print(key)
             return False
     return True
     
@@ -309,7 +313,9 @@ def check_dwca_column_formatting(dataframe=None):
 def check_species_names(dataframe=None,
                         num_matches=5,
                         include_synonyms=True,
-                        return_matches = False):
+                        return_matches = False,
+                        return_taxa = True,
+                        replace_old_names = False):
     """
     Checks species names against the ALA repository.  Provides alternatives for ones that are homonyms or are not in the database.
 
@@ -359,24 +365,42 @@ def check_species_names(dataframe=None,
     response = requests.request("POST","https://api.ala.org.au/namematching/api/searchAllByClassification",data=json.dumps(payload))
     response_json = response.json()
     verification_list = {"scientificName": scientific_names_list, "issues": [None for i in range(len(scientific_names_list))]}
+    taxonomy = {name: [None for i in range(len(scientific_names_list))] for name in TAXON_TERMS[atlas]}
     
     # loop over list of names and ensure we have gotten all the issues - might need to do single name search
     # to ensure we get everything
     for i,item in enumerate(scientific_names_list):
         item_index = next((index for (index, d) in enumerate(response_json) if "scientificName" in d and d["scientificName"] == item), None)
+        taxonomy["scientificName"][i] = item
         if item_index is not None:
             verification_list["issues"][i] = response_json[item_index]["issues"]
+            if return_taxa:
+                for term in TAXON_TERMS[atlas]:
+                    if term in response_json[item_index]:
+                        taxonomy[term][i] = response_json[item_index][term]
         else:
             response_single = requests.get("https://api.ala.org.au/namematching/api/search?q={}".format("%20".join(item.split(" "))))
             response_json_single = response_single.json()
             if response_json_single['success']:
-                verification_list["issues"][i] = response_json_single["issues"]
+                if response_json_single['scientificName'] == item:
+                    verification_list["issues"][i] = response_json_single["issues"]
+                    if return_taxa:
+                        for term in TAXON_TERMS[atlas]:
+                            if term in response_json_single:
+                                taxonomy[term][i] = response_json_single[term]
+                else:
+                    if replace_old_names:
+                        # replace old names with updated names
+                        dataframe = change_species_names(dataframe=dataframe,species_changes={item: response_json_single["scientificName"]})
+                    else:
+                        verification_list["issues"][i] = "homonym"
             else:
                 verification_list["issues"][i] = response_json_single["issues"]
 
     # check for homonyms - if there are any, then print them out to the user so the user can disambiguate the names
     df_verification = pd.DataFrame(verification_list)
-    if any(df_verification.loc[df_verification['issues'].astype(str).str.contains("homonym",case=False,na=False)]):
+    df_isnull = df_verification.loc[df_verification['issues'].astype(str).str.contains("homonym",case=False,na=False)]
+    if not df_isnull.empty:
         print("You have one or more invalid taxa in your data.  Invalid taxa are:\n")
         invalid_taxon = df_verification.loc[df_verification['issues'].astype(str).str.contains("homonym",case=False,na=False)]
         print(invalid_taxon)
@@ -403,9 +427,12 @@ def check_species_names(dataframe=None,
             if return_matches:
                 matches[name] = names_df
             print(names_df)
+            print()
         if return_matches:
             return(matches)
         return False
+    elif return_taxa:
+        return True,pd.DataFrame(taxonomy)
     return True
 
 def check_spatial_validity(dataframe=None):
@@ -438,7 +465,15 @@ def check_spatial_validity(dataframe=None):
     if "decimalLatitude" not in columns_list or "decimalLongitude" not in columns_list:
         raise ValueError("Before checking the spatial validity of your data, ensure all your column names comply to DwCA standard.  decimalLatitude and decimalLongitude are the column names you are looking for.")
     
-    n=1
+    # check latitude
+    if len(dataframe["decimalLatitude"]) > len(dataframe[dataframe["decimalLatitude"].between(-90,90,inclusive='both')]):
+        raise ValueError("Some of your latitude values are not correct:\n\n{}".format(dataframe[~dataframe[dataframe["decimalLatitude"].between(-90,90,inclusive='both')]]))
+    
+    # check longitude
+    if len(dataframe["decimalLongitude"]) > len(dataframe[dataframe["decimalLongitude"].between(-180,180,inclusive='both')]):
+        raise ValueError("Some of your longitude values are not correct:\n\n{}".format(dataframe[~dataframe[dataframe["decimalLongitude"].between(-90,90,inclusive='both')]]))
+    
+    return True
 
 def add_column(dataframe=None,
                column_name=None,
@@ -482,34 +517,18 @@ def add_taxonomic_information(dataframe=None):
     # check for scientificName, as users should check that they have the correct column names
     if "scientificName" not in list(dataframe.columns):
         raise ValueError("Before checking species names, ensure all your column names comply to DwCA standard.  scientificName is the correct title for species")
-    
-    # make a list of all scientific names in the dataframe
-    scientific_names_list = list(set(dataframe["scientificName"]))
-    
-    # taxonomic information
-    taxon_information = {name: [] for name in TAXON_TERMS[atlas]}
-    print(taxon_information)
-    sys.exit()
 
-    # send list of scientific names to ALA to check their validity
-    payload = [{"scientificName": name} for name in scientific_names_list]
-    response = requests.request("POST","https://api.ala.org.au/namematching/api/searchAllByClassification",data=json.dumps(payload))
-    response_json = response.json()
-    verification_list = {"scientificName": scientific_names_list, "issues": [None for i in range(len(scientific_names_list))]}
-    
-    # loop over list of names and ensure we have gotten all the issues - might need to do single name search
-    # to ensure we get everything
-    for i,item in enumerate(scientific_names_list):
-        item_index = next((index for (index, d) in enumerate(response_json) if "scientificName" in d and d["scientificName"] == item), None)
-        if item_index is not None:
-            verification_list["issues"][i] = response_json[item_index]["issues"]
-        else:
-            response_single = requests.get("https://api.ala.org.au/namematching/api/search?q={}".format("%20".join(item.split(" "))))
-            response_json_single = response_single.json()
-            if response_json_single['success']:
-                verification_list["issues"][i] = response_json_single["issues"]
-            else:
-                verification_list["issues"][i] = response_json_single["issues"]
+    # get all info     
+    species_checked,taxon_info = check_species_names(dataframe=dataframe,return_taxa=True)
+
+    # merge the taxon information with the species information the user has provided
+    if species_checked:
+        taxon_dataframe = pd.merge(dataframe, taxon_info, left_on='scientificName', right_on='scientificName', how='left')
+    else:
+        taxon_dataframe = None
+
+    # return the data frame to the user
+    return taxon_dataframe
 
 def change_species_names(dataframe=None,
                          species_changes=None):
@@ -524,9 +543,6 @@ def change_species_names(dataframe=None,
         raise ValueError("Check your column names - scientificName is the title to use for species names.  If yours is something different, please change it to scientificName.")
 
     for species in species_changes:
-        #indices = dataframe.loc[dataframe["scientificName"] == species]["scientificName"].index
-        #for index in indices:
-        #    print(dataframe.loc[dataframe["scientificName"] == species]["scientificName"][index])
         dataframe['scientificName'] = dataframe['scientificName'].replace(regex=species, value=species_changes[species])
 
     return dataframe
