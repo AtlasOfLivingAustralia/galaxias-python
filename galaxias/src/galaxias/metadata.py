@@ -22,7 +22,7 @@ def create_metadata_file(path="."):
 
     os.system("cp {} {}".format(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'metadata_template.md'),path))
 
-def update_eml_xml():
+def update_md():
     '''Function mainly for the website - edit md directly'''
 
     n=1

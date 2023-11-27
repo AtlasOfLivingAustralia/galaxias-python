@@ -106,13 +106,13 @@ def check_for_update_dwc():
 def check_dwca_column_names(dataframe=None,
                             return_invalid_values=False):
     """
-    Check all Darwin Core column names and provides alternatives to ones that are incorrect/invalid.  Also checks for required
-    terms for each atlas
+    Check all Darwin Core column names and provides alternatives to ones that are incorrect/invalid.  It also checks for any required DwCA
+    terms for the atlas you are choosing to submit your data to.
 
     Parameters
     ----------
         dataframe : `pandas` dataframe
-            Dataframe containing species name you want to turn into a Darwin Core Archive. 
+            Dataframe containing species occurrence records you want to turn into a Darwin Core Archive. 
         return_invalid_values : logical
             choose whether or not to return all invalid and missing values as a list or to print to screen.  Default to `False` and will print to screen.
 
@@ -123,23 +123,37 @@ def check_dwca_column_names(dataframe=None,
     Examples
     --------
 
-    Something here.
+    This example is a dataframe that contains the incorrect DwCA terms for X, Y and Z.
 
-    # .. prompt:: python
+    .. prompt:: python
 
-    #     import galaxias
-    #     X
+        import galaxias
+        import pandas as pd
+        data = pd.read_csv("data_wrong_names.csv")
+        galaxias.check_dwca_column_names(dataframe=data)
 
-    # .. program-output:: python -c "import galaxias;"
+    .. program-output:: python -c "import galaxias;import pandas as pd; data = pd.read_csv(\"tests/data_wrong_names.csv\");galaxias.check_dwca_column_names(dataframe=data)"
+    
+    This example is a dataframe that contains all valid DwCA terms.
+
+    .. prompt:: python
+
+        import galaxias
+        import pandas as pd
+        data = pd.read_csv("data_correct_names.csv")
+        galaxias.check_dwca_column_names(dataframe=data)
+
+    .. program-output:: python -c "import galaxias;import pandas as pd; data = pd.read_csv(\"tests/data_correct_names.csv\");galaxias.check_dwca_column_names(dataframe=data)"
+    
     """
 
-    # configs
+    # get configurations
     configs = readConfig()
 
     # get atlas
     atlas = configs["galaxiasSettings"]["atlas"]
 
-    # get all variables for checking
+    # get all dwc terms to validate against
     dwc_terms_df = read_dwc_terms()
     dwc_terms = list(dwc_terms_df['term'])
 
@@ -147,7 +161,7 @@ def check_dwca_column_names(dataframe=None,
     column_names = list(dataframe.columns)
     bool_list = list(map(lambda v: v in dwc_terms, column_names))
 
-    # check for required columns
+    # check for required columns for chosen atlas
     missing_requirements = []
     check_required_dwca_terms = list(map(lambda v: v in column_names, REQUIRED_DWCA_TERMS[atlas]))
     for check,term in zip(check_required_dwca_terms,REQUIRED_DWCA_TERMS[atlas]):
@@ -163,7 +177,8 @@ def check_dwca_column_names(dataframe=None,
             missing_geo_requirements.append(term)
     invalid_dwca_terms = {}
 
-    # check if terms are valid, and if not, provide suggestions
+    # check if column names are valid dwc terms, and if not, provide the closest suggestions
+    # either return the lists of terms that are incorrect, or print them to screen for user
     if (not all(bool_list)) or len(missing_geo_requirements) > 0 or len(missing_requirements) > 0:
         for name,check in zip(column_names,bool_list):
             if check is False:
@@ -213,14 +228,27 @@ def check_for_duplicates(dataframe=None):
     Examples
     --------
 
-    Something here.
+    Here is an example of having duplicate column names.
 
-    # .. prompt:: python
+    .. prompt:: python
 
-    #     import galaxias
-    #     X
+        import galaxias
+        import pandas as pd
+        data = pd.read_csv("data_duplicate_names.csv")
+        galaxias.check_dwca_column_names(dataframe=data)
+        
+    .. program-output:: python -c "import galaxias;import pandas as pd;data = pd.read_csv(\"data_duplicate_names.csv\");galaxias.check_dwca_column_names(dataframe=data)"
+    
+    Here is an example of not having duplicate column names.
 
-    # .. program-output:: python -c "import galaxias;"
+    .. prompt:: python
+
+        import galaxias
+        import pandas as pd
+        data = pd.read_csv("data_no_duplicate_names.csv")
+        galaxias.check_dwca_column_names(dataframe=data)
+        
+    .. program-output:: python -c "import galaxias;import pandas as pd;data = pd.read_csv(\"ddata_no_duplicate_names.csv\");galaxias.check_dwca_column_names(dataframe=data)"
     """
     
     if dataframe is not None:
@@ -235,7 +263,7 @@ def check_for_duplicates(dataframe=None):
 def rename_dwc_columns(dataframe=None,
                        names=None):
     """
-    Renames all columns in the data to names that are Darwin Core Archive compliant
+    Renames all columns in the data to names that are Darwin Core Archive compliant.
 
     Parameters
     ----------
@@ -251,14 +279,16 @@ def rename_dwc_columns(dataframe=None,
     Examples
     --------
 
-    Something here.
+    .. prompt:: python
 
-    # .. prompt:: python
+        import galaxias
+        import pandas as pd
+        data = pd.read_csv("data_wrong_names.csv")
+        data.columns
+        data_new = galaxias.rename_column_names(dataframe=data,names={})
+        data_new.columns
 
-    #     import galaxias
-    #     X
-
-    # .. program-output:: python -c "import galaxias;"
+    .. program-output:: python -c "import galaxias;import pandas as pd;data = pd.read_csv(\"data_wrong_names.csv\");print(data.columns);data_new = galaxias.rename_column_names(dataframe=data,names={});print(data_new.columns)"
     """
 
     if names is not None and dataframe is not None:
@@ -314,7 +344,7 @@ def check_species_names(dataframe=None,
                         num_matches=5,
                         include_synonyms=True,
                         return_matches = False,
-                        return_taxa = True,
+                        return_taxa = False,
                         replace_old_names = False):
     """
     Checks species names against the ALA repository.  Provides alternatives for ones that are homonyms or are not in the database.
@@ -328,7 +358,11 @@ def check_species_names(dataframe=None,
         include_synonyms : logical
             Includes possible synonyms for your species. Default to `True`.
         return_matches : logical
-            Option whether to return a dictionary object containing species names and alternatives.  Default to `False`.   
+            Option whether to return a dictionary object containing species names and alternatives.  Default to `False`.  
+        return_taxa : logical
+            Option whether to return a dictionary object containing full taxonomic information on your species.  Default to `False`. 
+        replace_old_names : logical
+            Option whether to replace any outdated species names with the most recent taxonomic names.  Default to `False`. 
 
     Returns
     -------
@@ -336,18 +370,24 @@ def check_species_names(dataframe=None,
 
     Examples
     --------
+    .. prompt:: python
 
-    Something here.
+        import galaxias
+        import pandas as pd
+        data = pd.read_csv("data_correct_species_names.csv")
+        galaxias.check_species_names(dataframe=data,replace_old_names=True)
 
-    # .. prompt:: python
+    .. program-output:: python -c "import galaxias;import pandas as pd;data = pd.read_csv(\"data_correct_species_names.csv\");galaxias.check_species_names(dataframe=new_data,replace_old_names=True)"
 
-    #     import galaxias
-    #     X
+        import galaxias
+        import pandas as pd
+        data = pd.read_csv("data_incorrect_species_names.csv")
+        galaxias.check_species_names(dataframe=data,replace_old_names=True)
 
-    # .. program-output:: python -c "import galaxias;"
+    .. program-output:: python -c "import galaxias;import pandas as pd;data = pd.read_csv(\"data_incorrect_species_names.csv\");galaxias.check_species_names(dataframe=data,replace_old_names=True)"
     """
 
-    # configs
+    # get configurations from user
     configs = readConfig()
 
     # get atlas
@@ -437,7 +477,7 @@ def check_species_names(dataframe=None,
 
 def check_spatial_validity(dataframe=None):
     """
-    Checks the spatial validity of the data.
+    Checks the spatial validity of the data.  The ALA's data is represented as WGS84, so latitude and longitude should be in degrees.
 
     Parameters
     ----------
@@ -451,14 +491,14 @@ def check_spatial_validity(dataframe=None):
     Examples
     --------
 
-    Something here.
+    .. prompt:: python
 
-    # .. prompt:: python
+        import galaxias
+        import pandas as pd
+        data = pd.read_csv("data_correct_lat_long.csv")
+        galaxias.check_spatial_validity(dataframe=data)
 
-    #     import galaxias
-    #     X
-
-    # .. program-output:: python -c "import galaxias;"
+    .. program-output:: python -c "import galaxias;import pandas as pd;data = pd.read_csv(\"data_correct_lat_long.csv\");galaxias.check_spatial_validity(dataframe=data)"
     """
     columns_list = list(dataframe.columns)
 
@@ -478,7 +518,31 @@ def check_spatial_validity(dataframe=None):
 def add_column(dataframe=None,
                column_name=None,
                value=None):
-    
+    """
+    Checks the spatial validity of the data.  The ALA's data is represented as WGS84, so latitude and longitude should be in degrees.
+
+    Parameters
+    ----------
+        dataframe : `pandas` dataframe
+            Dataframe containing species name you want to turn into a Darwin Core Archive.
+
+    Returns
+    -------
+        `True` if the data frame has spatially valid data, `False` if it does not.
+
+    Examples
+    --------
+
+    .. prompt:: python
+
+        import galaxias
+        import pandas as pd
+        data = pd.read_csv("data_correct_lat_long.csv")
+        galaxias.check_spatial_validity(dataframe=data)
+
+    .. program-output:: python -c "import galaxias;import pandas as pd;data = pd.read_csv(\"data_correct_lat_long.csv\");galaxias.check_spatial_validity(dataframe=data)"
+    """
+
     if dataframe is None:
         raise ValueError("Please provide a data frame.")
     
@@ -504,6 +568,31 @@ def add_column(dataframe=None,
         raise ValueError("Please provide a string with a valid DwCA value for your column name.")
     
 def add_taxonomic_information(dataframe=None):
+    """
+    Adds full taxonomic information (from kingdom to species) to your data for clearer identification
+
+    Parameters
+    ----------
+        dataframe : `pandas` dataframe
+            Dataframe containing species occurrence records you want to turn into a Darwin Core Archive.
+
+    Returns
+    -------
+        `pandas` dataframe provided that now contains full taxonomic information.
+
+    Examples
+    --------
+
+    .. prompt:: python
+
+        import galaxias
+        import pandas as pd
+        data = pd.read_csv("data_add_taxon_information.csv")
+        data_taxon = galaxias.check_spatial_validity(dataframe=data)
+        data_taxon.head()
+        
+    .. program-output:: python -c "import galaxias;import pandas as pd;data = pd.read_csv(\"data_add_taxon_information.csv\");data_taxon = galaxias.check_spatial_validity(dataframe=data);print(data_taxon.head())"
+    """
 
     # configs
     configs = readConfig()
@@ -532,7 +621,34 @@ def add_taxonomic_information(dataframe=None):
 
 def change_species_names(dataframe=None,
                          species_changes=None):
-    
+    """
+    Changes any species names that are incorrect/invalid/misidentified to the correct ones
+
+    Parameters
+    ----------
+        dataframe : `pandas` dataframe
+            Dataframe containing species occurrence records you want to turn into a Darwin Core Archive.
+        species_changes : dict
+            Dictionary containing existing species name in your data frame, as well as the new species name.
+            
+    Returns
+    -------
+        `pandas` dataframe provided that contains changed species name.
+
+    Examples
+    --------
+
+    .. prompt:: python
+
+        import galaxias
+        import pandas as pd
+        data = pd.read_csv("data_change_species_names.csv")
+        new_data_species_rename = galaxias.change_species_names(dataframe=data,species_changes={})
+        new_data_species_rename.head()
+        
+    .. program-output:: python -c "import galaxias;import pandas as pd;data = pd.read_csv(\"data_change_species_names.csv\");new_data_species_rename = galaxias.check_spatial_validity(dataframe=data,species_changes={});print(new_data_species_rename.head())"
+    """
+        
     if dataframe is None:
         raise ValueError("Please provide a dataframe to the function.")
     
