@@ -1,6 +1,8 @@
-import os
 import requests
 import pandas as pd
+<<<<<<< HEAD:src/galaxias/dwc_data.py
+import re
+=======
 import numpy as np
 from .metadata import read_dwc_terms
 from .galaxias_config import readConfig
@@ -10,6 +12,7 @@ import json
 import uuid
 from .common_dictionaries import REQUIRED_DWCA_TERMS,NAME_MATCHING_TERMS,ID_REQUIRED_DWCA_TERMS
 from .common_dictionaries import GEO_REQUIRED_DWCA_TERMS,TAXON_TERMS
+>>>>>>> 106e6efffe79078a9f6381f5c85d6a6cef896026:galaxias/src/galaxias/dwc_data.py
 
 # testing
 import sys
@@ -101,6 +104,9 @@ def check_for_update_dwc():
        new_dwc_terms.to_csv(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'dwc_terms.csv'),index=False)
     else:
         print("just for testing")    
+<<<<<<< HEAD:src/galaxias/dwc_data.py
+'''
+=======
 '''
 
 def check_dwca_column_names(dataframe=None,
@@ -662,3 +668,4 @@ def change_species_names(dataframe=None,
         dataframe['scientificName'] = dataframe['scientificName'].replace(regex=species, value=species_changes[species])
 
     return dataframe
+>>>>>>> 106e6efffe79078a9f6381f5c85d6a6cef896026:galaxias/src/galaxias/dwc_data.py
