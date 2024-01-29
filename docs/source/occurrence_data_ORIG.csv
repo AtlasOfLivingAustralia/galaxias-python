@@ -1,0 +1,762 @@
+Species,Site,Latitude,Longitude,Reference(s),Collection_date
+Corymbia latifolia,Adelaide River,-13.04,131.07,"Walker, A.P., I. Aranda, A.P. Beckerman, H. Bown, L.A. Cernusak, Q.L. Dang, T.F. Domingues, L. Gu, S. Guo, Q. Han, J. Kattge, M. Kubiske, D. Manter, E. Merilo, G. Midgley, A. Porte, J.C. Scales, D. Tissue, T. Turnbull, C. Warren, G. Wohlfahrt, F.I. Woodward, and S.D. Wullschleger. 2014. A Global Data Set of Leaf Photosynthetic Rates, Leaf N and P, and Specific Leaf Area. Data set. Available on-line [http://daac.ornl.gov] from Oak Ridge National Laboratory Distributed Active Archive Center, Oak Ridge, Tennessee, USA. http://dx.doi.org/10.3334/ORNLDAAC/1224",2022-03-29
+Eucalyptus tectifica,Adelaide River,-13.04,131.07,"Walker, A.P., I. Aranda, A.P. Beckerman, H. Bown, L.A. Cernusak, Q.L. Dang, T.F. Domingues, L. Gu, S. Guo, Q. Han, J. Kattge, M. Kubiske, D. Manter, E. Merilo, G. Midgley, A. Porte, J.C. Scales, D. Tissue, T. Turnbull, C. Warren, G. Wohlfahrt, F.I. Woodward, and S.D. Wullschleger. 2014. A Global Data Set of Leaf Photosynthetic Rates, Leaf N and P, and Specific Leaf Area. Data set. Available on-line [http://daac.ornl.gov] from Oak Ridge National Laboratory Distributed Active Archive Center, Oak Ridge, Tennessee, USA. http://dx.doi.org/10.3334/ORNLDAAC/1224",2022-09-13
+Banksia aemula,AgnesBanks,-33.6,150.72,Niinemets et al. 2009 J of Experimental Botany,2022-08-15
+Eucalyptus sclerophylla,AgnesBanks,-33.6,150.72,Niinemets et al. 2009 J of Experimental Botany,2022-06-16
+Persoonia laurina,AgnesBanks,-33.6,150.72,Niinemets et al. 2009 J of Experimental Botany,2022-10-19
+Acacia aneura,Alice Mulga,-22.35,133.33,"Nolan et al. 2017a, b Functional Plant Biology; Bloomfield et al. 2018 Functional Ecology",2022-10-11
+Acacia cambagei,Alice Mulga,-22.35,133.33,"Nolan et al. 2017a, b Functional Plant Biology",2022-08-23
+Acacia dictyophleba,Alice Mulga,-22.35,133.33,Bloomfield et al. 2018 Functional Ecology,2022-01-11
+Acacia estrophiolata,Alice Mulga,-22.35,133.33,"Nolan et al. 2017a, b Functional Plant Biology",2022-07-10
+Acacia kempeana,Alice Mulga,-22.35,133.33,"Nolan et al. 2017a, b Functional Plant Biology",2022-07-18
+Acacia melleodora,Alice Mulga,-22.35,133.33,"Nolan et al. 2017a, b Functional Plant Biology",2022-04-25
+Acacia murayana,Alice Mulga,-22.35,133.33,"Nolan et al. 2017a, b Functional Plant Biology",2022-12-15
+Corymbia opaca,Alice Mulga,-22.35,133.33,"Nolan et al. 2017a, b Functional Plant Biology",2022-02-06
+Corymbia terminalis,Alice Mulga,-22.35,133.33,Bloomfield et al. 2018 Functional Ecology,2022-04-21
+Eremophila latrobei,Alice Mulga,-22.35,133.33,Bloomfield et al. 2018 Functional Ecology,2022-01-30
+Eucalyptus camaldulensis,Alice Mulga,-22.35,133.33,Bloomfield et al. 2018 Functional Ecology,2022-03-30
+Eucalyptus camaldulensis var. obtusa,Alice Mulga,-22.35,133.33,Bloomfield et al. 2018 Functional Ecology,2022-07-25
+Hakea leucoptera,Alice Mulga,-22.35,133.33,Bloomfield et al. 2018 Functional Ecology,2022-03-11
+Hakea macrocarpa,Alice Mulga,-22.35,133.33,"Nolan et al. 2017a, b Functional Plant Biology",2022-07-28
+Psydrax latifolia,Alice Mulga,-22.35,133.33,Bloomfield et al. 2018 Functional Ecology,2022-03-06
+Acacia celsa,Atherton,-17.26,145.46,"Gray, Wright et al 2019 AoB PLANTS",2022-09-05
+Acronychia acidula,Atherton,-17.26,145.46,"Gray, Wright et al 2019 AoB PLANTS",2022-04-22
+Aleurites rockinghamensis,Atherton,-17.26,145.46,"Gray, Wright et al 2019 AoB PLANTS",2022-07-21
+Alphitonia petriei,Atherton,-17.26,145.46,"Gray, Wright et al 2019 AoB PLANTS",2022-03-11
+Gillbeea adenopetala,Atherton,-17.26,145.46,"Gray, Wright et al 2019 AoB PLANTS",2022-02-15
+Litsea leefeana,Atherton,-17.26,145.46,"Gray, Wright et al 2019 AoB PLANTS",2022-05-11
+Myrsine porosa,Atherton,-17.26,145.46,"Gray, Wright et al 2019 AoB PLANTS",2022-10-31
+Neolitsea dealbata,Atherton,-17.26,145.46,"Gray, Wright et al 2019 AoB PLANTS",2022-10-08
+Polyscias australiana,Atherton,-17.26,145.46,"Gray, Wright et al 2019 AoB PLANTS",2022-10-26
+Coprosma hirtella,Bago,-35.66,148.15,Kietel Australia,2022-03-04
+Daviesia latifolia,Bago,-35.66,148.15,Kietel Australia,2022-06-28
+Eucalyptus delegatensis,Bago,-35.66,148.15,Kietel Australia,2022-01-22
+Tasmannia lanceolata,Bago,-35.66,148.15,Kietel Australia,2022-06-24
+Eucalyptus miniata,Berrimah,-12.42,130.92,"Eamus, D., Prichard, H. 1998. A cost-benefit alysis of leaves of four Australian savan species. Tree Physiol. 18: 537-545. [416]",2022-10-28
+Eucalyptus tetrodonta,Berrimah,-12.42,130.92,"Eamus, D., Prichard, H. 1998. A cost-benefit alysis of leaves of four Australian savan species. Tree Physiol. 18: 537-545. [416]",2022-06-21
+Planchonia careya,Berrimah,-12.42,130.92,"Eamus, D., Prichard, H. 1998. A cost-benefit alysis of leaves of four Australian savan species. Tree Physiol. 18: 537-545. [416]",2022-01-09
+Syzygium suborbiculare,Berrimah,-12.42,130.92,"Eamus, D., Prichard, H. 1998. A cost-benefit alysis of leaves of four Australian savan species. Tree Physiol. 18: 537-545. [416]",2022-08-05
+Terminalia ferdinandiana,Berrimah,-12.42,130.92,"Eamus, D., Prichard, H. 1998. A cost-benefit alysis of leaves of four Australian savan species. Tree Physiol. 18: 537-545. [416]",2022-10-06
+Acacia merallii,Blackbutt,-30.2,120.63,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-11-27
+Eucalyptus clelandii,Blackbutt,-30.2,120.63,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-09-29
+Exocarpos aphyllus,Blackbutt,-30.2,120.63,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-03-01
+Olearia muelleri,Blackbutt,-30.2,120.63,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-08-07
+Senna pleurocarpa,Blackbutt,-30.2,120.63,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-12-20
+Acacia rubida,Blue Mountains,-33.63,150.28,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-12-22
+Dianella caerulea,Blue Mountains,-33.63,150.28,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-07-16
+Eucalyptus sieberi,Blue Mountains,-33.63,150.28,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-04-26
+Grevillea laurifolia,Blue Mountains,-33.63,150.28,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-04-25
+Hakea dactyloides,Blue Mountains,-33.63,150.28,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-07-26
+Leptospermum polygalifolium,Blue Mountains,-33.63,150.28,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-01-05
+Mirbelia platylaboides,Blue Mountains,-33.63,150.28,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-12-06
+Olearia asterotricha,Blue Mountains,-33.63,150.28,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-01-16
+Persoonia myrtilloides,Blue Mountains,-33.63,150.28,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-07-12
+Pittosporum undulatum,Blue Mountains,-33.63,150.28,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-03-25
+Symphionema montanum,Blue Mountains,-33.63,150.28,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-12-17
+Acacia dealbata,Bothwell,-42.39,147.05,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-10-16
+Aotus ericoides,Bothwell,-42.39,147.05,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-11-30
+Banksia marginata,Bothwell,-42.39,147.05,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-09-13
+Bossiaea cinerea,Bothwell,-42.39,147.05,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-01-07
+Cassinia aculeata,Bothwell,-42.39,147.05,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-06-03
+Daviesia latifolia,Bothwell,-42.39,147.05,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-02-27
+Epacris impressa,Bothwell,-42.39,147.05,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-06-11
+Eucalyptus pauciflora,Bothwell,-42.39,147.05,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-11-30
+Eucalyptus rubida,Bothwell,-42.39,147.05,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-06-02
+Eucalyptus tenuiramis,Bothwell,-42.39,147.05,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-05-11
+Exocarpos cupressiformis,Bothwell,-42.39,147.05,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-07-21
+Leucopogon ericoides,Bothwell,-42.39,147.05,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-05-29
+Leucopogon virgatus,Bothwell,-42.39,147.05,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-07-30
+Persoonia juniperina,Bothwell,-42.39,147.05,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-03-27
+Corymbia aparrerinja,Boulia,-22.59,139.5,Cernusak et al. 2006 PCE; Cernusak et al. 2011 Agricultural and Forest Meteorology,2022-12-26
+Corymbia terminalis,Boulia,-22.59,139.5,Cernusak et al. 2006 PCE; Cernusak et al. 2011 Agricultural and Forest Meteorology,2022-04-18
+Acacia effusifolia,Callitris,-30.18,120.71,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-04-05
+Acacia rhodophloia,Callitris,-30.18,120.71,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-11-12
+Alyxia buxifolia,Callitris,-30.18,120.71,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-11-05
+Callitris columellaris,Callitris,-30.18,120.71,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-03-06
+Eucalyptus  griffithsii,Callitris,-30.18,120.71,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-11-06
+Olearia muelleri,Callitris,-30.18,120.71,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-07-17
+Olearia pimeleoides,Callitris,-30.18,120.71,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-07-23
+Phebalium  canaliculatum,Callitris,-30.18,120.71,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-11-19
+Beyeria opaca,Calperum mallee,-34.0,140.59,Bloomfield et al. 2018 Functional Ecology,2023-01-01
+Dodonaea angustissima,Calperum mallee,-34.0,140.59,Bloomfield et al. 2018 Functional Ecology,2022-03-29
+Dodonaea bursariifolia,Calperum mallee,-34.0,140.59,Bloomfield et al. 2018 Functional Ecology,2022-06-08
+Eremophila glabra,Calperum mallee,-34.0,140.59,Bloomfield et al. 2018 Functional Ecology,2022-04-27
+Eucalyptus dumosa,Calperum mallee,-34.0,140.59,Bloomfield et al. 2018 Functional Ecology,2022-04-15
+Eucalyptus socialis,Calperum mallee,-34.0,140.59,Bloomfield et al. 2018 Functional Ecology,2022-01-09
+Grevillea huegelii,Calperum mallee,-34.0,140.59,Bloomfield et al. 2018 Functional Ecology,2022-04-11
+Myoporum platycarpum,Calperum mallee,-34.0,140.59,Bloomfield et al. 2018 Functional Ecology,2022-03-04
+Senna artemisioides,Calperum mallee,-34.0,140.59,Bloomfield et al. 2018 Functional Ecology,2022-06-10
+Triodia irritans,Calperum mallee,-34.0,140.59,Bloomfield et al. 2018 Functional Ecology,2022-11-02
+Acmena graveolens,Cape Tribulation,-16.08,145.46,Atkin et al. 2015 New Phyt,2022-09-06
+Alstonia scholaris,Cape Tribulation,-16.08,145.46,"Atkin et al. 2015 New Phyt; Gray, Wright et al. 2019 AoB PLANTS",2022-01-02
+Argyrodendron peralatum,Cape Tribulation,-16.08,145.46,"Atkin et al. 2015 New Phyt; Gray, Wright et al. 2019 AoB PLANTS",2022-03-14
+Brombya platynema,Cape Tribulation,-16.08,145.46,"Gray, Wright et al 2019 AoB PLANTS",2022-10-02
+Cardwellia sublimis,Cape Tribulation,-16.08,145.46,"Atkin et al. 2015 New Phyt; Gray, Wright et al. 2019 AoB PLANTS",2022-08-24
+Castanospermum australe,Cape Tribulation,-16.08,145.46,"Atkin et al. 2015 New Phyt; Gray, Wright et al. 2019 AoB PLANTS",2022-07-29
+Cleistanthus myrianthus,Cape Tribulation,-16.08,145.46,"Gray, Wright et al 2019 AoB PLANTS",2022-05-11
+Cryptocarya mackinnoniana,Cape Tribulation,-16.08,145.46,"Atkin et al. 2015 New Phyt; Gray, Wright et al. 2019 AoB PLANTS",2022-07-28
+Cryptocarya murrayi,Cape Tribulation,-16.08,145.46,"Gray, Wright et al 2019 AoB PLANTS",2022-03-25
+Dysoxylum papuanum,Cape Tribulation,-16.08,145.46,Atkin et al. 2015,2022-09-22
+Elaeocarpus angustifolius,Cape Tribulation,-16.08,145.46,Atkin et al. 2015,2022-10-03
+Elaeocarpus grandis,Cape Tribulation,-16.08,145.46,"Atkin et al. 2015 New Phyt; Gray, Wright et al. 2019 AoB PLANTS",2022-07-30
+Endiandra leptodendron,Cape Tribulation,-16.08,145.46,"Atkin et al. 2015 New Phyt; Gray, Wright et al. 2019 AoB PLANTS",2022-05-10
+Ficus variegata,Cape Tribulation,-16.08,145.46,Atkin et al. 2015,2022-07-17
+Gillbeea whypallana,Cape Tribulation,-16.08,145.46,Atkin et al. 2015,2022-08-11
+Litsea leefeana,Cape Tribulation,-16.08,145.46,"Gray, Wright et al 2019 AoB PLANTS",2022-10-29
+Myristica globosa ssp. muelleri,Cape Tribulation,-16.08,145.46,Atkin et al. 2015,2022-12-26
+Pseuduvaria froggattii,Cape Tribulation,-16.08,145.46,Atkin et al. 2015,2022-08-03
+Rockinghamia angustifolia,Cape Tribulation,-16.08,145.46,"Gray, Wright et al 2019 AoB PLANTS",2022-02-08
+Synima cordierorum,Cape Tribulation,-16.08,145.46,Atkin et al. 2015,2022-07-16
+Syzygium sayeri,Cape Tribulation,-16.08,145.46,"Gray, Wright et al 2019 AoB PLANTS",2022-06-09
+Xanthophyllum octandrum,Cape Tribulation,-16.08,145.46,Atkin et al. 2015,2022-10-10
+Acacia crassicarpa,Cardwell,-18.44,146.13,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-05-24
+Acacia flavescens,Cardwell,-18.44,146.13,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-03-14
+Acacia mangium,Cardwell,-18.44,146.13,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-08-21
+Allocasuarina torulosa,Cardwell,-18.44,146.13,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-02-04
+Alphitonia excelsa,Cardwell,-18.44,146.13,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-04-06
+Canarium australianum,Cardwell,-18.44,146.13,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-05-27
+Chionanthus ramiflora,Cardwell,-18.44,146.13,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-04-27
+Corymbia intermedia,Cardwell,-18.44,146.13,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-05-19
+Eucalyptus platyphylla,Cardwell,-18.44,146.13,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-02-24
+Ixora timorensis,Cardwell,-18.44,146.13,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-11-13
+Lophostemon suaveolens,Cardwell,-18.44,146.13,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-05-18
+Macaranga involucrata,Cardwell,-18.44,146.13,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-06-07
+Macaranga tanarius,Cardwell,-18.44,146.13,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-11-30
+Planchonia careya,Cardwell,-18.44,146.13,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-06-29
+Polyscias elegans,Cardwell,-18.44,146.13,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-10-05
+Pultenaea juniperina,Cardwell,-18.44,146.13,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-10-03
+Timonius timon,Cardwell,-18.44,146.13,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-10-29
+Acacia falcata,Castlereagh,-32.65,150.7,Niinemets et al. 2009 J of Experimental Botany,2022-05-30
+Banksia spinulosa,Castlereagh,-32.65,150.7,Niinemets et al. 2009 J of Experimental Botany,2022-08-11
+Eucalyptus fibrosa,Castlereagh,-32.65,150.7,Niinemets et al. 2009 J of Experimental Botany,2022-12-20
+Eucalyptus haemastoma,Castlereagh,-32.65,150.7,Niinemets et al. 2009 J of Experimental Botany,2022-08-07
+Macrozamia spiralis,Castlereagh,-32.65,150.7,Niinemets et al. 2009 J of Experimental Botany,2022-09-14
+Persoonia laurina,Castlereagh,-32.65,150.7,Niinemets et al. 2009 J of Experimental Botany,2022-04-10
+Acacia holosericea,Claraville,-18.71,141.82,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-12-20
+Alphitonia excelsa,Claraville,-18.71,141.82,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-07-05
+Archidendropsis basaltica,Claraville,-18.71,141.82,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-08-08
+Carissa lanceolata,Claraville,-18.71,141.82,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-05-16
+Corymbia polycarpa,Claraville,-18.71,141.82,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-11-09
+Dodonaea physocarpa,Claraville,-18.71,141.82,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-05-29
+Erythrophleum chlorostachys,Claraville,-18.71,141.82,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-12-20
+Gardenia vilhelmii,Claraville,-18.71,141.82,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-03-19
+Grevillea parallela,Claraville,-18.71,141.82,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-04-02
+Grevillea striata,Claraville,-18.71,141.82,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-06-28
+Melaleuca citrolens,Claraville,-18.71,141.82,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-11-19
+Melaleuca stenostachya,Claraville,-18.71,141.82,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-03-29
+Melaleuca viridiflora,Claraville,-18.71,141.82,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-09-08
+Petalostigma banksii,Claraville,-18.71,141.82,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-01-31
+Terminalia platyptera,Claraville,-18.71,141.82,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-07-18
+Ventilago viminalis,Claraville,-18.71,141.82,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-12-22
+Eucalyptus populnea,Cocoparra,-34.13,146.2,D. Ellsworth,2022-12-22
+Hakea tephrosperma,Cocoparra,-34.13,146.2,D. Ellsworth,2022-06-23
+Acacia parramattensis,Cumberland Plain,-33.62,150.74,Bloomfield et al. 2018 Functional Ecology,2022-09-05
+Breynia oblongifolia,Cumberland Plain,-33.62,150.74,Bloomfield et al. 2018 Functional Ecology,2022-01-10
+Bursaria spinosa,Cumberland Plain,-33.62,150.74,Bloomfield et al. 2018 Functional Ecology,2022-06-01
+Eucalyptus amplifolia,Cumberland Plain,-33.62,150.74,Bloomfield et al. 2018 Functional Ecology,2022-01-30
+Eucalyptus fibrosa,Cumberland Plain,-33.62,150.74,Bloomfield et al. 2018 Functional Ecology,2022-01-23
+Eucalyptus moluccana,Cumberland Plain,-33.62,150.74,Bloomfield et al. 2018 Functional Ecology,2022-10-26
+Eucalyptus tereticornis,Cumberland Plain,-33.62,150.74,Bloomfield et al. 2018 Functional Ecology,2022-12-13
+Hakea sericea,Cumberland Plain,-33.62,150.74,Bloomfield et al. 2018 Functional Ecology,2022-03-13
+Jacksonia scoparia,Cumberland Plain,-33.62,150.74,Bloomfield et al. 2018 Functional Ecology,2022-04-29
+Melaleuca decora,Cumberland Plain,-33.62,150.74,Bloomfield et al. 2018 Functional Ecology,2022-05-12
+Melaleuca nodosa,Cumberland Plain,-33.62,150.74,Bloomfield et al. 2018 Functional Ecology,2022-02-17
+Ozothamnus diosmifolius,Cumberland Plain,-33.62,150.74,Bloomfield et al. 2018 Functional Ecology,2022-10-31
+Aleurites rockinghamensis,Curtain Fig,-17.28,145.57,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-07-30
+Argyrodendron sp. Boonjie (B.P.Hyland RFK 2139),Curtain Fig,-17.28,145.57,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-07-27
+Castanospermum australe,Curtain Fig,-17.28,145.57,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-07-02
+Dendrocnide photinophylla,Curtain Fig,-17.28,145.57,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-01-02
+Dysoxylum pettigrewianum,Curtain Fig,-17.28,145.57,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-04-29
+Flindersia brayleyana,Curtain Fig,-17.28,145.57,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-06-28
+Alstonia scholaris,Daintree,-16.1,145.45,L. Cernusak; Bauman et al. 2022 Global Change Biology; Bloomfield et al. 2018 Functional Ecology,2022-08-20
+Argyrodendron peralatum,Daintree,-16.1,145.45,L. Cernusak; Bauman et al. 2022 Global Change Biology; Bloomfield et al. 2018 Functional Ecology,2022-05-16
+Cardwellia sublimis,Daintree,-16.1,145.45,L. Cernusak; Bauman et al. 2022 Global Change Biology; Bloomfield et al. 2018 Functional Ecology; Weerasinghe et al. 2014 Tree Physiology,2022-04-12
+Castanospermum australe,Daintree,-16.1,145.45,L. Cernusak; Bauman et al. 2022 Global Change Biology; Bloomfield et al. 2018 Functional Ecology; Weerasinghe et al. 2014 Tree Physiology,2022-08-17
+Cleistanthus myrianthus,Daintree,-16.1,145.45,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-11-05
+Cryptocarya mackinnoniana,Daintree,-16.1,145.45,L. Cernusak; Bauman et al. 2022 Global Change Biology; Bloomfield et al. 2018 Functional Ecology; Weerasinghe et al. 2014 Tree Physiology,2022-01-17
+Dysoxylum alliaceum,Daintree,-16.1,145.45,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-06-22
+Dysoxylum papuanum,Daintree,-16.1,145.45,L. Cernusak; Bauman et al. 2022 Global Change Biology; Bloomfield et al. 2018 Functional Ecology; Weerasinghe et al. 2014 Tree Physiology,2022-12-24
+Dysoxylum pettigrewianum,Daintree,-16.1,145.45,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-03-20
+Elaeocarpus angustifolius,Daintree,-16.1,145.45,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-11-08
+Elaeocarpus grandis,Daintree,-16.1,145.45,Bloomfield et al. 2018 Functional Ecology; Weerasinghe et al. 2014 Tree Physiology,2022-11-07
+Endiandra leptodendron,Daintree,-16.1,145.45,Bloomfield et al. 2018 Functional Ecology; Weerasinghe et al. 2014 Tree Physiology,2022-06-25
+Endiandra microneura,Daintree,-16.1,145.45,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-02-24
+Ficus variegata,Daintree,-16.1,145.45,Bloomfield et al. 2018 Functional Ecology; Weerasinghe et al. 2014 Tree Physiology,2022-10-12
+Gillbeea whypallana,Daintree,-16.1,145.45,Bloomfield et al. 2018 Functional Ecology; Weerasinghe et al. 2014 Tree Physiology,2022-12-22
+Myristica globosa ssp. muelleri,Daintree,-16.1,145.45,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-08-14
+Normanbya normanbyi,Daintree,-16.1,145.45,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-10-31
+Rockinghamia angustifolia,Daintree,-16.1,145.45,Bloomfield et al. 2018 Functional Ecology; Weerasinghe et al. 2014 Tree Physiology,2022-12-15
+Synima cordierorum,Daintree,-16.1,145.45,L. Cernusak; Bauman et al. 2022 Global Change Biology; Bloomfield et al. 2018 Functional Ecology,2022-04-03
+Syzygium graveolens,Daintree,-16.1,145.45,L. Cernusak; Bauman et al. 2022 Global Change Biology; Bloomfield et al. 2018 Functional Ecology,2022-04-26
+Syzygium gustavioides,Daintree,-16.1,145.45,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-01-22
+Syzygium sayeri,Daintree,-16.1,145.45,L. Cernusak; Bauman et al. 2022 Global Change Biology; Bloomfield et al. 2018 Functional Ecology,2022-02-14
+Xanthophyllum octandrum,Daintree,-16.1,145.45,Bloomfield et al. 2018 Functional Ecology; Weerasinghe et al. 2014 Tree Physiology,2022-06-03
+Corymbia latifolia,Daly river,-14.09,131.23,Cernusak et al. 2006 PCE; Cernusak et al. 2011 Agricultural and Forest Meteorology,2022-04-01
+Eucalyptus tetrodonta,Daly river,-14.09,131.23,Cernusak et al. 2006 PCE; Cernusak et al. 2011 Agricultural and Forest Meteorology,2022-02-16
+Ardisia brevipedata,Danbulla,-17.11,145.6,Atkin et al. 2015 New Phyt,2022-03-27
+Cardwellia sublimis,Danbulla,-17.11,145.6,Atkin et al. 2015 New Phyt,2022-09-01
+Cryptocarya onoprienkoana,Danbulla,-17.11,145.6,Atkin et al. 2015 New Phyt,2022-06-14
+Darlingia darlingiana,Danbulla,-17.11,145.6,Atkin et al. 2015 New Phyt,2022-09-19
+Polyscias elegans,Danbulla,-17.11,145.6,Atkin et al. 2015 New Phyt,2022-11-24
+Toechima,Danbulla,-17.11,145.6,Atkin et al. 2015 New Phyt,2022-03-28
+Callicoma serratifolia,Dorrigo,-30.32,152.71,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-02-14
+Cordyline stricta,Dorrigo,-30.32,152.71,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-08-17
+Duboisia myoporoides,Dorrigo,-30.32,152.71,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-10-25
+Eupomatia laurina,Dorrigo,-30.32,152.71,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-05-17
+Eustrephus latifolia,Dorrigo,-30.32,152.71,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-02-25
+Ficus coronata,Dorrigo,-30.32,152.71,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-01-30
+Glochidion ferdinandi,Dorrigo,-30.32,152.71,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-09-10
+Guioa semiglauca,Dorrigo,-30.32,152.71,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-09-25
+Homalanthus populifolius,Dorrigo,-30.32,152.71,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-03-30
+Marsdenia rostrata,Dorrigo,-30.32,152.71,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-06-16
+Neolitsea dealbata,Dorrigo,-30.32,152.71,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-04-23
+Ripogonum album,Dorrigo,-30.32,152.71,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-07-18
+Rubus hillii,Dorrigo,-30.32,152.71,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-08-16
+Agathis robusta,Downfall Creek,-17.15,145.59,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-06-25
+Alstonia muelleriana,Downfall Creek,-17.15,145.59,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-12-21
+Brachychiton acerifolius,Downfall Creek,-17.15,145.59,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-01-15
+Cleistanthus semiopacus,Downfall Creek,-17.15,145.59,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-07-09
+Dinosperma erythrococcum,Downfall Creek,-17.15,145.59,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-09-15
+Euroschinus falcatus var. falcatus,Downfall Creek,-17.15,145.59,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-05-13
+Gossia hillii,Downfall Creek,-17.15,145.59,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-11-16
+Homalium circumpinnatum,Downfall Creek,-17.15,145.59,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-06-01
+Polyalthia nitidissima,Downfall Creek,-17.15,145.59,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-07-09
+Pseudoweinmannia lachnocarpa,Downfall Creek,-17.15,145.59,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-06-17
+Rhodamnia spongiosa,Downfall Creek,-17.15,145.59,L. Cernusak; Bauman et al. 2022 Global Change Biology,2023-01-01
+Corymbia terminalis,Dry creek,-15.15,132.22,Cernusak et al. 2006 PCE; Cernusak et al. 2011 Agricultural and Forest Meteorology,2022-11-29
+Eucalyptus tetrodonta,Dry creek,-15.15,132.22,Cernusak et al. 2006 PCE; Cernusak et al. 2011 Agricultural and Forest Meteorology,2022-10-22
+Ficus racemosa,DryMonsoonForest,-12.4,130.9,Prior et al. 2003 Functional Ecology,2022-11-30
+Ficus scobina,DryMonsoonForest,-12.4,130.9,Prior et al. 2003 Functional Ecology,2022-08-04
+Mallotus nesophilus,DryMonsoonForest,-12.4,130.9,Prior et al. 2003 Functional Ecology,2022-09-25
+Melaleuca leucadendra,DryMonsoonForest,-12.4,130.9,Prior et al. 2003 Functional Ecology,2022-04-05
+Terminalia microcarpa,DryMonsoonForest,-12.4,130.9,Prior et al. 2003 Functional Ecology,2022-09-24
+Wrightia pubescens,DryMonsoonForest,-12.4,130.9,Prior et al. 2003 Functional Ecology,2022-11-08
+Acacia aneura,Ex-credo,-30.19,120.64,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-10-09
+Acacia burkittii,Ex-credo,-30.19,120.64,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-01-30
+Dodonaea lobulata,Ex-credo,-30.19,120.64,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-06-23
+Grevillea nematophylla,Ex-credo,-30.19,120.64,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-11-22
+Olearia muelleri,Ex-credo,-30.19,120.64,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-01-17
+Adenanthos cygnorum,Gnangara-moore,-31.37,115.71,Veneklaas_W_Australia,2022-04-22
+Andersonia heterophylla,Gnangara-moore,-31.37,115.71,Veneklaas_W_Australia,2022-08-08
+Anigozanthos humilis,Gnangara-moore,-31.37,115.71,Veneklaas_W_Australia,2022-07-06
+Astroloma xerophyllum,Gnangara-moore,-31.37,115.71,Veneklaas_W_Australia,2022-05-29
+Banksia attenuata,Gnangara-moore,-31.37,115.71,Veneklaas_W_Australia,2022-06-05
+Banksia menziesii,Gnangara-moore,-31.37,115.71,Veneklaas_W_Australia,2022-09-24
+Bossiaea eriocarpa,Gnangara-moore,-31.37,115.71,Veneklaas_W_Australia,2022-03-26
+Calytrix flavescens,Gnangara-moore,-31.37,115.71,Veneklaas_W_Australia,2022-01-25
+Conostephium pendulum,Gnangara-moore,-31.37,115.71,Veneklaas_W_Australia,2022-11-04
+Drosera sp,Gnangara-moore,-31.37,115.71,Veneklaas_W_Australia,2022-07-13
+Eremaea pauciflora,Gnangara-moore,-31.37,115.71,Veneklaas_W_Australia,2022-02-01
+Gladiolus caryophyllaceus,Gnangara-moore,-31.37,115.71,Veneklaas_W_Australia,2022-08-12
+Hibbertia huegelii,Gnangara-moore,-31.37,115.71,Veneklaas_W_Australia,2022-07-12
+Hibbertia subvaginata,Gnangara-moore,-31.37,115.71,Veneklaas_W_Australia,2022-06-29
+Jacksonia floribunda,Gnangara-moore,-31.37,115.71,Veneklaas_W_Australia,2022-11-08
+Leucopogon conostephioides,Gnangara-moore,-31.37,115.71,Veneklaas_W_Australia,2022-12-05
+Lyginia barbata,Gnangara-moore,-31.37,115.71,Veneklaas_W_Australia,2022-01-10
+Macrozamia riedlei,Gnangara-moore,-31.37,115.71,Veneklaas_W_Australia,2022-09-01
+Melaleuca acerosa,Gnangara-moore,-31.37,115.71,Veneklaas_W_Australia,2022-03-08
+Nuytsia floribunda,Gnangara-moore,-31.37,115.71,Veneklaas_W_Australia,2022-08-19
+Patersonia occidentalis,Gnangara-moore,-31.37,115.71,Veneklaas_W_Australia,2022-02-25
+Persoonia saccata,Gnangara-moore,-31.37,115.71,Veneklaas_W_Australia,2022-09-15
+Petrophile linearis,Gnangara-moore,-31.37,115.71,Veneklaas_W_Australia,2022-05-06
+Pterostylis sp,Gnangara-moore,-31.37,115.71,Veneklaas_W_Australia,2022-12-13
+Regelia ciliata,Gnangara-moore,-31.37,115.71,Veneklaas_W_Australia,2022-05-17
+Scholtzia involucrata,Gnangara-moore,-31.37,115.71,Veneklaas_W_Australia,2022-01-17
+Stirlingia latifolia,Gnangara-moore,-31.37,115.71,Veneklaas_W_Australia,2022-08-24
+Stylidium sp,Gnangara-moore,-31.37,115.71,Veneklaas_W_Australia,2022-06-11
+Verticordia nitens,Gnangara-moore,-31.37,115.71,Veneklaas_W_Australia,2022-04-20
+Xanthorrhoea preissii,Gnangara-moore,-31.37,115.71,Veneklaas_W_Australia,2022-12-06
+Acacia aneura,Great Western Woodlands,-30.26,120.69,Bloomfield et al. 2018 Functional Ecology,2022-01-04
+Acacia hemiteles,Great Western Woodlands,-30.26,120.69,Bloomfield et al. 2018 Functional Ecology,2022-01-07
+Atriplex nummularia,Great Western Woodlands,-30.26,120.69,Bloomfield et al. 2018 Functional Ecology,2022-11-26
+Eremophila scoparia,Great Western Woodlands,-30.26,120.69,Bloomfield et al. 2018 Functional Ecology,2022-08-27
+Eucalyptus clelandii,Great Western Woodlands,-30.26,120.69,Bloomfield et al. 2018 Functional Ecology,2022-11-17
+Eucalyptus salmonophloia,Great Western Woodlands,-30.26,120.69,Bloomfield et al. 2018 Functional Ecology,2022-04-29
+Eucalyptus salubris,Great Western Woodlands,-30.26,120.69,Bloomfield et al. 2018 Functional Ecology,2022-07-17
+Eucalyptus transcontinentalis,Great Western Woodlands,-30.26,120.69,Bloomfield et al. 2018 Functional Ecology,2022-04-16
+Maireana sedifolia,Great Western Woodlands,-30.26,120.69,Bloomfield et al. 2018 Functional Ecology,2022-09-14
+Acacia sp,Homestead,-30.47,120.83,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-12-31
+Acacia sp,Homestead,-30.47,120.83,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-04-02
+Atriplex codonocarpa,Homestead,-30.47,120.83,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-03-08
+Casuarina pauper,Homestead,-30.47,120.83,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-04-14
+Maireana sedifolia,Homestead,-30.47,120.83,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-10-24
+Maireana spp,Homestead,-30.47,120.83,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-07-01
+Melaleuca pauperiflora,Homestead,-30.47,120.83,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-11-02
+Ptilotus obovatus,Homestead,-30.47,120.83,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-08-01
+Santalum spicatum,Homestead,-30.47,120.83,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-03-05
+Solanum lasiophyllum,Homestead,-30.47,120.83,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-08-02
+Acacia difficilis,Howard Springs,-12.45,131.11,Wright et al. 2018 Austral Ecology,2022-09-27
+Acacia latescens,Howard Springs,-12.45,131.11,Wright et al. 2018 Austral Ecology,2022-06-17
+Acacia mimula,Howard Springs,-12.45,131.11,Wright et al. 2018 Austral Ecology,2022-10-19
+Buchanania obovata,Howard Springs,-12.45,131.11,Wright et al. 2018 Austral Ecology,2022-01-14
+Cochlospermum fraseri,Howard Springs,-12.45,131.11,Wright et al. 2018 Austral Ecology,2022-11-08
+Corymbia bleeseri,Howard Springs,-12.45,131.11,Wright et al. 2018 Austral Ecology,2022-12-11
+Corymbia porrecta,Howard Springs,-12.45,131.11,Wright et al. 2018 Austral Ecology,2022-12-01
+Erythrophleum chlorostachys,Howard Springs,-12.45,131.11,L. Cernusak; Cernusak et al. 2006 PCE; Cernusak et al. 2011 Agricultural and Forest Meteorology; Wright et al. 2018 Austral Ecology,2022-08-23
+Eucalyptus miniata,Howard Springs,-12.45,131.11,L. Cernusak; Cernusak et al. 2006 PCE; Cernusak et al. 2011 Agricultural and Forest Meteorology; Wright et al. 2018 Austral Ecology,2022-12-25
+Eucalyptus tetrodonta,Howard Springs,-12.45,131.11,L. Cernusak; Cernusak et al. 2006 PCE; Cernusak et al. 2011 Agricultural and Forest Meteorology; Wright et al. 2018 Austral Ecology,2022-09-09
+Grevillea decurrens,Howard Springs,-12.45,131.11,Wright et al. 2018 Austral Ecology,2022-10-16
+Grevillea pteridifolia,Howard Springs,-12.45,131.11,Wright et al. 2018 Austral Ecology,2022-07-27
+Lophostemon lactifluus,Howard Springs,-12.45,131.11,Wright et al. 2018 Austral Ecology,2022-11-18
+Persoonia falcata,Howard Springs,-12.45,131.11,Wright et al. 2018 Austral Ecology,2022-12-25
+Petalostigma pubescens,Howard Springs,-12.45,131.11,Wright et al. 2018 Austral Ecology,2022-03-26
+Planchonia careya,Howard Springs,-12.45,131.11,Wright et al. 2018 Austral Ecology,2022-12-09
+Xanthostemon paradoxus,Howard Springs,-12.45,131.11,Wright et al. 2018 Austral Ecology,2022-06-20
+Acacia parvipinnula,Hunter Valley,-32.57,151.17,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-11-22
+Acacia salicina,Hunter Valley,-32.57,151.17,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-06-06
+Casuarina cunninghamiana,Hunter Valley,-32.57,151.17,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-11-01
+Dichondra repens,Hunter Valley,-32.57,151.17,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-01-12
+Eucalyptus camaldulensis,Hunter Valley,-32.57,151.17,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-04-12
+Hardenbergia violacea,Hunter Valley,-32.57,151.17,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-06-01
+Melia azedarach,Hunter Valley,-32.57,151.17,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-11-07
+Microlaena stipoides,Hunter Valley,-32.57,151.17,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-11-29
+Persicaria decipiens,Hunter Valley,-32.57,151.17,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-04-18
+Pratia purpurascens,Hunter Valley,-32.57,151.17,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-06-17
+Urtica incisa,Hunter Valley,-32.57,151.17,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-05-12
+Acacia rostellifera,Jurien Bay_site0/stage1,-30.4,115.08,"Atkin et al. 2015 New Phyt; Guilherme Pereira, C, Hayes, PE, O'Sullivan, OS, et al. 2019, J Ecol.",2022-04-01
+Dodonaea,Jurien Bay_site0/stage1,-30.4,115.08,"Guilherme Pereira, C, Hayes, PE, O'Sullivan, OS, et al. 2019, J Ecol.",2022-03-16
+Anthocercis littorea,Jurien Bay_site0/stage1,-30.4,115.08,"Atkin et al. 2015 New Phyt; Guilherme Pereira, C, Hayes, PE, O'Sullivan, OS, et al. 2019, J Ecol.",2022-10-11
+Chenopodiaceae,Jurien Bay_site0/stage1,-30.4,115.08,"Atkin et al. 2015 New Phyt; Guilherme Pereira, C, Hayes, PE, O'Sullivan, OS, et al. 2019, J Ecol.",2022-08-18
+Dioscorea hastifolia,Jurien Bay_site0/stage1,-30.4,115.08,"Atkin et al. 2015 New Phyt; Guilherme Pereira, C, Hayes, PE, O'Sullivan, OS, et al. 2019, J Ecol.",2022-08-21
+Myoporum insulare,Jurien Bay_site0/stage1,-30.4,115.08,"Atkin et al. 2015 New Phyt; Guilherme Pereira, C, Hayes, PE, O'Sullivan, OS, et al. 2019, J Ecol.",2022-10-18
+Olearia axillaris,Jurien Bay_site0/stage1,-30.4,115.08,"Atkin et al. 2015 New Phyt; Guilherme Pereira, C, Hayes, PE, O'Sullivan, OS, et al. 2019, J Ecol.",2022-06-14
+Spyridium globulosum,Jurien Bay_site0/stage1,-30.4,115.08,"Atkin et al. 2015 New Phyt; Guilherme Pereira, C, Hayes, PE, O'Sullivan, OS, et al. 2019, J Ecol.",2022-06-11
+Templetonia retusa,Jurien Bay_site0/stage1,-30.4,115.08,"Atkin et al. 2015 New Phyt; Guilherme Pereira, C, Hayes, PE, O'Sullivan, OS, et al. 2019, J Ecol.",2022-07-23
+Acacia lasiocarpa,Jurien Bay_site2/stage3,-30.03,115.0,"Atkin et al. 2015 New Phyt; Guilherme Pereira, C, Hayes, PE, O'Sullivan, OS, et al. 2019, J Ecol.",2022-05-01
+Acacia rostellifera,Jurien Bay_site2/stage3,-30.03,115.0,"Atkin et al. 2015 New Phyt; Guilherme Pereira, C, Hayes, PE, O'Sullivan, OS, et al. 2019, J Ecol.",2022-11-04
+Banksia nivea,Jurien Bay_site2/stage3,-30.03,115.0,"Atkin et al. 2015 New Phyt; Guilherme Pereira, C, Hayes, PE, O'Sullivan, OS, et al. 2019, J Ecol.",2022-10-15
+Clematis linearifolia,Jurien Bay_site2/stage3,-30.03,115.0,"Atkin et al. 2015 New Phyt; Guilherme Pereira, C, Hayes, PE, O'Sullivan, OS, et al. 2019, J Ecol.",2022-12-14
+Melaleuca systena,Jurien Bay_site2/stage3,-30.03,115.0,"Atkin et al. 2015 New Phyt; Guilherme Pereira, C, Hayes, PE, O'Sullivan, OS, et al. 2019, J Ecol.",2022-03-13
+Opercularia spermacocea,Jurien Bay_site2/stage3,-30.03,115.0,"Atkin et al. 2015 New Phyt; Guilherme Pereira, C, Hayes, PE, O'Sullivan, OS, et al. 2019, J Ecol.",2022-06-10
+Phyllanthus calycinus,Jurien Bay_site2/stage3,-30.03,115.0,"Atkin et al. 2015 New Phyt; Guilherme Pereira, C, Hayes, PE, O'Sullivan, OS, et al. 2019, J Ecol.",2022-04-14
+Santalum acuminatum,Jurien Bay_site2/stage3,-30.03,115.0,"Atkin et al. 2015 New Phyt; Guilherme Pereira, C, Hayes, PE, O'Sullivan, OS, et al. 2019, J Ecol.",2022-10-03
+Spyridium globulosum,Jurien Bay_site2/stage3,-30.03,115.0,"Atkin et al. 2015 New Phyt; Guilherme Pereira, C, Hayes, PE, O'Sullivan, OS, et al. 2019, J Ecol.",2022-03-04
+Acacia rostellifera,Jurien Bay_site3/stage4,-30.14,115.06,"Atkin et al. 2015 New Phyt; Guilherme Pereira, C, Hayes, PE, O'Sullivan, OS, et al. 2019, J Ecol.",2022-03-10
+Anthocercis littorea,Jurien Bay_site3/stage4,-30.14,115.06,"Atkin et al. 2015 New Phyt; Guilherme Pereira, C, Hayes, PE, O'Sullivan, OS, et al. 2019, J Ecol.",2022-08-17
+Banksia leptophylla var.  Melletica,Jurien Bay_site3/stage4,-30.14,115.06,"Atkin et al. 2015 New Phyt; Guilherme Pereira, C, Hayes, PE, O'Sullivan, OS, et al. 2019, J Ecol.",2022-02-19
+Banksia nivea,Jurien Bay_site3/stage4,-30.14,115.06,"Atkin et al. 2015 New Phyt; Guilherme Pereira, C, Hayes, PE, O'Sullivan, OS, et al. 2019, J Ecol.",2022-03-20
+Banksia prionotes,Jurien Bay_site3/stage4,-30.14,115.06,"Atkin et al. 2015 New Phyt; Guilherme Pereira, C, Hayes, PE, O'Sullivan, OS, et al. 2019, J Ecol.",2022-03-20
+Conospermum stoechadis,Jurien Bay_site3/stage4,-30.14,115.06,"Atkin et al. 2015 New Phyt; Guilherme Pereira, C, Hayes, PE, O'Sullivan, OS, et al. 2019, J Ecol.",2022-10-30
+Hakea incrassate,Jurien Bay_site3/stage4,-30.14,115.06,"Atkin et al. 2015 New Phyt; Guilherme Pereira, C, Hayes, PE, O'Sullivan, OS, et al. 2019, J Ecol.",2022-09-11
+Labichea cassioides,Jurien Bay_site3/stage4,-30.14,115.06,"Atkin et al. 2015 New Phyt; Guilherme Pereira, C, Hayes, PE, O'Sullivan, OS, et al. 2019, J Ecol.",2022-06-03
+Melaleuca systena,Jurien Bay_site3/stage4,-30.14,115.06,"Atkin et al. 2015 New Phyt; Guilherme Pereira, C, Hayes, PE, O'Sullivan, OS, et al. 2019, J Ecol.",2022-09-02
+Scaevola,Jurien Bay_site3/stage4,-30.14,115.06,"Atkin et al. 2015 New Phyt; Guilherme Pereira, C, Hayes, PE, O'Sullivan, OS, et al. 2019, J Ecol.",2022-04-19
+Carnarvonia araliifolia,Kaaru Creek,-17.65,145.72,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-08-03
+Citronella moorei,Kaaru Creek,-17.65,145.72,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-01-26
+Cryptocarya mackinnoniana,Kaaru Creek,-17.65,145.72,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-05-10
+Cryptocarya oblata,Kaaru Creek,-17.65,145.72,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-07-26
+Dysoxylum oppositifolium,Kaaru Creek,-17.65,145.72,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-02-12
+Flindersia bourjotiana,Kaaru Creek,-17.65,145.72,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-03-30
+Flindersia brayleyana,Kaaru Creek,-17.65,145.72,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-03-17
+Franciscodendron laurifolium,Kaaru Creek,-17.65,145.72,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-12-08
+Gillbeea adenopetala,Kaaru Creek,-17.65,145.72,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-05-23
+Litsea leefeana,Kaaru Creek,-17.65,145.72,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-01-20
+Myristica globosa ssp. muelleri,Kaaru Creek,-17.65,145.72,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-12-24
+Polyalthia michaelii,Kaaru Creek,-17.65,145.72,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-11-16
+Toechima erythrocarpum,Kaaru Creek,-17.65,145.72,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-02-16
+Atalaya hemiglauca,Kidman Springs Grey,-16.12,130.95,A. Westerband,2022-08-19
+Bauhinia cunninghamii,Kidman Springs Grey,-16.12,130.95,A. Westerband,2022-10-13
+Carissa lanceolata,Kidman Springs Grey,-16.12,130.95,A. Westerband,2022-02-03
+Corymbia terminalis,Kidman Springs Grey,-16.12,130.95,A. Westerband,2022-11-28
+Eucalyptus pruinosa,Kidman Springs Grey,-16.12,130.95,A. Westerband,2022-05-19
+Hakea arborescens,Kidman Springs Grey,-16.12,130.95,A. Westerband,2022-11-04
+Terminalia volucris,Kidman Springs Grey,-16.12,130.95,A. Westerband,2022-06-01
+Acacia holosericea,Kidman Springs Red,-16.12,130.95,A. Westerband,2022-04-01
+Bauhinia cunninghamii,Kidman Springs Red,-16.12,130.95,A. Westerband,2022-06-07
+Carissa lanceolata,Kidman Springs Red,-16.12,130.95,A. Westerband,2022-10-10
+Corymbia terminalis,Kidman Springs Red,-16.12,130.95,A. Westerband,2022-01-06
+Dodonaea lanceolata,Kidman Springs Red,-16.12,130.95,A. Westerband,2022-01-31
+Eucalyptus pruinosa,Kidman Springs Red,-16.12,130.95,A. Westerband,2022-04-19
+Hakea arborescens,Kidman Springs Red,-16.12,130.95,A. Westerband,2022-04-04
+Allocasuarina littoralis,Ku-ring-gai,-33.68,151.15,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-05-29
+Banksia ericifolia,Ku-ring-gai,-33.68,151.15,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-11-30
+Banksia oblongifolia,Ku-ring-gai,-33.68,151.15,D. Ellsworth,2022-05-22
+Banksia serrata,Ku-ring-gai,-33.68,151.15,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-05-30
+Banksia spinulosa,Ku-ring-gai,-33.68,151.15,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-07-21
+Corymbia gummifera,Ku-ring-gai,-33.68,151.15,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-04-03
+Eucalyptus capitellata,Ku-ring-gai,-33.68,151.15,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-07-30
+Eucalyptus haemastoma,Ku-ring-gai,-33.68,151.15,D. Ellsworth; Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-12-19
+Grevillea buxifolia,Ku-ring-gai,-33.68,151.15,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-08-01
+Hakea dactyloides,Ku-ring-gai,-33.68,151.15,D. Ellsworth,2022-04-04
+Hakea gibbosa,Ku-ring-gai,-33.68,151.15,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-07-23
+Hakea sericea,Ku-ring-gai,-33.68,151.15,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-02-13
+Hakea teretifolia,Ku-ring-gai,-33.68,151.15,D. Ellsworth; Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-11-08
+Lambertia formosa,Ku-ring-gai,-33.68,151.15,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-03-22
+Leptospermum trinervium,Ku-ring-gai,-33.68,151.15,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-06-04
+Persoonia levis,Ku-ring-gai,-33.68,151.15,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-05-09
+Persoonia pinifolia,Ku-ring-gai,-33.68,151.15,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-01-01
+Petrophile pulchella,Ku-ring-gai,-33.68,151.15,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-05-07
+Acacia dealbata,Longley,-42.98,147.19,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-04-08
+Acacia terminalis,Longley,-42.98,147.19,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-03-12
+Allocasuarina monilifera,Longley,-42.98,147.19,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-09-04
+Aotus ericoides,Longley,-42.98,147.19,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-10-23
+Banksia marginata,Longley,-42.98,147.19,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-03-04
+Epacris impressa,Longley,-42.98,147.19,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-01-21
+Epacris lanuginosa,Longley,-42.98,147.19,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-01-04
+Eucalyptus amygdalina,Longley,-42.98,147.19,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-11-17
+Exocarpos cupressiformis,Longley,-42.98,147.19,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-12-11
+Leptospermum glaucescens,Longley,-42.98,147.19,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-04-08
+Leptospermum scoparium,Longley,-42.98,147.19,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-08-05
+Leucopogon ericoides,Longley,-42.98,147.19,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-02-26
+Melaleuca squamea,Longley,-42.98,147.19,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-09-12
+Melaleuca squarrosa,Longley,-42.98,147.19,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-03-24
+Monotoca glauca,Longley,-42.98,147.19,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-06-14
+Oxylobium ellipticum,Longley,-42.98,147.19,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-04-17
+Castanospermum australe,Maleny,-26.78,152.88,Richards and Schmidt 2010 Ecol Appl,2022-02-09
+Elaeocarpus angustifolius,Maleny,-26.78,152.88,Richards and Schmidt 2010 Ecol Appl,2022-12-06
+Grevillea robusta,Maleny,-26.78,152.88,Richards and Schmidt 2010 Ecol Appl,2022-02-14
+Elaeocarpus ferruginiflorus,Mount Bellenden Ker,-17.26,145.85,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-02-11
+Flindersia oppositifolia,Mount Bellenden Ker,-17.26,145.85,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-02-26
+Leptospermum wooroonooron,Mount Bellenden Ker,-17.26,145.85,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-12-25
+Musgravea stenostachya,Mount Bellenden Ker,-17.26,145.85,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-08-23
+Myrsine oreophila,Mount Bellenden Ker,-17.26,145.85,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-10-21
+Syzygium hemilamprum,Mount Bellenden Ker,-17.26,145.85,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-05-01
+Aceratium doggrellii,Mount Haig,-17.09,145.59,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-09-09
+Agathis atropurpurea,Mount Haig,-17.09,145.59,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-07-18
+Archidendron grandiflorum,Mount Haig,-17.09,145.59,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-01-02
+Balanops australiana,Mount Haig,-17.09,145.59,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-04-24
+Beilschmiedia collina,Mount Haig,-17.09,145.59,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-05-27
+Bobea myrtoides,Mount Haig,-17.09,145.59,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-06-07
+Brackenridgea australiana,Mount Haig,-17.09,145.59,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-08-18
+Canarium australasicum,Mount Haig,-17.09,145.59,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-06-23
+Ceratopetalum succirubrum,Mount Haig,-17.09,145.59,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-05-06
+Cryptocarya angulata,Mount Haig,-17.09,145.59,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-02-15
+Cryptocarya densiflora,Mount Haig,-17.09,145.59,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-11-05
+Elaeocarpus sericopetalus,Mount Haig,-17.09,145.59,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-09-10
+Flindersia bourjotiana,Mount Haig,-17.09,145.59,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-02-10
+Flindersia pimenteliana,Mount Haig,-17.09,145.59,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-11-29
+Franciscodendron laurifolium,Mount Haig,-17.09,145.59,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-01-15
+Garcinia sp. Davies Creek (J.G.Tracey 14745),Mount Haig,-17.09,145.59,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-10-13
+Musgravea stenostachya,Mount Haig,-17.09,145.59,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-10-02
+Pouteria euphlebia,Mount Haig,-17.09,145.59,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-12-10
+Sphenostemon lobosporus,Mount Haig,-17.09,145.59,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-06-02
+Acacia binervata,Mount Keira,-34.4,150.85,A. Westerband,2022-01-23
+Alchornea ilicifolia,Mount Keira,-34.4,150.85,A. Westerband,2022-07-14
+Alectryon subcinereus,Mount Keira,-34.4,150.85,A. Westerband,2022-10-20
+Baloghia inophylla,Mount Keira,-34.4,150.85,A. Westerband,2022-01-31
+Ceratopetalum apetalum,Mount Keira,-34.4,150.85,A. Westerband,2022-07-17
+Citriobatus pauciflorus,Mount Keira,-34.4,150.85,A. Westerband,2022-12-09
+Claoxylon australe,Mount Keira,-34.4,150.85,A. Westerband,2022-05-02
+Croton verreauxii,Mount Keira,-34.4,150.85,A. Westerband,2022-03-27
+Diospyros australis,Mount Keira,-34.4,150.85,A. Westerband,2022-02-11
+Doryphora sassafrass,Mount Keira,-34.4,150.85,A. Westerband,2022-08-20
+Eupomatia laurina,Mount Keira,-34.4,150.85,A. Westerband,2022-12-10
+Eustrephus latifolius,Mount Keira,-34.4,150.85,A. Westerband,2022-02-15
+Ficus coronata,Mount Keira,-34.4,150.85,A. Westerband,2022-12-29
+Hedycarya angustifolia,Mount Keira,-34.4,150.85,A. Westerband,2022-04-03
+Litsea reticulata,Mount Keira,-34.4,150.85,A. Westerband,2022-09-21
+Morinda jasminoides,Mount Keira,-34.4,150.85,A. Westerband,2022-12-29
+Pittosporum undulatum,Mount Keira,-34.4,150.85,A. Westerband,2022-01-23
+Prostanthera incisa,Mount Keira,-34.4,150.85,A. Westerband,2022-06-26
+Rubus moluccanus,Mount Keira,-34.4,150.85,A. Westerband,2022-10-30
+Smilax australis,Mount Keira,-34.4,150.85,A. Westerband,2022-01-20
+Stephania japonica,Mount Keira,-34.4,150.85,A. Westerband,2022-09-20
+Syncarpia glomulifera,Mount Keira,-34.4,150.85,A. Westerband,2022-12-03
+Synoum glandulosum,Mount Keira,-34.4,150.85,A. Westerband,2022-10-31
+Syzygium smithii,Mount Keira,-34.4,150.85,A. Westerband,2022-12-19
+Toona ciliata,Mount Keira,-34.4,150.85,A. Westerband,2022-03-19
+Trochocarpa laurina,Mount Keira,-34.4,150.85,A. Westerband,2022-02-18
+Zieria smithii,Mount Keira,-34.4,150.85,A. Westerband,2022-01-12
+Acacia longifolia,MUforest,-33.77,151.11,Niinemets et al. 2009 J of Experimental Botany,2022-05-24
+Pittosporum undulatum,MUforest,-33.77,151.11,Niinemets et al. 2009 J of Experimental Botany,2022-04-10
+Polyscias sambucifolia,MUforest,-33.77,151.11,Niinemets et al. 2009 J of Experimental Botany,2022-11-29
+Austromuellera trinerva,Oliver Creek,-16.14,145.44,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-03-17
+Beilschmiedia bancroftii,Oliver Creek,-16.14,145.44,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-10-30
+Doryphora aromatica,Oliver Creek,-16.14,145.44,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-01-13
+Dysoxylum alliaceum,Oliver Creek,-16.14,145.44,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-11-26
+Endiandra microneura,Oliver Creek,-16.14,145.44,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-03-01
+Idiospermum australiense,Oliver Creek,-16.14,145.44,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-03-25
+Lindsayomyrtus racemoides,Oliver Creek,-16.14,145.44,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-11-26
+Pouteria myrsinodendron,Oliver Creek,-16.14,145.44,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-01-09
+Ryparosa kurrangi,Oliver Creek,-16.14,145.44,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-05-03
+Storckiella australiensis,Oliver Creek,-16.14,145.44,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-09-22
+Xanthophyllum octandrum,Oliver Creek,-16.14,145.44,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-08-05
+Brachychiton megaphyllus,OpenForest,-12.7,131.0,Prior et al. 2003 Functional Ecology,2022-12-13
+Buchanania obovata,OpenForest,-12.7,131.0,Prior et al. 2003 Functional Ecology,2022-06-02
+Erythrophleum chlorostachys,OpenForest,-12.7,131.0,Prior et al. 2003 Functional Ecology,2022-09-23
+Eucalyptus clavigera,OpenForest,-12.7,131.0,Prior et al. 2003 Functional Ecology,2022-08-12
+Eucalyptus miniata,OpenForest,-12.7,131.0,Prior et al. 2003 Functional Ecology,2022-08-08
+Eucalyptus tetrodonta,OpenForest,-12.7,131.0,Prior et al. 2003 Functional Ecology,2022-11-17
+Planchonia careya,OpenForest,-12.7,131.0,Prior et al. 2003 Functional Ecology,2022-11-29
+Syzygium suborbiculare,OpenForest,-12.7,131.0,Prior et al. 2003 Functional Ecology,2022-10-31
+Terminalia ferdinandiana,OpenForest,-12.7,131.0,Prior et al. 2003 Functional Ecology,2022-10-25
+Acacia flavescens,Princess Hills,-18.3,145.49,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-07-16
+Acacia leptostachya,Princess Hills,-18.3,145.49,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-03-17
+Allocasuarina torulosa,Princess Hills,-18.3,145.49,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-07-23
+Bursaria incana,Princess Hills,-18.3,145.49,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-05-15
+Coelospermum reticulatum,Princess Hills,-18.3,145.49,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-06-19
+Corymbia citriodora,Princess Hills,-18.3,145.49,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-11-07
+Corymbia intermedia,Princess Hills,-18.3,145.49,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-05-11
+Corymbia trachyphloia,Princess Hills,-18.3,145.49,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-11-01
+Eucalyptus portuensis,Princess Hills,-18.3,145.49,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-08-01
+Gastrolobium grandiflorum,Princess Hills,-18.3,145.49,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-01-31
+Grevillea glauca,Princess Hills,-18.3,145.49,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-01-20
+Grevillea parallela,Princess Hills,-18.3,145.49,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-12-07
+Lophostemon suaveolens,Princess Hills,-18.3,145.49,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-07-05
+Persoonia falcata,Princess Hills,-18.3,145.49,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-09-25
+Petalostigma pubescens,Princess Hills,-18.3,145.49,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-05-25
+Planchonia careya,Princess Hills,-18.3,145.49,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-01-13
+Xylomelum scottianum,Princess Hills,-18.3,145.49,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-05-04
+Acacia longifolia,Pymble,-33.75,151.14,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-06-13
+Acacia parramatensis,Pymble,-33.75,151.14,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-01-11
+Banksia serrata,Pymble,-33.75,151.14,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-09-08
+Banksia spinulosa,Pymble,-33.75,151.14,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-12-18
+Casuarina sp,Pymble,-33.75,151.14,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-09-08
+Commelina cyanea,Pymble,-33.75,151.14,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-04-09
+Dianella caerulea,Pymble,-33.75,151.14,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-09-07
+Dodonaea triquetra,Pymble,-33.75,151.14,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-11-24
+Eucalyptus gummifera,Pymble,-33.75,151.14,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-12-30
+Grevillea buxifolia,Pymble,-33.75,151.14,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-08-18
+Imperata cylindrica,Pymble,-33.75,151.14,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-11-25
+Persoonia levis,Pymble,-33.75,151.14,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-07-09
+Persoonia pinifolia,Pymble,-33.75,151.14,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-09-23
+Pittosporum undulatum,Pymble,-33.75,151.14,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-11-15
+Siegesbeckia orientalis,Pymble,-33.75,151.14,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-04-22
+Smilax glyciphylla,Pymble,-33.75,151.14,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-01-30
+Acacia floribunda,RNP Bola Creek,-34.15,151.03,A. Westerband,2022-06-24
+Acacia irrorata,RNP Bola Creek,-34.15,151.03,A. Westerband,2022-02-13
+Acmena smithii,RNP Bola Creek,-34.15,151.03,A. Westerband,2022-06-16
+Backhousia myrtifolia,RNP Bola Creek,-34.15,151.03,A. Westerband,2022-03-01
+Baloghia inophylla,RNP Bola Creek,-34.15,151.03,A. Westerband,2022-02-05
+Breynia oblongifolia,RNP Bola Creek,-34.15,151.03,A. Westerband,2022-01-17
+Callicoma serratifolia,RNP Bola Creek,-34.15,151.03,A. Westerband,2022-04-26
+Ceratopetalum apetalum,RNP Bola Creek,-34.15,151.03,A. Westerband,2022-11-13
+Citriobatus pauciflorus,RNP Bola Creek,-34.15,151.03,A. Westerband,2022-01-04
+Cryptocarya glaucesens,RNP Bola Creek,-34.15,151.03,A. Westerband,2022-01-09
+Doryphora sassafrass,RNP Bola Creek,-34.15,151.03,A. Westerband,2022-09-19
+Ficus coronata,RNP Bola Creek,-34.15,151.03,A. Westerband,2022-12-27
+Hedycarya angustifolia,RNP Bola Creek,-34.15,151.03,A. Westerband,2022-09-04
+Hibbertia scandens,RNP Bola Creek,-34.15,151.03,A. Westerband,2022-05-10
+Marsdenia rostrata,RNP Bola Creek,-34.15,151.03,A. Westerband,2022-08-18
+Melicope micrococca,RNP Bola Creek,-34.15,151.03,A. Westerband,2022-11-17
+Phyllanthus gunnii,RNP Bola Creek,-34.15,151.03,A. Westerband,2022-07-20
+Rhodamnia rubescens,RNP Bola Creek,-34.15,151.03,A. Westerband,2022-11-12
+Smilax australis,RNP Bola Creek,-34.15,151.03,A. Westerband,2022-11-13
+Syncarpia glomulifera,RNP Bola Creek,-34.15,151.03,A. Westerband,2022-02-28
+Synoum glandulosum,RNP Bola Creek,-34.15,151.03,A. Westerband,2022-02-24
+Tasmannia insipida,RNP Bola Creek,-34.15,151.03,A. Westerband,2022-10-14
+Trochocarpa laurina,RNP Bola Creek,-34.15,151.03,A. Westerband,2022-10-04
+Trophis scandens,RNP Bola Creek,-34.15,151.03,A. Westerband,2022-08-03
+Wilkiea huegeliana,RNP Bola Creek,-34.15,151.03,A. Westerband,2022-09-16
+Acacia linifolia,RNP Tall Timbers,-34.1,151.11,A. Westerband,2022-11-26
+Acacia longifolia,RNP Tall Timbers,-34.1,151.11,A. Westerband,2022-08-17
+Angophora costata,RNP Tall Timbers,-34.1,151.11,A. Westerband,2022-11-01
+Banksia serrata,RNP Tall Timbers,-34.1,151.11,A. Westerband,2022-10-06
+Ceratopetalum gummiferum,RNP Tall Timbers,-34.1,151.11,A. Westerband,2022-10-17
+Elaeocarpus reticulatus,RNP Tall Timbers,-34.1,151.11,A. Westerband,2022-12-30
+Eucalyptus haemastoma,RNP Tall Timbers,-34.1,151.11,A. Westerband,2022-03-10
+Eucalyptus piperita,RNP Tall Timbers,-34.1,151.11,A. Westerband,2022-01-28
+Leptospermum trinervium,RNP Tall Timbers,-34.1,151.11,A. Westerband,2022-10-26
+Leucopogon lanceolatus,RNP Tall Timbers,-34.1,151.11,A. Westerband,2022-08-24
+Persoonia levis,RNP Tall Timbers,-34.1,151.11,A. Westerband,2022-07-04
+Pultenaea daphnoides,RNP Tall Timbers,-34.1,151.11,A. Westerband,2022-02-01
+Acacia celsa,Robson Creek,-17.12,145.63,"Gray, Wright et al 2019 AoB PLANTS",2022-10-23
+Aleurites rockinghamensis,Robson Creek,-17.12,145.63,"Gray, Wright et al 2019 AoB PLANTS",2022-06-23
+Alphitonia petriei,Robson Creek,-17.12,145.63,"Gray, Wright et al 2019 AoB PLANTS",2022-09-27
+Alphitonia whitei,Robson Creek,-17.12,145.63,Bloomfield et al. 2018 Functional Ecology,2022-11-26
+Alstonia muelleriana,Robson Creek,-17.12,145.63,L. Cernusak; Bloomfield et al. 2018 Functional Ecology,2022-05-25
+Argyrodendron peralatum,Robson Creek,-17.12,145.63,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-06-11
+Beilschmiedia bancroftii,Robson Creek,-17.12,145.63,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-03-06
+Cardwellia sublimis,Robson Creek,-17.12,145.63,L. Cernusak; Bauman et al. 2022 Global Change Biology; Bloomfield et al. 2018 Functional Ecology,2022-06-05
+Ceratopetalum succirubrum,Robson Creek,-17.12,145.63,L. Cernusak; Bauman et al. 2022 Global Change Biology; Bloomfield et al. 2018 Functional Ecology,2022-12-11
+Cryptocarya angulata,Robson Creek,-17.12,145.63,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-06-21
+Cryptocarya corrugata,Robson Creek,-17.12,145.63,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-10-21
+Cryptocarya mackinnoniana,Robson Creek,-17.12,145.63,Bloomfield et al. 2018 Functional Ecology,2022-03-26
+Daphnandra repandula,Robson Creek,-17.12,145.63,L. Cernusak; Bauman et al. 2022 Global Change Biology; Bloomfield et al. 2018 Functional Ecology,2022-03-23
+Doryphora aromatica,Robson Creek,-17.12,145.63,Bloomfield et al. 2018 Functional Ecology,2022-02-12
+Elaeocarpus largiflorens,Robson Creek,-17.12,145.63,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-03-21
+Elaeocarpus ruminatus,Robson Creek,-17.12,145.63,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-01-25
+Ficus leptoclada,Robson Creek,-17.12,145.63,Bloomfield et al. 2018 Functional Ecology,2022-11-04
+Flindersia bourjotiana,Robson Creek,-17.12,145.63,L. Cernusak; Bauman et al. 2022 Global Change Biology; Bloomfield et al. 2018 Functional Ecology,2022-09-27
+Flindersia brayleyana,Robson Creek,-17.12,145.63,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-04-20
+Gillbeea adenopetala,Robson Creek,-17.12,145.63,L. Cernusak; Bauman et al. 2022 Global Change Biology; Bloomfield et al. 2018 Functional Ecology,2022-04-25
+Litsea leefeana,Robson Creek,-17.12,145.63,L. Cernusak; Bauman et al. 2022 Global Change Biology; Bloomfield et al. 2018 Functional Ecology,2022-03-18
+Myristica globosa ssp. muelleri,Robson Creek,-17.12,145.63,Bloomfield et al. 2018 Functional Ecology,2022-12-17
+Neolitsea dealbata,Robson Creek,-17.12,145.63,"Gray, Wright et al 2019 AoB PLANTS",2022-11-30
+Opisthiolepis heterophylla,Robson Creek,-17.12,145.63,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-10-19
+Polyscias australiana,Robson Creek,-17.12,145.63,"Gray, Wright et al 2019 AoB PLANTS",2022-08-31
+Polyscias elegans,Robson Creek,-17.12,145.63,Bloomfield et al. 2018 Functional Ecology,2022-07-29
+Prunus turneriana,Robson Creek,-17.12,145.63,L. Cernusak; Bauman et al. 2022 Global Change Biology; Bloomfield et al. 2018 Functional Ecology,2022-02-24
+Sloanea australis subsp. parviflora,Robson Creek,-17.12,145.63,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-07-24
+Sloanea langii,Robson Creek,-17.12,145.63,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-06-28
+Syzygium johnsonii,Robson Creek,-17.12,145.63,Bloomfield et al. 2018 Functional Ecology,2022-08-13
+Xanthophyllum octandrum,Robson Creek,-17.12,145.63,L. Cernusak; Bauman et al. 2022 Global Change Biology,2022-09-29
+Acacia falcata,Scheyville,-33.61,150.88,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-09-10
+Brunoniella australis,Scheyville,-33.61,150.88,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-02-05
+Bursaria spinosa,Scheyville,-33.61,150.88,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-08-25
+Dichondra repens,Scheyville,-33.61,150.88,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-07-29
+Einadia hastata,Scheyville,-33.61,150.88,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-02-18
+Eremophila debilis,Scheyville,-33.61,150.88,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-11-25
+Eucalyptus crebra,Scheyville,-33.61,150.88,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-11-08
+Eucalyptus moluccana,Scheyville,-33.61,150.88,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-06-25
+Glycine microphylla,Scheyville,-33.61,150.88,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-03-08
+Hardenbergia violacea,Scheyville,-33.61,150.88,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-02-01
+Microlaena stipoides,Scheyville,-33.61,150.88,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-04-26
+Pratia purpurascens,Scheyville,-33.61,150.88,"Leishman, M. R., Thomson, V. P., & Cooke, J. (2010). Native and exotic invasive plants have fundamentally similar carbon capture strategies. Journal of Ecology, 98(1), 28-42.",2022-08-04
+Cochlospermum fraseri,SolarVillage,-12.62,131.17,"Eamus, D., Myers, B., Duff, G., Williams, R. 1999. A cost-benefit alysis of leavesw of eight Australian savan tree species of differing leaf life-span. Photosynthetica 36(4): 575-586",2022-07-13
+Xanthostemon paradoxus,SolarVillage,-12.62,131.17,"Eamus, D., Myers, B., Duff, G., Williams, R. 1999. A cost-benefit alysis of leavesw of eight Australian savan tree species of differing leaf life-span. Photosynthetica 36(4): 575-586",2022-11-19
+Eucalyptus coolabah,Sturt Plains,-17.07,133.19,Cernusak et al. 2006 PCE; Cernusak et al. 2011 Agricultural and Forest Meteorology,2022-01-01
+Eucalyptus pruinosa,Sturt Plains,-17.07,133.19,Cernusak et al. 2006 PCE; Cernusak et al. 2011 Agricultural and Forest Meteorology,2022-03-30
+Acacia auriculiformis,Swamp,-12.7,131.0,Prior et al. 2003 Functional Ecology,2022-09-18
+Lophostemon lactifluus,Swamp,-12.7,131.0,Prior et al. 2003 Functional Ecology,2022-11-24
+Melaleuca viridiflora,Swamp,-12.7,131.0,Prior et al. 2003 Functional Ecology,2022-11-24
+Acacia floribunda,Syd_hiP,-33.6,151.27,Wright et al. 2001 Functional Ecology,2022-06-15
+Allocasuarina sp,Syd_hiP,-33.6,151.27,Wright et al. 2001 Functional Ecology,2022-01-19
+Astrotricha floccosa,Syd_hiP,-33.6,151.27,Niinemets et al. 2009 J of Experimental Botany; Wright et al. 2001 Functional Ecology,2022-01-10
+Breynia oblongifolia,Syd_hiP,-33.6,151.27,Niinemets et al. 2009 J of Experimental Botany,2022-01-06
+Correa reflexa,Syd_hiP,-33.6,151.27,Wright et al. 2001 Functional Ecology,2022-01-24
+Dodonaea triquetra,Syd_hiP,-33.6,151.27,Wright et al. 2001 Functional Ecology,2022-09-23
+Eucalyptus paniculata,Syd_hiP,-33.6,151.27,Wright et al. 2001 Functional Ecology,2022-03-28
+Eucalyptus umbra,Syd_hiP,-33.6,151.27,Niinemets et al. 2009 J of Experimental Botany; Wright et al. 2001 Functional Ecology,2022-09-25
+Lambertia formosa,Syd_hiP,-33.6,151.27,Niinemets et al. 2009 J of Experimental Botany,2022-10-13
+Lasiopetalum ferrugineum,Syd_hiP,-33.6,151.27,Wright et al. 2001 Functional Ecology,2022-05-23
+Leptospermum polygalifolium,Syd_hiP,-33.6,151.27,Wright et al. 2001 Functional Ecology,2022-10-11
+Lomatia silaifolia,Syd_hiP,-33.6,151.27,Wright et al. 2001 Functional Ecology,2022-10-21
+Macrozamia communis,Syd_hiP,-33.6,151.27,Niinemets et al. 2009 J of Experimental Botany; Wright et al. 2001 Functional Ecology,2022-06-06
+Notelaea longifolia,Syd_hiP,-33.6,151.27,Niinemets et al. 2009 J of Experimental Botany,2022-09-06
+Persoonia linearis,Syd_hiP,-33.6,151.27,Wright et al. 2001 Functional Ecology,2022-11-16
+Pomaderris ferruginea,Syd_hiP,-33.6,151.27,Wright et al. 2001 Functional Ecology,2022-01-31
+Pultenaea daphnoides,Syd_hiP,-33.6,151.27,Wright et al. 2001 Functional Ecology,2022-06-28
+Pultenaea flexilis,Syd_hiP,-33.6,151.27,Wright et al. 2001 Functional Ecology,2022-06-11
+Syncarpia glomulifera,Syd_hiP,-33.6,151.27,Niinemets et al. 2009 J of Experimental Botany; Wright et al. 2001 Functional Ecology,2022-09-04
+Synoum glandulosum,Syd_hiP,-33.6,151.27,Niinemets et al. 2009 J of Experimental Botany; Wright et al. 2001 Functional Ecology,2022-11-05
+Xylomelum pyriforme,Syd_hiP,-33.6,151.27,Niinemets et al. 2009 J of Experimental Botany; Wright et al. 2001 Functional Ecology,2022-07-29
+Acacia myrtifolia,Syd_loP,-33.69,151.14,Niinemets et al. 2009 J of Experimental Botany,2022-12-23
+Acacia suaveolens,Syd_loP,-33.69,151.14,Niinemets et al. 2009 J of Experimental Botany; Wright et al. 2001 Functional Ecology,2022-10-17
+Angophora hispida,Syd_loP,-33.69,151.14,Niinemets et al. 2009 J of Experimental Botany,2022-01-04
+Banksia marginata,Syd_loP,-33.69,151.14,Niinemets et al. 2009 J of Experimental Botany; Wright et al. 2001 Functional Ecology,2022-05-25
+Banksia oblongifolia,Syd_loP,-33.69,151.14,Niinemets et al. 2009 J of Experimental Botany,2022-08-04
+Banksia serrata,Syd_loP,-33.69,151.14,Niinemets et al. 2009 J of Experimental Botany,2022-05-12
+Boronia ledifolia,Syd_loP,-33.69,151.14,Wright et al. 2001 Functional Ecology,2022-07-17
+Corymbia gummifera,Syd_loP,-33.69,151.14,Niinemets et al. 2009 J of Experimental Botany; Wright et al. 2001 Functional Ecology,2022-09-18
+Eriostemon australasius,Syd_loP,-33.69,151.14,Niinemets et al. 2009 J of Experimental Botany; Wright et al. 2001 Functional Ecology,2022-11-06
+Eucalyptus haemastoma,Syd_loP,-33.69,151.14,Wright et al. 2001 Functional Ecology,2022-08-24
+Gompholobium glabratum,Syd_loP,-33.69,151.14,Wright et al. 2001 Functional Ecology,2022-04-24
+Grevillea buxifolia,Syd_loP,-33.69,151.14,Wright et al. 2001 Functional Ecology,2022-05-25
+Grevillea speciosa,Syd_loP,-33.69,151.14,Niinemets et al. 2009 J of Experimental Botany; Wright et al. 2001 Functional Ecology,2022-06-03
+Hakea dactyloides,Syd_loP,-33.69,151.14,Niinemets et al. 2009 J of Experimental Botany; Wright et al. 2001 Functional Ecology,2022-10-06
+Hakea teretifolia,Syd_loP,-33.69,151.14,Wright et al. 2001 Functional Ecology,2022-11-06
+Hibbertia bracteata,Syd_loP,-33.69,151.14,Wright et al. 2001 Functional Ecology,2022-09-30
+Lambertia formosa,Syd_loP,-33.69,151.14,Niinemets et al. 2009 J of Experimental Botany; Wright et al. 2001 Functional Ecology,2022-07-29
+Leptospermum trinervium,Syd_loP,-33.69,151.14,Wright et al. 2001 Functional Ecology,2022-01-15
+Persoonia lanceolata,Syd_loP,-33.69,151.14,Niinemets et al. 2009 J of Experimental Botany,2022-12-15
+Persoonia levis,Syd_loP,-33.69,151.14,Wright et al. 2001 Functional Ecology,2022-09-10
+Phyllota phylicoides,Syd_loP,-33.69,151.14,Wright et al. 2001 Functional Ecology,2022-10-22
+Pimelea linifolia,Syd_loP,-33.69,151.14,Wright et al. 2001 Functional Ecology,2022-12-21
+Angophora hispida,Sydney,-33.95,151.1,"McPherson, S., Eamus, D., Murray, B.R. 2004. Seasol impacts of leaf atributes of several tree species growing in three diverse ecosystems in south-eastern Australia. Australian Jourl of Botany 52:293-301.",2022-03-23
+Banksia oblongifolia,Sydney,-33.95,151.1,"McPherson, S., Eamus, D., Murray, B.R. 2004. Seasol impacts of leaf atributes of several tree species growing in three diverse ecosystems in south-eastern Australia. Australian Jourl of Botany 52:293-301.",2022-10-01
+Eucalyptus haemastoma,Sydney,-33.95,151.1,"McPherson, S., Eamus, D., Murray, B.R. 2004. Seasol impacts of leaf atributes of several tree species growing in three diverse ecosystems in south-eastern Australia. Australian Jourl of Botany 52:293-301.",2022-11-20
+Persoonia lanceolata,Sydney,-33.95,151.1,"McPherson, S., Eamus, D., Murray, B.R. 2004. Seasol impacts of leaf atributes of several tree species growing in three diverse ecosystems in south-eastern Australia. Australian Jourl of Botany 52:293-301.",2022-05-21
+Acacia hemiteles,Tower,-30.19,120.65,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-08-25
+Acacia sp,Tower,-30.19,120.65,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-02-05
+Atriplex nummularia,Tower,-30.19,120.65,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-07-28
+Eremophila alternifolia,Tower,-30.19,120.65,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-06-22
+Eremophila decipiens,Tower,-30.19,120.65,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-10-03
+Eremophila ionantha,Tower,-30.19,120.65,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-07-13
+Eremophila scoparia,Tower,-30.19,120.65,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-08-22
+Eucalyptus salmonophloia,Tower,-30.19,120.65,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-12-18
+Eucalyptus salubris,Tower,-30.19,120.65,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-06-09
+Maireana sedifolia,Tower,-30.19,120.65,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-10-16
+Maireana triptera,Tower,-30.19,120.65,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-12-15
+Olearia muelleri,Tower,-30.19,120.65,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-06-12
+Pittosporum angustifolium,Tower,-30.19,120.65,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-02-05
+Ptilotus obovatus,Tower,-30.19,120.65,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-08-13
+Rhagodia drummondii,Tower,-30.19,120.65,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-08-23
+Senna artemisioides,Tower,-30.19,120.65,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-12-24
+Acacia hemiteles,Transcontinentalis,-30.19,120.64,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-08-21
+Atriplex nummularia,Transcontinentalis,-30.19,120.64,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-10-25
+Eremophila scoparia,Transcontinentalis,-30.19,120.64,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-04-24
+Eucalyptus transcontinenatlis,Transcontinentalis,-30.19,120.64,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-06-27
+Eucalyptus transcontinentalis,Transcontinentalis,-30.19,120.64,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-01-16
+Olearia muelleri,Transcontinentalis,-30.19,120.64,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-06-07
+Rhagodia drummondii,Transcontinentalis,-30.19,120.64,TERN: http://supersites.tern.org.au/knb/metacat/supersite.302.3/html,2022-02-23
+Apodytes brachystylis,Tully Falls,-17.68,145.53,Atkin et al. 2015 New Phyt,2022-06-02
+Beilschmiedia tooram,Tully Falls,-17.68,145.53,Atkin et al. 2015 New Phyt,2022-02-20
+Bubbia semecarpoides,Tully Falls,-17.68,145.53,Atkin et al. 2015 New Phyt,2022-07-28
+Elaeocarpus largiflorens,Tully Falls,-17.68,145.53,Atkin et al. 2015 New Phyt,2022-03-12
+Litsea leafeana,Tully Falls,-17.68,145.53,Atkin et al. 2015 New Phyt,2022-11-04
+Neolitsea dealbata,Tully Falls,-17.68,145.53,Atkin et al. 2015 New Phyt,2022-04-19
+Sloanea australis,Tully Falls,-17.68,145.53,Atkin et al. 2015 New Phyt,2022-10-30
+Synima cordierorum,Tully Falls,-17.68,145.53,Atkin et al. 2015 New Phyt,2022-03-31
+Wilkiea sp,Tully Falls,-17.68,145.53,Atkin et al. 2015 New Phyt,2022-11-19
+Acacia dealbata,Warra,-43.1,146.65,Bloomfield et al. 2018 Functional Ecology,2023-01-01
+Acacia melanoxylon,Warra,-43.1,146.65,Bloomfield et al. 2018 Functional Ecology,2022-01-26
+Anopterus glandulosus,Warra,-43.1,146.65,Bloomfield et al. 2018 Functional Ecology,2022-10-07
+Atherosperma moschatum,Warra,-43.1,146.65,Bloomfield et al. 2018 Functional Ecology,2022-12-06
+Eucalyptus obliqua,Warra,-43.1,146.65,Bloomfield et al. 2018 Functional Ecology,2022-12-09
+Eucryphia lucida,Warra,-43.1,146.65,Bloomfield et al. 2018 Functional Ecology,2022-05-01
+Leptospermum lanigerum,Warra,-43.1,146.65,Bloomfield et al. 2018 Functional Ecology,2022-06-16
+Melaleuca squarrosa,Warra,-43.1,146.65,Bloomfield et al. 2018 Functional Ecology,2022-02-09
+Notelaea ligustrina,Warra,-43.1,146.65,Bloomfield et al. 2018 Functional Ecology,2022-02-05
+Nothofagus cunninghamii,Warra,-43.1,146.65,Bloomfield et al. 2018 Functional Ecology,2022-12-23
+Phyllocladus aspleniifolius,Warra,-43.1,146.65,Bloomfield et al. 2018 Functional Ecology,2022-01-25
+Pittosporum bicolor,Warra,-43.1,146.65,Bloomfield et al. 2018 Functional Ecology,2022-12-27
+Pomaderris apetala,Warra,-43.1,146.65,Bloomfield et al. 2018 Functional Ecology,2022-01-27
+Tasmannia lanceolata,Warra,-43.1,146.65,Bloomfield et al. 2018 Functional Ecology,2022-06-15
+Acacia doratoxylon,WNSW_hiP,-32.97,146.15,Wright et al 2001 Functional Ecology,2022-05-13
+Acacia oswaldii,WNSW_hiP,-32.97,146.15,Wright et al 2001 Functional Ecology,2022-06-22
+Atriplex stipitata,WNSW_hiP,-32.97,146.15,Wright et al 2001 Functional Ecology,2022-05-13
+Brachychiton populneus,WNSW_hiP,-32.97,146.15,Wright et al 2001 Functional Ecology,2022-05-21
+Callitris glaucophylla,WNSW_hiP,-32.97,146.15,Wright et al 2001 Functional Ecology,2022-05-17
+Dodonaea viscosa ssp.angustissima,WNSW_hiP,-32.97,146.15,Wright et al 2001 Functional Ecology,2022-10-26
+Dodonaea viscosa ssp.cuneata,WNSW_hiP,-32.97,146.15,Wright et al 2001 Functional Ecology,2022-11-27
+Dodonaea viscosa ssp.spatulata,WNSW_hiP,-32.97,146.15,Wright et al 2001 Functional Ecology,2022-12-25
+Eremophila glabra,WNSW_hiP,-32.97,146.15,Wright et al 2001 Functional Ecology,2022-07-20
+Eremophila mitchelli,WNSW_hiP,-32.97,146.15,Wright et al 2001 Functional Ecology,2022-03-01
+Eucalyptus intertexta,WNSW_hiP,-32.97,146.15,Wright et al 2001 Functional Ecology,2022-02-05
+Exocarpos aphyllus,WNSW_hiP,-32.97,146.15,Wright et al 2001 Functional Ecology,2022-06-06
+Geijera parviflora,WNSW_hiP,-32.97,146.15,Wright et al 2001 Functional Ecology,2022-01-20
+Hakea tephrosperma,WNSW_hiP,-32.97,146.15,Wright et al 2001 Functional Ecology,2022-02-21
+Helichrysum apiculatum,WNSW_hiP,-32.97,146.15,Wright et al 2001 Functional Ecology,2022-03-11
+Melaleuca uncinata,WNSW_hiP,-32.97,146.15,Wright et al 2001 Functional Ecology,2022-05-07
+Olearia pimeleoides,WNSW_hiP,-32.97,146.15,Wright et al 2001 Functional Ecology,2022-10-29
+Philotheca difformis,WNSW_hiP,-32.97,146.15,Wright et al 2001 Functional Ecology,2022-11-15
+Pimelea microcephala,WNSW_hiP,-32.97,146.15,Wright et al 2001 Functional Ecology,2022-01-16
+Senna artemisioides,WNSW_hiP,-32.97,146.15,Wright et al 2001 Functional Ecology,2022-01-06
+Solanum ferocissium,WNSW_hiP,-32.97,146.15,Wright et al 2001 Functional Ecology,2022-10-24
+Spartothamnella puberula,WNSW_hiP,-32.97,146.15,Wright et al 2001 Functional Ecology,2022-02-27
+Thysanotus sp,WNSW_hiP,-32.97,146.15,Wright et al 2001 Functional Ecology,2022-10-04
+Acacia colletioides,WNSW_loP,-32.98,146.15,Wright et al 2001 Functional Ecology,2022-09-01
+Acacia havilandiorum,WNSW_loP,-32.98,146.15,Wright et al 2001 Functional Ecology,2022-10-08
+Acacia wilhelmiana,WNSW_loP,-32.98,146.15,Wright et al 2001 Functional Ecology,2022-06-26
+Bertya cunninghamii,WNSW_loP,-32.98,146.15,Wright et al 2001 Functional Ecology,2022-05-17
+Beyeria opaca,WNSW_loP,-32.98,146.15,Wright et al 2001 Functional Ecology,2022-04-26
+Bossiaea walkeri,WNSW_loP,-32.98,146.15,Wright et al 2001 Functional Ecology,2022-07-18
+Brachychiton populneus,WNSW_loP,-32.98,146.15,Wright et al 2001 Functional Ecology,2022-01-06
+Cassinia laevis,WNSW_loP,-32.98,146.15,Wright et al 2001 Functional Ecology,2022-09-06
+Eremophila deserti,WNSW_loP,-32.98,146.15,Wright et al 2001 Functional Ecology,2022-07-29
+Eremophila glabra,WNSW_loP,-32.98,146.15,Wright et al 2001 Functional Ecology,2022-09-19
+Eucalyptus dumosa,WNSW_loP,-32.98,146.15,Wright et al 2001 Functional Ecology,2022-09-20
+Eucalyptus socialis,WNSW_loP,-32.98,146.15,Wright et al 2001 Functional Ecology,2022-06-29
+Eutaxia microphylla,WNSW_loP,-32.98,146.15,Wright et al 2001 Functional Ecology,2022-12-26
+Grevillea anethifolia,WNSW_loP,-32.98,146.15,Wright et al 2001 Functional Ecology,2022-07-09
+Melaleuca uncinata,WNSW_loP,-32.98,146.15,Wright et al 2001 Functional Ecology,2022-03-07
+Micromyrtus sessilis,WNSW_loP,-32.98,146.15,Wright et al 2001 Functional Ecology,2022-02-06
+Olearia decurrens,WNSW_loP,-32.98,146.15,Wright et al 2001 Functional Ecology,2022-02-06
+Olearia pimeleoides,WNSW_loP,-32.98,146.15,Wright et al 2001 Functional Ecology,2022-11-20
+Philotheca difformis,WNSW_loP,-32.98,146.15,Wright et al 2001 Functional Ecology,2022-12-01
+Santalum acuminatum,WNSW_loP,-32.98,146.15,Wright et al 2001 Functional Ecology,2022-06-17
+Triodia scariosa,WNSW_loP,-32.98,146.15,Wright et al 2001 Functional Ecology,2022-03-26
+Callitris intratropica,Woodland,-12.7,131.0,Prior et al. 2003 Functional Ecology,2022-07-17
+Cochlospermum fraseri,Woodland,-12.7,131.0,Prior et al. 2003 Functional Ecology,2022-09-21
+Corymbia foelscheana,Woodland,-12.7,131.0,Prior et al. 2003 Functional Ecology,2022-07-25
+Melaleuca viridiflora,Woodland,-12.7,131.0,Prior et al. 2003 Functional Ecology,2022-05-30
+Planchonia careya,Woodland,-12.7,131.0,Prior et al. 2003 Functional Ecology,2022-06-30
+Syzygium eucalyptoides,Woodland,-12.7,131.0,Prior et al. 2003 Functional Ecology,2022-09-25
+Terminalia ferdinandiana,Woodland,-12.7,131.0,Prior et al. 2003 Functional Ecology,2022-12-02
+Xanthostemon paradoxus,Woodland,-12.7,131.0,Prior et al. 2003 Functional Ecology,2022-10-05
+Acacia parvipinnula,Yengo,-32.78,150.92,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-11-24
+Angophora costata,Yengo,-32.78,150.92,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-01-07
+Daviesia squarrosa,Yengo,-32.78,150.92,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-09-10
+Eucalyptus crebra,Yengo,-32.78,150.92,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-06-11
+Eucalyptus fibrosa,Yengo,-32.78,150.92,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-04-25
+Eucalyptus punctata,Yengo,-32.78,150.92,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-12-28
+Eucalyptus sparsifolia,Yengo,-32.78,150.92,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-01-06
+Exocarpos cupressiformis,Yengo,-32.78,150.92,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-11-07
+Grevillea mucronulata,Yengo,-32.78,150.92,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-10-26
+Jacksonia scoparia,Yengo,-32.78,150.92,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-01-03
+Melaleuca pallida,Yengo,-32.78,150.92,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-03-23
+Monotoca scoparia,Yengo,-32.78,150.92,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-04-30
+Persoonia linearis,Yengo,-32.78,150.92,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-07-23
+Podolobium ilicifolium,Yengo,-32.78,150.92,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-03-16
+Pultenaea scabra,Yengo,-32.78,150.92,Gleason et al. 2012 Func Ecol; Gleason et al. 2013 Int J of Plant Sci,2022-01-26

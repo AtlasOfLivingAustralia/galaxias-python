@@ -1,0 +1,716 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>API Docs &#8212; Galaxias 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/extra.css?v=2b5a6c60" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/extra.css?v=2b5a6c60" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+
+    <script src="../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'apidoc/galaxias';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Authors and Citation" href="../authors/index.html" />
+    <link rel="prev" title="Galaxias User Guide" href="../galaxias_user_guide/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <header>
+  
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/cake_logo.png" class="logo__image only-light" alt="Galaxias 0.1.0 documentation - Home"/>
+    <script>document.write(`<img src="../_static/cake_logo.png" class="logo__image only-dark" alt="Galaxias 0.1.0 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../getting_started/index.html">
+                        Getting Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../galaxias_user_guide/index.html">
+                        Galaxias User Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        API Docs
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../authors/index.html">
+                        Authors
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/AtlasOfLivingAustralia/galaxias-python" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </div>
+  
+  </header>
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../getting_started/index.html">
+                        Getting Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../galaxias_user_guide/index.html">
+                        Galaxias User Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        API Docs
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../authors/index.html">
+                        Authors
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/AtlasOfLivingAustralia/galaxias-python" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">API Docs</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="module-galaxias">
+<span id="api-docs"></span><h1>API Docs<a class="headerlink" href="#module-galaxias" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="galaxias.dwca">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">galaxias.</span></span><span class="sig-name descname"><span class="pre">dwca</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">occurrences</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dwca_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'dwca.zip'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Occurrence'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata_md</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eml_xml</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">meta_xml</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxias.dwca.add_metadata_md">
+<span class="sig-name descname"><span class="pre">add_metadata_md</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metadata_md</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.add_metadata_md" title="Link to this definition">#</a></dt>
+<dd><p>adds a markdown file to your <code class="docutils literal notranslate"><span class="pre">dwca</span></code> object.  This is for if you have your own custom</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>metadata_md</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – <code class="docutils literal notranslate"><span class="pre">str</span></code> containing the name of the metadata markdown file</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxias.dwca.add_taxonomic_information">
+<span class="sig-name descname"><span class="pre">add_taxonomic_information</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.add_taxonomic_information" title="Link to this definition">#</a></dt>
+<dd><p>Adds full taxonomic information (from kingdom to species) to your data for clearer identification</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong> – </p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
+span.prompt1:before {
+  content: " ";
+}
+</style><span class="prompt1"><span class="kn">import</span> <span class="nn">galaxias</span></span>
+<span class="prompt1"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span></span>
+<span class="prompt1"><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data.csv&quot;</span><span class="p">)</span></span>
+<span class="prompt1"><span class="n">my_dwca</span> <span class="o">=</span> <span class="n">galaxias</span><span class="o">.</span><span class="n">dwca</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">data</span><span class="p">)</span></span>
+<span class="prompt1"><span class="n">my_dwca</span><span class="o">.</span><span class="n">add_taxonomic_information</span><span class="p">()</span></span>
+<span class="prompt1"><span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span></span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                            scientificName  decimalLatitude  decimalLongitude   eventDate          vernacularName        rank                    species       genus            family         order         classs      phylum  kingdom
+0                       Corymbia latifolia           -13.04            131.07  2022-03-29  Round-leaved Bloodwood     species         Corymbia latifolia    Corymbia         Myrtaceae      Myrtales  Equisetopsida  Charophyta  Plantae
+1                     Eucalyptus tectifica           -13.04            131.07  2022-09-13                Grey Box     species       Eucalyptus tectifica  Eucalyptus         Myrtaceae      Myrtales  Equisetopsida  Charophyta  Plantae
+2                           Banksia aemula           -33.60            150.72  2022-08-15                Banyalla     species             Banksia aemula     Banksia        Proteaceae     Proteales  Equisetopsida  Charophyta  Plantae
+3                      Eucalyptus racemosa           -33.60            150.72  2022-06-16            Scribbly Gum     species        Eucalyptus racemosa  Eucalyptus         Myrtaceae      Myrtales  Equisetopsida  Charophyta  Plantae
+4                        Persoonia laurina           -33.60            150.72  2022-10-19                    None     species          Persoonia laurina   Persoonia        Proteaceae     Proteales  Equisetopsida  Charophyta  Plantae
+5                            Acacia aneura           -22.35            133.33  2022-10-11                   Mulga     species              Acacia aneura      Acacia          Fabaceae       Fabales  Equisetopsida  Charophyta  Plantae
+6                          Acacia cambagei           -22.35            133.33  2022-08-23                  Gidgee     species            Acacia cambagei      Acacia          Fabaceae       Fabales  Equisetopsida  Charophyta  Plantae
+7                      Acacia dictyophleba           -22.35            133.33  2022-01-11             Waxy Wattle     species        Acacia dictyophleba      Acacia          Fabaceae       Fabales  Equisetopsida  Charophyta  Plantae
+8                     Acacia estrophiolata           -22.35            133.33  2022-07-10       Southern Ironwood     species       Acacia estrophiolata      Acacia          Fabaceae       Fabales  Equisetopsida  Charophyta  Plantae
+9                          Acacia kempeana           -22.35            133.33  2022-07-18          Witchetty Bush     species            Acacia kempeana      Acacia          Fabaceae       Fabales  Equisetopsida  Charophyta  Plantae
+10                       Acacia melleodora           -22.35            133.33  2022-04-25      Scented Wax Wattle     species          Acacia melleodora      Acacia          Fabaceae       Fabales  Equisetopsida  Charophyta  Plantae
+11                        Acacia murrayana           -22.35            133.33  2022-12-15         Murray&#39;s Wattle     species           Acacia murrayana      Acacia          Fabaceae       Fabales  Equisetopsida  Charophyta  Plantae
+12                          Corymbia opaca           -22.35            133.33  2022-02-06        Desert Bloodwood     species             Corymbia opaca    Corymbia         Myrtaceae      Myrtales  Equisetopsida  Charophyta  Plantae
+13                     Corymbia terminalis           -22.35            133.33  2022-04-21               Bloodwood     species        Corymbia terminalis    Corymbia         Myrtaceae      Myrtales  Equisetopsida  Charophyta  Plantae
+14                     Eremophila latrobei           -22.35            133.33  2022-01-30     Crimson Turkey Bush     species        Eremophila latrobei  Eremophila  Scrophulariaceae      Lamiales  Equisetopsida  Charophyta  Plantae
+15                Eucalyptus camaldulensis           -22.35            133.33  2022-03-30             Flooded Gum     species   Eucalyptus camaldulensis  Eucalyptus         Myrtaceae      Myrtales  Equisetopsida  Charophyta  Plantae
+16  Eucalyptus camaldulensis subsp. obtusa           -22.35            133.33  2022-07-25                    Yumu  subspecies   Eucalyptus camaldulensis  Eucalyptus         Myrtaceae      Myrtales  Equisetopsida  Charophyta  Plantae
+17                        Hakea leucoptera           -22.35            133.33  2022-03-11              Needlebush     species           Hakea leucoptera       Hakea        Proteaceae     Proteales  Equisetopsida  Charophyta  Plantae
+18                        Hakea macrocarpa           -22.35            133.33  2022-07-28                    None     species           Hakea macrocarpa       Hakea        Proteaceae     Proteales  Equisetopsida  Charophyta  Plantae
+19                       Psydrax latifolia           -22.35            133.33  2022-03-06                    None     species          Psydrax latifolia     Psydrax         Rubiaceae   Gentianales  Equisetopsida  Charophyta  Plantae
+20                            Acacia celsa           -17.26            145.46  2022-09-05           Brown Salwood     species               Acacia celsa      Acacia          Fabaceae       Fabales  Equisetopsida  Charophyta  Plantae
+21                      Acronychia acidula           -17.26            145.46  2022-04-22            Silver Aspen     species         Acronychia acidula  Acronychia          Rutaceae    Sapindales  Equisetopsida  Charophyta  Plantae
+22               Aleurites rockinghamensis           -17.26            145.46  2022-07-21               Candlenut     species  Aleurites rockinghamensis   Aleurites     Euphorbiaceae  Malpighiales  Equisetopsida  Charophyta  Plantae
+23                      Alphitonia petriei           -17.26            145.46  2022-03-11               White Ash     species         Alphitonia petriei  Alphitonia        Rhamnaceae       Rosales  Equisetopsida  Charophyta  Plantae
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxias.dwca.add_unique_occurrence_IDs">
+<span class="sig-name descname"><span class="pre">add_unique_occurrence_IDs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'occurrenceID'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.add_unique_occurrence_IDs" title="Link to this definition">#</a></dt>
+<dd><p>Function that automatically adds unique IDs (in the form of uuids) to each of your occurrences.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>column_name</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – String containing name of column you want to add.  Default is “occurrenceID”</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="kn">import</span> <span class="nn">galaxias</span></span>
+<span class="prompt1"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span></span>
+<span class="prompt1"><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data.csv&quot;</span><span class="p">)</span></span>
+<span class="prompt1"><span class="n">my_dwca</span> <span class="o">=</span> <span class="n">galaxias</span><span class="o">.</span><span class="n">dwca</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">data</span><span class="p">)</span></span>
+<span class="prompt1"><span class="n">my_dwca</span><span class="o">.</span><span class="n">add_unique_occurrence_IDs</span><span class="p">()</span></span>
+<span class="prompt1"><span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span></span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                            occurrenceID                          scientificName  decimalLatitude  decimalLongitude   eventDate
+0   eff19ca2-39d0-44da-9289-e00a0b99a31e                      Corymbia latifolia           -13.04            131.07  2022-03-29
+1   d266d84a-171f-41b4-a565-dbf366c3c0d8                    Eucalyptus tectifica           -13.04            131.07  2022-09-13
+2   65091dfe-e56c-41d5-ae46-5ed75304423b                          Banksia aemula           -33.60            150.72  2022-08-15
+3   be54d877-8ba1-4a9f-a642-c2833eab20ba                     Eucalyptus racemosa           -33.60            150.72  2022-06-16
+4   bd6207b3-8659-49a1-9c82-87b88e0d85f8                       Persoonia laurina           -33.60            150.72  2022-10-19
+5   8230aae1-84fe-4257-b667-9033e46fb8c8                           Acacia aneura           -22.35            133.33  2022-10-11
+6   1d179fe2-314a-42dd-a654-e96244f42625                         Acacia cambagei           -22.35            133.33  2022-08-23
+7   58d4f04e-5747-44e8-b3d4-21946ce5805f                     Acacia dictyophleba           -22.35            133.33  2022-01-11
+8   e6635308-3923-40dd-9cc3-d5ad8385269b                    Acacia estrophiolata           -22.35            133.33  2022-07-10
+9   2da863e6-dfd0-45c7-8103-3a1b0003c61e                         Acacia kempeana           -22.35            133.33  2022-07-18
+10  ecc54a9a-4602-4244-88d8-e1272ab5edf8                       Acacia melleodora           -22.35            133.33  2022-04-25
+11  40feb829-a1ee-47ad-bd3c-40a05e6e1d50                        Acacia murrayana           -22.35            133.33  2022-12-15
+12  d9139563-3abf-4d37-859f-26cd37fbf89e                          Corymbia opaca           -22.35            133.33  2022-02-06
+13  f623ed20-6d83-4f08-8a55-cc15b4ff61bc                     Corymbia terminalis           -22.35            133.33  2022-04-21
+14  5d4d2d12-e69c-46a2-81b9-d6666f84178c                     Eremophila latrobei           -22.35            133.33  2022-01-30
+15  2a4bc830-c243-4f06-ade7-874efb5104a6                Eucalyptus camaldulensis           -22.35            133.33  2022-03-30
+16  c6f14637-81e5-4d52-bc09-11bed1b7719a  Eucalyptus camaldulensis subsp. obtusa           -22.35            133.33  2022-07-25
+17  f09e9136-5ca3-4507-a16d-6cef3fe60932                        Hakea leucoptera           -22.35            133.33  2022-03-11
+18  c969234f-ea76-4e46-b39c-bbbb7461582b                        Hakea macrocarpa           -22.35            133.33  2022-07-28
+19  81178c3e-6d67-41fd-bb5f-dc1d65450244                       Psydrax latifolia           -22.35            133.33  2022-03-06
+20  19e682d2-a5ee-4970-b69e-0d35d8756c20                            Acacia celsa           -17.26            145.46  2022-09-05
+21  1bfab40b-25fc-4937-ac6f-9078cfb8bc6a                      Acronychia acidula           -17.26            145.46  2022-04-22
+22  49f447e3-5526-4edb-96e6-87138485cfbd               Aleurites rockinghamensis           -17.26            145.46  2022-07-21
+23  3d950306-b13d-4853-a973-a57714e0bb02                      Alphitonia petriei           -17.26            145.46  2022-03-11
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxias.dwca.check_species_names">
+<span class="sig-name descname"><span class="pre">check_species_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">return_taxa</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.check_species_names" title="Link to this definition">#</a></dt>
+<dd><p>Checks species names against your specified backbone.  Can also give you higher taxon ranks for your taxon.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>return_taxa</strong> (<em>logical</em>) – Option whether to return a dictionary object containing full taxonomic information on your species.  Default to <cite>False</cite>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>Either <cite>False</cite> if there are incorrect taxon names, or <cite>True</cite>.  A dictionary object containing species names and alternatives</p></li>
+<li><p>is return with the <code class="docutils literal notranslate"><span class="pre">return_taxa=True</span></code> option.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="kn">import</span> <span class="nn">galaxias</span></span>
+<span class="prompt1"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span></span>
+<span class="prompt1"><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data.csv&quot;</span><span class="p">)</span></span>
+<span class="prompt1"><span class="n">my_dwca</span> <span class="o">=</span> <span class="n">galaxias</span><span class="o">.</span><span class="n">dwca</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">data</span><span class="p">)</span></span>
+<span class="prompt1"><span class="n">my_dwca</span><span class="o">.</span><span class="n">check_species_names</span><span class="p">()</span></span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxias.dwca.convert_coordinates">
+<span class="sig-name descname"><span class="pre">convert_coordinates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">latitude_column_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">longitude_column_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.convert_coordinates" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxias.dwca.create_metadata_file">
+<span class="sig-name descname"><span class="pre">create_metadata_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.create_metadata_file" title="Link to this definition">#</a></dt>
+<dd><p>Create a markdown file for the user to edit</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxias.dwca.generate_data_report">
+<span class="sig-name descname"><span class="pre">generate_data_report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.generate_data_report" title="Link to this definition">#</a></dt>
+<dd><p>Generate a report for the data you will submit.  This currently prints out to screen, but will also
+render to HTML/MD (eventually)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>verbose</strong> (<em>logical</em>) – Option whether to generate a simple or verbose report.  Default to <cite>False</cite>.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>A printed report detailing what will need to be edited to be able to submit your data.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="kn">import</span> <span class="nn">galaxias</span></span>
+<span class="prompt1"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span></span>
+<span class="prompt1"><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data.csv&quot;</span><span class="p">)</span></span>
+<span class="prompt1"><span class="n">my_dwca</span> <span class="o">=</span> <span class="n">galaxias</span><span class="o">.</span><span class="n">dwca</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">data</span><span class="p">)</span></span>
+<span class="prompt1"><span class="n">my_dwca</span><span class="o">.</span><span class="n">generate_data_report</span><span class="p">()</span></span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Pass/Fail: Fail
+record_type: Occurrence
+record_count: 24
+record_error_count: 24
+Errors: 
+	You are missing one of the three id fields: occurrenceID, catalogNumber, recordNumber
+	You are missing required columns in your data.
+	Some of your columns do not match the current Darwin Core Standard.
+Warnings: None
+all_required_columns_present: False
+missing_columns:
+	order
+	genus
+	family
+	classs
+	kingdom
+	phylum
+	basisOfRecord
+	occurrenceID OR catalogNumber OR recordNumber
+Taxonomic validity:
+	Invalid taxon present: False
+	Valid Taxon count: 24
+Datetime Report:
+	Has invalid datetime: False
+	Number of invalid datetimes: 0
+Incorrect Darwin Core Terms:
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../galaxias_user_guide/index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Galaxias User Guide</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../authors/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Authors and Citation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca"><code class="docutils literal notranslate"><span class="pre">dwca</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.add_metadata_md"><code class="docutils literal notranslate"><span class="pre">dwca.add_metadata_md()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.add_taxonomic_information"><code class="docutils literal notranslate"><span class="pre">dwca.add_taxonomic_information()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.add_unique_occurrence_IDs"><code class="docutils literal notranslate"><span class="pre">dwca.add_unique_occurrence_IDs()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.check_species_names"><code class="docutils literal notranslate"><span class="pre">dwca.check_species_names()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.convert_coordinates"><code class="docutils literal notranslate"><span class="pre">dwca.convert_coordinates()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.create_metadata_file"><code class="docutils literal notranslate"><span class="pre">dwca.create_metadata_file()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.generate_data_report"><code class="docutils literal notranslate"><span class="pre">dwca.generate_data_report()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Amanda Buyan, Atlas of Living Australia.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
