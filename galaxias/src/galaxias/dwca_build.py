@@ -1,7 +1,6 @@
 import pandas as pd
 import difflib
 import os
-from .metadata import read_dwc_terms
 from .galaxias_config import readConfig
 from .dwca_report import dwca_report
 import difflib
@@ -9,9 +8,10 @@ import json
 import uuid
 import requests
 import jsonpickle
+import datetime
 from .common_dictionaries import REQUIRED_DWCA_TERMS,NAME_MATCHING_TERMS,ID_REQUIRED_DWCA_TERMS
 from .common_dictionaries import GEO_REQUIRED_DWCA_TERMS,TAXON_TERMS
-from dwc_validator.validate import validate_occurrence_dataframe
+from dwc_validator.validate import validate_occurrence_dataframe,create_taxonomy_report
 
 # testing
 import sys
@@ -19,31 +19,214 @@ import sys
 class dwca:
 
     def __init__(self,
-                 dataframe: pd.core.frame.DataFrame = None,
-                 filename: str = None,
-                 occurrence_data: bool = True,
-                 event_data: bool = False,
+                 occurrences: pd.core.frame.DataFrame = None,
+                 dwca_name: str = "dwca.zip",
+                 data_type: str="Occurrence",
                  metadata_md: str = None,
                  eml_xml: str = None,
                  meta_xml: str = None
                  ):
         
         # check for if user provides data frame 
-        if filename is not None:
-            self.dataframe = pd.read_csv(filename)
+        if dwca_name != "dwca.zip":
+            self.dwca_name = dwca_name
+        if occurrences is not None and type(occurrences) is pd.core.frame.DataFrame:
+            self.occurrences = occurrences
         else:
-            self.dataframe = pd.DataFrame(dataframe)
-        if occurrence_data:
-            self.data_type = "Occurrence"
-        elif event_data:
-            self.data_type = "Event"
+            print("WARNING: if your occurrences argument is not a dataframe, occurrences will be set to None")
+            self.occurrences = None
+
+        # check for what type of DwCA it iwll be
+        if data_type in ["Occurrence","Event","Media"]:
+            self.data_type = data_type
         else:
             raise ValueError("galaxias only takes occurrence and event DwC data at this time.")
         if metadata_md is None and eml_xml is None and meta_xml is None:
-            metadata_md = self.create_metadata_file(filename = filename)
+            metadata_md = self.create_metadata_file()
             self.add_metadata_md(metadata_md=metadata_md)
         self.eml_xml = eml_xml
         self.meta_xml = meta_xml
+
+    def add_metadata_md(self,
+                        metadata_md=None):
+        """
+        adds a markdown file to your ``dwca`` object.  This is for if you have your own custom 
+
+        Parameters
+        ----------
+            metadata_md: ``str``
+                ``str`` containing the name of the metadata markdown file
+
+        Returns
+        -------
+            None
+        """
+        if metadata_md is None:
+            raise ValueError("Please provide a valid path to and name for the metadata markdown file.")
+        
+        self.metadata_md = metadata_md
+
+    def add_taxonomic_information(self):
+        """
+        Adds full taxonomic information (from kingdom to species) to your data for clearer identification
+
+        Parameters
+        ----------
+            None
+
+        Returns
+        -------
+            None
+
+        Examples
+        --------
+
+        .. prompt:: python
+
+            import galaxias
+            import pandas as pd
+            data = pd.read_csv("data.csv")
+            my_dwca = galaxias.dwca(occurrences=data)
+            my_dwca.add_taxonomic_information()
+            my_dwca.occurrences
+            
+        .. program-output:: python -c "import galaxias;import pandas as pd;pd.set_option('display.max_columns', None);pd.set_option('display.expand_frame_repr', False);pd.set_option('max_colwidth', None);data = pd.read_csv(\\\"data.csv\\\");my_dwca = galaxias.dwca(occurrences=data);my_dwca.add_taxonomic_information();print(my_dwca.occurrences)"
+        """
+
+        # configs
+        configs = readConfig()
+
+        # get atlas
+        atlas = configs["galaxiasSettings"]["atlas"]
+
+        # check for scientificName, as users should check that they have the correct column names
+        if "scientificName" not in list(self.occurrences.columns):
+            raise ValueError("Before checking species names, ensure all your column names comply to DwCA standard.  scientificName is the correct title for species")
+
+        # get all info     
+        species_checked = self.check_species_names(return_taxa=True)
+        
+        # merge the taxon information with the species information the user has provided
+        if type(species_checked) is tuple:
+            self.occurrences = pd.merge(self.occurrences, species_checked[1], left_on='scientificName', right_on='scientificName', how='left')
+            self.occurrences.rename(
+                columns = {
+                    'rank': 'taxonRank',
+                    'classs': 'class'
+                }
+            )
+        else:
+            raise ValueError("Some species names are not correct - please generate a report to find out which ones.")
+
+    def add_unique_occurrence_IDs(self,
+                                  column_name="occurrenceID"):
+        """
+        Function that automatically adds unique IDs (in the form of uuids) to each of your occurrences.
+
+        Parameters
+        ----------
+            column_name : ``str``
+                String containing name of column you want to add.  Default is "occurrenceID"
+
+        Returns
+        -------
+            ``None``
+
+        Examples
+        --------
+
+        .. prompt:: python
+
+            import galaxias
+            import pandas as pd
+            data = pd.read_csv("data.csv")
+            my_dwca = galaxias.dwca(occurrences=data)
+            my_dwca.add_unique_occurrence_IDs()
+            my_dwca.occurrences
+
+        .. program-output:: python -c "import galaxias;import pandas as pd;pd.set_option('display.max_columns', None);pd.set_option('display.expand_frame_repr', False);pd.set_option('max_colwidth', None);data = pd.read_csv(\\\"data.csv\\\");my_dwca = galaxias.dwca(occurrences=data);my_dwca.add_unique_occurrence_IDs();print(my_dwca.occurrences)"
+        """
+
+        if self.occurrences is None:
+            raise ValueError("Please provide a data frame.")
+        
+        if column_name == "occurrenceID" or column_name == "catalogNumber" or column_name == "recordNumber":
+            uuids = [None for i in range(self.occurrences.shape[0])]
+            for i in range(self.occurrences.shape[0]):
+                uuids[i] = str(uuid.uuid4())
+            self.occurrences.insert(0,column_name,uuids)
+            return self.occurrences
+        else:
+            raise ValueError("Please provide a string with a valid DwCA value for your column name.")
+
+    def check_species_names(self,
+                            return_taxa = False):
+        """
+        Checks species names against your specified backbone.  Can also give you higher taxon ranks for your taxon.
+
+        Parameters
+        ----------
+            return_taxa : logical
+                Option whether to return a dictionary object containing full taxonomic information on your species.  Default to `False`. 
+
+        Returns
+        -------
+            Either `False` if there are incorrect taxon names, or `True`.  A dictionary object containing species names and alternatives
+            is return with the ``return_taxa=True`` option.
+
+        Examples
+        --------
+        .. prompt:: python
+
+            import galaxias
+            import pandas as pd
+            data = pd.read_csv("data.csv")
+            my_dwca = galaxias.dwca(occurrences=data)
+            my_dwca.check_species_names()
+
+        .. program-output:: python -c "import galaxias;import pandas as pd;data = pd.read_csv(\\\"data.csv\\\");my_dwca = galaxias.dwca(occurrences=data);print(my_dwca.check_species_names())"
+        """
+
+        # get configurations from user
+        configs = readConfig()
+
+        # get atlas
+        atlas = configs["galaxiasSettings"]["atlas"]
+
+        # check for scientificName, as users should check that they have the correct column names
+        if "scientificName" not in list(self.occurrences.columns):
+            raise ValueError("Before checking species names, ensure all your column names comply to DwCA standard.  scientificName is the correct title for species")
+        
+        # make a list of all scientific names in the dataframe
+        scientific_names_list = list(set(self.occurrences["scientificName"]))
+        
+        # send list of scientific names to ALA to check their validity
+        payload = [{"scientificName": name} for name in scientific_names_list]
+        response = requests.request("POST","https://api.ala.org.au/namematching/api/searchAllByClassification",data=json.dumps(payload))
+        response_json = response.json()
+        verification_list = {"scientificName": scientific_names_list, "issues": [None for i in range(len(scientific_names_list))]}
+        taxonomy = pd.DataFrame({name: [None for i in range(len(scientific_names_list))] for name in TAXON_TERMS[atlas]})
+        
+        # loop over list of names and ensure we have gotten all the issues - might need to do single name search
+        # to ensure we get everything
+        for i,item in enumerate(scientific_names_list):
+            item_index = next((index for (index, d) in enumerate(response_json) if "scientificName" in d and d["scientificName"] == item), None)
+            taxonomy["scientificName"][i] = item
+            if item_index is not None:
+                verification_list["issues"][i] = response_json[item_index]["issues"]
+                if return_taxa:
+                    for term in TAXON_TERMS[atlas]:
+                        if term in response_json[item_index]:
+                            taxonomy[term][i] = response_json[item_index][term]
+            
+        # check for homonyms - if there are any, then print them out to the user so the user can disambiguate the names
+        df_verification = pd.DataFrame(verification_list)
+        df_isnull = df_verification.loc[df_verification['issues'].astype(str).str.contains("homonym",case=False,na=False)]
+        if not df_isnull.empty:
+            return False
+        elif return_taxa:
+            return True,pd.DataFrame(taxonomy)
+        return True
     
     # def create_dwca(self):
     #     """
@@ -51,42 +234,67 @@ class dwca:
     #     """
     #     n=1
 
-    def add_metadata_md(self,
-                        metadata_md=None):
-        """
-        add metadata file to the object for later creation of xmls and dwcas
-        """
-        if metadata_md is None:
-            raise ValueError("Please provide a valid path to and name for the metadata markdown file.")
+    def create_metadata_file(self,
+                             filename = None,
+                             path = "."):
         
-        self.metadata_md = metadata_md
+        """
+        Create a markdown file for the user to edit
+        """
+        
+        if filename is not None:
+            parts = filename.split("/")
+            path = "/".join(parts[:-1])
+        if not os.path.exists(path + '/metadata.md'):
+            # print("Generating markdown file in working directory ({}) for metadata...".format(path))
+            os.system("cp {} {}".format(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'metadata_template.md'),os.path.join(path,"metadata.md")))
+        else:
+            pass
+            # print("You already have a metadata.md file.")
+        return path + "/metadata.md"
 
     def generate_data_report(self,
                              verbose=False,
                              ):
         """
-        generate report for your data frame
+        Generate a report for the data you will submit.  This currently prints out to screen, but will also
+        render to HTML/MD (eventually)
+
+        Parameters
+        ----------
+            verbose : logical
+                Option whether to generate a simple or verbose report.  Default to `False`. 
+
+        Returns
+        -------
+            A printed report detailing what will need to be edited to be able to submit your data.
+
+        Examples
+        --------
+        .. prompt:: python
+
+            import galaxias
+            import pandas as pd
+            data = pd.read_csv("data.csv")
+            my_dwca = galaxias.dwca(occurrences=data)
+            my_dwca.generate_data_report()
+
+        .. program-output:: python -c "import galaxias;import pandas as pd;data = pd.read_csv(\\\"data.csv\\\");my_dwca = galaxias.dwca(occurrences=data);my_dwca.generate_data_report()"
+        
         """
         
         # get validation report
-        validation_report = validate_occurrence_dataframe(self.dataframe)
+        validation_report = validate_occurrence_dataframe(self.occurrences)
 
         # generate simple or complex report
         dwca_report(report=validation_report,verbose=verbose)
 
-    def create_metadata_file(self,
-                             filename = None,
-                             path = "."):
-        '''Create a markdown file for the user to edit'''
-        if filename is not None:
-            parts = filename.split("/")
-            path = "/".join(parts[:-1])
-        if not os.path.exists(path + '/metadata.md'):
-            print("Generating markdown file in working directory ({}) for metadata...".format(path))
-            os.system("cp {} {}".format(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'metadata_template.md'),os.path.join(path,"metadata.md")))
-        else:
-            print("You already have a metadata.md file.")
-        return path + "/metadata.md"
+    def convert_coordinates(self,
+                            latitude_column_name = None,
+                            longitude_column_name = None):
+
+        if latitude_column_name is None:
+            raise ValueError("Please provide a name for your latitude column bame")
 
     # def check_dwca_column_names_valid(self,
     #                                   return_invalid_values=False):
@@ -197,382 +405,47 @@ class dwca:
     #             return False
     #     return True
 
-
-    # def check_for_duplicate_column_names(self):
+    # def rename_dwc_columns(self,
+    #                        names=None):
     #     """
-    #     Check all Darwin Core column names and see if there are any duplicates.
+    #     Renames all columns in the data to names that are Darwin Core Archive compliant.
 
     #     Parameters
     #     ----------
-    #         self : `dwca` object
-    #             `dwca` object you added data tp amd wamt  
+    #         dataframe : `pandas` dataframe
+    #             Dataframe containing species name you want to turn into a Darwin Core Archive.
+    #         names : dict
+    #             Dictionary containing pairwise relationships between old column names and new column names, i.e. {"species":"scientificName"} 
 
     #     Returns
     #     -------
-    #         Logical dictating if the data frame passed.
+    #         `pandas` dataframe with renamed columns
 
     #     Examples
     #     --------
 
-    #     Here is an example of having duplicate column names.
-
     #     .. prompt:: python
 
     #         import galaxias
     #         import pandas as pd
-    #         data = pd.read_csv("data_duplicate_names.csv")
-    #         galaxias.check_dwca_column_names_valid(dataframe=data)
-            
-    #     .. program-output:: python -c "import galaxias;import pandas as pd;data = pd.read_csv(\"data_duplicate_names.csv\");galaxias.check_dwca_column_names_valid(dataframe=data)"
-        
-    #     Here is an example of not having duplicate column names.
+    #         data = pd.read_csv("data_wrong_names.csv")
+    #         data.columns
+    #         data_new = galaxias.rename_column_names(dataframe=data,names={})
+    #         data_new.columns
 
-    #     .. prompt:: python
-
-    #         import galaxias
-    #         import pandas as pd
-    #         data = pd.read_csv("data_no_duplicate_names.csv")
-    #         galaxias.check_dwca_column_names_valid(dataframe=data)
-            
-    #     .. program-output:: python -c "import galaxias;import pandas as pd;data = pd.read_csv(\"ddata_no_duplicate_names.csv\");galaxias.check_dwca_column_names_valid(dataframe=data)"
+    #     #.. program-output:: python -c "import galaxias;import pandas as pd;data = pd.read_csv(\"data_wrong_names.csv\");print(data.columns);data_new = galaxias.rename_column_names(dataframe=data,names={});print(data_new.columns)"
     #     """
-    #     print(self)
-    #     columns = list(self.occurrence_data.columns)
-    #     set_columns = set(columns)
-    #     if len(set_columns) < len(columns):
-    #         return False
-    #     return True
-    
-    # def check_for_duplicate_records(self):
-    #     """
-    #     checking for duplicate records in the data
-    #     """
-    #     duplicate_rows = self.occurrence_data[self.occurrence_data.duplicated()]
-    #     if duplicate_rows is not None:
-    #         return False
-    #     return True
 
-    def rename_dwc_columns(self,
-                           names=None):
-        """
-        Renames all columns in the data to names that are Darwin Core Archive compliant.
+    #     if names is not None:
 
-        Parameters
-        ----------
-            dataframe : `pandas` dataframe
-                Dataframe containing species name you want to turn into a Darwin Core Archive.
-            names : dict
-                Dictionary containing pairwise relationships between old column names and new column names, i.e. {"species":"scientificName"} 
-
-        Returns
-        -------
-            `pandas` dataframe with renamed columns
-
-        Examples
-        --------
-
-        .. prompt:: python
-
-            import galaxias
-            import pandas as pd
-            data = pd.read_csv("data_wrong_names.csv")
-            data.columns
-            data_new = galaxias.rename_column_names(dataframe=data,names={})
-            data_new.columns
-
-        #.. program-output:: python -c "import galaxias;import pandas as pd;data = pd.read_csv(\"data_wrong_names.csv\");print(data.columns);data_new = galaxias.rename_column_names(dataframe=data,names={});print(data_new.columns)"
-        """
-
-        if names is not None:
-
-            # add another column to specify rank if species is in column name
-            # if any("species" in key for key in self.occurrence_data.keys()):
-            #     index = [i for i,name in enumerate(self.occurrence_data.columns) if "species" in name.lower()][0]
-            #     self.dataframe.insert(loc=index,column="rank",value="species") 
+    #         # add another column to specify rank if species is in column name
+    #         # if any("species" in key for key in self.occurrence_data.keys()):
+    #         #     index = [i for i,name in enumerate(self.occurrence_data.columns) if "species" in name.lower()][0]
+    #         #     self.occurrences.insert(loc=index,column="rank",value="species") 
             
-            # rename columns to comply with dwc standards
-            self.dataframe = self.dataframe.rename(names,axis=1)
+    #         # rename columns to comply with dwc standards
+    #         self.occurrences = self.occurrences.rename(names,axis=1)
             
-        else:
+    #     else:
 
-            raise ValueError("Please provide a dataframe, as well as a dictionary of current and desired names.")
-
-    def check_species_names(self,
-                            num_matches=5,
-                            include_synonyms=True,
-                            return_matches = False,
-                            return_taxa = False,
-                            replace_old_names = False):
-        """
-        Checks species names against the ALA repository.  Provides alternatives for ones that are homonyms or are not in the database.
-
-        Parameters
-        ----------
-            dataframe : `pandas` dataframe
-                Dataframe containing species name you want to turn into a Darwin Core Archive. 
-            num_matches : int
-                Number of matching names you want to be provided in case there is a mismatched name.  Default to 5. 
-            include_synonyms : logical
-                Includes possible synonyms for your species. Default to `True`.
-            return_matches : logical
-                Option whether to return a dictionary object containing species names and alternatives.  Default to `False`.  
-            return_taxa : logical
-                Option whether to return a dictionary object containing full taxonomic information on your species.  Default to `False`. 
-            replace_old_names : logical
-                Option whether to replace any outdated species names with the most recent taxonomic names.  Default to `False`. 
-
-        Returns
-        -------
-            Either `True`, `False` or a dictionary object containing species names and alternatives.
-
-        Examples
-        --------
-        .. prompt:: python
-
-            import galaxias
-            import pandas as pd
-            data = pd.read_csv("data_correct_species_names.csv")
-            galaxias.check_species_names(dataframe=data,replace_old_names=True)
-
-        .. program-output:: python -c "import galaxias;import pandas as pd;data = pd.read_csv(\"data_correct_species_names.csv\");galaxias.check_species_names(dataframe=new_data,replace_old_names=True)"
-
-            import galaxias
-            import pandas as pd
-            data = pd.read_csv("data_incorrect_species_names.csv")
-            galaxias.check_species_names(dataframe=data,replace_old_names=True)
-
-        .. program-output:: python -c "import galaxias;import pandas as pd;data = pd.read_csv(\"data_incorrect_species_names.csv\");galaxias.check_species_names(dataframe=data,replace_old_names=True)"
-        """
-
-        # get configurations from user
-        configs = readConfig()
-
-        # get atlas
-        atlas = configs["galaxiasSettings"]["atlas"]
-
-        # check for scientificName, as users should check that they have the correct column names
-        if "scientificName" not in list(dataframe.columns):
-            raise ValueError("Before checking species names, ensure all your column names comply to DwCA standard.  scientificName is the correct title for species")
-        
-        # make a list of all scientific names in the dataframe
-        scientific_names_list = list(set(dataframe["scientificName"]))
-        
-        # send list of scientific names to ALA to check their validity
-        payload = [{"scientificName": name} for name in scientific_names_list]
-        response = requests.request("POST","https://api.ala.org.au/namematching/api/searchAllByClassification",data=json.dumps(payload))
-        response_json = response.json()
-        verification_list = {"scientificName": scientific_names_list, "issues": [None for i in range(len(scientific_names_list))]}
-        taxonomy = {name: [None for i in range(len(scientific_names_list))] for name in TAXON_TERMS[atlas]}
-        
-        # loop over list of names and ensure we have gotten all the issues - might need to do single name search
-        # to ensure we get everything
-        for i,item in enumerate(scientific_names_list):
-            item_index = next((index for (index, d) in enumerate(response_json) if "scientificName" in d and d["scientificName"] == item), None)
-            taxonomy["scientificName"][i] = item
-            if item_index is not None:
-                verification_list["issues"][i] = response_json[item_index]["issues"]
-                if return_taxa:
-                    for term in TAXON_TERMS[atlas]:
-                        if term in response_json[item_index]:
-                            taxonomy[term][i] = response_json[item_index][term]
-            else:
-                response_single = requests.get("https://api.ala.org.au/namematching/api/search?q={}".format("%20".join(item.split(" "))))
-                response_json_single = response_single.json()
-                if response_json_single['success']:
-                    if response_json_single['scientificName'] == item:
-                        verification_list["issues"][i] = response_json_single["issues"]
-                        if return_taxa:
-                            for term in TAXON_TERMS[atlas]:
-                                if term in response_json_single:
-                                    taxonomy[term][i] = response_json_single[term]
-                    else:
-                        if replace_old_names:
-                            # replace old names with updated names
-                            dataframe = self.change_species_names(dataframe=dataframe,species_changes={item: response_json_single["scientificName"]})
-                        else:
-                            verification_list["issues"][i] = "homonym"
-                else:
-                    verification_list["issues"][i] = response_json_single["issues"]
-
-        # check for homonyms - if there are any, then print them out to the user so the user can disambiguate the names
-        df_verification = pd.DataFrame(verification_list)
-        df_isnull = df_verification.loc[df_verification['issues'].astype(str).str.contains("homonym",case=False,na=False)]
-        if not df_isnull.empty:
-            print("You have one or more invalid taxa in your data.  Invalid taxa are:\n")
-            invalid_taxon = df_verification.loc[df_verification['issues'].astype(str).str.contains("homonym",case=False,na=False)]
-            print(invalid_taxon)
-            print("\nSuggested names are below:\n")
-            matches = {x: None for x in invalid_taxon['scientificName']}
-            for name in invalid_taxon['scientificName']:
-                print(name)
-                print()
-                response = requests.get("https://api.ala.org.au/namematching/api/autocomplete?q={}&max={}&includeSynonyms={}".format("%20".join(name.split(" ")),num_matches,str(include_synonyms).lower()))
-                data = {x: [] for x in NAME_MATCHING_TERMS[atlas]}
-                response_json = response.json()
-                list_names = [x["name"] for x in response_json]
-                for item in list_names:
-                    response_single = requests.get("https://api.ala.org.au/namematching/api/search?q={}".format("%20".join(item.split(" "))))
-                    response_json_single = response_single.json()
-                    names_df = pd.DataFrame()
-                    if response_json_single['success']:
-                        for item in NAME_MATCHING_TERMS[atlas]:
-                            if item in response_json_single:
-                                data[item].append(response_json_single[item])
-                            else:
-                                data[item].append(None)
-                names_df = pd.DataFrame(data)
-                if return_matches:
-                    matches[name] = names_df
-                print(names_df)
-                print()
-            if return_matches:
-                return(matches)
-            return False
-        elif return_taxa:
-            return True,pd.DataFrame(taxonomy)
-        return True
-
-    def add_column(self,
-                   column_name=None,
-                   value=None):
-        """
-        Checks the spatial validity of the data.  The ALA's data is represented as WGS84, so latitude and longitude should be in degrees.
-
-        Parameters
-        ----------
-            dataframe : `pandas` dataframe
-                Dataframe containing species name you want to turn into a Darwin Core Archive.
-
-        Returns
-        -------
-            `True` if the data frame has spatially valid data, `False` if it does not.
-
-        Examples
-        --------
-
-        .. prompt:: python
-
-            import galaxias
-            import pandas as pd
-            data = pd.read_csv("data_correct_lat_long.csv")
-            galaxias.check_spatial_validity(dataframe=data)
-
-        .. program-output:: python -c "import galaxias;import pandas as pd;data = pd.read_csv(\"data_correct_lat_long.csv\");galaxias.check_spatial_validity(dataframe=data)"
-        """
-
-        if self.dataframe is None:
-            raise ValueError("Please provide a data frame.")
-        
-        # get dwca terms
-        dwc_terms_df = read_dwc_terms()
-        dwc_terms = list(dwc_terms_df['term'])
-
-        if column_name is None:
-            raise ValueError("Please provide a string with a valid DwCA value for your column name.")
-        elif column_name == "occurrenceID" or column_name == "catalogNumber" or column_name == "recordNumber":
-            uuids = [None for i in range(self.dataframe.shape[0])]
-            for i in range(self.dataframe.shape[0]):
-                uuids[i] = str(uuid.uuid4())
-            self.dataframe[column_name] = uuids
-            return self.dataframe
-        elif column_name in dwc_terms:
-            if value is None:
-                raise ValueError("Please provide a default value for this column.")
-            else:
-                self.dataframe[column_name] = value
-        else:
-            raise ValueError("Please provide a string with a valid DwCA value for your column name.")
-        
-    def add_taxonomic_information(self):
-        """
-        Adds full taxonomic information (from kingdom to species) to your data for clearer identification
-
-        Parameters
-        ----------
-            dataframe : `pandas` dataframe
-                Dataframe containing species occurrence records you want to turn into a Darwin Core Archive.
-
-        Returns
-        -------
-            `pandas` dataframe provided that now contains full taxonomic information.
-
-        Examples
-        --------
-
-        .. prompt:: python
-
-            import galaxias
-            import pandas as pd
-            data = pd.read_csv("data_add_taxon_information.csv")
-            data_taxon = galaxias.check_spatial_validity(dataframe=data)
-            data_taxon.head()
-            
-        .. program-output:: python -c "import galaxias;import pandas as pd;data = pd.read_csv(\"data_add_taxon_information.csv\");data_taxon = galaxias.check_spatial_validity(dataframe=data);print(data_taxon.head())"
-        """
-
-        # configs
-        configs = readConfig()
-
-        # get atlas
-        atlas = configs["galaxiasSettings"]["atlas"]
-
-        #if self.occurrence_data is None:
-        #    raise ValueError("Please provide a dataframe to the function.")
-
-        # check for scientificName, as users should check that they have the correct column names
-        if "scientificName" not in list(self.dataframe.columns):
-            raise ValueError("Before checking species names, ensure all your column names comply to DwCA standard.  scientificName is the correct title for species")
-
-        # get all info     
-        species_checked,taxon_info = self.check_species_names(self,return_taxa=True)
-
-        # merge the taxon information with the species information the user has provided
-        if species_checked:
-            taxon_dataframe = pd.merge(self.dataframe, taxon_info, left_on='scientificName', right_on='scientificName', how='left')
-        else:
-            taxon_dataframe = None
-
-        # return the data frame to the user
-        return taxon_dataframe
-
-    def change_species_names(self,
-                             species_changes=None):
-        """
-        Changes any species names that are incorrect/invalid/misidentified to the correct ones
-
-        Parameters
-        ----------
-            dataframe : `pandas` dataframe
-                Dataframe containing species occurrence records you want to turn into a Darwin Core Archive.
-            species_changes : dict
-                Dictionary containing existing species name in your data frame, as well as the new species name.
-                
-        Returns
-        -------
-            `pandas` dataframe provided that contains changed species name.
-
-        Examples
-        --------
-
-        .. prompt:: python
-
-            import galaxias
-            import pandas as pd
-            data = pd.read_csv("data_change_species_names.csv")
-            new_data_species_rename = galaxias.change_species_names(dataframe=data,species_changes={})
-            new_data_species_rename.head()
-            
-        .. program-output:: python -c "import galaxias;import pandas as pd;data = pd.read_csv(\"data_change_species_names.csv\");new_data_species_rename = galaxias.check_spatial_validity(dataframe=data,species_changes={});print(new_data_species_rename.head())"
-        """
-            
-        if self.dataframe is None:
-            raise ValueError("Please provide a dataframe to the function.")
-        
-        if species_changes is None:
-            raise ValueError("Please provide a dictionary with the species names to change.")
-        
-        if "scientificName" not in self.dataframe:
-            raise ValueError("Check your column names - scientificName is the title to use for species names.  If yours is something different, please change it to scientificName.")
-
-        for species in species_changes:
-            self.dataframe['scientificName'] = self.dataframe['scientificName'].replace(regex=species, value=species_changes[species])
+    #         raise ValueError("Please provide a dataframe, as well as a dictionary of current and desired names.")
