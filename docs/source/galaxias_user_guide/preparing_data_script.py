@@ -119,4 +119,14 @@ if stopping_point == "final":
     my_dwca.add_unique_occurrence_IDs(column_name="occurrenceID")
 
     my_dwca.generate_data_report(verbose=True)
+
+    ### TODO: add this step
+    temp_occurrences = my_dwca.occurrences.rename(
+        columns = {
+            "classs": "class",
+        }
+    )
+    my_dwca.occurrences = temp_occurrences
+
+    my_dwca.occurrences.to_csv("galaxias_user_guide/data_clean.csv",index=False)
     sys.exit()

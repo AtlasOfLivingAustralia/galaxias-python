@@ -19,8 +19,8 @@ NAME_MATCHING_TERMS = {
 }
 
 TAXON_TERMS = {
-    "Australia": ["scientificName","vernacularName","rank","species","genus","family","order","classs","phylum","kingdom"],
-    "ALA": ["scientificName","vernacularName","rank","species","genus","family","order","classs","phylum","kingdom"]
+    "Australia": ["scientificName","vernacularName","genus","family","order","classs","phylum","kingdom"], #"rank","species",
+    "ALA": ["scientificName","vernacularName","genus","family","order","classs","phylum","kingdom"] #"rank","species",
 }
 '''
         'records_with_taxonomy_count': 'records_with_taxonomy_count',

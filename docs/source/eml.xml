@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<eml:eml xmlns:d="eml://ecoinformatics.org/dataset-2.1.0" xmlns:eml="eml://ecoinformatics.org/eml-2.1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dc="http://purl.org/dc/terms/" xsi:schemaLocation="eml://ecoinformatics.org/eml-2.1.1 http://rs.gbif.org/schema/eml-gbif-profile/1.1/eml-gbif-profile.xsd" system="ALA-Registry" scope="system" xml:lang="en">
+	<alaDatasetMetadata>
+		<dataResource>For further information about data sharing with ALA visit this [page](https://support.ala.org.au/support/solutions/articles/6000261427-sharing-a-dataset-with-the-ala * indicates required fields + ALA internal use only<title* />
+			<globallyUniqueIdentifier(GUID) />
+			<url />
+		</dataResource>
+		<description>
+			<publicShortDescription* />
+			<publicDescription />
+			<technicalDescription />
+			<dataQualityDescription />
+			<methodsDescription />
+			<purpose />
+			<datageneralisation />
+			<informationwithheld />
+			<citationandRights>
+				<citation* />
+				<rights />
+				<creator* />
+				<license* />
+				<recordconsumers>
+					<institutions />
+				</recordconsumers>
+			</citationandRights>
+		</description>
+		<primaryContact(s)>
+			<name>&lt;!--- Multiple entries are accepted, please enter each as new line under header ---&gt;</name>
+			<email />
+			<otherContact(s)+ />
+			<externalIdentifiers>&lt;!--- Multiple entries are accepted, please enter each as new line under header ---&gt;</externalIdentifiers>
+			<source,Identifier,URL />
+		</primaryContact(s)>
+	</alaDatasetMetadata>
+</eml:eml>

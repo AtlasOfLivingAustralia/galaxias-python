@@ -6,11 +6,11 @@ authors = ["Amanda Buyan"]
 maintainers = ["Amanda Buyan <amanda.buyan@csiro.au>","Martin Westgate <martin.westgate@csiro.au>"]
 license = "GNU General Public License v3.0"
 readme = "README.md"
-homepage = "galaxias.ala.org.au/Python"
-repository = ""
+homepage = "http://galaxias.ala.org.au/Python"
+repository = "https://github.com/AtlasOfLivingAustralia/galaxias-python"
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.11"
 pandas = "^2.0.3"
 beautifulsoup4 = "^4.12.2"
 configparser = "^6.0.0"

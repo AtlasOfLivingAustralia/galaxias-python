@@ -1,17 +1,13 @@
 import pandas as pd
-import difflib
 import os
 from .galaxias_config import readConfig
 from .dwca_report import dwca_report
-import difflib
 import json
 import uuid
 import requests
-import jsonpickle
-import datetime
-from .common_dictionaries import REQUIRED_DWCA_TERMS,NAME_MATCHING_TERMS,ID_REQUIRED_DWCA_TERMS
-from .common_dictionaries import GEO_REQUIRED_DWCA_TERMS,TAXON_TERMS
-from dwc_validator.validate import validate_occurrence_dataframe,create_taxonomy_report
+from .common_dictionaries import TAXON_TERMS
+from dwc_validator.validate import validate_occurrence_dataframe
+import xml.etree.ElementTree as ET
 
 # testing
 import sys
@@ -20,11 +16,12 @@ class dwca:
 
     def __init__(self,
                  occurrences: pd.core.frame.DataFrame = None,
+                 occurrences_name = "occurrences.csv",
                  dwca_name: str = "dwca.zip",
                  data_type: str="Occurrence",
                  metadata_md: str = None,
-                 eml_xml: str = None,
-                 meta_xml: str = None
+                 eml_xml: str = "eml.xml",
+                 meta_xml: str = "meta.xml"
                  ):
         
         # check for if user provides data frame 
@@ -36,14 +33,19 @@ class dwca:
             print("WARNING: if your occurrences argument is not a dataframe, occurrences will be set to None")
             self.occurrences = None
 
+        if occurrences_name is not None:
+            self.occurrences_name = occurrences_name
+
         # check for what type of DwCA it iwll be
         if data_type in ["Occurrence","Event","Media"]:
             self.data_type = data_type
         else:
             raise ValueError("galaxias only takes occurrence and event DwC data at this time.")
-        if metadata_md is None and eml_xml is None and meta_xml is None:
+        if metadata_md is None:
             metadata_md = self.create_metadata_file()
-            self.add_metadata_md(metadata_md=metadata_md)
+            self.metadata_md = metadata_md
+
+        # set the eml and meta 
         self.eml_xml = eml_xml
         self.meta_xml = meta_xml
 
@@ -54,7 +56,7 @@ class dwca:
 
         Parameters
         ----------
-            metadata_md: ``str``
+            ``metadata_md`` : ``str``
                 ``str`` containing the name of the metadata markdown file
 
         Returns
@@ -72,11 +74,11 @@ class dwca:
 
         Parameters
         ----------
-            None
+            ``None``
 
         Returns
         -------
-            None
+            ``None``
 
         Examples
         --------
@@ -125,8 +127,8 @@ class dwca:
 
         Parameters
         ----------
-            column_name : ``str``
-                String containing name of column you want to add.  Default is "occurrenceID"
+            ``column_name`` : ``str``
+                String containing name of column you want to add.  Default is ``occurrenceID``
 
         Returns
         -------
@@ -166,13 +168,13 @@ class dwca:
 
         Parameters
         ----------
-            return_taxa : logical
+            ``return_taxa`` : ``logical``
                 Option whether to return a dictionary object containing full taxonomic information on your species.  Default to `False`. 
 
         Returns
         -------
-            Either `False` if there are incorrect taxon names, or `True`.  A dictionary object containing species names and alternatives
-            is return with the ``return_taxa=True`` option.
+            Either ``False`` if there are incorrect taxon names, or ``True``.  A dictionary object containing species names and alternatives 
+            is returned with the ``return_taxa=True`` option.
 
         Examples
         --------
@@ -211,13 +213,13 @@ class dwca:
         # to ensure we get everything
         for i,item in enumerate(scientific_names_list):
             item_index = next((index for (index, d) in enumerate(response_json) if "scientificName" in d and d["scientificName"] == item), None)
-            taxonomy["scientificName"][i] = item
+            taxonomy.loc[i,"scientificName"] = item
             if item_index is not None:
                 verification_list["issues"][i] = response_json[item_index]["issues"]
                 if return_taxa:
                     for term in TAXON_TERMS[atlas]:
                         if term in response_json[item_index]:
-                            taxonomy[term][i] = response_json[item_index][term]
+                            taxonomy.loc[i,term] = response_json[item_index][term]
             
         # check for homonyms - if there are any, then print them out to the user so the user can disambiguate the names
         df_verification = pd.DataFrame(verification_list)
@@ -239,18 +241,28 @@ class dwca:
                              path = "."):
         
         """
-        Create a markdown file for the user to edit
+        Creates a markdown file containing the metadata information needed for the DwCA.  The user can edit this 
+        markdown, and use it to generate the metadata files.
+
+        Parameters
+        ----------
+            ``filename`` : ``str``
+                Option whether to return a dictionary object containing full taxonomic information on your species.  Default to ``False``. 
+            ``path`` : ``str``
+                File path to your working directory.  Default is directory you are currently in.
+
+        Returns
+        -------
+            ``None``
         """
         
         if filename is not None:
             parts = filename.split("/")
             path = "/".join(parts[:-1])
         if not os.path.exists(path + '/metadata.md'):
-            # print("Generating markdown file in working directory ({}) for metadata...".format(path))
             os.system("cp {} {}".format(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'metadata_template.md'),os.path.join(path,"metadata.md")))
         else:
             pass
-            # print("You already have a metadata.md file.")
         return path + "/metadata.md"
 
     def generate_data_report(self,
@@ -262,12 +274,12 @@ class dwca:
 
         Parameters
         ----------
-            verbose : logical
-                Option whether to generate a simple or verbose report.  Default to `False`. 
+            ``verbose`` : ``logical``
+                Option whether to generate a simple or verbose report.  Default to ``False``. 
 
         Returns
         -------
-            A printed report detailing what will need to be edited to be able to submit your data.
+            A printed report detailing what will need to be edited prior to data submission.
 
         Examples
         --------
@@ -288,164 +300,285 @@ class dwca:
 
         # generate simple or complex report
         dwca_report(report=validation_report,verbose=verbose)
-
-    def convert_coordinates(self,
-                            latitude_column_name = None,
-                            longitude_column_name = None):
-
-        if latitude_column_name is None:
-            raise ValueError("Please provide a name for your latitude column bame")
-
-    # def check_dwca_column_names_valid(self,
-    #                                   return_invalid_values=False):
-    #     """
-    #     Check all Darwin Core column names and provides alternatives to ones that are incorrect/invalid.  It also checks for any required DwCA
-    #     terms for the atlas you are choosing to submit your data to.
-
-    #     Parameters
-    #     ----------
-    #         dataframe : `pandas` dataframe
-    #             Dataframe containing species occurrence records you want to turn into a Darwin Core Archive. 
-    #         return_invalid_values : logical
-    #             choose whether or not to return all invalid and missing values as a list or to print to screen.  Default to `False` and will print to screen.
-
-    #     Returns
-    #     -------
-    #         Either `True`, `False` or a dictionary object containing species names and alternatives.
-
-    #     Examples
-    #     --------
-
-    #     This example is a dataframe that contains the incorrect DwCA terms for X, Y and Z.
-
-    #     .. prompt:: python
-
-    #         import galaxias
-    #         import pandas as pd
-    #         data = pd.read_csv("data_wrong_names.csv")
-    #         galaxias.check_dwca_column_names_valid(dataframe=data)
-
-    #     .. program-output:: python -c "import galaxias;import pandas as pd; data = pd.read_csv(\"tests/data_wrong_names.csv\");galaxias.check_dwca_column_names_valid(dataframe=data)"
         
-    #     This example is a dataframe that contains all valid DwCA terms.
+    def make_eml_xml(self):
+        """
+        Makes the ``eml.xml`` file from the metadata markdown file into your current working directory.  
+        The ``eml.xml`` file is the metadata file containing things like authorship, licence, institution, 
+        etc.
 
-    #     .. prompt:: python
-
-    #         import galaxias
-    #         import pandas as pd
-    #         data = pd.read_csv("data_correct_names.csv")
-    #         galaxias.check_dwca_column_names_valid(dataframe=data)
-
-    #     .. program-output:: python -c "import galaxias;import pandas as pd; data = pd.read_csv(\"tests/data_correct_names.csv\");galaxias.check_dwca_column_names_valid(dataframe=data)"
+        Parameters
+        ----------
+            ``None``
+                    
+        Returns
+        -------
+            ``None``
+        """
+       
+        # initialise the eml xml
+        metadata = ET.Element("eml:eml")
+        metadata.set('xmlns:d', 'eml://ecoinformatics.org/dataset-2.1.0')
+        metadata.set('xmlns:eml', 'eml://ecoinformatics.org/eml-2.1.1')
+        metadata.set('xmlns:xsi', 'http://www.w3.org/2001/XMLSchema-instance')
+        metadata.set('xmlns:dc', 'http://purl.org/dc/terms/')
+        metadata.set('xsi:schemaLocation', 'eml://ecoinformatics.org/eml-2.1.1 http://rs.gbif.org/schema/eml-gbif-profile/1.1/eml-gbif-profile.xsd')
+        metadata.set('system','ALA-Registry')
+        metadata.set('scope','system')
+        metadata.set('xml:lang','en')
         
-    #     """
+        # initialise elements
+        elements = {}
 
-    #     # get configurations
-    #     configs = readConfig()
+        # open the metadata file
+        metadata_file = open(self.metadata_md, "r")
 
-    #     # get atlas
-    #     atlas = configs["galaxiasSettings"]["atlas"]
+        # loop over things in metadata
+        title = ""
+        description = ""
+        top_titles = []
+        duplicate = 0
+        for line in metadata_file:
+            if line != "\n":
+                if "#" == line[0]:
+                    title = line.strip()
+                elif "#" != line[0]:
+                    if description != "":
+                        description.append(line.strip())
+                    else:
+                        description = [line.strip()]
+            elif line == "\n" and title != "" and description != "":
+                if title not in elements:
+                    elements[title] = description
+                else:
+                    elements["{}{}".format(title,duplicate)] = description
+                    duplicate += 1
+                if title.split(" ")[0] == "#":
+                    top_titles.append(title)
+                description = ""
+                title = ""
+            elif line == "\n" and title != "":
+                if title not in elements:
+                    elements[title] = ""
+                else:
+                    elements["{}{}".format(title,duplicate)] = ""
+                    duplicate += 1
+                if title.split(" ")[0] == "#":
+                    top_titles.append(title)
+                title = ""
+        metadata_file.close()
 
-    #     # get all dwc terms to validate against
-    #     dwc_terms_df = read_dwc_terms()
-    #     dwc_terms = list(dwc_terms_df['term'])
+        # build a tree
+        title_list = [key for key in elements]
 
-    #     # get column names of data frame and check if the columns are compatible with current dwca terms
-    #     column_names = list(self.occurrence_data)
-    #     bool_list = list(map(lambda v: v in dwc_terms, column_names))
+        # stuff
+        top_title_indices = [i for i, j in enumerate(title_list) if j in top_titles]
+        for i in top_title_indices:
 
-    #     # check for required columns for chosen atlas
-    #     missing_requirements = []
-    #     check_required_dwca_terms = list(map(lambda v: v in column_names, REQUIRED_DWCA_TERMS[atlas]))
-    #     for check,term in zip(check_required_dwca_terms,REQUIRED_DWCA_TERMS[atlas]):
-    #         if not check:
-    #             missing_requirements.append(term)
-    #     check_id_required_dwca_terms = list(map(lambda v: v in column_names,ID_REQUIRED_DWCA_TERMS[atlas]))
-    #     if not any(check_id_required_dwca_terms):
-    #         missing_requirements.append(ID_REQUIRED_DWCA_TERMS[atlas][0])
-    #     check_geo_required_dwca_terms = list(map(lambda v: v in column_names,GEO_REQUIRED_DWCA_TERMS[atlas]))
-    #     missing_geo_requirements = []
-    #     for check,term in zip(check_geo_required_dwca_terms,GEO_REQUIRED_DWCA_TERMS[atlas]):
-    #         if not check:
-    #             missing_geo_requirements.append(term)
-    #     invalid_dwca_terms = {}
+            # start with the next level of elements
+            parts = title_list[i].split(" ")[1:]
+            parts[0] = parts[0].lower()
+            new_title = "".join(parts)
+            top_node = ET.SubElement(metadata,new_title)
+            if elements[title_list[i]] != "":
+                top_node.text=elements[title_list[i]]
 
-    #     # check if column names are valid dwc terms, and if not, provide the closest suggestions
-    #     # either return the lists of terms that are incorrect, or print them to screen for user
-    #     if (not all(bool_list)) or len(missing_geo_requirements) > 0 or len(missing_requirements) > 0:
-    #         for name,check in zip(column_names,bool_list):
-    #             if check is False:
-    #                 if "species" in name.lower():
-    #                     invalid_dwca_terms[name] = difflib.get_close_matches("scientific",dwc_terms)
-    #                 elif "date" in name.lower():
-    #                     invalid_dwca_terms[name] = difflib.get_close_matches("eventDate",dwc_terms)
-    #                     invalid_dwca_terms[name] += difflib.get_close_matches("date",dwc_terms)
-    #                     invalid_dwca_terms[name] += (difflib.get_close_matches(name,dwc_terms))
-    #                 elif "site" in name.lower():
-    #                     invalid_dwca_terms[name] = difflib.get_close_matches("locat",dwc_terms)
-    #                 else:
-    #                     invalid_dwca_terms[name] = difflib.get_close_matches(name,dwc_terms)
-    #         if return_invalid_values:
-    #             return invalid_dwca_terms,missing_requirements,missing_geo_requirements
-    #         else:
-    #             print("The following are all invalid DarwinCore terms, and the closest suggestions follow:")
-    #             for key in invalid_dwca_terms:
-    #                 print("{}: {}".format(key,invalid_dwca_terms[key]))
-    #             print("\nYou are missing these required fields.  These may not exist in the data, or need their title changed.\n")
-    #             for key in missing_requirements:
-    #                 print(key)
-    #             if "decimalLatitude" not in column_names or "decimalLongitude" not in column_names or "geodeticDatum" not in column_names or "coordinateUncertaintyInMeters" not in column_names:
-    #                 print("\nYou are missing the following geospatial requirements:\n")
-    #                 for key in missing_geo_requirements:
-    #                     print(key)
-    #             else:
-    #                 print("\nYou might be missing geospatial requirements:\n")
-    #                 for key in missing_geo_requirements:
-    #                     print(key)
-    #             return False
-    #     return True
+            # check for multiple layers
+            if len(top_title_indices) == 1:
+                index = 0
+                while index < len(title_list[1:]) - 1:
+                    index = add_child(parent=top_node,
+                                      index=index,
+                                      title_list=title_list[1:],
+                                      elements=elements)
+            else:
+                # not sure this will work but meh...
+                index = 0
+                for j,title in enumerate(title_list[1:i+1]):
+                    while index < len(title_list[1:i+1]) - 1:
+                        index = add_child(parent=top_node,
+                                        index=index,
+                                        title_list=title_list[1:],
+                                        elements=elements)
 
-    # def rename_dwc_columns(self,
-    #                        names=None):
-    #     """
-    #     Renames all columns in the data to names that are Darwin Core Archive compliant.
+        # write xml
+        tree = ET.ElementTree(metadata)
+        ET.indent(tree, space="\t", level=0)
+        tree.write(self.eml_xml, encoding="utf-8", xml_declaration=True)
 
-    #     Parameters
-    #     ----------
-    #         dataframe : `pandas` dataframe
-    #             Dataframe containing species name you want to turn into a Darwin Core Archive.
-    #         names : dict
-    #             Dictionary containing pairwise relationships between old column names and new column names, i.e. {"species":"scientificName"} 
+    def make_meta_xml(self):
+        """
+        Makes the ``metadata.xml`` file from your ``eml.xml`` file and information from your ``occurrences`` 
+        / other included extensions.  The ``metadata.xml`` file is your descriptor file, in that it describes 
+        what is in the DwCA.
 
-    #     Returns
-    #     -------
-    #         `pandas` dataframe with renamed columns
+        Parameters
+        ----------
+            ``None``
 
-    #     Examples
-    #     --------
+        Returns
+        -------
+            ``None``
+        """
 
-    #     .. prompt:: python
+        if self.occurrences is None:
+            raise ValueError("You need to have a passing, valid occurrence dataframe for this")
+        
+        # get dwc terms
+        dwc_terms = pd.read_csv("https://raw.githubusercontent.com/tdwg/rs.tdwg.org/master/terms-versions/terms-versions.csv")
+        dwc_terms_rec = dwc_terms[dwc_terms["version_status"] == "recommended"].reset_index(drop=True)
+        dwc_terms_info = pd.DataFrame({'name': list(dwc_terms_rec['term_localName']), 'link': ["".join([row['version_isDefinedBy'].replace('version/',""),
+                                                    row['term_localName']]) for i,row in dwc_terms_rec.iterrows()]})
+        
+        if len(list(set(list(self.occurrences.columns)).intersection(list(dwc_terms_info['name'])))) < self.occurrences.shape[1]:
+            raise ValueError("You are still missing some DwCA Terms.")
 
-    #         import galaxias
-    #         import pandas as pd
-    #         data = pd.read_csv("data_wrong_names.csv")
-    #         data.columns
-    #         data_new = galaxias.rename_column_names(dataframe=data,names={})
-    #         data_new.columns
+        # initialise metadata
+        metadata = ET.Element("archive")
+        metadata.set('xmlns', 'http://rs.tdwg.org/dwc/text/')
+        metadata.set('metadata',self.eml_xml)
 
-    #     #.. program-output:: python -c "import galaxias;import pandas as pd;data = pd.read_csv(\"data_wrong_names.csv\");print(data.columns);data_new = galaxias.rename_column_names(dataframe=data,names={});print(data_new.columns)"
-    #     """
+        # set the core of the archive
+        core = ET.SubElement(metadata,"core")
+        core.set("encoding","UTF-8")
+        core.set("rowType","http://rs.tdwg.org/dwc/terms/Occurrence")
+        core.set("fieldsTerminatedBy",",") # CHANGE THIS TO WHATEVER OCCURRENCE IS
+        core.set("linesTerminatedBy","\r\n") 
+        core.set("fieldsEnclosedBy","&quot;")
+        core.set("ignoreHeaderLines","1")
 
-    #     if names is not None:
+        # set locations of occurrence data
+        core_files = ET.SubElement(core,"files")
+        location = ET.SubElement(core_files,self.occurrences_name)
 
-    #         # add another column to specify rank if species is in column name
-    #         # if any("species" in key for key in self.occurrence_data.keys()):
-    #         #     index = [i for i,name in enumerate(self.occurrence_data.columns) if "species" in name.lower()][0]
-    #         #     self.occurrences.insert(loc=index,column="rank",value="species") 
+        # set id
+        id = ET.SubElement(core,"id")
+        id.set("index","0")
+
+        # set all fields
+        for i,fields in enumerate(list(self.occurrences.columns)):
+            field = ET.SubElement(core,"field")
+            field.set("index","{}".format(i))
+            index = dwc_terms_info[dwc_terms_info['name'] == fields]['link'].index[0]
+            field.set("term",dwc_terms_info[dwc_terms_info['name'] == fields]['link'][index])
+
+        ### TODO: write capability for extensions
+
+        # write metadata
+        tree = ET.ElementTree(metadata)
+        ET.indent(tree, space="\t", level=0)
+        tree.write(self.meta_xml, xml_declaration=True)
+
+
+# for building xml
+def add_child(parent=None,
+              index=None,
+              title_list=None,
+              elements=None):
+    """
+    add child to XML
+    """
+
+    # check the level of elements
+    parts1 = title_list[index].split(" ")
+
+    # first check if we are at the end of the list
+    if index == len(title_list) - 1:
+        new_title = create_title(title_list[index]) 
+        temp = ET.SubElement(parent,new_title)
+        if type(elements[title_list[index]]) is list:
+            temp.text = " ".join(elements[title_list[index]])
+        return index
+    
+    # if we are not, check the next element
+    parts2 = title_list[index+1].split(" ")
+
+    # check to see if index is still incrementing
+    if index < len(title_list):
+
+        # check to see if the next element is a child
+        if len(parts1[0]) < len(parts2[0]):
+
+            # create new subelement
+            new_title = create_title(title_list[index])
+            temp = ET.SubElement(parent,new_title)
+            if type(elements[title_list[index]]) is list:
+                temp.text = " ".join(elements[title_list[index]])
             
-    #         # rename columns to comply with dwc standards
-    #         self.occurrences = self.occurrences.rename(names,axis=1)
-            
-    #     else:
+            # increment index
+            index += 1
 
-    #         raise ValueError("Please provide a dataframe, as well as a dictionary of current and desired names.")
+            # check if there are any more children 
+            index = add_child(parent=temp,
+                                index=index,
+                                title_list=title_list,
+                                elements=elements)
+            
+        # check to see if the elements have the same parent
+        elif len(parts1[0]) == len(parts2[0]):
+
+            # create first element
+            temp = add_element(elements=elements,
+                               parent=parent,
+                               title_list=title_list,
+                               index=index)
+            
+            # create second element (i+1)
+            temp2 = add_element(elements=elements,
+                               parent=parent,
+                               title_list=title_list,
+                               index=index+1)
+
+            # check for more children (and increment index by 2)
+            index = add_child(parent=parent,
+                                index=index+2,
+                                title_list=title_list,
+                                elements=elements)
+            
+            # return index at the end
+            return index
+        
+        # otherwise, next element is a new parent
+        else:
+
+            # create a new element
+            temp = add_element(elements=elements,
+                               parent=parent,
+                               title_list=title_list,
+                               index=index)
+            
+            # increment index and return it
+            index += 1
+            return index
+
+    # return the index
+    return index
+
+def add_element(elements=None,
+                parent = None,
+                title_list = None,
+                index=None):
+    
+    # create a new element
+    new_title = create_title(title_list[index])
+    if "citetitle" in new_title:
+        temp = ET.SubElement(parent,"ulink")
+        temp.set("url",elements[title_list[index]][0])
+        name_licence = ET.SubElement(temp,new_title)
+        name_licence.text = elements[title_list[index]][1]
+    else:
+        temp = ET.SubElement(parent,new_title)
+    if type(elements[title_list[index]]) is list:
+        temp.text = " ".join(elements[title_list[index]])
+    return temp
+
+def create_title(title=None):
+
+    # create a title with camel case and no numbers
+    parts = title.split(" ")[1:]
+    parts[0] = parts[0].lower()
+    new_title = "".join(parts)
+    if new_title[-1].isdigit():
+        new_title = new_title[:-1]
+    return new_title
+

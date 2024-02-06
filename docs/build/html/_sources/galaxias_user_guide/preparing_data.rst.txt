@@ -107,14 +107,76 @@ Validating Recommended Darwin Core Standards
     :gutter: 4
 
     .. grid-item-card:: 
-        :link: preparing_data/checking_taxonomy.html
+        :link: preparing_data/data_obfuscation.html
         :class-card: sd-text-black
         :text-align: center
 
         .. raw:: html
             :file: ../../source/_static/icons/user_guide.svg
                 
-        **Check Taxonomy** 
+        **Obscuring Your Data** 
+
+    .. grid-item-card:: 
+        :link: preparing_data/cred_taxon_id.html
+        :class-card: sd-text-black
+        :text-align: center
+
+        .. raw:: html
+            :file: ../../source/_static/icons/user_guide.svg
+                
+        **Crediting Taxonomic Identification**  
+
+    .. grid-item-card:: 
+        :link: preparing_data/recommended_terms_dumping_ground.html
+        :class-card: sd-text-black
+        :text-align: center
+
+        .. raw:: html
+            :file: ../../source/_static/icons/user_guide.svg
+                
+        **Rest**
+        
+Multimedia Extension
+-----------------------------
+
+.. grid:: 4
+    :gutter: 4
+
+    .. grid-item-card::
+        :link: preparing_data/final_report.html
+        :class-card: sd-text-black
+        :text-align: center
+
+        .. raw:: html
+            :file: ../../source/_static/icons/user_guide.svg
+
+        **Final Example Report of Passing Data**
+
+EventCore
+-----------------------------
+
+.. grid:: 4
+    :gutter: 4
+
+    .. grid-item-card::
+        :link: preparing_data/event_core_terms.html
+        :class-card: sd-text-black
+        :text-align: center
+
+        .. raw:: html
+            :file: ../../source/_static/icons/user_guide.svg
+
+        **Required Event Core Terms**
+
+    .. grid-item-card::
+        :link: preparing_data/preparing_event_core.html
+        :class-card: sd-text-black
+        :text-align: center
+
+        .. raw:: html
+            :file: ../../source/_static/icons/user_guide.svg
+
+        **Preparing An Event Core**
 
 Example of Final Report
 -----------------------------

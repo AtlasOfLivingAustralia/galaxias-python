@@ -1,64 +1,107 @@
-# ALA Dataset Metadata
+# Dataset
 
-For further information about data sharing with ALA visit this [page](https://support.ala.org.au/support/solutions/articles/6000261427-sharing-a-dataset-with-the-ala
+## Alternate Identifier
 
-* indicates required fields
-+ ALA internal use only
 
-## Data Resource
+## Title
 
-### Title * 
 
-### Globally Unique Identifier (GUID)
+## Creator
 
-### URL
+### Organization Name
 
-## Description
 
-### Public Short Description *
+## Metadata Provider
 
-### Public Description 
+### Organization Name
 
-### Technical Description
 
-### Data Quality Description
+## Associated Party
 
-### Methods Description
+### Organization Name
+Atlas of Living Australia
 
-### Purpose
+### Address
 
-### Data generalisation
+#### Delivery Point
+CSIRO Ecosystems Services
 
-### Information withheld
+#### City
+Canberra
 
-## Citation and Rights
+#### Administrative Area
+ACT
 
-### Citation * 
+#### Postal Code
+2601
 
-### Rights
+#### Country
+Australia
 
-### Creator * 
+### Electronic Mail Address
 
-### License *
 
-## Record consumers 
+### Role
+distributor
 
-### Institutions
+## Pub Date
 
-## Primary Contact(s)
 
-<!--- Multiple entries are accepted, please enter each as new line under header --->
+## Language
+English
 
-### Name
+## Abstract
 
-### Email
+### Para
+.
 
-## Other Contact(s) +
+## Intellectual Rights
 
-<!--- Multiple entries are accepted, please enter each as new line under header --->
+### Para
 
-## External Identifiers 
+<h4 url="https://creativecommons.org/licenses/by/4.0/">Ulink</h4>
 
-### Source, Identifier,  URL
+##### Citetitle
+Creative Commons Attribution 4.0 International (CC-BY 4.0)
 
-<!--- Multiple entries are accepted, please enter each as new line under header --->
+## Distribution
+
+### Online
+
+#### Url
+
+
+## Coverage
+
+
+## Purpose
+
+### Para
+
+
+## Contact
+
+### Individual Name
+
+#### Given Name
+
+
+#### Sur Name
+
+
+## Methods
+
+
+# Additional Metadata
+
+## Metadata
+
+### Gbif
+
+#### Date Stamp
+
+
+#### Hierarchy Level
+dataset
+
+#### Resource Logo Url

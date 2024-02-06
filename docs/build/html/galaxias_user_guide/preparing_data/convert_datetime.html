@@ -428,7 +428,15 @@ lines of code.</p>
 <span class="prompt1"><span class="o">...</span>     <span class="n">split_date</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;eventDate&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)</span></span>
 <span class="prompt1"><span class="o">...</span>     <span class="n">dates</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="s2">&quot;eventDate&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;-&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">split_date</span><span class="p">)))</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">dates</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>    eventDate
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/Users/buy003/Documents/GitHub/galaxias-python/docs/source/galaxias_user_guide/preparing_data/convert_datetime.py:2: DeprecationWarning: 
+Pyarrow will become a required dependency of pandas in the next major release of pandas (pandas 3.0),
+(to allow more performant data types, such as the Arrow string type, and better interoperability with other libraries)
+but was not found to be installed on your system.
+If this would cause problems for you,
+please provide us feedback at https://github.com/pandas-dev/pandas/issues/54466
+        
+  import pandas as pd
+    eventDate
 0  2005-01-05
 1  2022-02-22
 2    2005-5-5
