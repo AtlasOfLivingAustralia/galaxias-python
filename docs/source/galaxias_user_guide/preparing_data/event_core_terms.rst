@@ -8,3 +8,5 @@ Event cores will differ from
 ``eventID`` : identifier associated with an Event.
 
 ``samplingProtocol`` : how the data was collected
+
+``individualCount`` : number of individuals present

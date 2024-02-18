@@ -405,12 +405,12 @@ Errors:
 Warnings: None
 all_required_columns_present: False
 missing_columns:
-	genus
+	family
 	order
 	phylum
-	kingdom
 	classs
-	family
+	kingdom
+	genus
 	basisOfRecord
 	occurrenceID OR catalogNumber OR recordNumber
 Taxonomic validity:
@@ -459,11 +459,11 @@ to specify the column name you wish to use.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">add_unique_occurrence_IDs</span><span class="p">(</span><span class="n">column_name</span><span class="o">=</span><span class="s2">&quot;occurrenceID&quot;</span><span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                           occurrenceID           scientificName  decimalLatitude  decimalLongitude   eventDate  coordinateUncertaintyInMeters geodeticDatum      basisOfRecord
-0  af73ebea-a45a-45a2-bd1e-da3b06336665       Corymbia latifolia           -13.04            131.07  2022-03-29                            100         WGS84  HUMAN_OBSERVATION
-1  fbf88695-6d37-4701-94e4-3e6ccd128a03     Eucalyptus tectifica           -13.04            131.07  2022-09-13                            100         WGS84  HUMAN_OBSERVATION
-2  65bec6ec-5c78-47db-bd53-ddbd3095322e           Banksia aemula           -33.60            150.72  2022-08-15                            100         WGS84  HUMAN_OBSERVATION
-3  188f80bb-cfb3-4173-b154-2efc16bc96a8  Eucalyptus sclerophylla           -33.60            150.72  2022-06-16                            100         WGS84  HUMAN_OBSERVATION
-4  a5124e3d-6835-4960-89a2-4a06cab2ff8a        Persoonia laurina           -33.60            150.72  2022-10-19                            100         WGS84  HUMAN_OBSERVATION
+0  3817cb29-9c89-42e2-8d3e-0f0bcee68f0c       Corymbia latifolia           -13.04            131.07  2022-03-29                            100         WGS84  HUMAN_OBSERVATION
+1  35a4b461-76f7-419a-9081-7c106d317f8e     Eucalyptus tectifica           -13.04            131.07  2022-09-13                            100         WGS84  HUMAN_OBSERVATION
+2  c27c4c5d-0166-4552-b115-82c2dbbb9406           Banksia aemula           -33.60            150.72  2022-08-15                            100         WGS84  HUMAN_OBSERVATION
+3  2b23f4f2-df6c-41cb-819e-3dbeac5fdf28  Eucalyptus sclerophylla           -33.60            150.72  2022-06-16                            100         WGS84  HUMAN_OBSERVATION
+4  8e1cf9ac-d83d-4763-ac03-b0bd93bd11e9        Persoonia laurina           -33.60            150.72  2022-10-19                            100         WGS84  HUMAN_OBSERVATION
 </pre></div>
 </div>
 <p>For more ways to prepare your data, go back to <a class="reference external" href="../preparing_data.html">the “Preparing Data” main page</a>.</p>

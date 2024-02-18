@@ -17,7 +17,13 @@ Required Metadata
 
 ``Title``
 
-``Public Short Description``
+``Description`` ???
+
+``Contact``
+
+``URL``
+
+``Public Short Description`` ???
 
 ``Citation``
 

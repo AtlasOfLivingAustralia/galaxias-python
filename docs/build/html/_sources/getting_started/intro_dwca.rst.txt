@@ -3,9 +3,9 @@
 What is a Darwin Core Archive?
 =================================
 
-According to `Wikipedia <https://en.wikipedia.org/wiki/Darwin_Core_Archive>`_, A Darwin Core Archive (DwC-A) is "a biodiversity 
+According to `Wikipedia <https://en.wikipedia.org/wiki/Darwin_Core_Archive>`_, A Darwin Core Archive (DwC-A) is *"a biodiversity 
 informatics data standard that makes use of the Darwin Core terms to produce a single, self-contained dataset for species occurrence, 
-checklist, sampling event or material sample data."  However, what it actually looks like is a zip file, or zip archive, with 
+checklist, sampling event or material sample data."*  However, what it actually looks like is a zip file, or zip archive, with 
 at least three specifically formatted files:
 
 - ``occurrences.csv``
@@ -24,8 +24,4 @@ where the metadata is and the file name (i.e. ``eml.xml``), along with the infor
 This file also includes extension information, such as ``multimedia`` (if you have images, videos or sounds you want to include 
 with your dataset), 
 
-Extensions
--------------
-
-- ``multimedia``: this extension is for those who have images, videos or sounds they would like to include in their dataset.
-- ``eventCore``: not sure...
+To add media, such as images and sounds, see `Multimedia <multimedia.html>`_.
