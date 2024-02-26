@@ -391,7 +391,7 @@ document.write(`
 <span id="api-docs"></span><h1>API Docs<a class="headerlink" href="#module-galaxias" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="galaxias.dwca">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">galaxias.</span></span><span class="sig-name descname"><span class="pre">dwca</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">occurrences</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">occurrences_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'occurrences.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dwca_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'dwca.zip'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Occurrence'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata_md</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eml_xml</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'eml.xml'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">meta_xml</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'meta.xml'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">galaxias.</span></span><span class="sig-name descname"><span class="pre">dwca</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">occurrences</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">occurrences_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'occurrences.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multimedia</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multimedia_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'multimedia.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">events</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">events_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'events.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emof</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emof_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ExtendedMeasurementOrFact.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dwca_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'dwca.zip'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata_md</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eml_xml</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'eml.xml'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">meta_xml</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'meta.xml'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="galaxias.dwca.add_metadata_md">
@@ -426,35 +426,46 @@ span.prompt1:before {
 }
 </style><span class="prompt1"><span class="kn">import</span> <span class="nn">galaxias</span></span>
 <span class="prompt1"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span></span>
-<span class="prompt1"><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data.csv&quot;</span><span class="p">)</span></span>
+<span class="prompt1"><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;occurrences_dwc_rename.csv&quot;</span><span class="p">)</span></span>
 <span class="prompt1"><span class="n">my_dwca</span> <span class="o">=</span> <span class="n">galaxias</span><span class="o">.</span><span class="n">dwca</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">data</span><span class="p">)</span></span>
 <span class="prompt1"><span class="n">my_dwca</span><span class="o">.</span><span class="n">add_taxonomic_information</span><span class="p">()</span></span>
 <span class="prompt1"><span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                            scientificName  decimalLatitude  decimalLongitude   eventDate          vernacularName       genus            family         order         classs      phylum  kingdom
-0                       Corymbia latifolia           -13.04            131.07  2022-03-29  Round-leaved Bloodwood    Corymbia         Myrtaceae      Myrtales  Equisetopsida  Charophyta  Plantae
-1                     Eucalyptus tectifica           -13.04            131.07  2022-09-13                Grey Box  Eucalyptus         Myrtaceae      Myrtales  Equisetopsida  Charophyta  Plantae
-2                           Banksia aemula           -33.60            150.72  2022-08-15                Banyalla     Banksia        Proteaceae     Proteales  Equisetopsida  Charophyta  Plantae
-3                      Eucalyptus racemosa           -33.60            150.72  2022-06-16            Scribbly Gum  Eucalyptus         Myrtaceae      Myrtales  Equisetopsida  Charophyta  Plantae
-4                        Persoonia laurina           -33.60            150.72  2022-10-19                    None   Persoonia        Proteaceae     Proteales  Equisetopsida  Charophyta  Plantae
-5                            Acacia aneura           -22.35            133.33  2022-10-11                   Mulga      Acacia          Fabaceae       Fabales  Equisetopsida  Charophyta  Plantae
-6                          Acacia cambagei           -22.35            133.33  2022-08-23                  Gidgee      Acacia          Fabaceae       Fabales  Equisetopsida  Charophyta  Plantae
-7                      Acacia dictyophleba           -22.35            133.33  2022-01-11             Waxy Wattle      Acacia          Fabaceae       Fabales  Equisetopsida  Charophyta  Plantae
-8                     Acacia estrophiolata           -22.35            133.33  2022-07-10       Southern Ironwood      Acacia          Fabaceae       Fabales  Equisetopsida  Charophyta  Plantae
-9                          Acacia kempeana           -22.35            133.33  2022-07-18          Witchetty Bush      Acacia          Fabaceae       Fabales  Equisetopsida  Charophyta  Plantae
-10                       Acacia melleodora           -22.35            133.33  2022-04-25      Scented Wax Wattle      Acacia          Fabaceae       Fabales  Equisetopsida  Charophyta  Plantae
-11                        Acacia murrayana           -22.35            133.33  2022-12-15         Murray&#39;s Wattle      Acacia          Fabaceae       Fabales  Equisetopsida  Charophyta  Plantae
-12                          Corymbia opaca           -22.35            133.33  2022-02-06        Desert Bloodwood    Corymbia         Myrtaceae      Myrtales  Equisetopsida  Charophyta  Plantae
-13                     Corymbia terminalis           -22.35            133.33  2022-04-21               Bloodwood    Corymbia         Myrtaceae      Myrtales  Equisetopsida  Charophyta  Plantae
-14                     Eremophila latrobei           -22.35            133.33  2022-01-30     Crimson Turkey Bush  Eremophila  Scrophulariaceae      Lamiales  Equisetopsida  Charophyta  Plantae
-15                Eucalyptus camaldulensis           -22.35            133.33  2022-03-30             Flooded Gum  Eucalyptus         Myrtaceae      Myrtales  Equisetopsida  Charophyta  Plantae
-16  Eucalyptus camaldulensis subsp. obtusa           -22.35            133.33  2022-07-25                    Yumu  Eucalyptus         Myrtaceae      Myrtales  Equisetopsida  Charophyta  Plantae
-17                        Hakea leucoptera           -22.35            133.33  2022-03-11              Needlebush       Hakea        Proteaceae     Proteales  Equisetopsida  Charophyta  Plantae
-18                        Hakea macrocarpa           -22.35            133.33  2022-07-28                    None       Hakea        Proteaceae     Proteales  Equisetopsida  Charophyta  Plantae
-19                       Psydrax latifolia           -22.35            133.33  2022-03-06                    None     Psydrax         Rubiaceae   Gentianales  Equisetopsida  Charophyta  Plantae
-20                            Acacia celsa           -17.26            145.46  2022-09-05           Brown Salwood      Acacia          Fabaceae       Fabales  Equisetopsida  Charophyta  Plantae
-21                      Acronychia acidula           -17.26            145.46  2022-04-22            Silver Aspen  Acronychia          Rutaceae    Sapindales  Equisetopsida  Charophyta  Plantae
-22               Aleurites rockinghamensis           -17.26            145.46  2022-07-21               Candlenut   Aleurites     Euphorbiaceae  Malpighiales  Equisetopsida  Charophyta  Plantae
-23                      Alphitonia petriei           -17.26            145.46  2022-03-11               White Ash  Alphitonia        Rhamnaceae       Rosales  Equisetopsida  Charophyta  Plantae
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                          scientificName  decimalLatitude  decimalLongitude   eventDate             vernacularName       genus            family         order          class      phylum  kingdom
+0                     Corymbia latifolia           -13.04            131.07  2022-03-29       Round-leaf Bloodwood    Corymbia         Myrtaceae      Myrtales  Equisetopsida  Charophyta  Plantae
+1                   Eucalyptus tectifica           -13.04            131.07  2022-09-13                 Darwin Box  Eucalyptus         Myrtaceae      Myrtales  Equisetopsida  Charophyta  Plantae
+2                         Banksia aemula           -33.60            150.72  2022-08-15             Wallum Banksia     Banksia        Proteaceae     Proteales  Equisetopsida  Charophyta  Plantae
+3                Eucalyptus sclerophylla           -33.60            150.72  2022-06-16                       None        None              None          None           None        None     None
+4                      Persoonia laurina           -33.60            150.72  2022-10-19             Laurel Geebung   Persoonia        Proteaceae     Proteales  Equisetopsida  Charophyta  Plantae
+5                          Acacia aneura           -22.35            133.33  2022-10-11           Broad-leaf Mulga      Acacia          Fabaceae       Fabales  Equisetopsida  Charophyta  Plantae
+6                        Acacia cambagei           -22.35            133.33  2022-08-23                     Gidgee      Acacia          Fabaceae       Fabales  Equisetopsida  Charophyta  Plantae
+7                    Acacia dictyophleba           -22.35            133.33  2022-01-11          Net-veined Wattle      Acacia          Fabaceae       Fabales  Equisetopsida  Charophyta  Plantae
+8                   Acacia estrophiolata           -22.35            133.33  2022-07-10                   Ironwood      Acacia          Fabaceae       Fabales  Equisetopsida  Charophyta  Plantae
+9                        Acacia kempeana           -22.35            133.33  2022-07-18             Witchetty Bush      Acacia          Fabaceae       Fabales  Equisetopsida  Charophyta  Plantae
+10                     Acacia melleodora           -22.35            133.33  2022-04-25                Waxy Wattle      Acacia          Fabaceae       Fabales  Equisetopsida  Charophyta  Plantae
+11                       Acacia murayana           -22.35            133.33  2022-12-15                       None        None              None          None           None        None     None
+12                        Corymbia opaca           -22.35            133.33  2022-02-06                  Bloodwood    Corymbia         Myrtaceae      Myrtales  Equisetopsida  Charophyta  Plantae
+13                   Corymbia terminalis           -22.35            133.33  2022-04-21         Northern Bloodwood    Corymbia         Myrtaceae      Myrtales  Equisetopsida  Charophyta  Plantae
+14                   Eremophila latrobei           -22.35            133.33  2022-01-30       Georgina Poison Bush  Eremophila  Scrophulariaceae      Lamiales  Equisetopsida  Charophyta  Plantae
+15              Eucalyptus camaldulensis           -22.35            133.33  2022-03-30                    Red Gum  Eucalyptus         Myrtaceae      Myrtales  Equisetopsida  Charophyta  Plantae
+16  Eucalyptus camaldulensis var. obtusa           -22.35            133.33  2022-07-25                       None        None              None          None           None        None     None
+17                      Hakea leucoptera           -22.35            133.33  2022-03-11               Needle Hakea       Hakea        Proteaceae     Proteales  Equisetopsida  Charophyta  Plantae
+18                      Hakea macrocarpa           -22.35            133.33  2022-07-28          Flat-leaved Hakea       Hakea        Proteaceae     Proteales  Equisetopsida  Charophyta  Plantae
+19                     Psydrax latifolia           -22.35            133.33  2022-03-06  Broad-leaf Native Currant     Psydrax         Rubiaceae   Gentianales  Equisetopsida  Charophyta  Plantae
+20                          Acacia celsa           -17.26            145.46  2022-09-05              Brown Salwood      Acacia          Fabaceae       Fabales  Equisetopsida  Charophyta  Plantae
+21                    Acronychia acidula           -17.26            145.46  2022-04-22                Lemon Aspen  Acronychia          Rutaceae    Sapindales  Equisetopsida  Charophyta  Plantae
+22             Aleurites rockinghamensis           -17.26            145.46  2022-07-21                  Candlenut   Aleurites     Euphorbiaceae  Malpighiales  Equisetopsida  Charophyta  Plantae
+23                    Alphitonia petriei           -17.26            145.46  2022-03-11                  White Ash  Alphitonia        Rhamnaceae       Rosales  Equisetopsida  Charophyta  Plantae
+24                  Gillbeea adenopetala           -17.26            145.46  2022-02-15                 Pink Alder    Gillbeea       Cunoniaceae    Oxalidales  Equisetopsida  Charophyta  Plantae
+25                       Litsea leefeana           -17.26            145.46  2022-05-11                   Sycamore      Litsea         Lauraceae      Laurales  Equisetopsida  Charophyta  Plantae
+26                        Myrsine porosa           -17.26            145.46  2022-10-31        Northern Muttonwood     Myrsine       Primulaceae      Ericales  Equisetopsida  Charophyta  Plantae
+27                    Neolitsea dealbata           -17.26            145.46  2022-10-08            White Bolly Gum   Neolitsea         Lauraceae      Laurales  Equisetopsida  Charophyta  Plantae
+28                 Polyscias australiana           -17.26            145.46  2022-10-26             Ivory Basswood   Polyscias        Araliaceae       Apiales  Equisetopsida  Charophyta  Plantae
+29                     Coprosma hirtella           -35.66            148.15  2022-03-04         Rough Coffee-berry    Coprosma         Rubiaceae   Gentianales  Equisetopsida  Charophyta  Plantae
+30                    Daviesia latifolia           -35.66            148.15  2022-06-28             Hop Bitter-pea    Daviesia          Fabaceae       Fabales  Equisetopsida  Charophyta  Plantae
+31               Eucalyptus delegatensis           -35.66            148.15  2022-01-22                 Woollybutt  Eucalyptus         Myrtaceae      Myrtales  Equisetopsida  Charophyta  Plantae
+32                  Tasmannia lanceolata           -35.66            148.15  2022-06-24        Mountain Pepperbush   Tasmannia       Winteraceae    Canellales  Equisetopsida  Charophyta  Plantae
+33                    Eucalyptus miniata           -12.42            130.92  2022-10-28          Darwin Woollybutt  Eucalyptus         Myrtaceae      Myrtales  Equisetopsida  Charophyta  Plantae
+34                 Eucalyptus tetrodonta           -12.42            130.92  2022-06-21         Darwin Stringybark  Eucalyptus         Myrtaceae      Myrtales  Equisetopsida  Charophyta  Plantae
 </pre></div>
 </div>
 </dd></dl>
@@ -474,35 +485,46 @@ span.prompt1:before {
 <p class="rubric">Examples</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="kn">import</span> <span class="nn">galaxias</span></span>
 <span class="prompt1"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span></span>
-<span class="prompt1"><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data.csv&quot;</span><span class="p">)</span></span>
+<span class="prompt1"><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;occurrences_dwc.csv&quot;</span><span class="p">)</span></span>
 <span class="prompt1"><span class="n">my_dwca</span> <span class="o">=</span> <span class="n">galaxias</span><span class="o">.</span><span class="n">dwca</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">data</span><span class="p">)</span></span>
 <span class="prompt1"><span class="n">my_dwca</span><span class="o">.</span><span class="n">add_unique_occurrence_IDs</span><span class="p">()</span></span>
 <span class="prompt1"><span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                            occurrenceID                          scientificName  decimalLatitude  decimalLongitude   eventDate
-0   c0f73386-062f-49e3-abe2-0553f323c358                      Corymbia latifolia           -13.04            131.07  2022-03-29
-1   aa7dadd4-b0a0-4cfa-af89-49b8bbf01040                    Eucalyptus tectifica           -13.04            131.07  2022-09-13
-2   6e6db3bc-2209-4475-b425-f25179f5fbed                          Banksia aemula           -33.60            150.72  2022-08-15
-3   668370d3-8c66-40a3-8c93-5bb9d1360ed8                     Eucalyptus racemosa           -33.60            150.72  2022-06-16
-4   b243b631-7f39-47f4-b312-39c914aa5e73                       Persoonia laurina           -33.60            150.72  2022-10-19
-5   64d5aa3c-eb05-47e2-9b48-915f5de8624a                           Acacia aneura           -22.35            133.33  2022-10-11
-6   59a503ac-a32a-4f01-b214-6b8857908d00                         Acacia cambagei           -22.35            133.33  2022-08-23
-7   4ca224b7-81e9-4fc9-948f-a25d4fd13ecf                     Acacia dictyophleba           -22.35            133.33  2022-01-11
-8   99bdb392-5377-4561-82a3-16c6d34c0533                    Acacia estrophiolata           -22.35            133.33  2022-07-10
-9   1d2bb40b-3eee-4f03-8b90-d3063a6e1e5c                         Acacia kempeana           -22.35            133.33  2022-07-18
-10  0cec56e4-e966-41a4-9766-2c865d0fd454                       Acacia melleodora           -22.35            133.33  2022-04-25
-11  86efeb1c-0322-42ca-bfba-78a0f2eeaf28                        Acacia murrayana           -22.35            133.33  2022-12-15
-12  8324aaac-4c68-4d2c-91d1-bfb707d768c0                          Corymbia opaca           -22.35            133.33  2022-02-06
-13  8288db73-e1eb-4d56-8a22-c28acf56997a                     Corymbia terminalis           -22.35            133.33  2022-04-21
-14  8f5bccc5-6f76-4d43-a71a-93468d89c603                     Eremophila latrobei           -22.35            133.33  2022-01-30
-15  6314172b-faab-4a77-941f-ffb54b8209de                Eucalyptus camaldulensis           -22.35            133.33  2022-03-30
-16  629b5786-1ba1-48c5-956c-0978572ff2f1  Eucalyptus camaldulensis subsp. obtusa           -22.35            133.33  2022-07-25
-17  97360d12-de7a-45e1-bc0e-f0fe7bb2e878                        Hakea leucoptera           -22.35            133.33  2022-03-11
-18  bf5674a8-4ad7-4d1c-b606-280fee7b217e                        Hakea macrocarpa           -22.35            133.33  2022-07-28
-19  6f0c683b-da00-46f7-aa36-fae7841a200c                       Psydrax latifolia           -22.35            133.33  2022-03-06
-20  c209c275-3ca8-45c5-b6d7-b6b2a56fb87c                            Acacia celsa           -17.26            145.46  2022-09-05
-21  ed75f77b-555f-4f1b-aa46-22182ff30af6                      Acronychia acidula           -17.26            145.46  2022-04-22
-22  e58607d6-1647-4851-b6e3-3a936fb883a5               Aleurites rockinghamensis           -17.26            145.46  2022-07-21
-23  d839b1e6-ac16-486c-b0d0-dba9244a60c6                      Alphitonia petriei           -17.26            145.46  2022-03-11
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                            occurrenceID                               Species  Latitude  Longitude Collection_date
+0   fe0c05f1-3468-4a8a-83a8-6a461126d4e8                    Corymbia latifolia    -13.04     131.07      2022-03-29
+1   d42ca09e-b845-4629-98f7-c756c7ad83e9                  Eucalyptus tectifica    -13.04     131.07      2022-09-13
+2   771255ba-0f5b-4460-b838-7eb49c22d4fc                        Banksia aemula    -33.60     150.72      2022-08-15
+3   c6aa2edb-3e8f-463f-be14-ca2fb5a7e316               Eucalyptus sclerophylla    -33.60     150.72      2022-06-16
+4   297d05e6-ace8-4b0d-a093-157cb76462d1                     Persoonia laurina    -33.60     150.72      2022-10-19
+5   cdd4397f-67e2-4a14-a347-67c5bf7f0965                         Acacia aneura    -22.35     133.33      2022-10-11
+6   248a5c5a-f025-4fbe-bdfe-722a1b195bbe                       Acacia cambagei    -22.35     133.33      2022-08-23
+7   da87871f-cca2-4c8a-8e01-0089836ac987                   Acacia dictyophleba    -22.35     133.33      2022-01-11
+8   fc7ed3e1-9bbb-438a-8ab8-074030013499                  Acacia estrophiolata    -22.35     133.33      2022-07-10
+9   79c99268-d5ca-4008-a816-791a7a7a37c3                       Acacia kempeana    -22.35     133.33      2022-07-18
+10  f6c24c12-85fc-48b4-b70d-0180c8e0399e                     Acacia melleodora    -22.35     133.33      2022-04-25
+11  ac23c2cb-2e36-4374-99cc-b879074222f4                       Acacia murayana    -22.35     133.33      2022-12-15
+12  b8264c58-93ce-4e88-bd6b-52dd1d3f4317                        Corymbia opaca    -22.35     133.33      2022-02-06
+13  fa791082-004e-40ff-a293-14453e986ef7                   Corymbia terminalis    -22.35     133.33      2022-04-21
+14  5683aba3-f76d-41c2-97d4-2ff17c1e5c68                   Eremophila latrobei    -22.35     133.33      2022-01-30
+15  83ffbd0a-5129-4a2e-acbe-18f2021ac381              Eucalyptus camaldulensis    -22.35     133.33      2022-03-30
+16  cc66d75b-40fa-452f-b568-21190654d5dd  Eucalyptus camaldulensis var. obtusa    -22.35     133.33      2022-07-25
+17  afdc8aab-08b0-49d9-a2ee-b892f8a23a8d                      Hakea leucoptera    -22.35     133.33      2022-03-11
+18  e68fed0a-5cf5-4d07-9a9f-64f25a688be8                      Hakea macrocarpa    -22.35     133.33      2022-07-28
+19  04ae803d-104b-4ce8-9fb1-de904f8ad509                     Psydrax latifolia    -22.35     133.33      2022-03-06
+20  5f6b3443-b692-4f89-a6d1-5490856ec63f                          Acacia celsa    -17.26     145.46      2022-09-05
+21  d7ce735f-e9d0-4f4a-9a15-163a88b92338                    Acronychia acidula    -17.26     145.46      2022-04-22
+22  6adf2bb0-f1e0-42c1-9c9a-d3ad2498f9a6             Aleurites rockinghamensis    -17.26     145.46      2022-07-21
+23  03f15be7-75f2-4276-b236-0f40f13751d0                    Alphitonia petriei    -17.26     145.46      2022-03-11
+24  530e16aa-ef02-40e3-80b4-19e25880f8d0                  Gillbeea adenopetala    -17.26     145.46      2022-02-15
+25  fe1a5187-b32a-4c93-904e-9607b1595656                       Litsea leefeana    -17.26     145.46      2022-05-11
+26  00500d51-0cef-435d-8429-648c11c810b7                        Myrsine porosa    -17.26     145.46      2022-10-31
+27  d309db95-5120-4534-bc79-be4c7ce22f8f                    Neolitsea dealbata    -17.26     145.46      2022-10-08
+28  995f5772-3b79-4e96-8e4b-f0000ea8264f                 Polyscias australiana    -17.26     145.46      2022-10-26
+29  2c354978-d16d-4755-b66f-ab9f958af4cb                     Coprosma hirtella    -35.66     148.15      2022-03-04
+30  e16db356-f274-42ee-9206-e5b3fd486ed5                    Daviesia latifolia    -35.66     148.15      2022-06-28
+31  3af1e12e-67f0-4cd0-9192-8855572dfcee               Eucalyptus delegatensis    -35.66     148.15      2022-01-22
+32  a3111bdb-41c4-465b-a0dd-dd4720406491                  Tasmannia lanceolata    -35.66     148.15      2022-06-24
+33  09f36207-3330-43f9-8f77-9a5d04be75c4                    Eucalyptus miniata    -12.42     130.92      2022-10-28
+34  34b491f4-9aa0-4daa-9139-e339120f744c                 Eucalyptus tetrodonta    -12.42     130.92      2022-06-21
 </pre></div>
 </div>
 </dd></dl>
@@ -526,7 +548,7 @@ span.prompt1:before {
 <p class="rubric">Examples</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="kn">import</span> <span class="nn">galaxias</span></span>
 <span class="prompt1"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span></span>
-<span class="prompt1"><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data.csv&quot;</span><span class="p">)</span></span>
+<span class="prompt1"><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;occurrences_dwc_rename.csv&quot;</span><span class="p">)</span></span>
 <span class="prompt1"><span class="n">my_dwca</span> <span class="o">=</span> <span class="n">galaxias</span><span class="o">.</span><span class="n">dwca</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">data</span><span class="p">)</span></span>
 <span class="prompt1"><span class="n">my_dwca</span><span class="o">.</span><span class="n">check_species_names</span><span class="p">()</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>True
@@ -568,35 +590,39 @@ render to HTML/MD (eventually)</p>
 <p class="rubric">Examples</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="kn">import</span> <span class="nn">galaxias</span></span>
 <span class="prompt1"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span></span>
-<span class="prompt1"><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data.csv&quot;</span><span class="p">)</span></span>
+<span class="prompt1"><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;occurrences_dwc.csv&quot;</span><span class="p">)</span></span>
 <span class="prompt1"><span class="n">my_dwca</span> <span class="o">=</span> <span class="n">galaxias</span><span class="o">.</span><span class="n">dwca</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">data</span><span class="p">)</span></span>
 <span class="prompt1"><span class="n">my_dwca</span><span class="o">.</span><span class="n">generate_data_report</span><span class="p">()</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Pass/Fail: Fail
+Data Type: Occurrence
 record_type: Occurrence
-record_count: 24
-record_error_count: 24
+record_count: 35
+record_error_count: 35
 Errors: 
-	You are missing one of the three id fields: occurrenceID, catalogNumber, recordNumber
+	A taxonomy report could not be generated, likely because the column &#39;scientificName&#39; is not in your column names.
 	You are missing required columns in your data.
+	Your datetime format is not in YYYY-MM-DD or iso format.
 	Some of your columns do not match the current Darwin Core Standard.
 Warnings: None
 all_required_columns_present: False
 missing_columns:
-	phylum
-	family
-	kingdom
-	genus
-	order
-	classs
-	basisOfRecord
+	MAYBE: decimalLatitude
+	MAYBE: decimalLongitude
 	occurrenceID OR catalogNumber OR recordNumber
 Taxonomic validity:
-	Invalid taxon present: False
-	Valid Taxon count: 24
+	Could not do a taxonomic classification because &#39;scientificName&#39; is likely missing from your columns.
 Datetime Report:
-	Has invalid datetime: False
-	Number of invalid datetimes: 0
+	Has invalid datetime: True
+	Number of invalid datetimes: 35
 Incorrect Darwin Core Terms:
+	Collection_date
+	Latitude
+	Longitude
+	Species
+
+Multimedia: None
+
+Extended Measurement Or Fact: None
 </pre></div>
 </div>
 </dd></dl>

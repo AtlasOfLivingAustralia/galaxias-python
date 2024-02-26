@@ -15,7 +15,7 @@ pd.set_option('max_colwidth', None) #;
 # --------------------------------------------------------
 
 # read in data
-data = pd.read_csv("galaxias_user_guide/data.csv")
+data = pd.read_csv("galaxias_user_guide/occurrences_dwc.csv")
 my_dwca = galaxias.dwca(occurrences=data)
 
 # generate initial data report and exit
@@ -128,5 +128,5 @@ if stopping_point == "final":
     )
     my_dwca.occurrences = temp_occurrences
 
-    my_dwca.occurrences.to_csv("galaxias_user_guide/data_clean.csv",index=False)
+    my_dwca.occurrences.to_csv("galaxias_user_guide/occurrences_dwc_clean.csv",index=False)
     sys.exit()

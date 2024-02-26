@@ -389,14 +389,17 @@ document.write(`
 <h1>Recommended Terms Dumping Ground<a class="headerlink" href="#recommended-terms-dumping-ground" title="Link to this heading">#</a></h1>
 <section id="additional-location-information">
 <h2>Additional Location information<a class="headerlink" href="#additional-location-information" title="Link to this heading">#</a></h2>
-<p>Sometimes, additional location information is necessary, as in X.  In these cases, you can include terms like</p>
-<p><code class="docutils literal notranslate"><span class="pre">coordinatePrecision</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">country</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">locality</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">stateProvince</span></code></p>
+<p>Sometimes, additional location information is necessary, especially if you are using a GPS, or if you are
+looking at a specific site and want to provide extra information.  In these cases, you can include the
+following terms, which will also help validate your coordinates:</p>
+<p><code class="docutils literal notranslate"><span class="pre">coordinatePrecision</span></code> : how precise the device with which you measure your occurrence is</p>
+<p><code class="docutils literal notranslate"><span class="pre">country</span></code> : country in which occurrences were seen</p>
+<p><code class="docutils literal notranslate"><span class="pre">locality</span></code> : locality in which occurrences were seen</p>
+<p><code class="docutils literal notranslate"><span class="pre">stateProvince</span></code> : state or province in which occurrences were seen</p>
 </section>
 <section id="extra-occurrence-information">
 <h2>Extra occurrence information<a class="headerlink" href="#extra-occurrence-information" title="Link to this heading">#</a></h2>
+<p>This information is useful in X, but is also especially useful in EventCore.</p>
 <p><code class="docutils literal notranslate"><span class="pre">individualCount</span></code> : number of individuals present</p>
 <p><code class="docutils literal notranslate"><span class="pre">occurrenceStatus</span></code> : PRESENT / ABSENT</p>
 <p><code class="docutils literal notranslate"><span class="pre">recordedBy</span></code> : who recorded the occurrence</p>

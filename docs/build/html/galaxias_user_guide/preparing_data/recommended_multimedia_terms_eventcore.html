@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Preparing An Event Core &#8212; Galaxias 0.1.0 documentation</title>
+    <title>How to Prepare The Recommended Multimedia options for your csv &#8212; Galaxias 0.1.0 documentation</title>
   
   
   
@@ -42,7 +42,7 @@
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/design-tabs.js?v=36754332"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'galaxias_user_guide/preparing_data/preparing_event_core';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'galaxias_user_guide/preparing_data/recommended_multimedia_terms_eventcore';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -368,7 +368,7 @@ document.write(`
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page">Preparing...</li>
+    <li class="breadcrumb-item active" aria-current="page">How to...</li>
   </ul>
 </nav>
 </div>
@@ -385,8 +385,68 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="preparing-an-event-core">
-<h1>Preparing An Event Core<a class="headerlink" href="#preparing-an-event-core" title="Link to this heading">#</a></h1>
+  <section id="how-to-prepare-the-recommended-multimedia-options-for-your-csv">
+<h1>How to Prepare The Recommended Multimedia options for your <code class="docutils literal notranslate"><span class="pre">csv</span></code><a class="headerlink" href="#how-to-prepare-the-recommended-multimedia-options-for-your-csv" title="Link to this heading">#</a></h1>
+<p><em>Note: If you don’t have any events, go to</em> <a class="reference external" href="initial_multimedia_prep_dwc.html">Multimedia Darwin Core Preparation</a></p>
+<p><code class="docutils literal notranslate"><span class="pre">eventID</span></code>, <code class="docutils literal notranslate"><span class="pre">occurrenceID</span></code> and <code class="docutils literal notranslate"><span class="pre">identifier</span></code> are the required terms you need for your <code class="docutils literal notranslate"><span class="pre">multimedia.csv</span></code>.  However, if you
+would like to include more information about your images, below are recommended fields.</p>
+<section id="additional-details">
+<h2>Additional details<a class="headerlink" href="#additional-details" title="Link to this heading">#</a></h2>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p>
+<blockquote>
+<div><p>This is the type of data you are giving in your dataset, such as <code class="docutils literal notranslate"><span class="pre">Stillimage</span></code> or <code class="docutils literal notranslate"><span class="pre">Sound</span></code>.</p>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">format</span></code></p>
+<blockquote>
+<div><p>This is more specific than the field <code class="docutils literal notranslate"><span class="pre">type</span></code>, in that it contains the type of data and the format, i.e.
+<code class="docutils literal notranslate"><span class="pre">image/jpeg</span></code> or <code class="docutils literal notranslate"><span class="pre">image/png</span></code>.</p>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">references</span></code></p>
+<blockquote>
+<div><p>This could be referring to such things as the occurrence record (?)</p>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">title</span></code></p>
+<blockquote>
+<div><p>Title of your image.</p>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">description</span></code></p>
+<blockquote>
+<div><p>Description of your image.</p>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="creation">
+<h2>Creation<a class="headerlink" href="#creation" title="Link to this heading">#</a></h2>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">created</span></code></p>
+<blockquote>
+<div><p>The date, in the format <code class="docutils literal notranslate"><span class="pre">YYYY-MM-DD</span></code> the multimedia was created.</p>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">creator</span></code></p>
+<blockquote>
+<div><p>Who created the multimedia.  This field is particularly useful when someone involved in collecting the data is
+in the author list, but only certain multimedia and/or occurrences are attributed to them.</p>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading">#</a></h2>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">license</span></code></p>
+<blockquote>
+<div><p>The license that denotes how others can use your data.</p>
+</div></blockquote>
+</li>
+</ul>
+</section>
 </section>
 
 
@@ -406,7 +466,24 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-details">Additional details</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creation">Creation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
