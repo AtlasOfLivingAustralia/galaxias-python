@@ -1,7 +1,7 @@
 :orphan:
 
-Example Final Report
------------------------
+Example Final Report Occurrences
+---------------------------------
 
 .. program-output:: python galaxias_user_guide/preparing_data_script.py final
 

@@ -5,6 +5,8 @@ Preparing Your Data for a DwCA
 
 *To follow along with these steps using example occurrence data, download it* :download:`here <occurrences_dwc.csv>`
 
+*To follow along with these steps using both occurrence and example multimedia data, download the multimedia file* :download:`here <multimedia_occ.csv>`
+
 For these exercises, we are assuming your data is currently in a ``csv`` format.  
 
 To build a Darwin Core Archive, your data needs to have specific columns and be in specific formats 
@@ -25,7 +27,7 @@ Initial Preparation
     :gutter: 4
 
     .. grid-item-card:: 
-        :link: preparing_data/generate_initial_report.html
+        :link: preparing_data/generate_initial_report_occurrence.html
         :class-card: sd-text-black
         :text-align: center
 
@@ -33,6 +35,16 @@ Initial Preparation
             :file: ../../source/_static/icons/user_guide.svg
                 
         **Generate Data Report** 
+
+    .. grid-item-card::
+        :link: preparing_data/generate_initial_report_occurrence_multi.html
+        :class-card: sd-text-black
+        :text-align: center
+
+        .. raw:: html
+            :file: ../../source/_static/icons/user_guide.svg
+
+        **Data Report with Multimedia**
 
     .. grid-item-card::
         :link: preparing_data/rename_columns_to_dwca.html
@@ -139,8 +151,6 @@ Validating Recommended Darwin Core Standards
 Multimedia Extension
 -----------------------------
 
-*To follow along with these steps using example multimedia data, download it* :download:`here <multimedia_occ.csv>`
-
 .. grid:: 4
     :gutter: 4
 
@@ -164,6 +174,16 @@ Multimedia Extension
 
         **How to Prepare Recommended Multimedia Options**
 
+    .. grid-item-card::
+        :link: preparing_data/validate_multimedia_occurrence.html
+        :class-card: sd-text-black
+        :text-align: center
+
+        .. raw:: html
+            :file: ../../source/_static/icons/user_guide.svg
+
+        **Validating Multimedia Extension**
+
 Example of Final Report
 -----------------------------
 
@@ -171,11 +191,21 @@ Example of Final Report
     :gutter: 4
 
     .. grid-item-card::
-        :link: preparing_data/final_report.html
+        :link: preparing_data/final_report_occurrence_nomulti.html
         :class-card: sd-text-black
         :text-align: center
 
         .. raw:: html
             :file: ../../source/_static/icons/user_guide.svg
 
-        **Final Example Report of Passing Data**
+        **Final Example Report of Passing Occurrence Data**
+
+    .. grid-item-card::
+        :link: preparing_data/final_report_occurrence_multi.html
+        :class-card: sd-text-black
+        :text-align: center
+
+        .. raw:: html
+            :file: ../../source/_static/icons/user_guide.svg
+
+        **Final Example Report of Passing Occurrence/Multimedia Data**

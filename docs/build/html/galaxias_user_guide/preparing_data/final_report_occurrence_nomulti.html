@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Renaming column names to Darwin Core terms &#8212; Galaxias 0.1.0 documentation</title>
+    <title>Example Final Report Occurrences &#8212; Galaxias 0.1.0 documentation</title>
   
   
   
@@ -42,7 +42,7 @@
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/design-tabs.js?v=36754332"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'galaxias_user_guide/preparing_data/rename_columns_to_dwca';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'galaxias_user_guide/preparing_data/final_report_occurrence_nomulti';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -368,7 +368,7 @@ document.write(`
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page">Renaming...</li>
+    <li class="breadcrumb-item active" aria-current="page">Example...</li>
   </ul>
 </nav>
 </div>
@@ -385,127 +385,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="renaming-column-names-to-darwin-core-terms">
-<h1>Renaming column names to Darwin Core terms<a class="headerlink" href="#renaming-column-names-to-darwin-core-terms" title="Link to this heading">#</a></h1>
-<p><em>Note:</em> this artice assumes you have generated an initial report.  If you have not,
-go <a class="reference external" href="generate_initial_report.html">here</a> and follow the instructions.</p>
-<p>When we look at our generated report, we notice that a lot of things are missing:</p>
+  <section id="example-final-report-occurrences">
+<h1>Example Final Report Occurrences<a class="headerlink" href="#example-final-report-occurrences" title="Link to this heading">#</a></h1>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Archive Report
 ---------------------
-Pass/Fail: Fail
+Pass/Fail: Pass
 Data Type: Occurrence
-Errors:
-	- A taxonomy report could not be generated, likely because the column &#39;scientificName&#39; is not in your column names.
-	- You are missing required columns in your data.
-	- Some of your columns do not match the current Darwin Core Standard.
-	- Your datetime format is not in YYYY-MM-DD or iso format.
-Missing Columns Occurrence:
-	MAYBE: decimalLatitude
-	MAYBE: decimalLongitude
-	occurrenceID OR catalogNumber OR recordNumber
-	scientificName
-	vernacularName
-	genus
-	family
-	order
-	class
-	phylum
-	kingdom
-Incorrect DwC Terms Occurrence:
-	Collection_date
-	Latitude
-	Species
-	Longitude
-
-Occurrence Report
----------------------
-Coordinates Report:
-	Data has coordinate fields?: False
-	Invalid latitude count: 0
-	Invalid longitude count: 0
-Datetime Report:
-	Has invalid datetime: True
-	Number of invalid datetimes: 35
-Taxonomy Report:
-	Could not do a taxonomic classification because &#39;scientificName&#39; is likely missing from your columns.
-Column counts:
-	Species: 35
-	Latitude: 35
-	Longitude: 35
-	Collection_date: 35
-</pre></div>
-</div>
-<p>There are a lot of columns missing. However, if we look at the data we have using
-the <code class="docutils literal notranslate"><span class="pre">head</span></code> command of the occurrences dataframe, we can see that none of the column
-names are terms found in the Darwin Core Standard (for a list of required and
-recommended terms for your living atlas, see [AMANDA ADD THIS HERE]).</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
-span.prompt1:before {
-  content: " ";
-}
-</style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                   Species  Latitude  Longitude Collection_date
-0       Corymbia latifolia    -13.04     131.07      2022-03-29
-1     Eucalyptus tectifica    -13.04     131.07      2022-09-13
-2           Banksia aemula    -33.60     150.72      2022-08-15
-3  Eucalyptus sclerophylla    -33.60     150.72      2022-06-16
-4        Persoonia laurina    -33.60     150.72      2022-10-19
-</pre></div>
-</div>
-<p>To rename columns so they match Darwin Core terms, we can use <code class="docutils literal notranslate"><span class="pre">pandas</span></code>.  The following
-mapping is based on matching the current column titles in the dataset with the names of
-valid Darwin Core terms that are required by the ALA.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">temp_occurrences</span> <span class="o">=</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span></span>
-<span class="prompt1"><span class="o">...</span>     <span class="n">columns</span> <span class="o">=</span> <span class="p">{</span></span>
-<span class="prompt1"><span class="o">...</span>         <span class="s2">&quot;Species&quot;</span><span class="p">:</span> <span class="s2">&quot;scientificName&quot;</span><span class="p">,</span></span>
-<span class="prompt1"><span class="o">...</span>         <span class="s2">&quot;Latitude&quot;</span><span class="p">:</span> <span class="s2">&quot;decimalLatitude&quot;</span><span class="p">,</span></span>
-<span class="prompt1"><span class="o">...</span>         <span class="s2">&quot;Longitude&quot;</span><span class="p">:</span> <span class="s2">&quot;decimalLongitude&quot;</span><span class="p">,</span></span>
-<span class="prompt1"><span class="o">...</span>         <span class="s2">&quot;Collection_date&quot;</span><span class="p">:</span> <span class="s2">&quot;eventDate&quot;</span><span class="p">,</span></span>
-<span class="prompt1"><span class="o">...</span>     <span class="p">}</span></span>
-<span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">temp_occurrences</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>            scientificName  decimalLatitude  decimalLongitude   eventDate
-0       Corymbia latifolia           -13.04            131.07  2022-03-29
-1     Eucalyptus tectifica           -13.04            131.07  2022-09-13
-2           Banksia aemula           -33.60            150.72  2022-08-15
-3  Eucalyptus sclerophylla           -33.60            150.72  2022-06-16
-4        Persoonia laurina           -33.60            150.72  2022-10-19
-</pre></div>
-</div>
-<p>Now, since the new column names are in a temporary variable, you need replace the old data
-frame with the new one.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span> <span class="o">=</span> <span class="n">temp_occurrences</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>            scientificName  decimalLatitude  decimalLongitude   eventDate
-0       Corymbia latifolia           -13.04            131.07  2022-03-29
-1     Eucalyptus tectifica           -13.04            131.07  2022-09-13
-2           Banksia aemula           -33.60            150.72  2022-08-15
-3  Eucalyptus sclerophylla           -33.60            150.72  2022-06-16
-4        Persoonia laurina           -33.60            150.72  2022-10-19
-</pre></div>
-</div>
-<p>Now that we know all of our column headings are Darwin Core compliant, we can check what
-errors we will get now.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span> <span class="o">=</span> <span class="n">temp_occurrences</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Archive Report
----------------------
-Pass/Fail: Fail
-Data Type: Occurrence
-Errors:
-	- There are some invalid taxa according to the backbone you are comparing against.
-	- You are missing required columns in your data.
-Missing Columns Occurrence:
-	family
-	phylum
-	order
-	kingdom
-	genus
-	class
-	geodeticDatum
-	coordinateUncertaintyInMeters
-	basisOfRecord
-	occurrenceID OR catalogNumber OR recordNumber
 
 Occurrence Report
 ---------------------
@@ -517,25 +402,27 @@ Datetime Report:
 	Has invalid datetime: False
 	Number of invalid datetimes: 0
 Taxonomy Report:
-	Invalid taxon present: True
-	Valid Taxon count: 0
-	Unrecognised taxa:
-
-                          original name                      proposed match(es) rank of proposed match(es)                          scientificName     rank                   species       genus     family     order         classs      phylum  kingdom
-0               Eucalyptus sclerophylla                     Eucalyptus racemosa                    SPECIES                     Eucalyptus racemosa     None       Eucalyptus racemosa  Eucalyptus  Myrtaceae  Myrtales           None  Charophyta  Plantae
-1  Eucalyptus camaldulensis var. obtusa  Eucalyptus camaldulensis subsp. obtusa                 SUBSPECIES  Eucalyptus camaldulensis subsp. obtusa     None  Eucalyptus camaldulensis  Eucalyptus  Myrtaceae  Myrtales           None  Charophyta  Plantae
-2                       Acacia murayana                        Acacia murrayana                    species                        Acacia murrayana  species          Acacia murrayana      Acacia   Fabaceae   Fabales  Equisetopsida  Charophyta  Plantae
-
+	Invalid taxon present: False
+	Valid Taxon count: 35
 Column counts:
+	occurrenceID: 35
 	scientificName: 35
 	decimalLatitude: 35
 	decimalLongitude: 35
 	eventDate: 35
-None
+	vernacularName: 35
+	genus: 35
+	family: 35
+	order: 35
+	class: 35
+	phylum: 35
+	kingdom: 35
+	coordinateUncertaintyInMeters: 35
+	geodeticDatum: 35
+	basisOfRecord: 35
 </pre></div>
 </div>
-<p>There are still a few errors, but luckily you can do these in any order in the next section,
-<a class="reference external" href="../preparing_data.html">Validating Data Against DwC Standards</a></p>
+<p>Back to <a class="reference external" href="../preparing_data.html">data homepage</a>.</p>
 </section>
 
 

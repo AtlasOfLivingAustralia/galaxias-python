@@ -14,6 +14,13 @@ Preparing Your Data for an EventCore
 :download:`occurrences <occurrences_event_multi.csv>`
 :download:`multimedia <multimedia_event.csv>`
 
+*If you want to include extendedMeasurementOrFact in your archive, instead download the files using the following links:*
+
+:download:`events <events.csv>`
+:download:`occurrences <occurrences_event_multi.csv>`
+:download:`multimedia <multimedia_event.csv>`
+:download:`emof <extendedMeasurementOrFact.csv>`
+
 Initial Preparation
 -----------------------------
 
@@ -23,14 +30,44 @@ Initial Preparation
     :gutter: 4
 
     .. grid-item-card:: 
-        :link: preparing_data/generate_initial_report.html
+        :link: preparing_data/generate_initial_report_event.html
         :class-card: sd-text-black
         :text-align: center
 
         .. raw:: html
             :file: ../../source/_static/icons/user_guide.svg
                 
-        **Generate Data Report** 
+        **Generate EventCore Report** 
+
+    .. grid-item-card:: 
+        :link: preparing_data/generate_initial_report_event_multi.html
+        :class-card: sd-text-black
+        :text-align: center
+
+        .. raw:: html
+            :file: ../../source/_static/icons/user_guide.svg
+                
+        **Generate EventCore Report With Multimedia** 
+
+    .. grid-item-card:: 
+        :link: preparing_data/generate_initial_report_event_emof.html
+        :class-card: sd-text-black
+        :text-align: center
+
+        .. raw:: html
+            :file: ../../source/_static/icons/user_guide.svg
+                
+        **Generate EventCore Report With extendedMeasurementOrFact** 
+
+    .. grid-item-card:: 
+        :link: preparing_data/generate_initial_report_event_multi_emof.html
+        :class-card: sd-text-black
+        :text-align: center
+
+        .. raw:: html
+            :file: ../../source/_static/icons/user_guide.svg
+                
+        **Generate EventCore Report With Multimedia and extendedMeasurementOrFact** 
 
     .. grid-item-card::
         :link: preparing_data/rename_columns_to_dwca.html
@@ -167,7 +204,6 @@ Multimedia Extension
 Extended Measurement Or Fact
 -------------------------------------------
 
-*If you want to work with an example, download it* :download:`here <extendedMeasurementOrFact.csv>`
 
 ``UNDER CONSTRUCTION``
 
