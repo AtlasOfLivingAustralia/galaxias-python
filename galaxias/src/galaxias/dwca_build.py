@@ -6,19 +6,22 @@ import json
 import uuid
 import requests
 from .common_dictionaries import TAXON_TERMS
-from dwc_validator.validate import validate_occurrence_dataframe
+from dwc_validator.validate import validate_occurrence_dataframe,validate_media_extension
+from dwc_validator.validate import validate_event_dataframe,validate_emof_extension
 import xml.etree.ElementTree as ET
-
-# testing
-import sys
 
 class dwca:
 
     def __init__(self,
                  occurrences: pd.core.frame.DataFrame = None,
                  occurrences_name = "occurrences.csv",
+                 multimedia: pd.core.frame.DataFrame = None,
+                 multimedia_name = "multimedia.csv",
+                 events: pd.core.frame.DataFrame = None,
+                 events_name = "events.csv",
+                 emof: pd.core.frame.DataFrame = None,
+                 emof_name = "extendedMeasurementOrFact.csv",
                  dwca_name: str = "dwca.zip",
-                 data_type: str="Occurrence",
                  metadata_md: str = None,
                  eml_xml: str = "eml.xml",
                  meta_xml: str = "meta.xml"
@@ -27,20 +30,50 @@ class dwca:
         # check for if user provides data frame 
         if dwca_name != "dwca.zip":
             self.dwca_name = dwca_name
+
+        # set occurrences first and foremost
         if occurrences is not None and type(occurrences) is pd.core.frame.DataFrame:
             self.occurrences = occurrences
         else:
             print("WARNING: if your occurrences argument is not a dataframe, occurrences will be set to None")
             self.occurrences = None
 
+        # then, check for multimedia
+        if multimedia is not None and type(multimedia) is pd.core.frame.DataFrame:
+            self.multimedia = multimedia
+        elif multimedia is None:
+            self.multimedia=None
+        else:
+            raise ValueError("Only a pandas dataframe will be accepted for multimedia.")
+
+        # then, check if it is an event core
+        if events is not None and type(events) is pd.core.frame.DataFrame:
+            self.events = events
+        elif events is None:
+            self.events=None
+        else:
+            raise ValueError("Only a pandas dataframe will be accepted for events.")
+        
+        # then, check if it is an event core
+        if events is not None:
+            if emof is not None and type(emof) is pd.core.frame.DataFrame:
+                self.emof = emof
+            elif emof is None:
+                self.emof=None
+            else:
+                raise ValueError("Only a pandas dataframe will be accepted for extended measurement or fact.")
+
+        # check for names of data files
         if occurrences_name is not None:
+            self.occurrences_name = occurrences_name
+        if multimedia_name is not None:
+            self.occurrences_name = occurrences_name
+        if events_name is not None:
+            self.occurrences_name = occurrences_name
+        if emof_name is not None:
             self.occurrences_name = occurrences_name
 
         # check for what type of DwCA it iwll be
-        if data_type in ["Occurrence","Event","Media"]:
-            self.data_type = data_type
-        else:
-            raise ValueError("galaxias only takes occurrence and event DwC data at this time.")
         if metadata_md is None:
             metadata_md = self.create_metadata_file()
             self.metadata_md = metadata_md
@@ -87,12 +120,12 @@ class dwca:
 
             import galaxias
             import pandas as pd
-            data = pd.read_csv("data.csv")
+            data = pd.read_csv("occurrences_dwc_rename.csv")
             my_dwca = galaxias.dwca(occurrences=data)
             my_dwca.add_taxonomic_information()
             my_dwca.occurrences
             
-        .. program-output:: python -c "import galaxias;import pandas as pd;pd.set_option('display.max_columns', None);pd.set_option('display.expand_frame_repr', False);pd.set_option('max_colwidth', None);data = pd.read_csv(\\\"data.csv\\\");my_dwca = galaxias.dwca(occurrences=data);my_dwca.add_taxonomic_information();print(my_dwca.occurrences)"
+        .. program-output:: python -c "import galaxias;import pandas as pd;pd.set_option('display.max_columns', None);pd.set_option('display.expand_frame_repr', False);pd.set_option('max_colwidth', None);data = pd.read_csv(\\\"galaxias_user_guide/occurrences_dwc_rename.csv\\\");my_dwca = galaxias.dwca(occurrences=data);my_dwca.add_taxonomic_information();print(my_dwca.occurrences)"
         """
 
         # configs
@@ -111,7 +144,7 @@ class dwca:
         # merge the taxon information with the species information the user has provided
         if type(species_checked) is tuple:
             self.occurrences = pd.merge(self.occurrences, species_checked[1], left_on='scientificName', right_on='scientificName', how='left')
-            self.occurrences.rename(
+            self.occurrences = self.occurrences.rename(
                 columns = {
                     'rank': 'taxonRank',
                     'classs': 'class'
@@ -141,12 +174,12 @@ class dwca:
 
             import galaxias
             import pandas as pd
-            data = pd.read_csv("data.csv")
+            data = pd.read_csv("occurrences_dwc.csv")
             my_dwca = galaxias.dwca(occurrences=data)
             my_dwca.add_unique_occurrence_IDs()
             my_dwca.occurrences
 
-        .. program-output:: python -c "import galaxias;import pandas as pd;pd.set_option('display.max_columns', None);pd.set_option('display.expand_frame_repr', False);pd.set_option('max_colwidth', None);data = pd.read_csv(\\\"data.csv\\\");my_dwca = galaxias.dwca(occurrences=data);my_dwca.add_unique_occurrence_IDs();print(my_dwca.occurrences)"
+        .. program-output:: python -c "import galaxias;import pandas as pd;pd.set_option('display.max_columns', None);pd.set_option('display.expand_frame_repr', False);pd.set_option('max_colwidth', None);data = pd.read_csv(\\\"galaxias_user_guide/occurrences_dwc.csv\\\");my_dwca = galaxias.dwca(occurrences=data);my_dwca.add_unique_occurrence_IDs();print(my_dwca.occurrences)"
         """
 
         if self.occurrences is None:
@@ -182,11 +215,11 @@ class dwca:
 
             import galaxias
             import pandas as pd
-            data = pd.read_csv("data.csv")
+            data = pd.read_csv("occurrences_dwc_rename.csv")
             my_dwca = galaxias.dwca(occurrences=data)
             my_dwca.check_species_names()
 
-        .. program-output:: python -c "import galaxias;import pandas as pd;data = pd.read_csv(\\\"data.csv\\\");my_dwca = galaxias.dwca(occurrences=data);print(my_dwca.check_species_names())"
+        .. program-output:: python -c "import galaxias;import pandas as pd;data = pd.read_csv(\\\"galaxias_user_guide/occurrences_dwc_rename.csv\\\");my_dwca = galaxias.dwca(occurrences=data);print(my_dwca.check_species_names())"
         """
 
         # get configurations from user
@@ -287,19 +320,49 @@ class dwca:
 
             import galaxias
             import pandas as pd
-            data = pd.read_csv("data.csv")
+            data = pd.read_csv("occurrences_dwc.csv")
             my_dwca = galaxias.dwca(occurrences=data)
             my_dwca.generate_data_report()
 
-        .. program-output:: python -c "import galaxias;import pandas as pd;data = pd.read_csv(\\\"data.csv\\\");my_dwca = galaxias.dwca(occurrences=data);my_dwca.generate_data_report()"
+        .. program-output:: python -c "import galaxias;import pandas as pd;data = pd.read_csv(\\\"galaxias_user_guide/occurrences_dwc.csv\\\");my_dwca = galaxias.dwca(occurrences=data);my_dwca.generate_data_report()"
         
         """
-        
+
         # get validation report
-        validation_report = validate_occurrence_dataframe(self.occurrences)
+        if self.occurrences is not None:
+            
+            occurrences_validation_report = validate_occurrence_dataframe(self.occurrences)
+
+        else:
+
+            raise ValueError("You need occurrences to be able to run validation")
+
+        # next, check for events
+        if self.events is not None:
+            events_validation_report = validate_event_dataframe(self.events) #,data_type="event")
+
+            if self.emof is not None:
+                emof_validation_report = validate_emof_extension(self.emof)
+            
+            else:
+                emof_validation_report = None
+        
+        else:
+            events_validation_report = None
+            emof_validation_report = None
+
+        # finally, check for multimedia
+        if self.multimedia is not None:
+            multimedia_validation_report = validate_media_extension(self.multimedia,data_type="occurrence")
+        else:
+            multimedia_validation_report = None
 
         # generate simple or complex report
-        dwca_report(report=validation_report,verbose=verbose)
+        dwca_report(occurrence_report=occurrences_validation_report,
+                    multimedia_report=multimedia_validation_report,
+                    events_report=events_validation_report,
+                    emof_report=emof_validation_report,
+                    verbose=verbose)
         
     def make_eml_xml(self):
         """
