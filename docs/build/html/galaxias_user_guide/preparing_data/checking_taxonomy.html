@@ -30,6 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/extra.css?v=2b5a6c60" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/extra.css?v=2b5a6c60" />
   
@@ -41,6 +42,8 @@
     <script src="../../_static/documentation_options.js?v=01f34227"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/design-tabs.js?v=36754332"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'galaxias_user_guide/preparing_data/checking_taxonomy';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -403,11 +406,11 @@ Errors:
 	- You are missing required columns in your data.
 Missing Columns Occurrence:
 	kingdom
-	family
 	order
-	phylum
-	genus
 	class
+	genus
+	phylum
+	family
 	coordinateUncertaintyInMeters
 	geodeticDatum
 	basisOfRecord
@@ -495,7 +498,26 @@ the second one is writing a loop for changing all species names at once.</p>
 34                   Eucalyptus tetrodonta           -12.42            130.92  2022-06-21
 </pre></div>
 </div>
-<p>To add higher level taxonomy according to the chosen backbone, see <a class="reference external" href="add_higher_taxon.html">here</a></p>
+</section>
+<section id="adding-higher-order-taxonomic-information">
+<h1>Adding higher order taxonomic information<a class="headerlink" href="#adding-higher-order-taxonomic-information" title="Link to this heading">#</a></h1>
+<p>Once you’ve ensured all your taxon names are correct, you should add higher order taxonomic information to
+ensure that you have the correct taxon.  Thankfully, you can do this with one function in <code class="docutils literal notranslate"><span class="pre">galaxias</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">add_taxonomic_information</span><span class="p">()</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>         scientificName  decimalLatitude  decimalLongitude   eventDate              vernacularName       genus      family      order          class      phylum  kingdom
+0    Corymbia latifolia           -13.04            131.07  2022-03-29        Round-leaf Bloodwood    Corymbia   Myrtaceae   Myrtales  Equisetopsida  Charophyta  Plantae
+1  Eucalyptus tectifica           -13.04            131.07  2022-09-13                  Darwin Box  Eucalyptus   Myrtaceae   Myrtales  Equisetopsida  Charophyta  Plantae
+2        Banksia aemula           -33.60            150.72  2022-08-15              Wallum Banksia     Banksia  Proteaceae  Proteales  Equisetopsida  Charophyta  Plantae
+3   Eucalyptus racemosa           -33.60            150.72  2022-06-16  Narrow-leaved Scribbly Gum  Eucalyptus   Myrtaceae   Myrtales  Equisetopsida  Charophyta  Plantae
+4     Persoonia laurina           -33.60            150.72  2022-10-19              Laurel Geebung   Persoonia  Proteaceae  Proteales  Equisetopsida  Charophyta  Plantae
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Note</span></code>: we have provided the higher taxonomic information we have on the backbone.  It is up to the
+user to confirm they are happy with this taxonomy, or if they spot any errors,
+<a class="reference external" href="mailto:support&#37;&#52;&#48;ala&#46;org&#46;au">contact us</a>.</p>
+<p>If you generate another data report and there are still missing requirements (as with this one), go to
+<a class="reference external" href="../preparing_data.html">our other articles</a> for more information on how to fill them.</p>
 </section>
 
 
@@ -515,7 +537,24 @@ the second one is writing a loop for changing all species names at once.</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Checking taxonomy</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-higher-order-taxonomic-information">Adding higher order taxonomic information</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>

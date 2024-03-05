@@ -85,7 +85,8 @@ class dwca:
     def add_metadata_md(self,
                         metadata_md=None):
         """
-        adds a markdown file to your ``dwca`` object.  This is for if you have your own custom 
+        Adds a metadata markdown file to your ``dwca`` object.  This is for if you have your own custom file; 
+        this gets automatically done when you start a Darwin Core Archive object.
 
         Parameters
         ----------
@@ -504,6 +505,7 @@ class dwca:
         # set the core of the archive
         core = ET.SubElement(metadata,"core")
         core.set("encoding","UTF-8")
+        # change this to either EventCore or Occurrence
         core.set("rowType","http://rs.tdwg.org/dwc/terms/Occurrence")
         core.set("fieldsTerminatedBy",",") # CHANGE THIS TO WHATEVER OCCURRENCE IS
         core.set("linesTerminatedBy","\r\n") 
@@ -621,6 +623,9 @@ def add_element(elements=None,
                 parent = None,
                 title_list = None,
                 index=None):
+    """
+    Add element to XML
+    """
     
     # create a new element
     new_title = create_title(title_list[index])
@@ -636,6 +641,9 @@ def add_element(elements=None,
     return temp
 
 def create_title(title=None):
+    """
+    create title in camel case for different rows of XML.
+    """
 
     # create a title with camel case and no numbers
     parts = title.split(" ")[1:]
@@ -644,4 +652,3 @@ def create_title(title=None):
     if new_title[-1].isdigit():
         new_title = new_title[:-1]
     return new_title
-

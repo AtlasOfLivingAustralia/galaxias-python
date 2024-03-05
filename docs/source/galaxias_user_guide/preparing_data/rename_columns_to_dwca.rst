@@ -13,7 +13,7 @@ When we look at our generated report, we notice that a lot of things are missing
 There are a lot of columns missing. However, if we look at the data we have using 
 the ``head`` command of the occurrences dataframe, we can see that none of the column 
 names are terms found in the Darwin Core Standard (for a list of required and 
-recommended terms for your living atlas, see [AMANDA ADD THIS HERE]).
+recommended terms for your living atlas, see `a table of dwc terms <../../getting_started/terms.html>`_).
 
 .. prompt:: python
 

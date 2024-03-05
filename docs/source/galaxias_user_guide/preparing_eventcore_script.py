@@ -3,8 +3,11 @@ import pandas as pd
 import sys
 
 # get option
-data_type = sys.argv[1]
-stopping_point = sys.argv[2]
+stopping_point = sys.argv[1]
+if len(sys.argv) > 1:
+    data_type = True #sys.argv[2]
+else:
+    data_type = False
 
 # set pandas options
 pd.set_option('display.max_columns', None)
@@ -16,139 +19,167 @@ pd.set_option('max_colwidth', None) #;
 # --------------------------------------------------------
 
 # read in data
-if data_type == "event":
-    events = pd.read_csv("galaxias_user_guide/events.csv")
-    occurrences = pd.read_csv("galaxias_user_guide/occurrences_event_nomulti.csv")
-    my_dwca = galaxias.dwca(events=events,occurrences=occurrences)
-elif data_type == "event_multi":
-    events = pd.read_csv("galaxias_user_guide/events.csv")
-    occurrences = pd.read_csv("galaxias_user_guide/occurrences_event_multi.csv")
-    multimedia = pd.read_csv("galaxias_user_guide/multimedia_event.csv")
-    my_dwca = galaxias.dwca(events=events,occurrences=occurrences,multimedia=multimedia)
-elif data_type == "event_emof":
-    events = pd.read_csv("galaxias_user_guide/events.csv")
-    occurrences = pd.read_csv("galaxias_user_guide/occurrences_event_multi.csv")
-    emof = pd.read_csv("galaxias_user_guide/extendedMeasurementOrFact.csv")
-    my_dwca = galaxias.dwca(events=events,occurrences=occurrences,emof=emof)
-elif data_type == "event_multi_emof":
-    events = pd.read_csv("galaxias_user_guide/events.csv")
-    occurrences = pd.read_csv("galaxias_user_guide/occurrences_event_multi.csv")
-    multimedia = pd.read_csv("galaxias_user_guide/multimedia_event.csv")
-    emof = pd.read_csv("galaxias_user_guide/extendedMeasurementOrFact.csv")
-    my_dwca = galaxias.dwca(events=events,occurrences=occurrences,
-                            multimedia=multimedia,emof=emof)
-else:
-    raise ValueError("{} is not an option.".format(data_type))
+events = pd.read_csv("galaxias_user_guide/events.csv")
+occurrences = pd.read_csv("galaxias_user_guide/occurrences_event_multi.csv")
+# multimedia = pd.read_csv("galaxias_user_guide/multimedia_event.csv")
+# emof = pd.read_csv("galaxias_user_guide/extendedMeasurementOrFact.csv")
+my_dwca = galaxias.dwca(events=events,occurrences=occurrences) #,
+                        # multimedia=multimedia,emof=emof)
 
 # generate initial data report and exit
 if stopping_point == "1":
     my_dwca.generate_data_report()
     sys.exit()
+    # if not data_type:
+    #     my_dwca.generate_data_report()
+    #     sys.exit()
+    # else:
+    #     events = pd.read_csv("galaxias_user_guide/events.csv")
+    #     occurrences = pd.read_csv("galaxias_user_guide/occurrences_event_multi.csv")
+    #     my_dwca = galaxias.dwca(events=events,occurrences=occurrences)
+    #     my_dwca.generate_data_report()
+    #     sys.exit()
 
-# if stopping_point == "rename1":
-#     print(my_dwca.occurrences.head())
-#     sys.exit()
+if stopping_point == "2":
+    print(my_dwca.occurrences.head())
+    sys.exit()
 
-# temp_occurrences = my_dwca.occurrences.rename(
+temp_occurrences = my_dwca.occurrences.rename(
+    columns = {
+        "Species": "scientificName",
+        "Latitude": "decimalLatitude",
+        "Longitude": "decimalLongitude",
+        "Collection_date": "eventDate",
+        "number_birds": "individualCount"
+    }
+)
+if stopping_point == "3":
+    print(temp_occurrences.head())
+    sys.exit()
+
+my_dwca.occurrences = temp_occurrences
+
+if stopping_point == "4":
+    print(my_dwca.occurrences.head())
+    sys.exit()
+
+# Events
+if stopping_point == "5":
+    print(my_dwca.events.head())
+
+temp_events = my_dwca.events.rename(
+    columns = {
+        "eventName": "Event",
+    }
+)
+
+my_dwca.events = temp_events
+
+if stopping_point == "5":
+    print()
+    print()
+    print(my_dwca.events.head())
+    sys.exit()
+
+
+# # Multimedia
+# if stopping_point == "6":
+#     print(my_dwca.multimedia.head())
+
+# temp_multimedia = my_dwca.multimedia.rename(
 #     columns = {
-#         "Species": "scientificName",
-#         "Latitude": "decimalLatitude",
-#         "Longitude": "decimalLongitude",
-#         "Collection_date": "eventDate",
+#         "photo": "identifier",
 #     }
 # )
-# if stopping_point == "rename2":
-#     print(temp_occurrences.head())
+
+# my_dwca.multimedia = temp_multimedia
+
+# if stopping_point == "6":
+#     print()
+#     print()
+#     print(my_dwca.multimedia.head())
 #     sys.exit()
 
-# my_dwca.occurrences = temp_occurrences
-# if stopping_point == "rename3":
-#     print(my_dwca.occurrences.head())
-#     sys.exit()
+# # emof
+# if stopping_point == "7":
+#     print(my_dwca.emof.head())
 
-# if stopping_point == "rename4":
-#     print(my_dwca.generate_data_report())
-#     sys.exit()
-
-
-# # --------------------------------------------------------
-# # Part 2
-# # --------------------------------------------------------
-
-# if "check_taxon" in stopping_point or stopping_point == "add_taxon":
-
-#     if stopping_point == "check_taxon1":
-#         print(my_dwca.generate_data_report())
-#         sys.exit()
-
-#     name_changes = {
-#         "Eucalyptus camaldulensis var. obtusa": "Eucalyptus camaldulensis subsp. obtusa",
-#         "Acacia murayana": "Acacia murrayana",
-#         "Eucalyptus sclerophylla": "Eucalyptus racemosa"
+# temp_emof = my_dwca.emof.rename(
+#     columns = {
+#         "measurement": "measurementType",
+#         "value": "measurementValue",
+#         "unit": "measurementUnit",
+#         "error": "measurementAccuracy"
 #     }
-#     for name in name_changes:
-#         my_dwca.occurrences['scientificName'] = my_dwca.occurrences['scientificName'].replace(regex=name, value=name_changes[name])
+# )
 
-#     if stopping_point == "check_taxon":
-#         print(my_dwca.occurrences)
-#         sys.exit()
+# my_dwca.emof = temp_emof
 
-# if stopping_point == "add_taxon":
-#     my_dwca.add_taxonomic_information()
-#     print(my_dwca.occurrences.head())
+# if stopping_point == "7":
+#     print()
+#     print()
+#     print(my_dwca.emof.head())
 #     sys.exit()
 
-# if "add_reqs" in stopping_point:
+if stopping_point == "8":
+    print(my_dwca.generate_data_report())
 
-#     if stopping_point == "add_reqs1":
-#         my_dwca.generate_data_report()
-#         sys.exit()
+# --------------------------------------------------------
+# Part 2
+# --------------------------------------------------------
+    
+if stopping_point == "9":
+    print("here")
+    print(my_dwca.generate_data_report())
+    sys.exit()
 
-#     my_dwca.occurrences["coordinateUncertaintyInMeters"] = 100
-#     my_dwca.occurrences["geodeticDatum"] = "WGS84"
-#     my_dwca.occurrences["basisOfRecord"] = "HUMAN_OBSERVATION"
+name_changes = {
+    "Eucalyptus camaldulensis var. obtusa": "Eucalyptus camaldulensis subsp. obtusa",
+    "Acacia murayana": "Acacia murrayana",
+    "Eucalyptus sclerophylla": "Eucalyptus racemosa"
+}
 
-#     if stopping_point == "add_reqs2":
-#         print(my_dwca.occurrences.head())
-#         sys.exit()
+for name in name_changes:
+    my_dwca.occurrences['scientificName'] = my_dwca.occurrences['scientificName'].replace(regex=name, value=name_changes[name])
 
-#     my_dwca.add_unique_occurrence_IDs(column_name="occurrenceID")
+if stopping_point == "10":
+    print(my_dwca.occurrences)
+    sys.exit()
 
-#     if stopping_point == "add_reqs3":
-#         print(my_dwca.occurrences.head())
-#         sys.exit()
+if stopping_point == "11":
+    my_dwca.add_taxonomic_information()
+    print(my_dwca.occurrences.head())
+    sys.exit()
 
-# if stopping_point == "final":
+'''
+if "add_reqs" in stopping_point:
 
-#     # name changes
-#     name_changes = {
-#         "Eucalyptus camaldulensis var. obtusa": "Eucalyptus camaldulensis subsp. obtusa",
-#         "Acacia murayana": "Acacia murrayana",
-#         "Eucalyptus sclerophylla": "Eucalyptus racemosa"
-#     }
-#     for name in name_changes:
-#         my_dwca.occurrences['scientificName'] = my_dwca.occurrences['scientificName'].replace(regex=name, value=name_changes[name])
+    if stopping_point == "add_reqs1":
+        my_dwca.generate_data_report()
+        sys.exit()
 
-#     # add higher taxon
-#     my_dwca.add_taxonomic_information()
+    my_dwca.occurrences["coordinateUncertaintyInMeters"] = 100
+    my_dwca.occurrences["geodeticDatum"] = "WGS84"
+    my_dwca.occurrences["basisOfRecord"] = "HUMAN_OBSERVATION"
 
-#     # add required columns
-#     my_dwca.occurrences["coordinateUncertaintyInMeters"] = 100
-#     my_dwca.occurrences["geodeticDatum"] = "WGS84"
-#     my_dwca.occurrences["basisOfRecord"] = "HUMAN_OBSERVATION"
+    if stopping_point == "add_reqs2":
+        print(my_dwca.occurrences.head())
+        sys.exit()
 
-#     # add occurrence IDs
-#     my_dwca.add_unique_occurrence_IDs(column_name="occurrenceID")
+    my_dwca.add_unique_occurrence_IDs(column_name="occurrenceID")
 
-#     my_dwca.generate_data_report(verbose=True)
+    if stopping_point == "add_reqs3":
+        print(my_dwca.occurrences.head())
+        sys.exit()
 
-#     ### TODO: add this step
-#     temp_occurrences = my_dwca.occurrences.rename(
-#         columns = {
-#             "classs": "class",
-#         }
-#     )
-#     my_dwca.occurrences = temp_occurrences
+if stopping_point == "final":
 
-#     my_dwca.occurrences.to_csv("galaxias_user_guide/occurrences_dwc_clean.csv",index=False)
-#     sys.exit()
+    # name changes
+    name_changes = {
+        "Eucalyptus camaldulensis var. obtusa": "Eucalyptus camaldulensis subsp. obtusa",
+        "Acacia murayana": "Acacia murrayana",
+        "Eucalyptus sclerophylla": "Eucalyptus racemosa"
+    }
+    for name in name_changes:
+        my_dwca.occurrences['scientificName'] = my_dwca.occurrences['scientificName'].replace(regex=name, value=name_changes[name])
+'''

@@ -1,4 +1,4 @@
-eventID,measurementType,measurementValue,measurementUnit,measurementAccuracy
+eventID,measurement,value,unit,error
 2,ambient temperature,32,degrees C,0.1
 5,ambient temperature,28,degrees C,0.1
 8,ambient temperature,32,degrees C,0.1

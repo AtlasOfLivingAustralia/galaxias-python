@@ -3,26 +3,33 @@
 Preparing Your Data for an EventCore
 =======================================
 
-*To follow along with these steps using example event and occurrence data, download them using the following links:* 
-
-:download:`events <events.csv>`
-:download:`occurrences <occurrences_event_nomulti.csv>`
-
-*If you want to include multimedia in your archive, instead download the files using the following links:*
+*To follow along with these steps using example data, download them using the following links:* 
 
 :download:`events <events.csv>`
 :download:`occurrences <occurrences_event_multi.csv>`
-:download:`multimedia <multimedia_event.csv>`
 
-*If you want to include extendedMeasurementOrFact in your archive, instead download the files using the following links:*
+For these exercises, we are assuming your data is currently in a ``csv`` format.  
 
-:download:`events <events.csv>`
-:download:`occurrences <occurrences_event_multi.csv>`
-:download:`multimedia <multimedia_event.csv>`
-:download:`emof <extendedMeasurementOrFact.csv>`
+To build an EventCore Archive, your will need to ensure your data has a particular naming convention and 
+is in a particular format.  However, this is relatively straightforward!  As you've done the bulk collection 
+of your data, it is likely that your data is close to submission already, and will only require a few steps 
+to ready it. 
+
+Note about Errors
+----------------------
+
+Though you may get a lot of errors in the beginning, most of these errors will likely be attributed to the following:
+
+- Names of columns are not Darwin Core terms
+- Taxonomy does not match your chosen backbone
 
 Initial Preparation
 -----------------------------
+
+These steps are showing you how to generate a "report", which will tell you what needs to be edited before your data 
+can be submitted to your chosen atlas.  It also shows you how to rename columns, as your data won't be checked if the 
+column name is not a Darwin Core term.  
+
 
 ``UNDER CONSTRUCTION``
 
@@ -37,58 +44,40 @@ Initial Preparation
         .. raw:: html
             :file: ../../source/_static/icons/user_guide.svg
                 
-        **Generate EventCore Report** 
-
-    .. grid-item-card:: 
-        :link: preparing_data/generate_initial_report_event_multi.html
-        :class-card: sd-text-black
-        :text-align: center
-
-        .. raw:: html
-            :file: ../../source/_static/icons/user_guide.svg
-                
-        **Generate EventCore Report With Multimedia** 
-
-    .. grid-item-card:: 
-        :link: preparing_data/generate_initial_report_event_emof.html
-        :class-card: sd-text-black
-        :text-align: center
-
-        .. raw:: html
-            :file: ../../source/_static/icons/user_guide.svg
-                
-        **Generate EventCore Report With extendedMeasurementOrFact** 
-
-    .. grid-item-card:: 
-        :link: preparing_data/generate_initial_report_event_multi_emof.html
-        :class-card: sd-text-black
-        :text-align: center
-
-        .. raw:: html
-            :file: ../../source/_static/icons/user_guide.svg
-                
-        **Generate EventCore Report With Multimedia and extendedMeasurementOrFact** 
+        **Example Report** 
 
     .. grid-item-card::
-        :link: preparing_data/rename_columns_to_dwca.html
+        :link: preparing_data/rename_eventcore_columns.html
         :class-card: sd-text-black
         :text-align: center
 
         .. raw:: html
             :file: ../../source/_static/icons/user_guide.svg
 
-        **Renaming Columns to Darwin Core**
+        **Renaming All Columns to Event Core**
+
+    .. 
+        ..  grid-item-card:: 
+            :link: preparing_data/generate_initial_report_event_multi_emof.html
+            :class-card: sd-text-black
+            :text-align: center
+
+            .. raw:: html
+                :file: ../../source/_static/icons/user_guide.svg
+                    
+            **Example Report + Extensions**|
 
 Validating Required EventCore Terms
 -------------------------------------------
 
-``UNDER CONSTRUCTION``
+*For information on how to prepare occurrence data, visit* 
+`Preparing Occurrences <preparing_occurrence_data.html>`_
 
 .. grid:: 4
     :gutter: 4
 
     .. grid-item-card:: 
-        :link: preparing_data/checking_taxonomy.html
+        :link: preparing_data/checking_taxonomy_eventcore.html
         :class-card: sd-text-black
         :text-align: center
 
@@ -98,7 +87,7 @@ Validating Required EventCore Terms
         **Check Taxonomy** 
 
     .. grid-item-card::
-        :link: preparing_data/add_higher_taxon.html
+        :link: preparing_data/add_higher_taxon_eventcore.html
         :class-card: sd-text-black
         :text-align: center
 
@@ -175,70 +164,71 @@ Validating Recommended EventCore Terms
 
         **Preparing An Event Core**
 
-Multimedia Extension
--------------------------------------------
+.. 
+    Multimedia Extension
+    -------------------------------------------
 
-.. grid:: 4
-    :gutter: 4
+    .. grid:: 4
+        :gutter: 4
 
-    .. grid-item-card::
-        :link: preparing_data/initial_multimedia_prep_eventcore.html
-        :class-card: sd-text-black
-        :text-align: center
+        .. grid-item-card::
+            :link: preparing_data/initial_multimedia_prep_eventcore.html
+            :class-card: sd-text-black
+            :text-align: center
 
-        .. raw:: html
-            :file: ../../source/_static/icons/user_guide.svg
+            .. raw:: html
+                :file: ../../source/_static/icons/user_guide.svg
 
-        **Preparing Required Data for Multimedia**
+            **Preparing Required Data for Multimedia**
 
-    .. grid-item-card::
-        :link: preparing_data/recommended_multimedia_terms_eventcore.html
-        :class-card: sd-text-black
-        :text-align: center
+        .. grid-item-card::
+            :link: preparing_data/recommended_multimedia_terms_eventcore.html
+            :class-card: sd-text-black
+            :text-align: center
 
-        .. raw:: html
-            :file: ../../source/_static/icons/user_guide.svg
+            .. raw:: html
+                :file: ../../source/_static/icons/user_guide.svg
 
-        **Preparing Recommended Data for Multimedia**
+            **Preparing Recommended Data for Multimedia**
 
-Extended Measurement Or Fact
--------------------------------------------
+    Extended Measurement Or Fact
+    -------------------------------------------
 
 
-``UNDER CONSTRUCTION``
+    ``UNDER CONSTRUCTION``
 
-.. grid:: 4
-    :gutter: 4
+    .. grid:: 4
+        :gutter: 4
 
-    .. grid-item-card::
-        :link: preparing_data/link_id_measurement.html
-        :class-card: sd-text-black
-        :text-align: center
+        .. grid-item-card::
+            :link: preparing_data/link_id_measurement.html
+            :class-card: sd-text-black
+            :text-align: center
 
-        .. raw:: html
-            :file: ../../source/_static/icons/user_guide.svg
+            .. raw:: html
+                :file: ../../source/_static/icons/user_guide.svg
 
-        **Linking IDs to measurements**
+            **Linking IDs to measurements**
 
-    .. grid-item-card::
-        :link: preparing_data/measurement_prep.html
-        :class-card: sd-text-black
-        :text-align: center
+        .. grid-item-card::
+            :link: preparing_data/measurement_prep.html
+            :class-card: sd-text-black
+            :text-align: center
 
-        .. raw:: html
-            :file: ../../source/_static/icons/user_guide.svg
+            .. raw:: html
+                :file: ../../source/_static/icons/user_guide.svg
 
-        **How to format your measurements**
+            **How to format your measurements**
 
-    .. grid-item-card::
-        :link: preparing_data/validate_measurements.html
-        :class-card: sd-text-black
-        :text-align: center
+        .. grid-item-card::
+            :link: preparing_data/validate_measurements.html
+            :class-card: sd-text-black
+            :text-align: center
 
-        .. raw:: html
-            :file: ../../source/_static/icons/user_guide.svg
+            .. raw:: html
+                :file: ../../source/_static/icons/user_guide.svg
 
-        **Validating measurements**
+            **Validating measurements**
 
 Example of Final Passing Report
 -------------------------------------------

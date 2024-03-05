@@ -30,6 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/extra.css?v=2b5a6c60" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/extra.css?v=2b5a6c60" />
   
@@ -41,6 +42,8 @@
     <script src="../../_static/documentation_options.js?v=01f34227"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/design-tabs.js?v=36754332"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'galaxias_user_guide/preparing_data/add_req_columns_values';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -401,12 +404,12 @@ Errors:
 	- There are some invalid taxa according to the backbone you are comparing against.
 	- You are missing required columns in your data.
 Missing Columns Occurrence:
-	phylum
-	order
-	class
-	kingdom
 	family
+	phylum
+	kingdom
+	order
 	genus
+	class
 	geodeticDatum
 	coordinateUncertaintyInMeters
 	basisOfRecord
@@ -427,9 +430,9 @@ Taxonomy Report:
 	Unrecognised taxa:
 
                           original name                      proposed match(es) rank of proposed match(es)                          scientificName     rank                   species       genus     family     order         classs      phylum  kingdom
-0                       Acacia murayana                        Acacia murrayana                    species                        Acacia murrayana  species          Acacia murrayana      Acacia   Fabaceae   Fabales  Equisetopsida  Charophyta  Plantae
-1               Eucalyptus sclerophylla                     Eucalyptus racemosa                    SPECIES                     Eucalyptus racemosa     None       Eucalyptus racemosa  Eucalyptus  Myrtaceae  Myrtales           None  Charophyta  Plantae
-2  Eucalyptus camaldulensis var. obtusa  Eucalyptus camaldulensis subsp. obtusa                 SUBSPECIES  Eucalyptus camaldulensis subsp. obtusa     None  Eucalyptus camaldulensis  Eucalyptus  Myrtaceae  Myrtales           None  Charophyta  Plantae
+0               Eucalyptus sclerophylla                     Eucalyptus racemosa                    SPECIES                     Eucalyptus racemosa     None       Eucalyptus racemosa  Eucalyptus  Myrtaceae  Myrtales           None  Charophyta  Plantae
+1  Eucalyptus camaldulensis var. obtusa  Eucalyptus camaldulensis subsp. obtusa                 SUBSPECIES  Eucalyptus camaldulensis subsp. obtusa     None  Eucalyptus camaldulensis  Eucalyptus  Myrtaceae  Myrtales           None  Charophyta  Plantae
+2                       Acacia murayana                        Acacia murrayana                    species                        Acacia murrayana  species          Acacia murrayana      Acacia   Fabaceae   Fabales  Equisetopsida  Charophyta  Plantae
 
 Column counts:
 	scientificName: 35
@@ -468,11 +471,11 @@ to specify the column name you wish to use.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">add_unique_occurrence_IDs</span><span class="p">(</span><span class="n">column_name</span><span class="o">=</span><span class="s2">&quot;occurrenceID&quot;</span><span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                           occurrenceID           scientificName  decimalLatitude  decimalLongitude   eventDate  coordinateUncertaintyInMeters geodeticDatum      basisOfRecord
-0  fd6c3261-f71d-4317-90ed-167743eaae61       Corymbia latifolia           -13.04            131.07  2022-03-29                            100         WGS84  HUMAN_OBSERVATION
-1  c27b6ead-855b-4c78-8181-714223c56e2a     Eucalyptus tectifica           -13.04            131.07  2022-09-13                            100         WGS84  HUMAN_OBSERVATION
-2  8d5b239c-a458-409d-900e-92d5eacd475b           Banksia aemula           -33.60            150.72  2022-08-15                            100         WGS84  HUMAN_OBSERVATION
-3  c98f4865-012c-4ea0-86fa-e7f57358d3c4  Eucalyptus sclerophylla           -33.60            150.72  2022-06-16                            100         WGS84  HUMAN_OBSERVATION
-4  5abbc9a5-f2e0-4595-b384-258a3dac3bd7        Persoonia laurina           -33.60            150.72  2022-10-19                            100         WGS84  HUMAN_OBSERVATION
+0  8455f57d-3784-4117-944e-f2528bb18838       Corymbia latifolia           -13.04            131.07  2022-03-29                            100         WGS84  HUMAN_OBSERVATION
+1  94a76bfb-973a-4ca0-a30d-4566a83b0e8a     Eucalyptus tectifica           -13.04            131.07  2022-09-13                            100         WGS84  HUMAN_OBSERVATION
+2  46865bcf-38dc-4dea-8059-75e7346594ea           Banksia aemula           -33.60            150.72  2022-08-15                            100         WGS84  HUMAN_OBSERVATION
+3  84a6a01f-63f6-4641-a91e-e5d6cd8033b1  Eucalyptus sclerophylla           -33.60            150.72  2022-06-16                            100         WGS84  HUMAN_OBSERVATION
+4  38f27a58-9d97-46f5-bceb-52a0065f2508        Persoonia laurina           -33.60            150.72  2022-10-19                            100         WGS84  HUMAN_OBSERVATION
 </pre></div>
 </div>
 <p>For more ways to prepare your data, go back to <a class="reference external" href="../preparing_data.html">the “Preparing Data” main page</a>.</p>

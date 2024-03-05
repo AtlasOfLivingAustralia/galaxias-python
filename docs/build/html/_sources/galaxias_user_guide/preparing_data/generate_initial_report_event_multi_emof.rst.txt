@@ -1,7 +1,7 @@
 :orphan:
 
-Generating a data report
-=========================
+EventCore Report With Extensions
+=====================================
 
 First, we will want to know how close our data is to being ready for submission to a living 
 atlas.  To do that, we will need to first build a ``dwca`` object with ``galaxias``, and then 
@@ -20,4 +20,4 @@ your occurrences has a unique identifier.
     >>> my_dwca = galaxias.dwca(occurrences=occurrences,events=events,multimedia=multimedia,emof=emof)
     >>> my_dwca.generate_data_report()
 
-.. program-output:: python -W ignore galaxias_user_guide/preparing_eventcore_script.py event_multi_emof 1
+.. program-output:: python -W ignore galaxias_user_guide/preparing_eventcore_script.py 1 event_ext

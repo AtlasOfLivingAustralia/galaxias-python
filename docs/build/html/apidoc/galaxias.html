@@ -30,6 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/css/extra.css?v=2b5a6c60" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
     <link rel="stylesheet" type="text/css" href="../_static/css/extra.css?v=2b5a6c60" />
   
@@ -41,6 +42,8 @@
     <script src="../_static/documentation_options.js?v=01f34227"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/design-tabs.js?v=36754332"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'apidoc/galaxias';</script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -391,12 +394,13 @@ document.write(`
 <span id="api-docs"></span><h1>API Docs<a class="headerlink" href="#module-galaxias" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="galaxias.dwca">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">galaxias.</span></span><span class="sig-name descname"><span class="pre">dwca</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">occurrences</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">occurrences_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'occurrences.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multimedia</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multimedia_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'multimedia.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">events</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">events_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'events.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emof</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emof_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ExtendedMeasurementOrFact.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dwca_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'dwca.zip'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata_md</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eml_xml</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'eml.xml'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">meta_xml</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'meta.xml'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">galaxias.</span></span><span class="sig-name descname"><span class="pre">dwca</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">occurrences</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">occurrences_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'occurrences.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multimedia</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multimedia_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'multimedia.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">events</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">events_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'events.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emof</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emof_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'extendedMeasurementOrFact.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dwca_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'dwca.zip'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata_md</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eml_xml</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'eml.xml'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">meta_xml</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'meta.xml'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="galaxias.dwca.add_metadata_md">
 <span class="sig-name descname"><span class="pre">add_metadata_md</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metadata_md</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.add_metadata_md" title="Link to this definition">#</a></dt>
-<dd><p>adds a markdown file to your <code class="docutils literal notranslate"><span class="pre">dwca</span></code> object.  This is for if you have your own custom</p>
+<dd><p>Adds a metadata markdown file to your <code class="docutils literal notranslate"><span class="pre">dwca</span></code> object.  This is for if you have your own custom file;
+this gets automatically done when you start a Darwin Core Archive object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>metadata_md</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – <code class="docutils literal notranslate"><span class="pre">str</span></code> containing the name of the metadata markdown file</p>
@@ -490,41 +494,41 @@ span.prompt1:before {
 <span class="prompt1"><span class="n">my_dwca</span><span class="o">.</span><span class="n">add_unique_occurrence_IDs</span><span class="p">()</span></span>
 <span class="prompt1"><span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                            occurrenceID                               Species  Latitude  Longitude Collection_date
-0   98a312b0-8d5b-437f-9d77-f47bfa09ee5b                    Corymbia latifolia    -13.04     131.07      2022-03-29
-1   101f409e-f5c3-4ac7-9b87-93a6aedc60a3                  Eucalyptus tectifica    -13.04     131.07      2022-09-13
-2   37f8bccd-178f-4d9f-b615-6f0c7d912275                        Banksia aemula    -33.60     150.72      2022-08-15
-3   f09b86f8-5b3c-4432-b072-5668ea929e49               Eucalyptus sclerophylla    -33.60     150.72      2022-06-16
-4   6eecd2bc-634c-40de-9b87-5aac46d2ac9d                     Persoonia laurina    -33.60     150.72      2022-10-19
-5   d656641f-e44a-4944-b8e3-e276ef398d9b                         Acacia aneura    -22.35     133.33      2022-10-11
-6   d18fbc5a-fbe6-436f-b73a-b25782a2c67b                       Acacia cambagei    -22.35     133.33      2022-08-23
-7   434c59db-a843-45f6-9e7d-1c22996b5c85                   Acacia dictyophleba    -22.35     133.33      2022-01-11
-8   706ec3d9-6380-4037-ba99-2fb95dfe8e52                  Acacia estrophiolata    -22.35     133.33      2022-07-10
-9   0d18f653-91ac-493e-9757-358089bca2ea                       Acacia kempeana    -22.35     133.33      2022-07-18
-10  60eb4815-bf59-4566-bad9-db43a606eacb                     Acacia melleodora    -22.35     133.33      2022-04-25
-11  e720ae94-6d6e-4c4d-9108-80c27d1f7540                       Acacia murayana    -22.35     133.33      2022-12-15
-12  50aead65-4288-4ad3-9f70-9d7a9dba6e74                        Corymbia opaca    -22.35     133.33      2022-02-06
-13  be9cc2e6-7b38-45be-8f10-60d052dc0474                   Corymbia terminalis    -22.35     133.33      2022-04-21
-14  f6ca55c2-75ad-40e1-b9b9-9a52c07bc946                   Eremophila latrobei    -22.35     133.33      2022-01-30
-15  ebfbe050-09c4-4ea4-a58b-4dbc1be87766              Eucalyptus camaldulensis    -22.35     133.33      2022-03-30
-16  c0d30753-b23b-4519-96f2-2348b47fcb65  Eucalyptus camaldulensis var. obtusa    -22.35     133.33      2022-07-25
-17  de66f5bb-11ee-4390-9128-32fdd1c33efb                      Hakea leucoptera    -22.35     133.33      2022-03-11
-18  8c45b0a5-be81-4439-b866-759e038e6dc7                      Hakea macrocarpa    -22.35     133.33      2022-07-28
-19  0b74bd8c-edbf-42c0-ac74-ac8c5e4a8c9e                     Psydrax latifolia    -22.35     133.33      2022-03-06
-20  ae573c48-40f5-4d3d-aeca-d6575bbed989                          Acacia celsa    -17.26     145.46      2022-09-05
-21  6159e9cc-aa02-4fa9-90f7-df94022601d8                    Acronychia acidula    -17.26     145.46      2022-04-22
-22  79054d62-f276-40d9-a170-2ab949a41002             Aleurites rockinghamensis    -17.26     145.46      2022-07-21
-23  8bc4095f-5822-4e51-9805-8427861cabe2                    Alphitonia petriei    -17.26     145.46      2022-03-11
-24  78c5ff05-3e6b-4278-b2b3-d7ebeff226c3                  Gillbeea adenopetala    -17.26     145.46      2022-02-15
-25  401dbc9c-ce73-49df-8025-994f24ed74f3                       Litsea leefeana    -17.26     145.46      2022-05-11
-26  fecd5bc8-6df7-4f77-b8ff-0c95d34fd2e5                        Myrsine porosa    -17.26     145.46      2022-10-31
-27  53feca37-2566-44cd-b846-35cb6f8f752d                    Neolitsea dealbata    -17.26     145.46      2022-10-08
-28  ed6440a7-9176-468a-84b0-98f5a4098551                 Polyscias australiana    -17.26     145.46      2022-10-26
-29  8fe21f6e-1d91-43e4-88bd-54e474e56969                     Coprosma hirtella    -35.66     148.15      2022-03-04
-30  b8ed3e31-e142-4008-89a8-d232dd0e2166                    Daviesia latifolia    -35.66     148.15      2022-06-28
-31  196a2eaa-1965-4bbb-986b-e1109e547bed               Eucalyptus delegatensis    -35.66     148.15      2022-01-22
-32  068b5f8b-741e-4307-9d2f-cb653292f83c                  Tasmannia lanceolata    -35.66     148.15      2022-06-24
-33  367b83bb-a5f0-4c10-b5f7-5c32c3eaef77                    Eucalyptus miniata    -12.42     130.92      2022-10-28
-34  a934d359-c9b7-48c2-84d2-c92c5a664cae                 Eucalyptus tetrodonta    -12.42     130.92      2022-06-21
+0   a1fb6e65-1067-4598-a2cb-36d81e0b78a2                    Corymbia latifolia    -13.04     131.07      2022-03-29
+1   cc8c0d97-d873-4a17-b5fe-8848599cf17d                  Eucalyptus tectifica    -13.04     131.07      2022-09-13
+2   e7b25c98-f246-4a43-a8a9-e85084ce1781                        Banksia aemula    -33.60     150.72      2022-08-15
+3   a58c9d7e-d12f-49f0-9b43-46d2cdecd08d               Eucalyptus sclerophylla    -33.60     150.72      2022-06-16
+4   6717888f-c59a-4300-8e90-0add0bdae72a                     Persoonia laurina    -33.60     150.72      2022-10-19
+5   0ab44b60-c0e3-440c-abd7-9d67da5f0c45                         Acacia aneura    -22.35     133.33      2022-10-11
+6   ca82659c-3263-482c-85e2-fb6786354e16                       Acacia cambagei    -22.35     133.33      2022-08-23
+7   060f738e-12f4-4953-85e2-423a4b0401d1                   Acacia dictyophleba    -22.35     133.33      2022-01-11
+8   630cf3eb-15a6-444d-8995-68a4964a2137                  Acacia estrophiolata    -22.35     133.33      2022-07-10
+9   19bfa925-793e-4d98-b2b8-452ddd8a869f                       Acacia kempeana    -22.35     133.33      2022-07-18
+10  0265727a-d35a-47b7-9efc-f5ced46de411                     Acacia melleodora    -22.35     133.33      2022-04-25
+11  c918b012-f376-47f7-894e-f760d6244568                       Acacia murayana    -22.35     133.33      2022-12-15
+12  a5ef81df-0b26-4a90-aacd-9edc056fb83b                        Corymbia opaca    -22.35     133.33      2022-02-06
+13  966ea8a6-90c1-4280-bdda-58557886ad5d                   Corymbia terminalis    -22.35     133.33      2022-04-21
+14  464ea05b-0758-4b1e-ab52-3f4880bf43f5                   Eremophila latrobei    -22.35     133.33      2022-01-30
+15  69232288-0c36-4ba2-96b0-6983961be90e              Eucalyptus camaldulensis    -22.35     133.33      2022-03-30
+16  19ecf1a4-97e9-4bb9-bb2c-90bdc0f9b6b9  Eucalyptus camaldulensis var. obtusa    -22.35     133.33      2022-07-25
+17  37755dc5-24a6-4bc7-8b1b-54f571ae2b4d                      Hakea leucoptera    -22.35     133.33      2022-03-11
+18  ea1b3cf0-c075-4ba8-a662-478af1110f96                      Hakea macrocarpa    -22.35     133.33      2022-07-28
+19  672fe0d2-f4a4-4cac-b7b0-7e152014229d                     Psydrax latifolia    -22.35     133.33      2022-03-06
+20  c68f2275-35c1-4fcf-9748-913befdaec52                          Acacia celsa    -17.26     145.46      2022-09-05
+21  b8e758c1-2d66-450f-80b1-06fd19213e31                    Acronychia acidula    -17.26     145.46      2022-04-22
+22  f879081d-705c-4397-9ea9-90ba554d0c69             Aleurites rockinghamensis    -17.26     145.46      2022-07-21
+23  1cb4a619-53af-40f7-b2b4-d2129ebc434e                    Alphitonia petriei    -17.26     145.46      2022-03-11
+24  b57dc191-3246-4d47-b834-77ca2831b01e                  Gillbeea adenopetala    -17.26     145.46      2022-02-15
+25  87bd814a-b4e4-4f44-a2d1-f886f3c869ed                       Litsea leefeana    -17.26     145.46      2022-05-11
+26  e1637afc-1449-4d6c-8e4e-105a89665175                        Myrsine porosa    -17.26     145.46      2022-10-31
+27  f8d02653-77c0-4b3f-8377-4d9eebad43c5                    Neolitsea dealbata    -17.26     145.46      2022-10-08
+28  ab56cc2b-6d4d-443d-9b09-9167571e1c85                 Polyscias australiana    -17.26     145.46      2022-10-26
+29  0ff932d0-f994-4087-9c44-2d92157e16ff                     Coprosma hirtella    -35.66     148.15      2022-03-04
+30  ae1d91e4-f6dd-4add-9716-51b954bded32                    Daviesia latifolia    -35.66     148.15      2022-06-28
+31  d2aabbfc-c327-4616-a219-1ce130f7a852               Eucalyptus delegatensis    -35.66     148.15      2022-01-22
+32  54224721-557c-4bd9-a91f-53b10436bde5                  Tasmannia lanceolata    -35.66     148.15      2022-06-24
+33  487b80ad-1cb0-45cc-a05c-735425f3db63                    Eucalyptus miniata    -12.42     130.92      2022-10-28
+34  361cff78-1e1b-4c41-9ae0-01ebf30f3af6                 Eucalyptus tetrodonta    -12.42     130.92      2022-06-21
 </pre></div>
 </div>
 </dd></dl>
@@ -615,10 +619,10 @@ Missing Columns Occurrence:
 	phylum
 	kingdom
 Incorrect DwC Terms Occurrence:
-	Species
-	Collection_date
 	Latitude
+	Species
 	Longitude
+	Collection_date
 
 Occurrence Report
 ---------------------

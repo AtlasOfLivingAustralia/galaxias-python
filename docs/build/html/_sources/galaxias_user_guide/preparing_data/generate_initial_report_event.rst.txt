@@ -1,6 +1,6 @@
 :orphan:
 
-Generating a data report
+EventCore Data Report
 =========================
 
 First, we will want to know how close our data is to being ready for submission to a living 
@@ -18,4 +18,4 @@ your occurrences has a unique identifier.
     >>> my_dwca = galaxias.dwca(occurrences=occurrences,events=events)
     >>> my_dwca.generate_data_report()
 
-.. program-output:: python -W ignore galaxias_user_guide/preparing_eventcore_script.py event 1
+.. program-output:: python -W ignore galaxias_user_guide/preparing_eventcore_script.py 1

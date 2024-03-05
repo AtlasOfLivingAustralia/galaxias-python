@@ -1,6 +1,6 @@
 :orphan:
 
-Recommended Terms Dumping Ground
+Other Recommended Terms
 ====================================
 
 Additional Location information

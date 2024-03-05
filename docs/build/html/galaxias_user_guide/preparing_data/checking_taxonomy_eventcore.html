@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Generating a data report &#8212; Galaxias 0.1.0 documentation</title>
+    <title>Checking taxonomy &#8212; Galaxias 0.1.0 documentation</title>
   
   
   
@@ -30,6 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/extra.css?v=2b5a6c60" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/extra.css?v=2b5a6c60" />
   
@@ -41,8 +42,10 @@
     <script src="../../_static/documentation_options.js?v=01f34227"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/design-tabs.js?v=36754332"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'galaxias_user_guide/preparing_data/generate_initial_report_event_emof';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'galaxias_user_guide/preparing_data/checking_taxonomy_eventcore';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -368,7 +371,7 @@ document.write(`
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page">Generating...</li>
+    <li class="breadcrumb-item active" aria-current="page">Checking taxonomy</li>
   </ul>
 </nav>
 </div>
@@ -385,54 +388,34 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="generating-a-data-report">
-<h1>Generating a data report<a class="headerlink" href="#generating-a-data-report" title="Link to this heading">#</a></h1>
-<p>First, we will want to know how close our data is to being ready for submission to a living
-atlas.  To do that, we will need to first build a <code class="docutils literal notranslate"><span class="pre">dwca</span></code> object with <code class="docutils literal notranslate"><span class="pre">galaxias</span></code>, and then
-run an initial report.  This report will check dates, requirements for your atlas, whether or
-not your taxon have the correct taxonomy for your chosen taxonomic backbone, and if each of
-your occurrences has a unique identifier.</p>
+  <section id="checking-taxonomy">
+<h1>Checking taxonomy<a class="headerlink" href="#checking-taxonomy" title="Link to this heading">#</a></h1>
+<p>Now that we have renamed the data columns, let’s check how our taxonomy compares with the ALA backbone.  To start,
+let’s generate another data report to see how renaming our columns changes the report.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
 span.prompt1:before {
   content: " ";
 }
-</style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">galaxias</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occurrences</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;occurrences.csv&quot;</span><span class="p">)</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">events</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;events.csv&quot;</span><span class="p">)</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">emof</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;emof.csv&quot;</span><span class="p">)</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span> <span class="o">=</span> <span class="n">galaxias</span><span class="o">.</span><span class="n">dwca</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">occurrences</span><span class="p">,</span><span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">,</span><span class="n">emof</span><span class="o">=</span><span class="n">emof</span><span class="p">)</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">generate_data_report</span><span class="p">()</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Archive Report
+</style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">generate_data_report</span><span class="p">()</span></span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>here
+Archive Report
 ---------------------
 Pass/Fail: Fail
 Data Type: Event
 Errors:
-	- A taxonomy report could not be generated, likely because the column &#39;scientificName&#39; is not in your column names.
-	- Some of your columns do not match the current Darwin Core Standard.
+	- There are some invalid taxa according to the backbone you are comparing against.
 	- You are missing required columns in your data.
 	- Your datetime format is not in YYYY-MM-DD or iso format.
 Missing Columns Occurrence:
-	MAYBE: decimalLatitude
-	MAYBE: decimalLongitude
-	scientificName
-	vernacularName
-	genus
-	family
 	order
+	kingdom
 	class
 	phylum
-	kingdom
-Missing Columns eMoF:
-	measurementID
-Incorrect DwC Terms Events:
-	eventName
-Incorrect DwC Terms Occurrence:
-	Species
-	Latitude
-	number_birds
-	Collection_date
-	Longitude
+	family
+	genus
+	geodeticDatum
+	coordinateUncertaintyInMeters
+	basisOfRecord
 
 Events Report
 ---------------------
@@ -446,40 +429,72 @@ Column counts:
 	eventType: 78
 	locality: 78
 	eventDate: 78
-	eventName: 78
+	Event: 78
 	samplingProtocol: 78
 
 Occurrence Report
 ---------------------
 Coordinates Report:
-	Data has coordinate fields?: False
+	Data has coordinate fields?: True
 	Invalid latitude count: 0
 	Invalid longitude count: 0
 Datetime Report:
 	Has invalid datetime: True
-	Number of invalid datetimes: 205
+	Number of invalid datetimes: 173
 Taxonomy Report:
-	Could not do a taxonomic classification because &#39;scientificName&#39; is likely missing from your columns.
+	Invalid taxon present: True
+	Valid Taxon count: 0
+	Unrecognised taxa:
+
+         original name proposed match(es) rank of proposed match(es) scientificName   rank species       genus      family          order classs    phylum   kingdom
+0  Ptilopus magnificus         Ptilinopus                      genus     Ptilinopus  genus    None  Ptilinopus  Columbidae  Columbiformes   Aves  Chordata  Animalia
+1    Ptilopus superbus         Ptilinopus                      genus     Ptilinopus  genus    None  Ptilinopus  Columbidae  Columbiformes   Aves  Chordata  Animalia
+
 Column counts:
 	eventID: 205
 	occurrenceID: 205
-	Species: 205
-	Latitude: 205
-	Longitude: 205
-	Collection_date: 205
-	number_birds: 205
-
-Extended Measurement Or Fact Report
----------------------
-Number of eMoF Records: 26
-Column counts:
-	eventID: 26
-	measurementType: 26
-	measurementValue: 26
-	measurementUnit: 26
-	measurementAccuracy: 26
+	scientificName: 205
+	decimalLatitude: 205
+	decimalLongitude: 205
+	eventDate: 205
+	individualCount: 205
+None
 </pre></div>
 </div>
+<p>Here, we can see that there are a few species names that are either misspelled or differ slightly from what is
+available at the Atlas of Living Australia.  To change your species names, we will again use <code class="docutils literal notranslate"><span class="pre">pandas</span></code> to do
+this, as <code class="docutils literal notranslate"><span class="pre">pandas</span></code> has the built-in function <code class="docutils literal notranslate"><span class="pre">replace</span></code>.  The first example is for single-name replacement, and
+the second one is writing a loop for changing all species names at once.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="c1"># example single change</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span><span class="p">[</span><span class="s1">&#39;scientificName&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">occurrences</span><span class="p">[</span><span class="s1">&#39;scientificName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">regex</span><span class="o">=</span><span class="s2">&quot;Acacia murayana&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;Acacia murrayana&quot;</span><span class="p">)</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="c1"># example multiple changes</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">name_changes</span> <span class="o">=</span> <span class="p">{</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="s2">&quot;Eucalyptus camaldulensis var. obtusa&quot;</span><span class="p">:</span> <span class="s2">&quot;Eucalyptus camaldulensis subsp. obtusa&quot;</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="s2">&quot;Acacia murayana&quot;</span><span class="p">:</span> <span class="s2">&quot;Acacia murrayana&quot;</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="s2">&quot;Eucalyptus sclerophylla&quot;</span><span class="p">:</span> <span class="s2">&quot;Eucalyptus racemosa&quot;</span></span>
+<span class="prompt1"><span class="o">...</span> <span class="p">}</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">name_changes</span><span class="p">:</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span><span class="p">[</span><span class="s1">&#39;scientificName&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">occurrences</span><span class="p">[</span><span class="s1">&#39;scientificName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">regex</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">name_changes</span><span class="p">[</span><span class="n">name</span><span class="p">])</span></span>
+<span class="prompt1"><span class="o">...</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span></span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>     eventID  occurrenceID                     scientificName  decimalLatitude  decimalLongitude   eventDate  individualCount
+0          3           101  Eopsaltria (Eopsaltria) australis           -20.29             148.7    2023-1-3                3
+1          3           102          Symposiachrus trivirgatus           -20.29             148.7    2023-1-3                3
+2          3           103                Zosterops lateralis           -20.29             148.7    2023-1-3                2
+3          3           104                Ptilopus magnificus           -20.29             148.7    2023-1-3                1
+4          3           105           Pitta (Pitta) versicolor           -20.29             148.7    2023-1-3                3
+..       ...           ...                                ...              ...               ...         ...              ...
+200       78           301          Symposiachrus trivirgatus           -20.29             148.7  2023-12-19                1
+201       78           302                Zosterops lateralis           -20.29             148.7  2023-12-19                2
+202       78           303                Ptilopus magnificus           -20.29             148.7  2023-12-19                2
+203       78           304           Pitta (Pitta) versicolor           -20.29             148.7  2023-12-19                1
+204       78           305                  Ptilopus superbus           -20.29             148.7  2023-12-19                1
+
+[205 rows x 7 columns]
+</pre></div>
+</div>
+<p>To add higher level taxonomy according to the chosen backbone, see <a class="reference external" href="add_higher_taxon.html">here</a></p>
 </section>
 
 

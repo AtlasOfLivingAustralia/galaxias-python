@@ -27,6 +27,7 @@ extensions = [
 	'sphinx_design',
     'sphinx.ext.napoleon',
     'sphinx.ext.autosectionlabel',
+    'sphinx_copybutton'
 ]
 
 autosectionlabel_prefix_document = True

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Generating a data report &#8212; Galaxias 0.1.0 documentation</title>
+    <title>EventCore Report With Extensions &#8212; Galaxias 0.1.0 documentation</title>
   
   
   
@@ -30,6 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/extra.css?v=2b5a6c60" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/extra.css?v=2b5a6c60" />
   
@@ -41,6 +42,8 @@
     <script src="../../_static/documentation_options.js?v=01f34227"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/design-tabs.js?v=36754332"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'galaxias_user_guide/preparing_data/generate_initial_report_event_multi_emof';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -368,7 +371,7 @@ document.write(`
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page">Generating...</li>
+    <li class="breadcrumb-item active" aria-current="page">EventCore...</li>
   </ul>
 </nav>
 </div>
@@ -385,8 +388,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="generating-a-data-report">
-<h1>Generating a data report<a class="headerlink" href="#generating-a-data-report" title="Link to this heading">#</a></h1>
+  <section id="eventcore-report-with-extensions">
+<h1>EventCore Report With Extensions<a class="headerlink" href="#eventcore-report-with-extensions" title="Link to this heading">#</a></h1>
 <p>First, we will want to know how close our data is to being ready for submission to a living
 atlas.  To do that, we will need to first build a <code class="docutils literal notranslate"><span class="pre">dwca</span></code> object with <code class="docutils literal notranslate"><span class="pre">galaxias</span></code>, and then
 run an initial report.  This report will check dates, requirements for your atlas, whether or
@@ -424,18 +427,14 @@ Missing Columns Occurrence:
 	class
 	phylum
 	kingdom
-Missing Columns eMoF:
-	measurementID
 Incorrect DwC Terms Events:
 	eventName
 Incorrect DwC Terms Occurrence:
-	number_birds
-	Latitude
-	Species
 	Longitude
+	number_birds
+	Species
+	Latitude
 	Collection_date
-Incorrect DwC Terms Multimedia:
-	identifier
 
 Events Report
 ---------------------
@@ -471,24 +470,6 @@ Column counts:
 	Longitude: 205
 	Collection_date: 205
 	number_birds: 205
-
-Multimedia Report
----------------------
-Number of Multimedia Records: 594
-Column counts:
-	eventID: 594
-	occurrenceID: 594
-	identifier: 594
-
-Extended Measurement Or Fact Report
----------------------
-Number of eMoF Records: 26
-Column counts:
-	eventID: 26
-	measurementType: 26
-	measurementValue: 26
-	measurementUnit: 26
-	measurementAccuracy: 26
 </pre></div>
 </div>
 </section>
