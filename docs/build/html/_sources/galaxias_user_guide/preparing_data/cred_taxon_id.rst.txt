@@ -9,8 +9,6 @@ credit a team in the identification of a species, or even list individuals' ORCI
 disambiguation (say someone has a very common name - the ORCID will be a unique ID for 
 this person).
 
-Note: should these be separated by questions?
-
 ``identificationQualifier``
 --------------------------------
 

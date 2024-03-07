@@ -146,40 +146,25 @@ if stopping_point == "10":
     print(my_dwca.occurrences)
     sys.exit()
 
+my_dwca.add_taxonomic_information()
+
 if stopping_point == "11":
-    my_dwca.add_taxonomic_information()
     print(my_dwca.occurrences.head())
     sys.exit()
 
-'''
-if "add_reqs" in stopping_point:
 
-    if stopping_point == "add_reqs1":
-        my_dwca.generate_data_report()
-        sys.exit()
+my_dwca.occurrences["coordinateUncertaintyInMeters"] = 100
+my_dwca.occurrences["geodeticDatum"] = "WGS84"
+my_dwca.occurrences["basisOfRecord"] = "HUMAN_OBSERVATION"
 
-    my_dwca.occurrences["coordinateUncertaintyInMeters"] = 100
-    my_dwca.occurrences["geodeticDatum"] = "WGS84"
-    my_dwca.occurrences["basisOfRecord"] = "HUMAN_OBSERVATION"
+# name changes
+name_changes = {
+    "Eucalyptus camaldulensis var. obtusa": "Eucalyptus camaldulensis subsp. obtusa",
+    "Acacia murayana": "Acacia murrayana",
+    "Eucalyptus sclerophylla": "Eucalyptus racemosa"
+}
+for name in name_changes:
+    my_dwca.occurrences['scientificName'] = my_dwca.occurrences['scientificName'].replace(regex=name, value=name_changes[name])
 
-    if stopping_point == "add_reqs2":
-        print(my_dwca.occurrences.head())
-        sys.exit()
-
-    my_dwca.add_unique_occurrence_IDs(column_name="occurrenceID")
-
-    if stopping_point == "add_reqs3":
-        print(my_dwca.occurrences.head())
-        sys.exit()
-
-if stopping_point == "final":
-
-    # name changes
-    name_changes = {
-        "Eucalyptus camaldulensis var. obtusa": "Eucalyptus camaldulensis subsp. obtusa",
-        "Acacia murayana": "Acacia murrayana",
-        "Eucalyptus sclerophylla": "Eucalyptus racemosa"
-    }
-    for name in name_changes:
-        my_dwca.occurrences['scientificName'] = my_dwca.occurrences['scientificName'].replace(regex=name, value=name_changes[name])
-'''
+if stopping_point == "12":
+    print(my_dwca.generate_data_report())

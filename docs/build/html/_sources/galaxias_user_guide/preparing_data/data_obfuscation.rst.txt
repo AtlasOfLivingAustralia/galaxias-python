@@ -10,13 +10,15 @@ But how do you reflect this in your data?
 Obfuscating Coordinates
 ----------------------------
 
-Do this (or find out how SDS does it)
+The ALA has the `Sensitive Data Service <sds.ala.org.au>`_, which obscures sensitive and 
+threatened species by using the principles outlined in the `Restricted Access Species Data <rasd.org.au>`_
+page.
 
 Reflecting obfuscations in your dataset
 ------------------------------------------
 
 Reflecting on how you obfuscated your data is important.  Thankfully, the Darwin Core 
-standard has two 
+standard has two fields that can help with this
 
 ``dataGeneralizations``
 

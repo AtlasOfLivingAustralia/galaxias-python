@@ -416,11 +416,11 @@ Missing Columns Occurrence:
 Incorrect DwC Terms Events:
 	eventName
 Incorrect DwC Terms Occurrence:
-	Latitude
 	Species
 	number_birds
-	Collection_date
 	Longitude
+	Collection_date
+	Latitude
 
 Events Report
 ---------------------
@@ -468,11 +468,11 @@ span.prompt1:before {
 }
 </style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>   eventID  occurrenceID                            Species  Latitude  Longitude Collection_date  number_birds
-0        3           101  Eopsaltria (Eopsaltria) australis    -20.29      148.7        2023-1-3             3
-1        3           102          Symposiachrus trivirgatus    -20.29      148.7        2023-1-3             3
-2        3           103                Zosterops lateralis    -20.29      148.7        2023-1-3             2
-3        3           104                Ptilopus magnificus    -20.29      148.7        2023-1-3             1
-4        3           105           Pitta (Pitta) versicolor    -20.29      148.7        2023-1-3             3
+0        3           101  Eopsaltria (Eopsaltria) australis    -20.29      148.7      2023-01-03             3
+1        3           102          Symposiachrus trivirgatus    -20.29      148.7      2023-01-03             3
+2        3           103                Zosterops lateralis    -20.29      148.7      2023-01-03             2
+3        3           104              Ptilinopus magnificus    -20.29      148.7      2023-01-03             1
+4        3           105           Pitta (Pitta) versicolor    -20.29      148.7      2023-01-03             3
 </pre></div>
 </div>
 </section>
@@ -491,24 +491,24 @@ valid Darwin Core terms that are required by the ALA.</p>
 <span class="prompt1"><span class="o">...</span>     <span class="p">}</span></span>
 <span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">temp_occurrences</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>   eventID  occurrenceID                     scientificName  decimalLatitude  decimalLongitude eventDate  individualCount
-0        3           101  Eopsaltria (Eopsaltria) australis           -20.29             148.7  2023-1-3                3
-1        3           102          Symposiachrus trivirgatus           -20.29             148.7  2023-1-3                3
-2        3           103                Zosterops lateralis           -20.29             148.7  2023-1-3                2
-3        3           104                Ptilopus magnificus           -20.29             148.7  2023-1-3                1
-4        3           105           Pitta (Pitta) versicolor           -20.29             148.7  2023-1-3                3
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>   eventID  occurrenceID                     scientificName  decimalLatitude  decimalLongitude   eventDate  individualCount
+0        3           101  Eopsaltria (Eopsaltria) australis           -20.29             148.7  2023-01-03                3
+1        3           102          Symposiachrus trivirgatus           -20.29             148.7  2023-01-03                3
+2        3           103                Zosterops lateralis           -20.29             148.7  2023-01-03                2
+3        3           104              Ptilinopus magnificus           -20.29             148.7  2023-01-03                1
+4        3           105           Pitta (Pitta) versicolor           -20.29             148.7  2023-01-03                3
 </pre></div>
 </div>
 <p>Now, since the new column names are in a temporary variable, you need replace the old data
 frame with the new one.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span> <span class="o">=</span> <span class="n">temp_occurrences</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>   eventID  occurrenceID                     scientificName  decimalLatitude  decimalLongitude eventDate  individualCount
-0        3           101  Eopsaltria (Eopsaltria) australis           -20.29             148.7  2023-1-3                3
-1        3           102          Symposiachrus trivirgatus           -20.29             148.7  2023-1-3                3
-2        3           103                Zosterops lateralis           -20.29             148.7  2023-1-3                2
-3        3           104                Ptilopus magnificus           -20.29             148.7  2023-1-3                1
-4        3           105           Pitta (Pitta) versicolor           -20.29             148.7  2023-1-3                3
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>   eventID  occurrenceID                     scientificName  decimalLatitude  decimalLongitude   eventDate  individualCount
+0        3           101  Eopsaltria (Eopsaltria) australis           -20.29             148.7  2023-01-03                3
+1        3           102          Symposiachrus trivirgatus           -20.29             148.7  2023-01-03                3
+2        3           103                Zosterops lateralis           -20.29             148.7  2023-01-03                2
+3        3           104              Ptilinopus magnificus           -20.29             148.7  2023-01-03                1
+4        3           105           Pitta (Pitta) versicolor           -20.29             148.7  2023-01-03                3
 </pre></div>
 </div>
 <p>This same workflow can also be done for the <code class="docutils literal notranslate"><span class="pre">events</span></code> dataframe.</p>
@@ -523,16 +523,14 @@ errors we will get now.</p>
 Pass/Fail: Fail
 Data Type: Event
 Errors:
-	- There are some invalid taxa according to the backbone you are comparing against.
 	- You are missing required columns in your data.
-	- Your datetime format is not in YYYY-MM-DD or iso format.
 Missing Columns Occurrence:
-	class
-	kingdom
-	family
-	order
-	phylum
 	genus
+	kingdom
+	order
+	family
+	class
+	phylum
 	coordinateUncertaintyInMeters
 	geodeticDatum
 	basisOfRecord
@@ -559,17 +557,11 @@ Coordinates Report:
 	Invalid latitude count: 0
 	Invalid longitude count: 0
 Datetime Report:
-	Has invalid datetime: True
-	Number of invalid datetimes: 173
+	Has invalid datetime: False
+	Number of invalid datetimes: 0
 Taxonomy Report:
-	Invalid taxon present: True
-	Valid Taxon count: 0
-	Unrecognised taxa:
-
-         original name proposed match(es) rank of proposed match(es) scientificName   rank species       genus      family          order classs    phylum   kingdom
-0  Ptilopus magnificus         Ptilinopus                      genus     Ptilinopus  genus    None  Ptilinopus  Columbidae  Columbiformes   Aves  Chordata  Animalia
-1    Ptilopus superbus         Ptilinopus                      genus     Ptilinopus  genus    None  Ptilinopus  Columbidae  Columbiformes   Aves  Chordata  Animalia
-
+	Invalid taxon present: False
+	Valid Taxon count: 205
 Column counts:
 	eventID: 205
 	occurrenceID: 205

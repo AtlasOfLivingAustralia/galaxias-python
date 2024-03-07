@@ -67,34 +67,16 @@ column name is not a Darwin Core term.
                     
             **Example Report + Extensions**|
 
-Validating Required EventCore Terms
+Validating Required Terms
 -------------------------------------------
 
 *For information on how to prepare occurrence data, visit* 
 `Preparing Occurrences <preparing_occurrence_data.html>`_
 
+These vignettes are for the ``events`` part of the EventCore Archive.
+
 .. grid:: 4
     :gutter: 4
-
-    .. grid-item-card:: 
-        :link: preparing_data/checking_taxonomy_eventcore.html
-        :class-card: sd-text-black
-        :text-align: center
-
-        .. raw:: html
-            :file: ../../source/_static/icons/user_guide.svg
-                
-        **Check Taxonomy** 
-
-    .. grid-item-card::
-        :link: preparing_data/add_higher_taxon_eventcore.html
-        :class-card: sd-text-black
-        :text-align: center
-
-        .. raw:: html
-            :file: ../../source/_static/icons/user_guide.svg
-
-        **Add Higher Order Taxonomy**
 
     .. grid-item-card::
         :link: preparing_data/add_req_columns_values.html
@@ -105,16 +87,6 @@ Validating Required EventCore Terms
             :file: ../../source/_static/icons/user_guide.svg
 
         **Adding Required Columns and Values**
-
-    .. grid-item-card::
-        :link: preparing_data/convert_coordinates.html
-        :class-card: sd-text-black
-        :text-align: center
-
-        .. raw:: html
-            :file: ../../source/_static/icons/user_guide.svg
-
-        **Converting Spatial Coordinates**
 
     .. grid-item-card::
         :link: preparing_data/convert_datetime.html
@@ -233,17 +205,17 @@ Validating Recommended EventCore Terms
 Example of Final Passing Report
 -------------------------------------------
 
-``UNDER CONSTRUCTION``
+This is an example of what a passing report looks like.
 
 .. grid:: 4
     :gutter: 4
 
     .. grid-item-card::
-        :link: preparing_data/event_core_terms.html
+        :link: preparing_data/final_report_event_nomulti.html
         :class-card: sd-text-black
         :text-align: center
 
         .. raw:: html
             :file: ../../source/_static/icons/user_guide.svg
 
-        **Required Event Core Terms**
+        **Events**

@@ -44,6 +44,16 @@ column name is not a Darwin Core term.
                 
         **Generate Data Report** 
 
+    .. grid-item-card::
+        :link: preparing_data/rename_columns_to_dwca.html
+        :class-card: sd-text-black
+        :text-align: center
+
+        .. raw:: html
+            :file: ../../source/_static/icons/user_guide.svg
+
+        **Renaming Columns to Darwin Core**
+
     .. 
         .. grid-item-card::
             :link: preparing_data/generate_initial_report_occurrence_multi.html
@@ -55,15 +65,6 @@ column name is not a Darwin Core term.
 
             **Data Report with Multimedia**
 
-        .. grid-item-card::
-            :link: preparing_data/rename_columns_to_dwca.html
-            :class-card: sd-text-black
-            :text-align: center
-
-            .. raw:: html
-                :file: ../../source/_static/icons/user_guide.svg
-
-            **Renaming Columns to Darwin Core**
 
 Validating Required Occurrence Data
 ------------------------------------------------
