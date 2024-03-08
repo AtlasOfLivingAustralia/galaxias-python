@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>EventCore Data Report &#8212; Galaxias 0.1.0 documentation</title>
+    <title>Adding required columns and values &#8212; Galaxias 0.1.0 documentation</title>
   
   
   
@@ -45,7 +45,7 @@
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/design-tabs.js?v=36754332"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'galaxias_user_guide/preparing_data/generate_initial_report_event';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'galaxias_user_guide/preparing_data/add_req_columns_values_event';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -371,7 +371,7 @@ document.write(`
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page">EventCore...</li>
+    <li class="breadcrumb-item active" aria-current="page">Adding...</li>
   </ul>
 </nav>
 </div>
@@ -388,55 +388,34 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="eventcore-data-report">
-<h1>EventCore Data Report<a class="headerlink" href="#eventcore-data-report" title="Link to this heading">#</a></h1>
-<p>First, we will want to know how close our data is to being ready for submission to a living
-atlas.  To do that, we will need to first build a <code class="docutils literal notranslate"><span class="pre">dwca</span></code> object with <code class="docutils literal notranslate"><span class="pre">galaxias</span></code>, and then
-run an initial report.  This report will check dates, requirements for your atlas, whether or
-not your taxon have the correct taxonomy for your chosen taxonomic backbone, and if each of
-your occurrences has a unique identifier.</p>
+  <section id="adding-required-columns-and-values">
+<h1>Adding required columns and values<a class="headerlink" href="#adding-required-columns-and-values" title="Link to this heading">#</a></h1>
+<p>Now, we will check for further required columns and values.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
 span.prompt1:before {
   content: " ";
 }
-</style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">galaxias</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occurrences</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;occurrences.csv&quot;</span><span class="p">)</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">events</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;events.csv&quot;</span><span class="p">)</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span> <span class="o">=</span> <span class="n">galaxias</span><span class="o">.</span><span class="n">dwca</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">occurrences</span><span class="p">,</span><span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">)</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">generate_data_report</span><span class="p">()</span></span>
+</style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">generate_data_report</span><span class="p">()</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Archive Report
 ---------------------
 Pass/Fail: Fail
 Data Type: Event
 Errors:
-	- A taxonomy report could not be generated, likely because the column &#39;scientificName&#39; is not in your column names.
 	- You are missing required columns in your data.
-	- Some of your columns do not match the current Darwin Core Standard.
 	- Your datetime format in Events Report is not in YYYY-MM-DD or iso format.
 	- Your datetime format in Occurrences is not in YYYY-MM-DD or iso format.
 Missing Columns Occurrence:
-	MAYBE: decimalLatitude
-	MAYBE: decimalLongitude
-	scientificName
-	vernacularName
 	genus
-	family
 	order
-	class
 	phylum
 	kingdom
+	class
+	family
+	coordinateUncertaintyInMeters
+	geodeticDatum
+	basisOfRecord
 Missing Columns Events:
-	Event
 	samplingProtocol
-Incorrect DwC Terms Events:
-	eventName
-Incorrect DwC Terms Occurrence:
-	Collection_date
-	Longitude
-	Latitude
-	Species
-	number_birds
 
 Events Report
 ---------------------
@@ -450,29 +429,109 @@ Column counts:
 	eventType: 78
 	locality: 78
 	eventDate: 78
-	eventName: 78
+	Event: 78
 
 Occurrence Report
 ---------------------
 Coordinates Report:
-	Data has coordinate fields?: False
+	Data has coordinate fields?: True
 	Invalid latitude count: 0
 	Invalid longitude count: 0
 Datetime Report:
 	Has invalid datetime: True
 	Number of invalid datetimes: 205
 Taxonomy Report:
-	Could not do a taxonomic classification because &#39;scientificName&#39; is likely missing from your columns.
+	Invalid taxon present: False
+	Valid Taxon count: 205
 Column counts:
 	eventID: 205
 	occurrenceID: 205
-	Species: 205
-	Latitude: 205
-	Longitude: 205
-	Collection_date: 205
-	number_birds: 205
+	scientificName: 205
+	decimalLatitude: 205
+	decimalLongitude: 205
+	eventDate: 205
+	individualCount: 205
+None
 </pre></div>
 </div>
+<p>Sometimes you will need to add certain information to be able to submit data to an atlas.  For the ALA, we require
+not only taxon information (<code class="docutils literal notranslate"><span class="pre">scientificName</span></code>, etc), latitude and longitude (<code class="docutils literal notranslate"><span class="pre">decimalLatitude</span></code> and <code class="docutils literal notranslate"><span class="pre">decimalLongitude</span></code>)
+as well as the date on which the species was spotted (<code class="docutils literal notranslate"><span class="pre">eventDate</span></code>), we will also require other fields:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">eventID</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">parentEventID</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">eventType</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">eventDate</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Event</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">samplingProtocol</span></code></p></li>
+</ul>
+<p>For <code class="docutils literal notranslate"><span class="pre">Event</span></code> and <code class="docutils literal notranslate"><span class="pre">samplingProtocol</span></code>, you can set one value for all your occurrences using <code class="docutils literal notranslate"><span class="pre">pandas</span></code>.
+If you need to set them individually, then manually adding a column is likely best.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>All of these columns should be looked over manually, as you can include different sampling protocols for each
+event, <code class="docutils literal notranslate"><span class="pre">eventDate</span></code> will change, and <code class="docutils literal notranslate"><span class="pre">eventID</span></code> and <code class="docutils literal notranslate"><span class="pre">parentEventID</span></code> are going to be linked.</p>
+</div>
+<p>To add these columns and default values to them:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span><span class="p">[</span><span class="s2">&quot;samplingProtocol&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;observation&quot;</span></span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Archive Report
+---------------------
+Pass/Fail: Fail
+Data Type: Event
+Errors:
+	- Your datetime format in Events Report is not in YYYY-MM-DD or iso format.
+	- You are missing required columns in your data.
+	- Your datetime format in Occurrences is not in YYYY-MM-DD or iso format.
+Missing Columns Occurrence:
+	phylum
+	family
+	order
+	class
+	kingdom
+	genus
+	coordinateUncertaintyInMeters
+	geodeticDatum
+	basisOfRecord
+
+Events Report
+---------------------
+Number of Events: 78
+Datetime Report:
+	Has invalid datetime: True
+	Number of invalid datetimes: 78
+Column counts:
+	eventID: 78
+	parentEventID: 52
+	eventType: 78
+	locality: 78
+	eventDate: 78
+	Event: 78
+	samplingProtocol: 78
+
+Occurrence Report
+---------------------
+Coordinates Report:
+	Data has coordinate fields?: True
+	Invalid latitude count: 0
+	Invalid longitude count: 0
+Datetime Report:
+	Has invalid datetime: True
+	Number of invalid datetimes: 205
+Taxonomy Report:
+	Invalid taxon present: False
+	Valid Taxon count: 205
+Column counts:
+	eventID: 205
+	occurrenceID: 205
+	scientificName: 205
+	decimalLatitude: 205
+	decimalLongitude: 205
+	eventDate: 205
+	individualCount: 205
+None
+</pre></div>
+</div>
+<p>For ways to prepare your occurrence data, go back to <a class="reference external" href="../preparing_occurrence_data.html">the “Preparing Data” main page</a>.</p>
 </section>
 
 

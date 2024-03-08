@@ -397,30 +397,33 @@ span.prompt1:before {
   content: " ";
 }
 </style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">generate_data_report</span><span class="p">()</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>here
-Archive Report
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Archive Report
 ---------------------
 Pass/Fail: Fail
 Data Type: Event
 Errors:
 	- You are missing required columns in your data.
+	- Your datetime format in Events Report is not in YYYY-MM-DD or iso format.
+	- Your datetime format in Occurrences is not in YYYY-MM-DD or iso format.
 Missing Columns Occurrence:
+	genus
+	order
+	phylum
 	kingdom
 	class
-	genus
-	phylum
-	order
 	family
-	geodeticDatum
 	coordinateUncertaintyInMeters
+	geodeticDatum
 	basisOfRecord
+Missing Columns Events:
+	samplingProtocol
 
 Events Report
 ---------------------
 Number of Events: 78
 Datetime Report:
-	Has invalid datetime: False
-	Number of invalid datetimes: 0
+	Has invalid datetime: True
+	Number of invalid datetimes: 78
 Column counts:
 	eventID: 78
 	parentEventID: 52
@@ -428,7 +431,6 @@ Column counts:
 	locality: 78
 	eventDate: 78
 	Event: 78
-	samplingProtocol: 78
 
 Occurrence Report
 ---------------------
@@ -437,8 +439,8 @@ Coordinates Report:
 	Invalid latitude count: 0
 	Invalid longitude count: 0
 Datetime Report:
-	Has invalid datetime: False
-	Number of invalid datetimes: 0
+	Has invalid datetime: True
+	Number of invalid datetimes: 205
 Taxonomy Report:
 	Invalid taxon present: False
 	Valid Taxon count: 205
@@ -470,20 +472,61 @@ the second one is writing a loop for changing all species names at once.</p>
 <span class="prompt1"><span class="o">...</span>     <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span><span class="p">[</span><span class="s1">&#39;scientificName&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">occurrences</span><span class="p">[</span><span class="s1">&#39;scientificName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">regex</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">name_changes</span><span class="p">[</span><span class="n">name</span><span class="p">])</span></span>
 <span class="prompt1"><span class="o">...</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>     eventID  occurrenceID                     scientificName  decimalLatitude  decimalLongitude   eventDate  individualCount
-0          3           101  Eopsaltria (Eopsaltria) australis           -20.29             148.7  2023-01-03                3
-1          3           102          Symposiachrus trivirgatus           -20.29             148.7  2023-01-03                3
-2          3           103                Zosterops lateralis           -20.29             148.7  2023-01-03                2
-3          3           104              Ptilinopus magnificus           -20.29             148.7  2023-01-03                1
-4          3           105           Pitta (Pitta) versicolor           -20.29             148.7  2023-01-03                3
-..       ...           ...                                ...              ...               ...         ...              ...
-200       78           301          Symposiachrus trivirgatus           -20.29             148.7  2023-12-19                1
-201       78           302                Zosterops lateralis           -20.29             148.7  2023-12-19                2
-202       78           303              Ptilinopus magnificus           -20.29             148.7  2023-12-19                2
-203       78           304           Pitta (Pitta) versicolor           -20.29             148.7  2023-12-19                1
-204       78           305                Ptilinopus superbus           -20.29             148.7  2023-12-19                1
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Archive Report
+---------------------
+Pass/Fail: Fail
+Data Type: Event
+Errors:
+	- Your datetime format in Events Report is not in YYYY-MM-DD or iso format.
+	- You are missing required columns in your data.
+	- Your datetime format in Occurrences is not in YYYY-MM-DD or iso format.
+Missing Columns Occurrence:
+	phylum
+	family
+	order
+	class
+	kingdom
+	genus
+	coordinateUncertaintyInMeters
+	geodeticDatum
+	basisOfRecord
 
-[205 rows x 7 columns]
+Events Report
+---------------------
+Number of Events: 78
+Datetime Report:
+	Has invalid datetime: True
+	Number of invalid datetimes: 78
+Column counts:
+	eventID: 78
+	parentEventID: 52
+	eventType: 78
+	locality: 78
+	eventDate: 78
+	Event: 78
+	samplingProtocol: 78
+
+Occurrence Report
+---------------------
+Coordinates Report:
+	Data has coordinate fields?: True
+	Invalid latitude count: 0
+	Invalid longitude count: 0
+Datetime Report:
+	Has invalid datetime: True
+	Number of invalid datetimes: 205
+Taxonomy Report:
+	Invalid taxon present: False
+	Valid Taxon count: 205
+Column counts:
+	eventID: 205
+	occurrenceID: 205
+	scientificName: 205
+	decimalLatitude: 205
+	decimalLongitude: 205
+	eventDate: 205
+	individualCount: 205
+None
 </pre></div>
 </div>
 <p>To add higher level taxonomy according to the chosen backbone, see <a class="reference external" href="add_higher_taxon.html">here</a></p>

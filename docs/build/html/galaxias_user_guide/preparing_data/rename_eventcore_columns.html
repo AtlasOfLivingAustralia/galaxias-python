@@ -399,9 +399,10 @@ Pass/Fail: Fail
 Data Type: Event
 Errors:
 	- A taxonomy report could not be generated, likely because the column &#39;scientificName&#39; is not in your column names.
-	- Some of your columns do not match the current Darwin Core Standard.
 	- You are missing required columns in your data.
-	- Your datetime format is not in YYYY-MM-DD or iso format.
+	- Some of your columns do not match the current Darwin Core Standard.
+	- Your datetime format in Events Report is not in YYYY-MM-DD or iso format.
+	- Your datetime format in Occurrences is not in YYYY-MM-DD or iso format.
 Missing Columns Occurrence:
 	MAYBE: decimalLatitude
 	MAYBE: decimalLongitude
@@ -413,21 +414,24 @@ Missing Columns Occurrence:
 	class
 	phylum
 	kingdom
+Missing Columns Events:
+	Event
+	samplingProtocol
 Incorrect DwC Terms Events:
 	eventName
 Incorrect DwC Terms Occurrence:
+	Collection_date
+	Longitude
+	Latitude
 	Species
 	number_birds
-	Longitude
-	Collection_date
-	Latitude
 
 Events Report
 ---------------------
 Number of Events: 78
 Datetime Report:
-	Has invalid datetime: False
-	Number of invalid datetimes: 0
+	Has invalid datetime: True
+	Number of invalid datetimes: 78
 Column counts:
 	eventID: 78
 	parentEventID: 52
@@ -435,7 +439,6 @@ Column counts:
 	locality: 78
 	eventDate: 78
 	eventName: 78
-	samplingProtocol: 78
 
 Occurrence Report
 ---------------------
@@ -468,11 +471,11 @@ span.prompt1:before {
 }
 </style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>   eventID  occurrenceID                            Species  Latitude  Longitude Collection_date  number_birds
-0        3           101  Eopsaltria (Eopsaltria) australis    -20.29      148.7      2023-01-03             3
-1        3           102          Symposiachrus trivirgatus    -20.29      148.7      2023-01-03             3
-2        3           103                Zosterops lateralis    -20.29      148.7      2023-01-03             2
-3        3           104              Ptilinopus magnificus    -20.29      148.7      2023-01-03             1
-4        3           105           Pitta (Pitta) versicolor    -20.29      148.7      2023-01-03             3
+0        3           101  Eopsaltria (Eopsaltria) australis    -20.29      148.7        3/1/2023             3
+1        3           102          Symposiachrus trivirgatus    -20.29      148.7        3/1/2023             3
+2        3           103                Zosterops lateralis    -20.29      148.7        3/1/2023             2
+3        3           104              Ptilinopus magnificus    -20.29      148.7        3/1/2023             1
+4        3           105           Pitta (Pitta) versicolor    -20.29      148.7        3/1/2023             3
 </pre></div>
 </div>
 </section>
@@ -491,24 +494,24 @@ valid Darwin Core terms that are required by the ALA.</p>
 <span class="prompt1"><span class="o">...</span>     <span class="p">}</span></span>
 <span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">temp_occurrences</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>   eventID  occurrenceID                     scientificName  decimalLatitude  decimalLongitude   eventDate  individualCount
-0        3           101  Eopsaltria (Eopsaltria) australis           -20.29             148.7  2023-01-03                3
-1        3           102          Symposiachrus trivirgatus           -20.29             148.7  2023-01-03                3
-2        3           103                Zosterops lateralis           -20.29             148.7  2023-01-03                2
-3        3           104              Ptilinopus magnificus           -20.29             148.7  2023-01-03                1
-4        3           105           Pitta (Pitta) versicolor           -20.29             148.7  2023-01-03                3
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>   eventID  occurrenceID                     scientificName  decimalLatitude  decimalLongitude eventDate  individualCount
+0        3           101  Eopsaltria (Eopsaltria) australis           -20.29             148.7  3/1/2023                3
+1        3           102          Symposiachrus trivirgatus           -20.29             148.7  3/1/2023                3
+2        3           103                Zosterops lateralis           -20.29             148.7  3/1/2023                2
+3        3           104              Ptilinopus magnificus           -20.29             148.7  3/1/2023                1
+4        3           105           Pitta (Pitta) versicolor           -20.29             148.7  3/1/2023                3
 </pre></div>
 </div>
 <p>Now, since the new column names are in a temporary variable, you need replace the old data
 frame with the new one.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span> <span class="o">=</span> <span class="n">temp_occurrences</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>   eventID  occurrenceID                     scientificName  decimalLatitude  decimalLongitude   eventDate  individualCount
-0        3           101  Eopsaltria (Eopsaltria) australis           -20.29             148.7  2023-01-03                3
-1        3           102          Symposiachrus trivirgatus           -20.29             148.7  2023-01-03                3
-2        3           103                Zosterops lateralis           -20.29             148.7  2023-01-03                2
-3        3           104              Ptilinopus magnificus           -20.29             148.7  2023-01-03                1
-4        3           105           Pitta (Pitta) versicolor           -20.29             148.7  2023-01-03                3
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>   eventID  occurrenceID                     scientificName  decimalLatitude  decimalLongitude eventDate  individualCount
+0        3           101  Eopsaltria (Eopsaltria) australis           -20.29             148.7  3/1/2023                3
+1        3           102          Symposiachrus trivirgatus           -20.29             148.7  3/1/2023                3
+2        3           103                Zosterops lateralis           -20.29             148.7  3/1/2023                2
+3        3           104              Ptilinopus magnificus           -20.29             148.7  3/1/2023                1
+4        3           105           Pitta (Pitta) versicolor           -20.29             148.7  3/1/2023                3
 </pre></div>
 </div>
 <p>This same workflow can also be done for the <code class="docutils literal notranslate"><span class="pre">events</span></code> dataframe.</p>
@@ -524,23 +527,27 @@ Pass/Fail: Fail
 Data Type: Event
 Errors:
 	- You are missing required columns in your data.
+	- Your datetime format in Events Report is not in YYYY-MM-DD or iso format.
+	- Your datetime format in Occurrences is not in YYYY-MM-DD or iso format.
 Missing Columns Occurrence:
-	genus
-	kingdom
 	order
-	family
-	class
+	kingdom
 	phylum
-	coordinateUncertaintyInMeters
+	genus
+	class
+	family
 	geodeticDatum
+	coordinateUncertaintyInMeters
 	basisOfRecord
+Missing Columns Events:
+	samplingProtocol
 
 Events Report
 ---------------------
 Number of Events: 78
 Datetime Report:
-	Has invalid datetime: False
-	Number of invalid datetimes: 0
+	Has invalid datetime: True
+	Number of invalid datetimes: 78
 Column counts:
 	eventID: 78
 	parentEventID: 52
@@ -548,7 +555,6 @@ Column counts:
 	locality: 78
 	eventDate: 78
 	Event: 78
-	samplingProtocol: 78
 
 Occurrence Report
 ---------------------
@@ -557,8 +563,8 @@ Coordinates Report:
 	Invalid latitude count: 0
 	Invalid longitude count: 0
 Datetime Report:
-	Has invalid datetime: False
-	Number of invalid datetimes: 0
+	Has invalid datetime: True
+	Number of invalid datetimes: 205
 Taxonomy Report:
 	Invalid taxon present: False
 	Valid Taxon count: 205

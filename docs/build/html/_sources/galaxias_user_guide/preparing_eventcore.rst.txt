@@ -30,9 +30,6 @@ These steps are showing you how to generate a "report", which will tell you what
 can be submitted to your chosen atlas.  It also shows you how to rename columns, as your data won't be checked if the 
 column name is not a Darwin Core term.  
 
-
-``UNDER CONSTRUCTION``
-
 .. grid:: 4
     :gutter: 4
 
@@ -79,7 +76,7 @@ These vignettes are for the ``events`` part of the EventCore Archive.
     :gutter: 4
 
     .. grid-item-card::
-        :link: preparing_data/add_req_columns_values.html
+        :link: preparing_data/add_req_columns_values_event.html
         :class-card: sd-text-black
         :text-align: center
 

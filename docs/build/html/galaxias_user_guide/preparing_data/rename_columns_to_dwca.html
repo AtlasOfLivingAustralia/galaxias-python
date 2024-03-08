@@ -401,7 +401,7 @@ Errors:
 	- A taxonomy report could not be generated, likely because the column &#39;scientificName&#39; is not in your column names.
 	- You are missing required columns in your data.
 	- Some of your columns do not match the current Darwin Core Standard.
-	- Your datetime format is not in YYYY-MM-DD or iso format.
+	- Your datetime format in Occurrences is not in YYYY-MM-DD or iso format.
 Missing Columns Occurrence:
 	MAYBE: decimalLatitude
 	MAYBE: decimalLongitude
@@ -415,10 +415,10 @@ Missing Columns Occurrence:
 	phylum
 	kingdom
 Incorrect DwC Terms Occurrence:
+	Collection_date
 	Longitude
 	Latitude
 	Species
-	Collection_date
 
 Occurrence Report
 ---------------------
@@ -448,11 +448,11 @@ span.prompt1:before {
 }
 </style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                   Species  Latitude  Longitude Collection_date
-0       Corymbia latifolia    -13.04     131.07      2022-03-29
-1     Eucalyptus tectifica    -13.04     131.07      2022-09-13
-2           Banksia aemula    -33.60     150.72      2022-08-15
-3  Eucalyptus sclerophylla    -33.60     150.72      2022-06-16
-4        Persoonia laurina    -33.60     150.72      2022-10-19
+0       Corymbia latifolia    -13.04     131.07       29/3/2022
+1     Eucalyptus tectifica    -13.04     131.07       13/9/2022
+2           Banksia aemula    -33.60     150.72       15/8/2022
+3  Eucalyptus sclerophylla    -33.60     150.72       16/6/2022
+4        Persoonia laurina    -33.60     150.72      19/10/2022
 </pre></div>
 </div>
 <p>To rename columns so they match Darwin Core terms, we can use <code class="docutils literal notranslate"><span class="pre">pandas</span></code>.  The following
@@ -468,11 +468,11 @@ valid Darwin Core terms that are required by the ALA.</p>
 <span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">temp_occurrences</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>            scientificName  decimalLatitude  decimalLongitude   eventDate
-0       Corymbia latifolia           -13.04            131.07  2022-03-29
-1     Eucalyptus tectifica           -13.04            131.07  2022-09-13
-2           Banksia aemula           -33.60            150.72  2022-08-15
-3  Eucalyptus sclerophylla           -33.60            150.72  2022-06-16
-4        Persoonia laurina           -33.60            150.72  2022-10-19
+0       Corymbia latifolia           -13.04            131.07   29/3/2022
+1     Eucalyptus tectifica           -13.04            131.07   13/9/2022
+2           Banksia aemula           -33.60            150.72   15/8/2022
+3  Eucalyptus sclerophylla           -33.60            150.72   16/6/2022
+4        Persoonia laurina           -33.60            150.72  19/10/2022
 </pre></div>
 </div>
 <p>Now, since the new column names are in a temporary variable, you need replace the old data
@@ -480,11 +480,11 @@ frame with the new one.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span> <span class="o">=</span> <span class="n">temp_occurrences</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>            scientificName  decimalLatitude  decimalLongitude   eventDate
-0       Corymbia latifolia           -13.04            131.07  2022-03-29
-1     Eucalyptus tectifica           -13.04            131.07  2022-09-13
-2           Banksia aemula           -33.60            150.72  2022-08-15
-3  Eucalyptus sclerophylla           -33.60            150.72  2022-06-16
-4        Persoonia laurina           -33.60            150.72  2022-10-19
+0       Corymbia latifolia           -13.04            131.07   29/3/2022
+1     Eucalyptus tectifica           -13.04            131.07   13/9/2022
+2           Banksia aemula           -33.60            150.72   15/8/2022
+3  Eucalyptus sclerophylla           -33.60            150.72   16/6/2022
+4        Persoonia laurina           -33.60            150.72  19/10/2022
 </pre></div>
 </div>
 <p>Now that we know all of our column headings are Darwin Core compliant, we can check what
@@ -498,15 +498,16 @@ Data Type: Occurrence
 Errors:
 	- There are some invalid taxa according to the backbone you are comparing against.
 	- You are missing required columns in your data.
+	- Your datetime format in Occurrences is not in YYYY-MM-DD or iso format.
 Missing Columns Occurrence:
-	family
-	class
 	order
-	kingdom
+	family
 	genus
+	class
 	phylum
-	coordinateUncertaintyInMeters
+	kingdom
 	geodeticDatum
+	coordinateUncertaintyInMeters
 	basisOfRecord
 	occurrenceID OR catalogNumber OR recordNumber
 
@@ -517,8 +518,8 @@ Coordinates Report:
 	Invalid latitude count: 0
 	Invalid longitude count: 0
 Datetime Report:
-	Has invalid datetime: False
-	Number of invalid datetimes: 0
+	Has invalid datetime: True
+	Number of invalid datetimes: 35
 Taxonomy Report:
 	Invalid taxon present: True
 	Valid Taxon count: 0
@@ -526,8 +527,8 @@ Taxonomy Report:
 
                           original name                      proposed match(es) rank of proposed match(es)                          scientificName     rank                   species       genus     family     order         classs      phylum  kingdom
 0  Eucalyptus camaldulensis var. obtusa  Eucalyptus camaldulensis subsp. obtusa                 SUBSPECIES  Eucalyptus camaldulensis subsp. obtusa     None  Eucalyptus camaldulensis  Eucalyptus  Myrtaceae  Myrtales           None  Charophyta  Plantae
-1                       Acacia murayana                        Acacia murrayana                    species                        Acacia murrayana  species          Acacia murrayana      Acacia   Fabaceae   Fabales  Equisetopsida  Charophyta  Plantae
-2               Eucalyptus sclerophylla                     Eucalyptus racemosa                    SPECIES                     Eucalyptus racemosa     None       Eucalyptus racemosa  Eucalyptus  Myrtaceae  Myrtales           None  Charophyta  Plantae
+1               Eucalyptus sclerophylla                     Eucalyptus racemosa                    SPECIES                     Eucalyptus racemosa     None       Eucalyptus racemosa  Eucalyptus  Myrtaceae  Myrtales           None  Charophyta  Plantae
+2                       Acacia murayana                        Acacia murrayana                    species                        Acacia murrayana  species          Acacia murrayana      Acacia   Fabaceae   Fabales  Equisetopsida  Charophyta  Plantae
 
 Column counts:
 	scientificName: 35

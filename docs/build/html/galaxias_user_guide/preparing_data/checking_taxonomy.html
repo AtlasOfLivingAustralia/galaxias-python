@@ -404,15 +404,16 @@ Data Type: Occurrence
 Errors:
 	- There are some invalid taxa according to the backbone you are comparing against.
 	- You are missing required columns in your data.
+	- Your datetime format in Occurrences is not in YYYY-MM-DD or iso format.
 Missing Columns Occurrence:
+	phylum
+	kingdom
+	genus
+	family
 	class
 	order
-	kingdom
-	family
-	phylum
-	genus
-	geodeticDatum
 	coordinateUncertaintyInMeters
+	geodeticDatum
 	basisOfRecord
 	occurrenceID OR catalogNumber OR recordNumber
 
@@ -423,17 +424,17 @@ Coordinates Report:
 	Invalid latitude count: 0
 	Invalid longitude count: 0
 Datetime Report:
-	Has invalid datetime: False
-	Number of invalid datetimes: 0
+	Has invalid datetime: True
+	Number of invalid datetimes: 35
 Taxonomy Report:
 	Invalid taxon present: True
 	Valid Taxon count: 0
 	Unrecognised taxa:
 
                           original name                      proposed match(es) rank of proposed match(es)                          scientificName     rank                   species       genus     family     order         classs      phylum  kingdom
-0                       Acacia murayana                        Acacia murrayana                    species                        Acacia murrayana  species          Acacia murrayana      Acacia   Fabaceae   Fabales  Equisetopsida  Charophyta  Plantae
-1  Eucalyptus camaldulensis var. obtusa  Eucalyptus camaldulensis subsp. obtusa                 SUBSPECIES  Eucalyptus camaldulensis subsp. obtusa     None  Eucalyptus camaldulensis  Eucalyptus  Myrtaceae  Myrtales           None  Charophyta  Plantae
-2               Eucalyptus sclerophylla                     Eucalyptus racemosa                    SPECIES                     Eucalyptus racemosa     None       Eucalyptus racemosa  Eucalyptus  Myrtaceae  Myrtales           None  Charophyta  Plantae
+0               Eucalyptus sclerophylla                     Eucalyptus racemosa                    SPECIES                     Eucalyptus racemosa     None       Eucalyptus racemosa  Eucalyptus  Myrtaceae  Myrtales           None  Charophyta  Plantae
+1                       Acacia murayana                        Acacia murrayana                    species                        Acacia murrayana  species          Acacia murrayana      Acacia   Fabaceae   Fabales  Equisetopsida  Charophyta  Plantae
+2  Eucalyptus camaldulensis var. obtusa  Eucalyptus camaldulensis subsp. obtusa                 SUBSPECIES  Eucalyptus camaldulensis subsp. obtusa     None  Eucalyptus camaldulensis  Eucalyptus  Myrtaceae  Myrtales           None  Charophyta  Plantae
 
 Column counts:
 	scientificName: 35
@@ -461,41 +462,41 @@ the second one is writing a loop for changing all species names at once.</p>
 <span class="prompt1"><span class="o">...</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                            scientificName  decimalLatitude  decimalLongitude   eventDate
-0                       Corymbia latifolia           -13.04            131.07  2022-03-29
-1                     Eucalyptus tectifica           -13.04            131.07  2022-09-13
-2                           Banksia aemula           -33.60            150.72  2022-08-15
-3                      Eucalyptus racemosa           -33.60            150.72  2022-06-16
-4                        Persoonia laurina           -33.60            150.72  2022-10-19
-5                            Acacia aneura           -22.35            133.33  2022-10-11
-6                          Acacia cambagei           -22.35            133.33  2022-08-23
-7                      Acacia dictyophleba           -22.35            133.33  2022-01-11
-8                     Acacia estrophiolata           -22.35            133.33  2022-07-10
-9                          Acacia kempeana           -22.35            133.33  2022-07-18
-10                       Acacia melleodora           -22.35            133.33  2022-04-25
-11                        Acacia murrayana           -22.35            133.33  2022-12-15
-12                          Corymbia opaca           -22.35            133.33  2022-02-06
-13                     Corymbia terminalis           -22.35            133.33  2022-04-21
-14                     Eremophila latrobei           -22.35            133.33  2022-01-30
-15                Eucalyptus camaldulensis           -22.35            133.33  2022-03-30
-16  Eucalyptus camaldulensis subsp. obtusa           -22.35            133.33  2022-07-25
-17                        Hakea leucoptera           -22.35            133.33  2022-03-11
-18                        Hakea macrocarpa           -22.35            133.33  2022-07-28
-19                       Psydrax latifolia           -22.35            133.33  2022-03-06
-20                            Acacia celsa           -17.26            145.46  2022-09-05
-21                      Acronychia acidula           -17.26            145.46  2022-04-22
-22               Aleurites rockinghamensis           -17.26            145.46  2022-07-21
-23                      Alphitonia petriei           -17.26            145.46  2022-03-11
-24                    Gillbeea adenopetala           -17.26            145.46  2022-02-15
-25                         Litsea leefeana           -17.26            145.46  2022-05-11
-26                          Myrsine porosa           -17.26            145.46  2022-10-31
-27                      Neolitsea dealbata           -17.26            145.46  2022-10-08
-28                   Polyscias australiana           -17.26            145.46  2022-10-26
-29                       Coprosma hirtella           -35.66            148.15  2022-03-04
-30                      Daviesia latifolia           -35.66            148.15  2022-06-28
-31                 Eucalyptus delegatensis           -35.66            148.15  2022-01-22
-32                    Tasmannia lanceolata           -35.66            148.15  2022-06-24
-33                      Eucalyptus miniata           -12.42            130.92  2022-10-28
-34                   Eucalyptus tetrodonta           -12.42            130.92  2022-06-21
+0                       Corymbia latifolia           -13.04            131.07   29/3/2022
+1                     Eucalyptus tectifica           -13.04            131.07   13/9/2022
+2                           Banksia aemula           -33.60            150.72   15/8/2022
+3                      Eucalyptus racemosa           -33.60            150.72   16/6/2022
+4                        Persoonia laurina           -33.60            150.72  19/10/2022
+5                            Acacia aneura           -22.35            133.33  11/10/2022
+6                          Acacia cambagei           -22.35            133.33   23/8/2022
+7                      Acacia dictyophleba           -22.35            133.33   11/1/2022
+8                     Acacia estrophiolata           -22.35            133.33   10/7/2022
+9                          Acacia kempeana           -22.35            133.33   18/7/2022
+10                       Acacia melleodora           -22.35            133.33   25/4/2022
+11                        Acacia murrayana           -22.35            133.33  15/12/2022
+12                          Corymbia opaca           -22.35            133.33    6/2/2022
+13                     Corymbia terminalis           -22.35            133.33   21/4/2022
+14                     Eremophila latrobei           -22.35            133.33   30/1/2022
+15                Eucalyptus camaldulensis           -22.35            133.33   30/3/2022
+16  Eucalyptus camaldulensis subsp. obtusa           -22.35            133.33   25/7/2022
+17                        Hakea leucoptera           -22.35            133.33   11/3/2022
+18                        Hakea macrocarpa           -22.35            133.33   28/7/2022
+19                       Psydrax latifolia           -22.35            133.33    6/3/2022
+20                            Acacia celsa           -17.26            145.46    5/9/2022
+21                      Acronychia acidula           -17.26            145.46   22/4/2022
+22               Aleurites rockinghamensis           -17.26            145.46   21/7/2022
+23                      Alphitonia petriei           -17.26            145.46   11/3/2022
+24                    Gillbeea adenopetala           -17.26            145.46   15/2/2022
+25                         Litsea leefeana           -17.26            145.46   11/5/2022
+26                          Myrsine porosa           -17.26            145.46  31/10/2022
+27                      Neolitsea dealbata           -17.26            145.46   8/10/2022
+28                   Polyscias australiana           -17.26            145.46  26/10/2022
+29                       Coprosma hirtella           -35.66            148.15    4/3/2022
+30                      Daviesia latifolia           -35.66            148.15   28/6/2022
+31                 Eucalyptus delegatensis           -35.66            148.15   22/1/2022
+32                    Tasmannia lanceolata           -35.66            148.15   24/6/2022
+33                      Eucalyptus miniata           -12.42            130.92  28/10/2022
+34                   Eucalyptus tetrodonta           -12.42            130.92   21/6/2022
 </pre></div>
 </div>
 </section>
@@ -506,11 +507,11 @@ ensure that you have the correct taxon.  Thankfully, you can do this with one fu
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">add_taxonomic_information</span><span class="p">()</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>         scientificName  decimalLatitude  decimalLongitude   eventDate              vernacularName       genus      family      order          class      phylum  kingdom
-0    Corymbia latifolia           -13.04            131.07  2022-03-29        Round-leaf Bloodwood    Corymbia   Myrtaceae   Myrtales  Equisetopsida  Charophyta  Plantae
-1  Eucalyptus tectifica           -13.04            131.07  2022-09-13                  Darwin Box  Eucalyptus   Myrtaceae   Myrtales  Equisetopsida  Charophyta  Plantae
-2        Banksia aemula           -33.60            150.72  2022-08-15              Wallum Banksia     Banksia  Proteaceae  Proteales  Equisetopsida  Charophyta  Plantae
-3   Eucalyptus racemosa           -33.60            150.72  2022-06-16  Narrow-leaved Scribbly Gum  Eucalyptus   Myrtaceae   Myrtales  Equisetopsida  Charophyta  Plantae
-4     Persoonia laurina           -33.60            150.72  2022-10-19              Laurel Geebung   Persoonia  Proteaceae  Proteales  Equisetopsida  Charophyta  Plantae
+0    Corymbia latifolia           -13.04            131.07   29/3/2022        Round-leaf Bloodwood    Corymbia   Myrtaceae   Myrtales  Equisetopsida  Charophyta  Plantae
+1  Eucalyptus tectifica           -13.04            131.07   13/9/2022                  Darwin Box  Eucalyptus   Myrtaceae   Myrtales  Equisetopsida  Charophyta  Plantae
+2        Banksia aemula           -33.60            150.72   15/8/2022              Wallum Banksia     Banksia  Proteaceae  Proteales  Equisetopsida  Charophyta  Plantae
+3   Eucalyptus racemosa           -33.60            150.72   16/6/2022  Narrow-leaved Scribbly Gum  Eucalyptus   Myrtaceae   Myrtales  Equisetopsida  Charophyta  Plantae
+4     Persoonia laurina           -33.60            150.72  19/10/2022              Laurel Geebung   Persoonia  Proteaceae  Proteales  Equisetopsida  Charophyta  Plantae
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">Note</span></code>: we have provided the higher taxonomic information we have on the backbone.  It is up to the

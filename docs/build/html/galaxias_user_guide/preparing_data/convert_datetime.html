@@ -394,27 +394,30 @@ document.write(`
 have <code class="docutils literal notranslate"><span class="pre">datetime</span></code> on their initial install of <code class="docutils literal notranslate"><span class="pre">Python</span></code>.</p>
 <p>For the Atlas of Living Australia, they require dates to either be in the format of <code class="docutils literal notranslate"><span class="pre">YYYY-MM-DD</span></code> or
 in <code class="docutils literal notranslate"><span class="pre">iso</span></code> format, which is <code class="docutils literal notranslate"><span class="pre">YYYY-MM-DDTHH:MM:SS</span></code>.</p>
-<section id="dd-mm-yyyy-and-mm-dd-yyyy-formats">
-<h2><code class="docutils literal notranslate"><span class="pre">DD-MM-YYYY</span></code> and <code class="docutils literal notranslate"><span class="pre">MM-DD-YYYY</span></code> formats<a class="headerlink" href="#dd-mm-yyyy-and-mm-dd-yyyy-formats" title="Link to this heading">#</a></h2>
-<p>First, we will look at the <code class="docutils literal notranslate"><span class="pre">DD-MM-YYYY</span></code> format.</p>
+<section id="dd-mm-yyyy-mm-dd-yyyy-dd-mm-yyyy-and-mm-dd-yyyy-formats">
+<h2><code class="docutils literal notranslate"><span class="pre">DD-MM-YYYY</span></code>, <code class="docutils literal notranslate"><span class="pre">MM-DD-YYYY</span></code>, <code class="docutils literal notranslate"><span class="pre">DD/MM/YYYY</span></code> and <code class="docutils literal notranslate"><span class="pre">MM/DD/YYYY</span></code> formats<a class="headerlink" href="#dd-mm-yyyy-mm-dd-yyyy-dd-mm-yyyy-and-mm-dd-yyyy-formats" title="Link to this heading">#</a></h2>
+<p>First, we will look at the <code class="docutils literal notranslate"><span class="pre">DD-MM-YYYY</span></code> format as an example.  Thankfully all the information is in there,
+it just needs to be reversed so the year is first.  This code can be adapted to include the slashes in the
+example below, by switching the <code class="docutils literal notranslate"><span class="pre">&quot;-&quot;</span></code> character to <code class="docutils literal notranslate"><span class="pre">&quot;/&quot;</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
 span.prompt1:before {
   content: " ";
 }
 </style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="c1"># DD-MM-YYYY</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">datetime</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">date</span> <span class="o">=</span> <span class="s2">&quot;01-05-2005&quot;</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">split_date</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">new_date</span> <span class="o">=</span> <span class="s2">&quot;-&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">split_date</span><span class="p">)))</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">split_date</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">date</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)))</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">new_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="n">split_date</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">split_date</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">split_date</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">new_date</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>2005-05-01
 </pre></div>
 </div>
 <p>Converting the <code class="docutils literal notranslate"><span class="pre">MM-DD-YYYY</span></code> format is a bit tricker, but still can be done in the same number of
-lines of code.</p>
+lines of code, and can be adaped to include the <code class="docutils literal notranslate"><span class="pre">/</span></code> character.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="c1"># DD-MM-YYYY</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">date</span> <span class="o">=</span> <span class="s2">&quot;05-01-2005&quot;</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">split_date</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">new_date</span> <span class="o">=</span> <span class="s2">&quot;-&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">split_date</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">split_date</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">split_date</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">new_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="n">split_date</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">split_date</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">split_date</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">new_date</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>2005-05-01
 </pre></div>
@@ -428,22 +431,14 @@ lines of code.</p>
 <span class="prompt1"><span class="o">...</span>     <span class="p">}</span></span>
 <span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">row</span> <span class="ow">in</span> <span class="n">dates</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span></span>
-<span class="prompt1"><span class="o">...</span>     <span class="n">split_date</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;eventDate&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)</span></span>
-<span class="prompt1"><span class="o">...</span>     <span class="n">dates</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="s2">&quot;eventDate&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;-&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">split_date</span><span class="p">)))</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="n">split_date</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;eventDate&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)))</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="n">dates</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="s2">&quot;eventDate&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="n">split_date</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">split_date</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">split_date</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">dates</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/Users/buy003/Documents/GitHub/galaxias-python/docs/source/galaxias_user_guide/preparing_data/convert_datetime.py:2: DeprecationWarning: 
-Pyarrow will become a required dependency of pandas in the next major release of pandas (pandas 3.0),
-(to allow more performant data types, such as the Arrow string type, and better interoperability with other libraries)
-but was not found to be installed on your system.
-If this would cause problems for you,
-please provide us feedback at https://github.com/pandas-dev/pandas/issues/54466
-        
-  import pandas as pd
-    eventDate
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>    eventDate
 0  2005-01-05
 1  2022-02-22
-2    2005-5-5
-3   2021-9-21
+2  2005-05-05
+3  2021-09-21
 </pre></div>
 </div>
 </section>
@@ -463,6 +458,25 @@ Luckily, the <code class="docutils literal notranslate"><span class="pre">dateti
 </div>
 <p>For other checks of your data, go back to the <a class="reference external" href="../preparing_data.html">data homepage</a>.</p>
 </section>
+</section>
+<section id="example-with-occurrence-data">
+<h1>Example with Occurrence Data<a class="headerlink" href="#example-with-occurrence-data" title="Link to this heading">#</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">galaxias</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;occurrences.csv&quot;</span><span class="p">)</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span> <span class="o">=</span> <span class="n">galaxias</span><span class="o">.</span><span class="n">dwca</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">data</span><span class="p">)</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">row</span> <span class="ow">in</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span>     <span class="n">split_date</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;eventDate&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)))</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span>     <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="s2">&quot;eventDate&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="n">split_date</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">split_date</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">split_date</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span></span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>            scientificName  decimalLatitude  decimalLongitude   eventDate
+0       Corymbia latifolia           -13.04            131.07  2022-03-29
+1     Eucalyptus tectifica           -13.04            131.07  2022-09-13
+2           Banksia aemula           -33.60            150.72  2022-08-15
+3  Eucalyptus sclerophylla           -33.60            150.72  2022-06-16
+4        Persoonia laurina           -33.60            150.72  2022-10-19
+</pre></div>
+</div>
 </section>
 
 
@@ -493,9 +507,14 @@ Luckily, the <code class="docutils literal notranslate"><span class="pre">dateti
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dd-mm-yyyy-and-mm-dd-yyyy-formats"><code class="docutils literal notranslate"><span class="pre">DD-MM-YYYY</span></code> and <code class="docutils literal notranslate"><span class="pre">MM-DD-YYYY</span></code> formats</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Converting Dates into YYYY-MM-DD or format including timestamps</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dd-mm-yyyy-mm-dd-yyyy-dd-mm-yyyy-and-mm-dd-yyyy-formats"><code class="docutils literal notranslate"><span class="pre">DD-MM-YYYY</span></code>, <code class="docutils literal notranslate"><span class="pre">MM-DD-YYYY</span></code>, <code class="docutils literal notranslate"><span class="pre">DD/MM/YYYY</span></code> and <code class="docutils literal notranslate"><span class="pre">MM/DD/YYYY</span></code> formats</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#yyyy-mm-ddthh-mm-ss-iso-format"><code class="docutils literal notranslate"><span class="pre">YYYY-MM-DDTHH:MM:SS</span></code> (<code class="docutils literal notranslate"><span class="pre">iso</span></code> format)</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-with-occurrence-data">Example with Occurrence Data</a></li>
+</ul>
+
   </nav></div>
 
 </div></div>

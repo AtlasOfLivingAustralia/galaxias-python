@@ -413,9 +413,10 @@ Pass/Fail: Fail
 Data Type: Event
 Errors:
 	- A taxonomy report could not be generated, likely because the column &#39;scientificName&#39; is not in your column names.
-	- Some of your columns do not match the current Darwin Core Standard.
 	- You are missing required columns in your data.
-	- Your datetime format is not in YYYY-MM-DD or iso format.
+	- Some of your columns do not match the current Darwin Core Standard.
+	- Your datetime format in Events Report is not in YYYY-MM-DD or iso format.
+	- Your datetime format in Occurrences is not in YYYY-MM-DD or iso format.
 Missing Columns Occurrence:
 	MAYBE: decimalLatitude
 	MAYBE: decimalLongitude
@@ -427,21 +428,24 @@ Missing Columns Occurrence:
 	class
 	phylum
 	kingdom
+Missing Columns Events:
+	Event
+	samplingProtocol
 Incorrect DwC Terms Events:
 	eventName
 Incorrect DwC Terms Occurrence:
-	Longitude
-	Species
 	number_birds
 	Latitude
+	Species
+	Longitude
 	Collection_date
 
 Events Report
 ---------------------
 Number of Events: 78
 Datetime Report:
-	Has invalid datetime: False
-	Number of invalid datetimes: 0
+	Has invalid datetime: True
+	Number of invalid datetimes: 78
 Column counts:
 	eventID: 78
 	parentEventID: 52
@@ -449,7 +453,6 @@ Column counts:
 	locality: 78
 	eventDate: 78
 	eventName: 78
-	samplingProtocol: 78
 
 Occurrence Report
 ---------------------

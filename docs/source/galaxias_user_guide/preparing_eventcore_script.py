@@ -1,6 +1,7 @@
 import galaxias
 import pandas as pd
 import sys
+import datetime
 
 # get option
 stopping_point = sys.argv[1]
@@ -53,11 +54,14 @@ temp_occurrences = my_dwca.occurrences.rename(
         "number_birds": "individualCount"
     }
 )
+
 if stopping_point == "3":
     print(temp_occurrences.head())
+    
     sys.exit()
 
 my_dwca.occurrences = temp_occurrences
+my_dwca.occurrences.to_csv("galaxias_user_guide/occurrences_event_nomulti_rename.csv",index=False)
 
 if stopping_point == "4":
     print(my_dwca.occurrences.head())
@@ -127,44 +131,28 @@ if stopping_point == "8":
 # --------------------------------------------------------
 # Part 2
 # --------------------------------------------------------
-    
+
 if stopping_point == "9":
-    print("here")
     print(my_dwca.generate_data_report())
     sys.exit()
 
-name_changes = {
-    "Eucalyptus camaldulensis var. obtusa": "Eucalyptus camaldulensis subsp. obtusa",
-    "Acacia murayana": "Acacia murrayana",
-    "Eucalyptus sclerophylla": "Eucalyptus racemosa"
-}
-
-for name in name_changes:
-    my_dwca.occurrences['scientificName'] = my_dwca.occurrences['scientificName'].replace(regex=name, value=name_changes[name])
+my_dwca.events["samplingProtocol"] = "observation"
 
 if stopping_point == "10":
-    print(my_dwca.occurrences)
-    sys.exit()
+    print(my_dwca.generate_data_report())
 
 my_dwca.add_taxonomic_information()
-
-if stopping_point == "11":
-    print(my_dwca.occurrences.head())
-    sys.exit()
-
-
 my_dwca.occurrences["coordinateUncertaintyInMeters"] = 100
 my_dwca.occurrences["geodeticDatum"] = "WGS84"
 my_dwca.occurrences["basisOfRecord"] = "HUMAN_OBSERVATION"
 
-# name changes
-name_changes = {
-    "Eucalyptus camaldulensis var. obtusa": "Eucalyptus camaldulensis subsp. obtusa",
-    "Acacia murayana": "Acacia murrayana",
-    "Eucalyptus sclerophylla": "Eucalyptus racemosa"
-}
-for name in name_changes:
-    my_dwca.occurrences['scientificName'] = my_dwca.occurrences['scientificName'].replace(regex=name, value=name_changes[name])
+for i,row in my_dwca.occurrences.iterrows():
+    split_date = list(map(int, row["eventDate"].split("/")))
+    my_dwca.occurrences.at[i,"eventDate"] = str(datetime.date(split_date[2],split_date[1],split_date[0]))
 
-if stopping_point == "12":
+for i,row in my_dwca.events.iterrows():
+    split_date = list(map(int, row["eventDate"].split("/")))
+    my_dwca.events.at[i,"eventDate"] = str(datetime.date(split_date[2],split_date[1],split_date[0]))
+
+if stopping_point == "11":
     print(my_dwca.generate_data_report())

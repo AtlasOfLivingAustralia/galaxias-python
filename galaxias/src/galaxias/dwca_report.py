@@ -143,12 +143,14 @@ def dwca_report(occurrence_report = None,
                             else:
                                 report_dict["Incorrect DwC Terms eMoF"].append(x)
 
-    if report_dict["Occurrences"]['datetime_report'] is not None:
-        if report_dict["Occurrences"]['datetime_report'].has_invalid_datetime:
-            if report_dict['Errors'] is not None:
-                report_dict['Errors'].append("Your datetime format is not in YYYY-MM-DD or iso format.")
-            else:
-                report_dict['Errors'] = ["Your datetime format is not in YYYY-MM-DD or iso format."]      
+        if report_dict[report_type] is not None:
+            if 'datetime_report' in report_dict[report_type]:
+                if report_dict[report_type]['datetime_report'] is not None:
+                    if report_dict[report_type]['datetime_report'].has_invalid_datetime:
+                        if report_dict['Errors'] is not None:
+                            report_dict['Errors'].append("Your datetime format in {} is not in YYYY-MM-DD or iso format.".format(report_type))
+                        else:
+                            report_dict['Errors'] = ["Your datetime format in {} is not in YYYY-MM-DD or iso format.".format(report_type)]      
 
     # check pass/fail based on errors and warnings
     if report_dict["Errors"] is None:
@@ -256,5 +258,8 @@ def dwca_report(occurrence_report = None,
             for c in report_dict["Extended Measurement Or Fact"]['column_counts']:
                 print("\t{}: {}".format(c,report_dict["Extended Measurement Or Fact"]['column_counts'][c]))
 
+    else:
+        print("Need to do something about this")
+        
     # do something about this...
     # report_file.close()         

@@ -13,7 +13,7 @@ your occurrences has a unique identifier.
 
     >>> import galaxias
     >>> import pandas as pd
-    >>> data = pd.read_csv("data.csv")
+    >>> data = pd.read_csv("occurrences.csv")
     >>> my_dwca = galaxias.dwca(occurrences=data)
     >>> my_dwca.generate_data_report()
 

@@ -1,6 +1,7 @@
 import galaxias
 import pandas as pd
 import sys
+import datetime
 
 # get option
 stopping_point = sys.argv[1]
@@ -118,7 +119,7 @@ if stopping_point == "final":
     # add occurrence IDs
     my_dwca.add_unique_occurrence_IDs(column_name="occurrenceID")
 
-    my_dwca.generate_data_report(verbose=True)
+    
 
     ### TODO: add this step
     temp_occurrences = my_dwca.occurrences.rename(
@@ -128,5 +129,11 @@ if stopping_point == "final":
     )
     my_dwca.occurrences = temp_occurrences
 
+    for i,row in my_dwca.occurrences.iterrows():
+        split_date = list(map(int, row["eventDate"].split("/")))
+        my_dwca.occurrences.at[i,"eventDate"] = str(datetime.date(split_date[2],split_date[1],split_date[0]))
+
     my_dwca.occurrences.to_csv("galaxias_user_guide/occurrences_dwc_clean.csv",index=False)
-    sys.exit()
+
+    my_dwca.generate_data_report(verbose=True)
+    # sys.exit()
