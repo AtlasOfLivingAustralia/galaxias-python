@@ -1,8 +1,5 @@
 :orphan:
 
-Other Recommended Terms
-====================================
-
 Additional Location information
 -----------------------------------
 
@@ -17,16 +14,3 @@ following terms, which will also help validate your coordinates:
 ``locality`` : locality in which occurrences were seen
 
 ``stateProvince`` : state or province in which occurrences were seen
-
-
-Extra occurrence information
---------------------------------
-
-This information is useful in X, but is also especially useful in EventCore.
-
-``individualCount`` : number of individuals present
-
-``occurrenceStatus`` : PRESENT / ABSENT
-
-``recordedBy`` : who recorded the occurrence
-

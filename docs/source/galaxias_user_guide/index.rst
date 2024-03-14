@@ -5,28 +5,16 @@ Galaxias User Guide
     :gutter: 4
 
     .. grid-item-card:: 
-        :link: preparing_occurrence_data.html
+        :link: preparing_data.html
         :class-card: sd-text-black
         :text-align: center
 
         .. raw:: html
             :file: ../../source/_static/icons/user_guide.svg
                 
-        **Darwin Core Prep** 
+        **Preparing Data**
 
-        Want to get your occurrence data ready for your chosen atlas?
-
-    .. grid-item-card:: 
-        :link: preparing_eventcore.html
-        :class-card: sd-text-black
-        :text-align: center
-
-        .. raw:: html
-            :file: ../../source/_static/icons/user_guide.svg
-                
-        **EventCore Prep** 
-
-        Want to organise your event data?
+        Want to get your data ready for your chosen atlas?
 
     .. grid-item-card::
         :link: preparing_metadata.html
@@ -51,3 +39,15 @@ Galaxias User Guide
         **Build Archive and Publish Data**
 
         Want to publish your data to a living atlas?
+
+    .. grid-item-card:: 
+        :link: troubleshooting.html
+        :class-card: sd-text-black
+        :text-align: center
+
+        .. raw:: html
+            :file: ../../source/_static/icons/user_guide.svg
+                
+        **Troubleshooting** 
+
+        Having trouble interpreting error messages??

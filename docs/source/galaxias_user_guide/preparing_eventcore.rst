@@ -160,59 +160,5 @@ Validating Recommended EventCore Terms
 
             **Preparing Recommended Data for Multimedia**
 
-    Extended Measurement Or Fact
-    -------------------------------------------
 
 
-    ``UNDER CONSTRUCTION``
-
-    .. grid:: 4
-        :gutter: 4
-
-        .. grid-item-card::
-            :link: preparing_data/link_id_measurement.html
-            :class-card: sd-text-black
-            :text-align: center
-
-            .. raw:: html
-                :file: ../../source/_static/icons/user_guide.svg
-
-            **Linking IDs to measurements**
-
-        .. grid-item-card::
-            :link: preparing_data/measurement_prep.html
-            :class-card: sd-text-black
-            :text-align: center
-
-            .. raw:: html
-                :file: ../../source/_static/icons/user_guide.svg
-
-            **How to format your measurements**
-
-        .. grid-item-card::
-            :link: preparing_data/validate_measurements.html
-            :class-card: sd-text-black
-            :text-align: center
-
-            .. raw:: html
-                :file: ../../source/_static/icons/user_guide.svg
-
-            **Validating measurements**
-
-Example of Final Passing Report
--------------------------------------------
-
-This is an example of what a passing report looks like.
-
-.. grid:: 4
-    :gutter: 4
-
-    .. grid-item-card::
-        :link: preparing_data/final_report_event_nomulti.html
-        :class-card: sd-text-black
-        :text-align: center
-
-        .. raw:: html
-            :file: ../../source/_static/icons/user_guide.svg
-
-        **Events**

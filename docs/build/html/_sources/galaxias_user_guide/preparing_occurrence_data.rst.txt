@@ -24,6 +24,9 @@ Though you may get a lot of errors in the beginning, most of these errors will l
 - Names of columns are not Darwin Core terms
 - Taxonomy does not match your chosen backbone
 
+These issues can be solved by `Renaming Columns <preparing_data/rename_columns_to_dwca.html>`_ 
+and `Checking Taxonomy <preparing_data/checking_taxonomy.html>`_.
+
 Initial Preparation
 -----------------------------
 

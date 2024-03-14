@@ -19,11 +19,6 @@ pd.set_option('max_colwidth', None) #;
 data = pd.read_csv("galaxias_user_guide/occurrences_dwc.csv")
 my_dwca = galaxias.dwca(occurrences=data)
 
-# generate initial data report and exit
-if stopping_point == "initial":
-    my_dwca.generate_data_report()
-    sys.exit()
-
 if stopping_point == "rename1":
     print(my_dwca.occurrences.head())
     sys.exit()

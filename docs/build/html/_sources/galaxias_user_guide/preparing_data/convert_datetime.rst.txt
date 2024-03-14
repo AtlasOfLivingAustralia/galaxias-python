@@ -77,8 +77,6 @@ Luckily, the ``datetime`` package handes this.
 
 .. program-output:: python -c "import datetime;date_and_time = '01-05-2005 18:30';date, time = date_and_time.split(' ');split_date = list(map(int, date.split('-')));split_time = list(map(int, time.split(':')));print(datetime.datetime(split_date[2],split_date[1],split_date[0],split_time[0],split_time[1]).isoformat())"
 
-For other checks of your data, go back to the `data homepage <../preparing_data.html>`_.
-
 Example with Occurrence Data
 ==================================================================
 
@@ -94,3 +92,5 @@ Example with Occurrence Data
     >>> my_dwca.occurrences
 
 .. program-output:: python -W ignore galaxias_user_guide/preparing_data/convert_datetime.py 2
+
+Go back to `preparing data <../preparing_data.html>`_

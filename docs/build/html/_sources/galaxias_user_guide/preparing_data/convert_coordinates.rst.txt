@@ -61,4 +61,4 @@ Here, we have converted a ``pandas DataFrame`` containing coordinates in degrees
 to decimal degrees, and have rounded the answer to two decimal places.  This is to ensure 
 good rounding practices, as well as fewer digits in the converted number.
 
-For other checks of your data, go back to the `data homepage <../preparing_data.html>`_.
+Next, go to `date and time <convert_datetime.html>`_.

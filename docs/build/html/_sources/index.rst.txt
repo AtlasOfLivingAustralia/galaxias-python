@@ -9,19 +9,16 @@
 
 **Date**: |today|  **Version**: |version|  
 
-Merging biodiversity datasets requires standardisation of their format or structure. ``galaxias`` 
-is a streamlined workflow and package designed to give users the ability to efficiently 
-prepare their data for submission to the living atlases **(link or definition)** in the form of 
-Darwin Core Archives (DwCAs) while ensuring the users still have control and autonomy with their 
-data. 
+The galaxias package offers a streamlined workflow for users to prepare their biodiversity data for submission 
+to the `Atlas of Living Australia (ALA) <https://www.ala.org.au/>`_. Aggregating biodiversity datasets requires 
+a standardised format be used, and living atlases use the Darwin Core data standard. This package allows users 
+to reformat their data according to Darwin Core standards prior to submission, while still maintaining control 
+of their data.
 
 ``galaxias`` was built and is maintained by the `Science & Decision Support Team <https://labs.ala.org.au/>`_ 
-at the `Atlas of Living Australia (ALA) <https://www.ala.org.au/>`_.  ``galaxias`` enables users to 
-enrich their data while ensuring that it aligns with the `‘Darwin Core’ <https://dwc.tdwg.org/>`_ 
-data standard, as well as the standards and requirements of their chosen living atlas.
-
-The package is named for the freshwater fish of the same name (*galaxias ????*), a widely-distributed 
-endemic Australian species.  The logo was designed by `Ian Brennan <http://www.iangbrennan.org/>`_.
+at the `Atlas of Living Australia (ALA) <https://www.ala.org.au/>`_.  ``galaxias`` is named for the freshwater 
+fish of the same name (*galaxias ????*), a widely-distributed endemic Australian species.  The logo was designed 
+by `Ian Brennan <http://www.iangbrennan.org/>`_.
 
 If you have any comments, questions or suggestions, please `contact us <mailto:support@ala.org.au>`_.
 

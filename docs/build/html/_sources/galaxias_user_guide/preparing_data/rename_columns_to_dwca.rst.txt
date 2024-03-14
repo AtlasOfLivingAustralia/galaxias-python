@@ -3,17 +3,16 @@
 Renaming column names to Darwin Core terms
 ------------------------------------------------------
 
-*Note:* this artice assumes you have generated an initial report.  If you have not, 
-go `here <generate_initial_report.html>`_ and follow the instructions.
+.. *Note:* this artice assumes you have generated an initial report.  If you have not, 
+.. go `here <generate_initial_report.html>`_ and follow the instructions.
 
-When we look at our generated report, we notice that a lot of things are missing:
+.. When we look at our generated report, we notice that a lot of things are missing:
 
-.. program-output:: python galaxias_user_guide/preparing_data_script.py initial
+.. .. program-output:: python galaxias_user_guide/preparing_data_script.py initial
 
-There are a lot of columns missing. However, if we look at the data we have using 
-the ``head`` command of the occurrences dataframe, we can see that none of the column 
-names are terms found in the Darwin Core Standard (for a list of required and 
-recommended terms for your living atlas, see `a table of dwc terms <../../getting_started/terms.html>`_).
+This first step assumes that you have successfully read your data into a ``dwca`` object.  
+Looking at the column names, they are not Darwin Core Terms.  To look at a list of Darwin Core 
+Terms, especially for required terms by the ALA, click `here <../../getting_started/terms.html>`_.
 
 .. prompt:: python
 
@@ -23,7 +22,7 @@ recommended terms for your living atlas, see `a table of dwc terms <../../gettin
 
 To rename columns so they match Darwin Core terms, we can use ``pandas``.  The following 
 mapping is based on matching the current column titles in the dataset with the names of 
-valid Darwin Core terms that are required by the ALA.
+valid Darwin Core terms.
 
 .. prompt:: python
 
@@ -49,15 +48,4 @@ frame with the new one.
 
 .. program-output:: python galaxias_user_guide/preparing_data_script.py rename3
 
-Now that we know all of our column headings are Darwin Core compliant, we can check what 
-errors we will get now.
-
-.. prompt:: python
-
-    >>> my_dwca.occurrences = temp_occurrences
-    >>> my_dwca.occurrences
-
-.. program-output:: python galaxias_user_guide/preparing_data_script.py rename4    
-
-There are still a few errors, but luckily you can do these in any order in the next section, 
-`Validating Data Against DwC Standards <../preparing_data.html>`_
+Next, go to `Adding Uncertainty <uncertainty.html>`_

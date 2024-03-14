@@ -13,3 +13,5 @@ what atlas you should submit your data to.
 +----------------------------------------------+------------------------------------+
 | Global Biodiversity Information Forum (GBIF) | Global Occurrences                 |
 +----------------------------------------------+------------------------------------+
+
+Back to `Getting Started <index.html>`_.
