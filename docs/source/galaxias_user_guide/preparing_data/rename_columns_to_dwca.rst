@@ -48,4 +48,4 @@ frame with the new one.
 
 .. program-output:: python galaxias_user_guide/preparing_data_script.py rename3
 
-Next, go to `Adding Uncertainty <uncertainty.html>`_
+Next, go to `geodeticDatum <geodeticDatum.html>`_

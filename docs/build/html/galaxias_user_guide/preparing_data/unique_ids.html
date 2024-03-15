@@ -390,8 +390,21 @@ document.write(`
                   
   <section id="unique-identifiers">
 <h1>Unique Identifiers<a class="headerlink" href="#unique-identifiers" title="Link to this heading">#</a></h1>
-<p>Something here.</p>
-<p>Next, go to <a class="reference external" href="convert_coordinates.html">coordinates</a></p>
+<p>Every occurrence must have a unique identifier to go with it.  You have a choice of one or more unique identifiers
+present in the Darwin Core vocabulary:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">occurrenceID</span></code>: An identifier for the dwc:Occurrence (as opposed to a particular digital record of the dwc:Occurrence). In the absence of a persistent global unique identifier, construct one from a combination of identifiers in the record that will most closely make the dwc:occurrenceID globally unique.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">catalogNumber</span></code>: An identifier (preferably unique) for the record within the data set or collection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">recordNumber</span></code>: An identifier given to the dwc:Occurrence at the time it was recorded. Often serves as a link between field notes and a dwc:Occurrence record, such as a specimen collector’s number.</p></li>
+</ul>
+<p>Luckily, the <code class="docutils literal notranslate"><span class="pre">dwca</span></code> object has a function which will create UUID (Unique Identifiers) for each of your occurrences, should you</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
+span.prompt1:before {
+  content: " ";
+}
+</style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">add_unique_occurrence_IDs</span><span class="p">(</span><span class="n">column_name</span><span class="o">=</span><span class="s2">&quot;occurrenceID&quot;</span><span class="p">)</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
+</pre></div></div><p>Next, go to <a class="reference external" href="convert_coordinates.html">coordinates</a>.</p>
 </section>
 
 

@@ -390,8 +390,39 @@ document.write(`
                   
   <section id="basisofrecord">
 <h1><code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code><a class="headerlink" href="#basisofrecord" title="Link to this heading">#</a></h1>
-<p>Something here.</p>
-<p>Next, go to <a class="reference external" href="unique_ids.html">unique identifiers</a></p>
+<p><code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code> refers to how the occurrence was recorded.  This is important for distinguishing individuals
+observed in the wild versus a museum specimen.  This can also include things like camera traps and fossils.
+Here, we show (from the <code class="docutils literal notranslate"><span class="pre">galah-python</span></code> package) what options are available:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>           field             category
+0  basisOfRecord    HUMAN_OBSERVATION
+1  basisOfRecord   PRESERVED_SPECIMEN
+2  basisOfRecord          OBSERVATION
+3  basisOfRecord           OCCURRENCE
+4  basisOfRecord  MACHINE_OBSERVATION
+5  basisOfRecord      MATERIAL_SAMPLE
+6  basisOfRecord      LIVING_SPECIMEN
+7  basisOfRecord    MATERIAL_CITATION
+8  basisOfRecord      FOSSIL_SPECIMEN
+</pre></div>
+</div>
+<p>If all of the observations you have were observed by a human, you can use the command in the previous page:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
+span.prompt1:before {
+  content: " ";
+}
+</style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span><span class="p">[</span><span class="s2">&quot;basisOfRecord&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;HUMAN_OBSERVATION&quot;</span></span>
+</pre></div></div><p>This will add a column in the data and flag that all your observations were from humans.</p>
+<p>However, if you want to change specific entries (say the first 10 observations are from camera traps), you can
+write a piece of code that creates a column and changes the first 10 observations to <code class="docutils literal notranslate"><span class="pre">MACHINE_OBSERVATION</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="c1"># first, create the column and set the default value</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span><span class="p">[</span><span class="s2">&quot;basisOfRecord&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;HUMAN_OBSERVATION&quot;</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="c1"># now, loop over the first 10 entries and change</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="s2">&quot;basisOfRecord&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;MACHINE_OBSERVATION&quot;</span></span>
+<span class="prompt1"><span class="o">...</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span></span>
+</pre></div></div><p>Next: <a class="reference external" href="unique_ids.html">unique identifiers</a></p>
 </section>
 
 

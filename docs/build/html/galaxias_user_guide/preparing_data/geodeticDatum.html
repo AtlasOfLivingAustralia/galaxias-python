@@ -390,8 +390,18 @@ document.write(`
                   
   <section id="geodeticdatum">
 <h1><code class="docutils literal notranslate"><span class="pre">geodeticDatum</span></code><a class="headerlink" href="#geodeticdatum" title="Link to this heading">#</a></h1>
-<p>Something.</p>
-<p>Next, go to <a class="reference external" href="basisOfRecord.html">basisOfRecord</a></p>
+<p><code class="docutils literal notranslate"><span class="pre">geodeticDatum</span></code> is specifying how your latitude and longitude measurements are represented.  Simply put, there
+are many ways to measure coordinates on the curvature of the earth, in what’s called a “Coordinate Reference System”.
+The Atlas of Living Australia uses the <a class="reference external" href="https://en.wikipedia.org/wiki/World_Geodetic_System">WGS84</a> standard, which
+is what your GPS uses.</p>
+<p>If you used a single GPS to record your latitude and longitude measurements, you can add a column denoting the
+Coordinate Reference System into your occurrences by doing the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
+span.prompt1:before {
+  content: " ";
+}
+</style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span><span class="p">[</span><span class="s2">&quot;geodeticDatum&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;WGS84&quot;</span></span>
+</pre></div></div><p>Next: <a class="reference external" href="basisOfRecord.html">basisOfRecord</a></p>
 </section>
 
 

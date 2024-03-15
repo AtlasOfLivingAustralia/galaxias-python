@@ -73,18 +73,18 @@ Need a refresher on this content?
 
 ..         **Event Core Archive**
     
-.. Terms
-.. ================
+Terms
+================
 
-.. .. grid:: 1 3 3 3
-..     :gutter: 4
+.. grid:: 1 3 3 3
+    :gutter: 4
 
-..     .. grid-item-card:: 
-..         :class-card: sd-text-black
-..         :link: terms.html
-..         :text-align: center
+    .. grid-item-card:: 
+        :class-card: sd-text-black
+        :link: terms.html
+        :text-align: center
 
-..         .. raw:: html
-..             :file: ../_static/icons/faq.svg
+        .. raw:: html
+            :file: ../_static/icons/faq.svg
 
-..         **DwC Terms**
+        **DwC Terms**

@@ -390,17 +390,25 @@ document.write(`
                   
   <section id="uncertainty">
 <h1>Uncertainty<a class="headerlink" href="#uncertainty" title="Link to this heading">#</a></h1>
+<p>Every measurement of latitude and longitude has some degree of uncertainty associated with it.  It is
+important to capture this, either in degrees latitude/longitude or in meters.  To this end, there are
+two Darwin Core terms that you can use for this:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">coordinateUncertaintyInMeters</span></code>: this is the uncertainty associated with any occurrence record.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">coordinatePrecision</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">coordinateUncertaintyInMeters</span></code></p></li>
 </ul>
-<p>This can be something like the error associated with your GPS or phone.  A good default,
-if you’re unsure, is <code class="docutils literal notranslate"><span class="pre">100</span></code>. <strong>but why tho?</strong></p>
+<p>According to the webpages on <a class="reference external" href="https://dwc.tdwg.org/list/#dwc_coordinatePrecision">coordinate precision</a> and
+<a class="reference external" href="https://dwc.tdwg.org/list/#dwc_coordinateUncertaintyInMeters">coordinate uncertainty in meters</a>, they
+can vary widely (for example, coordinate precision can vary from 0.00001, which is the normal GPS limit for
+decimal degrees, to 1.0, which is to the nearest degree).  If this is unknown, leave it blank.</p>
+<p>If you do know the precision or uncertainty, and it is the same for all the data, you can add a column to
+your dataframe by using the command below, as an example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
 span.prompt1:before {
   content: " ";
 }
 </style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span><span class="p">[</span><span class="s2">&quot;coordinateUncertaintyInMeters&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span></span>
-</pre></div></div><p>Next, go to <a class="reference external" href="geodeticDatum.html">Adding geodeticDatum</a></p>
+</pre></div></div><p>To see an example of a passing report, go to <a class="reference external" href="../preparing_data.html">preparing data</a>.</p>
 </section>
 
 

@@ -48,16 +48,6 @@ column name is not a Darwin Core term.
         **Renaming Columns to Darwin Core**
 
     .. grid-item-card::
-        :link: preparing_data/uncertainty.html
-        :class-card: sd-text-black
-        :text-align: center
-
-        .. raw:: html
-            :file: ../../source/_static/icons/user_guide.svg
-
-        **Adding Uncertainty**
-
-    .. grid-item-card::
         :link: preparing_data/geodeticDatum.html
         :class-card: sd-text-black
         :text-align: center
@@ -116,7 +106,6 @@ they can add extra context and details that will enrich your data and provide a 
 .. grid:: 3
     :gutter: 3
 
-
     .. grid-item-card:: 
         :link: preparing_data/cred_taxon_id.html
         :class-card: sd-text-black
@@ -146,6 +135,16 @@ they can add extra context and details that will enrich your data and provide a 
             :file: ../../source/_static/icons/user_guide.svg
                 
         **Additional Occurrence Information**
+
+    .. grid-item-card::
+        :link: preparing_data/uncertainty.html
+        :class-card: sd-text-black
+        :text-align: center
+
+        .. raw:: html
+            :file: ../../source/_static/icons/user_guide.svg
+
+        **Adding Uncertainty**
 
 ..       
     Multimedia Extension
