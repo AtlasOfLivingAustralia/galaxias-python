@@ -20,11 +20,10 @@ pd.set_option('max_colwidth', None) #;
 # --------------------------------------------------------
 
 # read in data
-events = pd.read_csv("galaxias_user_guide/events.csv")
-occurrences = pd.read_csv("galaxias_user_guide/occurrences_event_multi.csv")
 # multimedia = pd.read_csv("galaxias_user_guide/multimedia_event.csv")
 # emof = pd.read_csv("galaxias_user_guide/extendedMeasurementOrFact.csv")
-my_dwca = galaxias.dwca(events=events,occurrences=occurrences) #,
+my_dwca = galaxias.dwca(events="galaxias_user_guide/events.csv",
+                        occurrences="galaxias_user_guide/occurrences_event_multi.csv") #,
                         # multimedia=multimedia,emof=emof)
 
 # generate initial data report and exit

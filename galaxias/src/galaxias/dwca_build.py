@@ -5,102 +5,87 @@ from .dwca_report import dwca_report
 import json
 import uuid
 import requests
+import zipfile
+import shutil
 from .common_dictionaries import TAXON_TERMS
+from .common_functions import get_dwc_noncompliant_terms
 from dwc_validator.validate import validate_occurrence_dataframe,validate_media_extension
 from dwc_validator.validate import validate_event_dataframe,validate_emof_extension
 import xml.etree.ElementTree as ET
+from operator import itemgetter
 
 class dwca:
 
     def __init__(self,
-                 occurrences: pd.core.frame.DataFrame = None,
-                 occurrences_name = "occurrences.csv",
-                 multimedia: pd.core.frame.DataFrame = None,
-                 multimedia_name = "multimedia.csv",
-                 events: pd.core.frame.DataFrame = None,
-                 events_name = "events.csv",
-                 emof: pd.core.frame.DataFrame = None,
-                 emof_name = "extendedMeasurementOrFact.csv",
-                 dwca_name: str = "dwca.zip",
-                 metadata_md: str = None,
-                 eml_xml: str = "eml.xml",
-                 meta_xml: str = "meta.xml"
+                 working_dir = 'dwca_data',
+                 data_raw_dir = 'data_raw',
+                 data_proc_dir = 'data_processed',
+                 dwca_name = 'dwca.zip',
+                 occurrences = None,
+                 occurrences_dwc_filename = 'occurrences.csv',
+                 multimedia = None,
+                 multimedia_dwc_filename = 'multimedia.csv',
+                 events = None,
+                 events_dwc_filename = 'events.csv',
+                 emof = None,
+                 emof_dwc_filename = 'extendedMeasurementOrFact.csv',
+                 metadata_md = 'metadata.md',
+                 eml_xml = 'eml.xml',
+                 meta_xml = 'meta.xml'
                  ):
+            
+
+        # initialise rest of variables
+        self.working_dir = working_dir
+        self.data_raw_dir = '{}/{}'.format(working_dir,data_raw_dir)
+        self.data_proc_dir = '{}/{}'.format(working_dir,data_proc_dir)
+        self.dwca_name = '{}/{}'.format(working_dir,dwca_name)
+        self.occurrences = occurrences
+        self.occurrences_dwc_filename = '{}/{}'.format(data_proc_dir,occurrences_dwc_filename)
+        self.multimedia = multimedia
+        self.multimedia_dwc_filename = '{}/{}'.format(data_proc_dir,multimedia_dwc_filename)
+        self.events = events
+        self.events_dwc_filename = '{}/{}'.format(data_proc_dir,events_dwc_filename)
+        self.emof = emof
+        self.metadata_md = '{}/{}'.format(working_dir,metadata_md)
+        self.emof_dwc_filename = '{}/{}'.format(data_proc_dir,emof_dwc_filename)
+        self.eml_xml = '{}/{}'.format(working_dir,eml_xml)
+        self.meta_xml = '{}/{}'.format(working_dir,meta_xml)
+
+        # make the working directory
+        folders =  ['working_dir','data_raw_dir','data_proc_dir']
+        for folder in folders:
+            folder_name = getattr(self,folder)
+            if not os.path.isdir(folder_name):
+                os.mkdir(folder_name)
+
+        # create metadata file
+        if not os.path.exists(self.metadata_md):
+            self.create_metadata_file()
         
-        # check for if user provides data frame 
-        if dwca_name != "dwca.zip":
-            self.dwca_name = dwca_name
+        # now initialise the data variables
+        vars = ['occurrences','multimedia','events','emof']
 
-        # set occurrences first and foremost
-        if occurrences is not None and type(occurrences) is pd.core.frame.DataFrame:
-            self.occurrences = occurrences
-        else:
-            print("WARNING: if your occurrences argument is not a dataframe, occurrences will be set to None")
-            self.occurrences = None
+        # loop over all data variables
+        for var in vars:
 
-        # then, check for multimedia
-        if multimedia is not None and type(multimedia) is pd.core.frame.DataFrame:
-            self.multimedia = multimedia
-        elif multimedia is None:
-            self.multimedia=None
-        else:
-            raise ValueError("Only a pandas dataframe will be accepted for multimedia.")
+            # get value of variable
+            var_value = getattr(self,var)
 
-        # then, check if it is an event core
-        if events is not None and type(events) is pd.core.frame.DataFrame:
-            self.events = events
-        elif events is None:
-            self.events=None
-        else:
-            raise ValueError("Only a pandas dataframe will be accepted for events.")
-        
-        # then, check if it is an event core
-        if events is not None:
-            if emof is not None and type(emof) is pd.core.frame.DataFrame:
-                self.emof = emof
-            elif emof is None:
-                self.emof=None
+            # check for valid value of data variable
+            if var_value is None or type(var_value) is pd.core.frame.DataFrame:
+                # object, attribute, value
+                setattr(self,var,var_value) 
+                if var == 'occurrences' and var_value is None:
+                    print('WARNING: You will need occurrences for both Darwin Core and Event Core Archives.')
+            elif type(var_value) is str:
+                if 'csv' in var_value:
+                    shutil.copy2(var_value,self.data_raw_dir)
+                    setattr(self,var,pd.read_csv(var_value))
+                else:
+                    raise ValueError("If providing a filename, you must provide a csv file")
             else:
-                raise ValueError("Only a pandas dataframe will be accepted for extended measurement or fact.")
-
-        # check for names of data files
-        if occurrences_name is not None:
-            self.occurrences_name = occurrences_name
-        if multimedia_name is not None:
-            self.occurrences_name = occurrences_name
-        if events_name is not None:
-            self.occurrences_name = occurrences_name
-        if emof_name is not None:
-            self.occurrences_name = occurrences_name
-
-        # check for what type of DwCA it iwll be
-        if metadata_md is None:
-            metadata_md = self.create_metadata_file()
-            self.metadata_md = metadata_md
-
-        # set the eml and meta 
-        self.eml_xml = eml_xml
-        self.meta_xml = meta_xml
-
-    def add_metadata_md(self,
-                        metadata_md=None):
-        """
-        Adds a metadata markdown file to your ``dwca`` object.  This is for if you have your own custom file; 
-        this gets automatically done when you start a Darwin Core Archive object.
-
-        Parameters
-        ----------
-            ``metadata_md`` : ``str``
-                ``str`` containing the name of the metadata markdown file
-
-        Returns
-        -------
-            None
-        """
-        if metadata_md is None:
-            raise ValueError("Please provide a valid path to and name for the metadata markdown file.")
-        
-        self.metadata_md = metadata_md
+                raise ValueError("Only a csv filename or Pandas dataframe will be accepted for {}.".format(var))
 
     def add_taxonomic_information(self):
         """
@@ -130,10 +115,11 @@ class dwca:
         """
 
         # configs
-        configs = readConfig()
+        # configs = readConfig()
 
         # get atlas
-        atlas = configs["galaxiasSettings"]["atlas"]
+        # atlas = configs["galaxiasSettings"]["atlas"]
+        atlas = "Australia"
 
         # check for scientificName, as users should check that they have the correct column names
         if "scientificName" not in list(self.occurrences.columns):
@@ -224,10 +210,11 @@ class dwca:
         """
 
         # get configurations from user
-        configs = readConfig()
+        # configs = readConfig()
 
         # get atlas
-        atlas = configs["galaxiasSettings"]["atlas"]
+        # atlas = configs["galaxiasSettings"]["atlas"]
+        atlas = "Australia"
 
         # check for scientificName, as users should check that they have the correct column names
         if "scientificName" not in list(self.occurrences.columns):
@@ -264,15 +251,156 @@ class dwca:
             return True,pd.DataFrame(taxonomy)
         return True
     
-    # def create_dwca(self):
-    #     """
-    #     create dwca 
-    #     """
-    #     n=1
+    def check_dwca(self):
 
-    def create_metadata_file(self,
-                             filename = None,
-                             path = "."):
+        # get all variables
+        vars_dict = vars(self)
+        self_vars = list(vars(self).keys())
+        data_vars = [x for x in self_vars if 'xml' not in x and 'name' not in x and 'md' not in x]
+        
+        # determine what type of archive it is
+        data_files = list(itemgetter(*data_vars)(vars_dict))
+        for d in data_files:
+            print(type(d))
+        
+        # check for empty archive
+        if all(type(x) == type(data_files[0]) for x in data_files):
+            raise ValueError("You have no data in your DwCA.  Please at least add occurrences")
+
+        # first, check for events
+        if self.events is not None:
+            print("write events loop")
+        
+        # next, check for occurrences
+        elif self.occurrences is not None:
+                
+                print("here")
+                
+                occurrences_pass = self.check_occurrences()
+                if occurrences_pass:
+                    if os.path.exists(self.meta_xml) and os.path.exists(self.meta_xml):
+                        return True
+                    else:
+                        raise ValueError('You need to include the meta.xml and eml.xml file in your DwCA.')
+                else:
+                    raise ValueError('Your occurrences are not formatted correctly.')
+
+        else:
+            return False
+
+    def check_dwca_values(self):
+
+        return True
+
+    def check_events(self):
+
+        return True
+    
+    def check_occurrences(self):
+
+        # run basic checks
+        vocab_check = get_dwc_noncompliant_terms(dataframe = self.occurrences)
+        if len(vocab_check) > 0:
+            raise ValueError("Your column names do not comply with the DwC standard.")
+        
+        # TODO: check all values in vocab are there
+        values_check = self.check_dwca_values()
+        if type(values_check) is not bool:
+            raise ValueError("The values in some of your columns do not comply with the DwC standard.")
+        
+        # check for unique ids
+        unique_id_check = self.check_unique_occurrence_ids()
+        if not unique_id_check:
+            raise ValueError("You need to add unique identifiers into your occurrences.")
+        
+        return True
+
+    def check_unique_event_ids(self):
+
+        list_terms = list(self.occurrences.columns)
+        unique_id_columns = ['eventID']
+        contains_unique_ids = any(map(lambda v: v in unique_id_columns, list_terms))
+        return contains_unique_ids
+
+    def check_unique_occurrence_ids(self):
+
+        list_terms = list(self.occurrences.columns)
+        unique_id_columns = ['occurrenceID','catalogNumber','recordNumber']
+        contains_unique_ids = any(map(lambda v: v in unique_id_columns, list_terms))
+        return contains_unique_ids
+    
+    def create_dwca(self):
+        """
+        create dwca 
+        """
+        # temp = self.check_dwca()
+        
+        # if temp:
+        # run basic checks on data
+
+        # zip everything into file
+        if self.events is not None:
+            
+            # open archive
+            zf = zipfile.ZipFile(self.dwca_name,'w')
+
+            # first, write occurrences
+            occ_compression_opts = dict(method='zip',
+                                        archive_name=self.occurrences_dwc_filename)             
+            self.occurrences.to_csv(self.dwca_name,compression=occ_compression_opts)
+
+            # then, write multimedia if it exists
+            events_compression_opts = dict(method='zip',
+                                           archive_name=self.events_dwc_filename)             
+            self.events.to_csv(self.dwca_name,compression=events_compression_opts)
+
+            # then, write multimedia if it exists
+            if self.multimedia is not None:
+                mm_compression_opts = dict(method='zip',
+                                           archive_name=self.multimedia_dwc_filename)             
+                self.multimedia.to_csv(self.dwca_name,compression=mm_compression_opts)
+
+            # then, write multimedia if it exists
+            if self.emof is not None:
+                emof_compression_opts = dict(method='zip',
+                                             archive_name=self.emof_dwc_filename)             
+                self.emof.to_csv(self.dwca_name,compression=emof_compression_opts)
+
+        else:
+            
+            # open archive
+            zf = zipfile.ZipFile(self.dwca_name,'w')
+
+            # first, write occurrences
+            occ_compression_opts = dict(method='zip',
+                                        archive_name=self.occurrences_dwc_filename)             
+            self.occurrences.to_csv(self.dwca_name,compression=occ_compression_opts)
+
+            # then, write multimedia if it exists
+            if self.multimedia is not None:
+                mm_compression_opts = dict(method='zip',
+                                            archive_name=self.multimedia_dwc_filename)             
+                self.multimedia.to_csv(self.dwca_name,compression=mm_compression_opts)
+
+        # ensure metadata files are there
+        if os.path.exists(self.meta_xml):
+            zf.write(self.meta_xml)
+        else:
+            raise ValueError("You need to create your metadata files (eml.xml and meta.xml) - use the function make_meta_xml().")        
+        
+        if os.path.exists(self.eml_xml):
+            zf.write(self.eml_xml)
+        else:
+            raise ValueError("You need to create your metadata files (eml.xml and meta.xml) - use the function make_meta_xml().")    
+
+        # close zipfile
+        zf.close()
+
+        # else:
+        #     raise ValueError("Your data did not pass our basic compliance checks.")
+
+
+    def create_metadata_file(self):
         
         """
         Creates a markdown file containing the metadata information needed for the DwCA.  The user can edit this 
@@ -290,14 +418,10 @@ class dwca:
             ``None``
         """
         
-        if filename is not None:
-            parts = filename.split("/")
-            path = "/".join(parts[:-1])
-        if not os.path.exists(path + '/metadata.md'):
-            os.system("cp {} {}".format(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'metadata_template.md'),os.path.join(path,"metadata.md")))
+        if not os.path.exists(self.metadata_md):
+            os.system("cp {} {}".format(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'metadata_template.md'),os.path.join(self.metadata_md)))
         else:
             pass
-        return path + "/metadata.md"
 
     def generate_data_report(self,
                              verbose=False,
@@ -505,6 +629,7 @@ class dwca:
         # set the core of the archive
         core = ET.SubElement(metadata,"core")
         core.set("encoding","UTF-8")
+
         # change this to either EventCore or Occurrence
         core.set("rowType","http://rs.tdwg.org/dwc/terms/Occurrence")
         core.set("fieldsTerminatedBy",",") # CHANGE THIS TO WHATEVER OCCURRENCE IS
@@ -514,7 +639,7 @@ class dwca:
 
         # set locations of occurrence data
         core_files = ET.SubElement(core,"files")
-        location = ET.SubElement(core_files,self.occurrences_name)
+        location = ET.SubElement(core_files,self.occurrences_dwc_filename)
 
         # set id
         id = ET.SubElement(core,"id")

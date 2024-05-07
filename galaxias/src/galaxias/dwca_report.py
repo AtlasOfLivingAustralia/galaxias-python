@@ -17,8 +17,9 @@ def dwca_report(occurrence_report = None,
         raise ValueError("Need occurrences")
     
     # get atlas
-    configs = readConfig()
-    atlas = configs["galaxiasSettings"]["atlas"]
+    # configs = readConfig()
+    # atlas = configs["galaxiasSettings"]["atlas"]
+    atlas = "Australia"
     
     # check for event or occurrence dataset; set it 
     report_dict = {"Pass/Fail": "Fail"}

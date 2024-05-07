@@ -436,15 +436,7 @@ like the following example:</p>
 <span class="prompt2"><span class="o">...</span>     <span class="n">df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;decimalLatitude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">parse</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;decimalLatitude&#39;</span><span class="p">]),</span><span class="mi">2</span><span class="p">)</span></span>
 <span class="prompt2"><span class="o">...</span>     <span class="n">df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;decimalLongitude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">parse</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;decimalLongitude&#39;</span><span class="p">]),</span><span class="mi">2</span><span class="p">)</span></span>
 <span class="prompt2"><span class="o">&gt;&gt;&gt;</span> <span class="n">df</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/Users/buy003/Documents/GitHub/galaxias-python/docs/source/galaxias_user_guide/preparing_data/convert_coords.py:2: DeprecationWarning: 
-Pyarrow will become a required dependency of pandas in the next major release of pandas (pandas 3.0),
-(to allow more performant data types, such as the Arrow string type, and better interoperability with other libraries)
-but was not found to be installed on your system.
-If this would cause problems for you,
-please provide us feedback at https://github.com/pandas-dev/pandas/issues/54466
-        
-  import pandas as pd
-  decimalLatitude decimalLongitude
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  decimalLatitude decimalLongitude
 0           35.84           138.02
 1           45.85           139.19
 2           30.34           128.09

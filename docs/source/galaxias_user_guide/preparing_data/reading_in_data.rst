@@ -10,8 +10,7 @@ object.  This will consist of creating a ``pandas data frame`` object, then addi
 
     >>> import galaxias
     >>> import pandas as pd
-    >>> occurrences = pd.read_csv("your_data.csv")
-    >>> my_dwca = galaxias.dwca(occurrences=occurrences)
+    >>> my_dwca = galaxias.dwca(occurrences="occurrences.csv")
 
 If you have events along with occurrences, you then do this:
 
@@ -19,9 +18,7 @@ If you have events along with occurrences, you then do this:
 
     >>> import galaxias
     >>> import pandas as pd
-    >>> occurrences = pd.read_csv("your_data.csv")
-    >>> events = pd.read_csv("my_events.csv")
-    >>> my_dwca = galaxias.dwca(occurrences=occurrences)
+    >>> my_dwca = galaxias.dwca(occurrences="occurrences.csv",events="events.csv")
 
 
 Go to `Next: Renaming Columns <rename_columns_to_dwca.html>`_

@@ -225,35 +225,35 @@ they can add extra context and details that will enrich your data and provide a 
 
             **Validating measurements**
 
-Example of Final Report
------------------------------
+.. Example of Final Report
+.. -----------------------------
 
-``UNDER CONSTRUCTION``
+.. ``UNDER CONSTRUCTION``
 
-This is an example of a passing and failing???? report of ``dwca`` objects.
+.. This is an example of a passing and failing???? report of ``dwca`` objects.
 
-.. grid:: 3
-    :gutter: 3
+.. .. grid:: 3
+..     :gutter: 3
 
-    .. grid-item-card::
-        :link: preparing_data/final_report_occurrence_nomulti.html
-        :class-card: sd-text-black
-        :text-align: center
+..     .. grid-item-card::
+..         :link: preparing_data/final_report_occurrence_nomulti.html
+..         :class-card: sd-text-black
+..         :text-align: center
 
-        .. raw:: html
-            :file: ../../source/_static/icons/user_guide.svg
+..         .. raw:: html
+..             :file: ../../source/_static/icons/user_guide.svg
 
-        **Occurrence Passing**
+..         **Occurrence Passing**
 
-    .. grid-item-card::
-        :link: preparing_data/final_report_event_nomulti.html
-        :class-card: sd-text-black
-        :text-align: center
+..     .. grid-item-card::
+..         :link: preparing_data/final_report_event_nomulti.html
+..         :class-card: sd-text-black
+..         :text-align: center
 
-        .. raw:: html
-            :file: ../../source/_static/icons/user_guide.svg
+..         .. raw:: html
+..             :file: ../../source/_static/icons/user_guide.svg
 
-        **Events Passing**
+..         **Events Passing**
 
     ..
         .. grid-item-card::

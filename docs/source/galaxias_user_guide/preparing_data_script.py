@@ -16,8 +16,7 @@ pd.set_option('max_colwidth', None) #;
 # --------------------------------------------------------
 
 # read in data
-data = pd.read_csv("galaxias_user_guide/occurrences_dwc.csv")
-my_dwca = galaxias.dwca(occurrences=data)
+my_dwca = galaxias.dwca(occurrences="galaxias_user_guide/occurrences_dwc.csv")
 
 if stopping_point == "rename1":
     print(my_dwca.occurrences.head())
