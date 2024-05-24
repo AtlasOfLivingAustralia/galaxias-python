@@ -1,0 +1,8 @@
+pandas
+beautifulsoup4
+configparser
+pytest
+requests
+xmlschema
+shutils
+metapype

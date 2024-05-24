@@ -32,6 +32,9 @@ setup(
         'configparser',
         'pytest',
         'requests',
+        'xmlschema',
+        'shutils',
+        'metapype'
     ],
 
     include_package_data = True,

@@ -1,0 +1,75 @@
+<eml:eml packageId="edi.23.1" system="ALA-registry" xmlns:eml="https://eml.ecoinformatics.org/eml-2.2.0" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://eml.ecoinformatics.org/eml-2.2.0 https://nis.lternet.edu/schemas/EML/eml-2.2.0/xsd/eml.xsd">
+    <dataset>
+        <alternateIdentifier></alternateIdentifier>
+        <title>Testing</title>
+        <creator>
+            <individualName>
+                <givenName>Amanda</givenName>
+                <surName>Buyan</surName>
+            </individualName>
+            <organizationName>Atlas of Living Australia</organizationName>
+            <positionName>Example</positionName>
+        </creator>
+        <metadataProvider>
+            <individualName>
+                <givenName>Amanda</givenName>
+                <surName>Buyan</surName>
+            </individualName>
+            <organizationName>Atlas of Living Australia</organizationName>
+            <address>
+                <deliveryPoint>CSIRO Ecosystems Services</deliveryPoint>
+                <city>Canberra</city>
+                <administrativeArea>ACT</administrativeArea>
+                <postalCode>2601</postalCode>
+                <country>Australia</country>
+            </address>
+            <phone>0123456789</phone>
+            <electronicMailAddress>email@example.com</electronicMailAddress>
+        </metadataProvider>
+        <associatedParty>
+            <individualName>
+                <givenName>Amanda</givenName>
+                <surName>Buyan</surName>
+            </individualName>
+            <organizationName>Atlas of Living Australia</organizationName>
+            <role>principalInvestigator</role>
+        </associatedParty>
+        <associatedParty>
+            <individualName>
+                <givenName>Amanda</givenName>
+                <surName>Buyan</surName>
+            </individualName>
+            <organizationName>Atlas of Living Australia</organizationName>
+            <role>principalInvestigator</role>
+        </associatedParty>
+        <pubDate>2024-06-24</pubDate>
+        <language>English</language>
+        <abstract>
+            <para>Something here.</para>
+        </abstract>
+        <keywordSet>
+            <keyword>test1</keyword>
+            <keyword>test1</keyword>
+        </keywordSet>
+        <intellectualRights>
+            <para>Something here.</para>
+        </intellectualRights>
+        <contact>
+            <individualName>
+                <givenName>Amanda</givenName>
+                <surName>Buyan</surName>
+            </individualName>
+            <organizationName>Atlas of Living Australia</organizationName>
+            <positionName>Example</positionName>
+            <address>
+                <deliveryPoint>CSIRO Ecosystems Services</deliveryPoint>
+                <city>Canberra</city>
+                <administrativeArea>ACT</administrativeArea>
+                <postalCode>2601</postalCode>
+                <country>Australia</country>
+            </address>
+            <phone>0123456789</phone>
+            <electronicMailAddress>email@example.com</electronicMailAddress>
+        </contact>
+    </dataset>
+</eml:eml>

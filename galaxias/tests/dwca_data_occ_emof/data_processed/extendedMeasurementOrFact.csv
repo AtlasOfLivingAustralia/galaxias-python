@@ -1,0 +1,27 @@
+,eventID,measurementType,measurementValue,measurementUnit,measurementAccuracy
+0,2,ambient temperature,32.0,degrees C,0.1
+1,5,ambient temperature,28.0,degrees C,0.1
+2,8,ambient temperature,32.0,degrees C,0.1
+3,11,ambient temperature,32.0,degrees C,0.1
+4,14,ambient temperature,31.0,degrees C,0.1
+5,17,ambient temperature,33.5,degrees C,0.1
+6,20,ambient temperature,31.0,degrees C,0.1
+7,23,ambient temperature,33.0,degrees C,0.1
+8,26,ambient temperature,28.0,degrees C,0.1
+9,29,ambient temperature,22.0,degrees C,0.1
+10,32,ambient temperature,23.0,degrees C,0.1
+11,35,ambient temperature,27.0,degrees C,0.1
+12,38,ambient temperature,26.0,degrees C,0.1
+13,41,ambient temperature,23.5,degrees C,0.1
+14,44,ambient temperature,26.0,degrees C,0.1
+15,47,ambient temperature,25.0,degrees C,0.1
+16,50,ambient temperature,28.0,degrees C,0.1
+17,53,ambient temperature,27.0,degrees C,0.1
+18,56,ambient temperature,26.0,degrees C,0.1
+19,59,ambient temperature,27.0,degrees C,0.1
+20,62,ambient temperature,29.0,degrees C,0.1
+21,65,ambient temperature,34.0,degrees C,0.1
+22,68,ambient temperature,31.0,degrees C,0.1
+23,71,ambient temperature,33.0,degrees C,0.1
+24,74,ambient temperature,34.0,degrees C,0.1
+25,77,ambient temperature,32.0,degrees C,0.1

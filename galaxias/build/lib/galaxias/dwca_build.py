@@ -776,7 +776,7 @@ class dwca:
             ext = ET.SubElement(metadata,"extension")
             ext = build_subelement(element=ext,
                                     row_type='http://rs.tdwg.org/dwc/terms/MeasurementOrFact',
-                                    filename=self.emof_dwc_filename,
+                                    filename=self.multimedia_dwc_filename,
                                     data=self.emof,
                                     dwc_terms_info=dwc_terms_info)
 

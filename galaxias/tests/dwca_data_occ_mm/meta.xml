@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='us-ascii'?>
+<archive xmlns="http://rs.tdwg.org/dwc/text/" metadata="/Users/buy003/Documents/GitHub/galaxias-python/galaxias/tests/dwca_data_occ_mm/eml.xml">
+	<core rowType="http://rs.tdwg.org/dwc/terms/Event" encoding="UTF-8" fieldsTerminatedBy="," linesTerminatedBy="&#13;&#10;" fieldsEnclosedBy="&amp;quot;" ignoreHeaderLines="1">
+		<files>
+			</Users/buy003/Documents/GitHub/galaxias-python/galaxias/tests/dwca_data_occ_mm/data_processed/events.csv />
+		</files>
+		<id index="0" />
+		<field index="0" term="http://rs.tdwg.org/dwc/terms/eventID" />
+		<field index="1" term="http://rs.tdwg.org/dwc/terms/parentEventID" />
+		<field index="2" term="http://rs.tdwg.org/dwc/terms/eventType" />
+		<field index="3" term="http://rs.tdwg.org/dwc/terms/locality" />
+		<field index="4" term="http://rs.tdwg.org/dwc/terms/eventDate" />
+		<field index="5" term="http://rs.tdwg.org/dwc/terms/Event" />
+		<field index="6" term="http://rs.tdwg.org/dwc/terms/samplingProtocol" />
+	</core>
+	<extension rowType="http://rs.tdwg.org/dwc/terms/Occurrence" encoding="UTF-8" fieldsTerminatedBy="," linesTerminatedBy="&#13;&#10;" fieldsEnclosedBy="&amp;quot;" ignoreHeaderLines="1">
+		<files>
+			</Users/buy003/Documents/GitHub/galaxias-python/galaxias/tests/dwca_data_occ_mm/data_processed/occurrences.csv />
+		</files>
+		<id index="0" />
+		<field index="0" term="http://rs.tdwg.org/dwc/terms/eventID" />
+		<field index="1" term="http://rs.tdwg.org/dwc/terms/occurrenceID" />
+		<field index="2" term="http://rs.tdwg.org/dwc/terms/scientificName" />
+		<field index="3" term="http://rs.tdwg.org/dwc/terms/decimalLatitude" />
+		<field index="4" term="http://rs.tdwg.org/dwc/terms/decimalLongitude" />
+		<field index="5" term="http://rs.tdwg.org/dwc/terms/eventDate" />
+		<field index="6" term="http://rs.tdwg.org/dwc/terms/individualCount" />
+		<field index="7" term="http://rs.tdwg.org/dwc/terms/vernacularName" />
+		<field index="8" term="http://rs.tdwg.org/dwc/terms/genus" />
+		<field index="9" term="http://rs.tdwg.org/dwc/terms/family" />
+		<field index="10" term="http://rs.tdwg.org/dwc/terms/order" />
+		<field index="11" term="http://rs.tdwg.org/dwc/terms/class" />
+		<field index="12" term="http://rs.tdwg.org/dwc/terms/phylum" />
+		<field index="13" term="http://rs.tdwg.org/dwc/terms/kingdom" />
+		<field index="14" term="http://rs.tdwg.org/dwc/terms/coordinateUncertaintyInMeters" />
+		<field index="15" term="http://rs.tdwg.org/dwc/terms/geodeticDatum" />
+		<field index="16" term="http://rs.tdwg.org/dwc/terms/basisOfRecord" />
+	</extension>
+	<extension rowType="http://rs.tdwg.org/dwc/terms/Multimedia" encoding="UTF-8" fieldsTerminatedBy="," linesTerminatedBy="&#13;&#10;" fieldsEnclosedBy="&amp;quot;" ignoreHeaderLines="1">
+		<files>
+			</Users/buy003/Documents/GitHub/galaxias-python/galaxias/tests/dwca_data_occ_mm/data_processed/multimedia.csv />
+		</files>
+		<id index="0" />
+		<field index="0" term="http://rs.tdwg.org/dwc/terms/eventID" />
+		<field index="1" term="http://rs.tdwg.org/dwc/terms/occurrenceID" />
+		<field index="2" term="http://rs.tdwg.org/dwc/terms/version/identifier" />
+	</extension>
+</archive>
