@@ -28,16 +28,16 @@ my_dwca = galaxias.dwca(events="galaxias_user_guide/events.csv",
 
 # generate initial data report and exit
 if stopping_point == "1":
-    my_dwca.generate_data_report()
+    my_dwca.check_data()
     sys.exit()
     # if not data_type:
-    #     my_dwca.generate_data_report()
+    #     my_dwca.check_data()
     #     sys.exit()
     # else:
     #     events = pd.read_csv("galaxias_user_guide/events.csv")
     #     occurrences = pd.read_csv("galaxias_user_guide/occurrences_event_multi.csv")
     #     my_dwca = galaxias.dwca(events=events,occurrences=occurrences)
-    #     my_dwca.generate_data_report()
+    #     my_dwca.check_data()
     #     sys.exit()
 
 if stopping_point == "2":
@@ -125,20 +125,20 @@ if stopping_point == "5":
 #     sys.exit()
 
 if stopping_point == "8":
-    print(my_dwca.generate_data_report())
+    print(my_dwca.check_data())
 
 # --------------------------------------------------------
 # Part 2
 # --------------------------------------------------------
 
 if stopping_point == "9":
-    print(my_dwca.generate_data_report())
+    print(my_dwca.check_data())
     sys.exit()
 
 my_dwca.events["samplingProtocol"] = "observation"
 
 if stopping_point == "10":
-    print(my_dwca.generate_data_report())
+    print(my_dwca.check_data())
 
 my_dwca.add_taxonomic_information()
 my_dwca.occurrences["coordinateUncertaintyInMeters"] = 100
@@ -154,4 +154,4 @@ for i,row in my_dwca.events.iterrows():
     my_dwca.events.at[i,"eventDate"] = str(datetime.date(split_date[2],split_date[1],split_date[0]))
 
 if stopping_point == "11":
-    print(my_dwca.generate_data_report())
+    print(my_dwca.check_data())

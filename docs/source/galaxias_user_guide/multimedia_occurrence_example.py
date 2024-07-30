@@ -16,7 +16,7 @@ multimedia = pd.read_csv("galaxias_user_guide/multimedia_occ.csv")
 # create DwCA with multimedia
 my_dwca = galaxias.dwca(occurrences=occurrences,multimedia=multimedia)
 if stopping_point == 1:
-    print(my_dwca.generate_data_report())
+    print(my_dwca.check_data())
 
 # do this for last thing
 occurrences = pd.read_csv("galaxias_user_guide/occurrences_dwc_clean.csv")
@@ -25,4 +25,4 @@ my_dwca = galaxias.dwca(occurrences=occurrences,multimedia=multimedia)
 
 # final report example
 if stopping_point == 99:
-    print(my_dwca.generate_data_report())
+    print(my_dwca.check_data())

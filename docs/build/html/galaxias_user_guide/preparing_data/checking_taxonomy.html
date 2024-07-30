@@ -127,8 +127,8 @@
       
     
     
-    <img src="../../_static/cake_logo.png" class="logo__image only-light" alt="Galaxias 0.1.0 documentation - Home"/>
-    <script>document.write(`<img src="../../_static/cake_logo.png" class="logo__image only-dark" alt="Galaxias 0.1.0 documentation - Home"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Galaxias 0.1.0 documentation - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Galaxias 0.1.0 documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -397,52 +397,7 @@ span.prompt1:before {
   content: " ";
 }
 </style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">generate_data_report</span><span class="p">()</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Archive Report
----------------------
-Pass/Fail: Fail
-Data Type: Occurrence
-Errors:
-	- There are some invalid taxa according to the backbone you are comparing against.
-	- You are missing required columns in your data.
-	- Your datetime format in Occurrences is not in YYYY-MM-DD or iso format.
-Missing Columns Occurrence:
-	kingdom
-	genus
-	phylum
-	order
-	family
-	class
-	geodeticDatum
-	basisOfRecord
-	occurrenceID OR catalogNumber OR recordNumber
-
-Occurrence Report
----------------------
-Coordinates Report:
-	Data has coordinate fields?: True
-	Invalid latitude count: 0
-	Invalid longitude count: 0
-Datetime Report:
-	Has invalid datetime: True
-	Number of invalid datetimes: 35
-Taxonomy Report:
-	Invalid taxon present: True
-	Valid Taxon count: 0
-	Unrecognised taxa:
-
-                          original name                      proposed match(es) rank of proposed match(es)                          scientificName     rank                   species       genus     family     order         classs      phylum  kingdom
-0               Eucalyptus sclerophylla                     Eucalyptus racemosa                    SPECIES                     Eucalyptus racemosa     None       Eucalyptus racemosa  Eucalyptus  Myrtaceae  Myrtales           None  Charophyta  Plantae
-1                       Acacia murayana                        Acacia murrayana                    species                        Acacia murrayana  species          Acacia murrayana      Acacia   Fabaceae   Fabales  Equisetopsida  Charophyta  Plantae
-2  Eucalyptus camaldulensis var. obtusa  Eucalyptus camaldulensis subsp. obtusa                 SUBSPECIES  Eucalyptus camaldulensis subsp. obtusa     None  Eucalyptus camaldulensis  Eucalyptus  Myrtaceae  Myrtales           None  Charophyta  Plantae
-
-Column counts:
-	scientificName: 35
-	decimalLatitude: 35
-	decimalLongitude: 35
-	eventDate: 35
-None
-</pre></div>
-</div>
+</pre></div></div><p># .. program-output:: python galaxias_user_guide/preparing_data_script.py check_taxon1</p>
 <p>Here, we can see that there are a few species names that are either misspelled or differ slightly from what is
 available at the Atlas of Living Australia.  To change your species names, we will again use <code class="docutils literal notranslate"><span class="pre">pandas</span></code> to do
 this, as <code class="docutils literal notranslate"><span class="pre">pandas</span></code> has the built-in function <code class="docutils literal notranslate"><span class="pre">replace</span></code>.  The first example is for single-name replacement, and
@@ -460,44 +415,7 @@ the second one is writing a loop for changing all species names at once.</p>
 <span class="prompt1"><span class="o">...</span>     <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span><span class="p">[</span><span class="s1">&#39;scientificName&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">occurrences</span><span class="p">[</span><span class="s1">&#39;scientificName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">regex</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">name_changes</span><span class="p">[</span><span class="n">name</span><span class="p">])</span></span>
 <span class="prompt1"><span class="o">...</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                            scientificName  decimalLatitude  decimalLongitude   eventDate
-0                       Corymbia latifolia           -13.04            131.07   29/3/2022
-1                     Eucalyptus tectifica           -13.04            131.07   13/9/2022
-2                           Banksia aemula           -33.60            150.72   15/8/2022
-3                      Eucalyptus racemosa           -33.60            150.72   16/6/2022
-4                        Persoonia laurina           -33.60            150.72  19/10/2022
-5                            Acacia aneura           -22.35            133.33  11/10/2022
-6                          Acacia cambagei           -22.35            133.33   23/8/2022
-7                      Acacia dictyophleba           -22.35            133.33   11/1/2022
-8                     Acacia estrophiolata           -22.35            133.33   10/7/2022
-9                          Acacia kempeana           -22.35            133.33   18/7/2022
-10                       Acacia melleodora           -22.35            133.33   25/4/2022
-11                        Acacia murrayana           -22.35            133.33  15/12/2022
-12                          Corymbia opaca           -22.35            133.33    6/2/2022
-13                     Corymbia terminalis           -22.35            133.33   21/4/2022
-14                     Eremophila latrobei           -22.35            133.33   30/1/2022
-15                Eucalyptus camaldulensis           -22.35            133.33   30/3/2022
-16  Eucalyptus camaldulensis subsp. obtusa           -22.35            133.33   25/7/2022
-17                        Hakea leucoptera           -22.35            133.33   11/3/2022
-18                        Hakea macrocarpa           -22.35            133.33   28/7/2022
-19                       Psydrax latifolia           -22.35            133.33    6/3/2022
-20                            Acacia celsa           -17.26            145.46    5/9/2022
-21                      Acronychia acidula           -17.26            145.46   22/4/2022
-22               Aleurites rockinghamensis           -17.26            145.46   21/7/2022
-23                      Alphitonia petriei           -17.26            145.46   11/3/2022
-24                    Gillbeea adenopetala           -17.26            145.46   15/2/2022
-25                         Litsea leefeana           -17.26            145.46   11/5/2022
-26                          Myrsine porosa           -17.26            145.46  31/10/2022
-27                      Neolitsea dealbata           -17.26            145.46   8/10/2022
-28                   Polyscias australiana           -17.26            145.46  26/10/2022
-29                       Coprosma hirtella           -35.66            148.15    4/3/2022
-30                      Daviesia latifolia           -35.66            148.15   28/6/2022
-31                 Eucalyptus delegatensis           -35.66            148.15   22/1/2022
-32                    Tasmannia lanceolata           -35.66            148.15   24/6/2022
-33                      Eucalyptus miniata           -12.42            130.92  28/10/2022
-34                   Eucalyptus tetrodonta           -12.42            130.92   21/6/2022
-</pre></div>
-</div>
+</pre></div></div><p># .. program-output:: python galaxias_user_guide/preparing_data_script.py check_taxon</p>
 </section>
 <section id="adding-higher-order-taxonomic-information">
 <h1>Adding higher order taxonomic information<a class="headerlink" href="#adding-higher-order-taxonomic-information" title="Link to this heading">#</a></h1>
@@ -505,14 +423,7 @@ the second one is writing a loop for changing all species names at once.</p>
 ensure that you have the correct taxon.  Thankfully, you can do this with one function in <code class="docutils literal notranslate"><span class="pre">galaxias</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">add_taxonomic_information</span><span class="p">()</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>         scientificName  decimalLatitude  decimalLongitude   eventDate              vernacularName       genus      family      order          class      phylum  kingdom
-0    Corymbia latifolia           -13.04            131.07   29/3/2022        Round-leaf Bloodwood    Corymbia   Myrtaceae   Myrtales  Equisetopsida  Charophyta  Plantae
-1  Eucalyptus tectifica           -13.04            131.07   13/9/2022                  Darwin Box  Eucalyptus   Myrtaceae   Myrtales  Equisetopsida  Charophyta  Plantae
-2        Banksia aemula           -33.60            150.72   15/8/2022              Wallum Banksia     Banksia  Proteaceae  Proteales  Equisetopsida  Charophyta  Plantae
-3   Eucalyptus racemosa           -33.60            150.72   16/6/2022  Narrow-leaved Scribbly Gum  Eucalyptus   Myrtaceae   Myrtales  Equisetopsida  Charophyta  Plantae
-4     Persoonia laurina           -33.60            150.72  19/10/2022              Laurel Geebung   Persoonia  Proteaceae  Proteales  Equisetopsida  Charophyta  Plantae
-</pre></div>
-</div>
+</pre></div></div><p># .. program-output:: python galaxias_user_guide/preparing_data_script.py add_taxon</p>
 <p><code class="docutils literal notranslate"><span class="pre">Note</span></code>: we have provided the higher taxonomic information we have on the backbone.  It is up to the
 user to confirm they are happy with this taxonomy, or if they spot any errors,
 <a class="reference external" href="mailto:support&#37;&#52;&#48;ala&#46;org&#46;au">contact us</a>.</p>

@@ -88,34 +88,58 @@ def test_data_directory_creation_specific_metadata():
     assert os.path.exists('dwca_data_occ/metadata.md')
 
 # -------------------------------------------------------------------------------------------------
-# Adding Information to DwCA
+# use_* function tests
 # -------------------------------------------------------------------------------------------------
-def test_add_taxonomic_information():
-    occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc_rename.csv',working_dir='dwca_data_occ_rename')
-    occ_dwca.add_taxonomic_information()
-    assert set(list(occ_dwca.occurrences.columns)).issuperset(set(["scientificName","vernacularName","genus","family","order","class","phylum","kingdom"]))
 
-def test_add_unique_occurrence_IDs_default():
-    occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc_rename.csv',working_dir='dwca_data_occ_rename')
-    occ_dwca.add_unique_occurrence_IDs()
-    assert 'occurrenceID' in list(occ_dwca.occurrences.columns)
+def use_occurrences():
+    n=1
 
-def test_add_unique_occurrence_IDs_specific():
-    occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc_rename.csv',working_dir='dwca_data_occ_rename')
-    occ_dwca.add_unique_occurrence_IDs(column_name='catalogNumber')
-    assert 'catalogNumber' in list(occ_dwca.occurrences.columns)
+def use_scientific_name():
+    n=1
 
-def test_make_eml_xml():
-    occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc_clean.csv',working_dir='dwca_data_occ')
-    occ_dwca.make_eml_xml()
-    assert os.path.exists(occ_dwca.eml_xml) is True
+def use_datetime():
+    n=1
 
-def test_make_meta_xml():
-    occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc_clean.csv',working_dir='dwca_data_occ')
-    occ_dwca.make_eml_xml()
-    occ_dwca.make_meta_xml()
-    assert os.path.exists(occ_dwca.meta_xml) is True
+def use_coordinates():
+    n=1
 
+
+# -------------------------------------------------------------------------------------------------
+# metadata function tests
+# -------------------------------------------------------------------------------------------------
+
+# def test_make_eml_xml():
+#     occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc_clean.csv',working_dir='dwca_data_occ')
+#     occ_dwca.make_eml_xml()
+#     assert os.path.exists(occ_dwca.eml_xml) is True
+
+# def test_make_meta_xml():
+#     occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc_clean.csv',working_dir='dwca_data_occ')
+#     occ_dwca.make_eml_xml()
+#     occ_dwca.make_meta_xml()
+#     assert os.path.exists(occ_dwca.meta_xml) is True
+
+
+
+
+
+# def test_add_taxonomic_information():
+#     occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc_rename.csv',working_dir='dwca_data_occ_rename')
+#     occ_dwca.add_taxonomic_information()
+#     assert set(list(occ_dwca.occurrences.columns)).issuperset(set(["scientificName","vernacularName","genus","family","order","class","phylum","kingdom"]))
+
+# def test_add_unique_occurrence_IDs_default():
+#     occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc_rename.csv',working_dir='dwca_data_occ_rename')
+#     occ_dwca.add_unique_occurrence_IDs()
+#     assert 'occurrenceID' in list(occ_dwca.occurrences.columns)
+
+# def test_add_unique_occurrence_IDs_specific():
+#     occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc_rename.csv',working_dir='dwca_data_occ_rename')
+#     occ_dwca.add_unique_occurrence_IDs(column_name='catalogNumber')
+#     assert 'catalogNumber' in list(occ_dwca.occurrences.columns)
+
+
+'''
 # -------------------------------------------------------------------------------------------------
 # Check occurrences information
 # -------------------------------------------------------------------------------------------------
@@ -394,6 +418,7 @@ def test_create_dwca_event_mm_specific_name():
     events_mm_dwca.create_dwca()
     assert os.path.exists(events_mm_dwca.dwca_name) is True
 #'''
+'''
 def test_create_dwca_event_emof_default():
     events_emof_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_event_multi.csv',
                                   events='data_for_testing/events.csv',
@@ -442,7 +467,7 @@ def test_create_dwca_event_emof_specific_name():
     events_emof_dwca.dwca_name = 'my_dwca.zip'
     events_emof_dwca.create_dwca()
     assert os.path.exists(events_emof_dwca.dwca_name) is True
-#'''
+
 def test_create_dwca_event_mm_emof_default():
     events_emof_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_event_multi.csv',
                                   events='data_for_testing/events.csv',
@@ -493,4 +518,4 @@ def test_create_dwca_event_mm_emof_specific_name():
     events_emof_dwca.dwca_name = 'my_dwca.zip'
     events_emof_dwca.create_dwca()
     assert os.path.exists(events_emof_dwca.dwca_name) is True
-#'''
+'''

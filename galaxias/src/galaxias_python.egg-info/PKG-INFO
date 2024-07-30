@@ -16,5 +16,6 @@ Requires-Dist: requests
 Requires-Dist: xmlschema
 Requires-Dist: shutils
 Requires-Dist: metapype
+Requires-Dist: tabulate
 
 Package for creating Darwin Core Archives

@@ -129,8 +129,8 @@
       
     
     
-    <img src="../_static/cake_logo.png" class="logo__image only-light" alt="Galaxias 0.1.0 documentation - Home"/>
-    <script>document.write(`<img src="../_static/cake_logo.png" class="logo__image only-dark" alt="Galaxias 0.1.0 documentation - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Galaxias 0.1.0 documentation - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Galaxias 0.1.0 documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -394,191 +394,49 @@ document.write(`
 <span id="api-docs"></span><h1>API Docs<a class="headerlink" href="#module-galaxias" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="galaxias.dwca">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">galaxias.</span></span><span class="sig-name descname"><span class="pre">dwca</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">working_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dwca_data'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_raw_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'data_raw'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_proc_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'data_processed'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dwca_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dwca.zip'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">occurrences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">occurrences_dwc_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'occurrences.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multimedia</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multimedia_dwc_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'multimedia.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">events</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">events_dwc_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'events.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emof</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emof_dwc_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'extendedMeasurementOrFact.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata_md</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'metadata.md'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eml_xml</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'eml.xml'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">meta_xml</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'meta.xml'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">galaxias.</span></span><span class="sig-name descname"><span class="pre">dwca</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">working_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dwca_data'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_raw_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'data_raw'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_proc_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'data_processed'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dwca_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dwca.zip'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">occurrences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">occurrences_dwc_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'occurrences.txt'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multimedia</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multimedia_dwc_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'multimedia.txt'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">events</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">events_dwc_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'events.txt'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emof</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emof_dwc_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'extendedMeasurementOrFact.txt'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata_md</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'metadata.md'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eml_xml</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'eml.xml'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">meta_xml</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'meta.xml'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py method">
-<dt class="sig sig-object py" id="galaxias.dwca.add_taxonomic_information">
-<span class="sig-name descname"><span class="pre">add_taxonomic_information</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.add_taxonomic_information" title="Link to this definition">#</a></dt>
-<dd><p>Adds full taxonomic information (from kingdom to species) to your data for clearer identification</p>
+<dt class="sig sig-object py" id="galaxias.dwca.check_data">
+<span class="sig-name descname"><span class="pre">check_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.check_data" title="Link to this definition">#</a></dt>
+<dd><p>Checks whether or not your data (occurrences) meets the pre-defined standard.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>None</strong> – </p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+<dd class="field-even"><p>A printed report detailing presence or absence of required data.</p>
 </dd>
 </dl>
-<p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
-span.prompt1:before {
-  content: " ";
-}
-</style><span class="prompt1"><span class="kn">import</span> <span class="nn">galaxias</span></span>
-<span class="prompt1"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span></span>
-<span class="prompt1"><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;occurrences_dwc_rename.csv&quot;</span><span class="p">)</span></span>
-<span class="prompt1"><span class="n">my_dwca</span> <span class="o">=</span> <span class="n">galaxias</span><span class="o">.</span><span class="n">dwca</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">data</span><span class="p">)</span></span>
-<span class="prompt1"><span class="n">my_dwca</span><span class="o">.</span><span class="n">add_taxonomic_information</span><span class="p">()</span></span>
-<span class="prompt1"><span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                          scientificName  decimalLatitude  decimalLongitude   eventDate             vernacularName       genus            family         order          class      phylum  kingdom
-0                     Corymbia latifolia           -13.04            131.07   29/3/2022       Round-leaf Bloodwood    Corymbia         Myrtaceae      Myrtales  Equisetopsida  Charophyta  Plantae
-1                   Eucalyptus tectifica           -13.04            131.07   13/9/2022                 Darwin Box  Eucalyptus         Myrtaceae      Myrtales  Equisetopsida  Charophyta  Plantae
-2                         Banksia aemula           -33.60            150.72   15/8/2022             Wallum Banksia     Banksia        Proteaceae     Proteales  Equisetopsida  Charophyta  Plantae
-3                Eucalyptus sclerophylla           -33.60            150.72   16/6/2022                       None        None              None          None           None        None     None
-4                      Persoonia laurina           -33.60            150.72  19/10/2022             Laurel Geebung   Persoonia        Proteaceae     Proteales  Equisetopsida  Charophyta  Plantae
-5                          Acacia aneura           -22.35            133.33  11/10/2022           Broad-leaf Mulga      Acacia          Fabaceae       Fabales  Equisetopsida  Charophyta  Plantae
-6                        Acacia cambagei           -22.35            133.33   23/8/2022                     Gidgee      Acacia          Fabaceae       Fabales  Equisetopsida  Charophyta  Plantae
-7                    Acacia dictyophleba           -22.35            133.33   11/1/2022          Net-veined Wattle      Acacia          Fabaceae       Fabales  Equisetopsida  Charophyta  Plantae
-8                   Acacia estrophiolata           -22.35            133.33   10/7/2022                   Ironwood      Acacia          Fabaceae       Fabales  Equisetopsida  Charophyta  Plantae
-9                        Acacia kempeana           -22.35            133.33   18/7/2022             Witchetty Bush      Acacia          Fabaceae       Fabales  Equisetopsida  Charophyta  Plantae
-10                     Acacia melleodora           -22.35            133.33   25/4/2022                Waxy Wattle      Acacia          Fabaceae       Fabales  Equisetopsida  Charophyta  Plantae
-11                       Acacia murayana           -22.35            133.33  15/12/2022                       None        None              None          None           None        None     None
-12                        Corymbia opaca           -22.35            133.33    6/2/2022                  Bloodwood    Corymbia         Myrtaceae      Myrtales  Equisetopsida  Charophyta  Plantae
-13                   Corymbia terminalis           -22.35            133.33   21/4/2022         Northern Bloodwood    Corymbia         Myrtaceae      Myrtales  Equisetopsida  Charophyta  Plantae
-14                   Eremophila latrobei           -22.35            133.33   30/1/2022       Georgina Poison Bush  Eremophila  Scrophulariaceae      Lamiales  Equisetopsida  Charophyta  Plantae
-15              Eucalyptus camaldulensis           -22.35            133.33   30/3/2022                    Red Gum  Eucalyptus         Myrtaceae      Myrtales  Equisetopsida  Charophyta  Plantae
-16  Eucalyptus camaldulensis var. obtusa           -22.35            133.33   25/7/2022                       None        None              None          None           None        None     None
-17                      Hakea leucoptera           -22.35            133.33   11/3/2022               Needle Hakea       Hakea        Proteaceae     Proteales  Equisetopsida  Charophyta  Plantae
-18                      Hakea macrocarpa           -22.35            133.33   28/7/2022          Flat-leaved Hakea       Hakea        Proteaceae     Proteales  Equisetopsida  Charophyta  Plantae
-19                     Psydrax latifolia           -22.35            133.33    6/3/2022  Broad-leaf Native Currant     Psydrax         Rubiaceae   Gentianales  Equisetopsida  Charophyta  Plantae
-20                          Acacia celsa           -17.26            145.46    5/9/2022              Brown Salwood      Acacia          Fabaceae       Fabales  Equisetopsida  Charophyta  Plantae
-21                    Acronychia acidula           -17.26            145.46   22/4/2022                Lemon Aspen  Acronychia          Rutaceae    Sapindales  Equisetopsida  Charophyta  Plantae
-22             Aleurites rockinghamensis           -17.26            145.46   21/7/2022                  Candlenut   Aleurites     Euphorbiaceae  Malpighiales  Equisetopsida  Charophyta  Plantae
-23                    Alphitonia petriei           -17.26            145.46   11/3/2022                  White Ash  Alphitonia        Rhamnaceae       Rosales  Equisetopsida  Charophyta  Plantae
-24                  Gillbeea adenopetala           -17.26            145.46   15/2/2022                 Pink Alder    Gillbeea       Cunoniaceae    Oxalidales  Equisetopsida  Charophyta  Plantae
-25                       Litsea leefeana           -17.26            145.46   11/5/2022                   Sycamore      Litsea         Lauraceae      Laurales  Equisetopsida  Charophyta  Plantae
-26                        Myrsine porosa           -17.26            145.46  31/10/2022        Northern Muttonwood     Myrsine       Primulaceae      Ericales  Equisetopsida  Charophyta  Plantae
-27                    Neolitsea dealbata           -17.26            145.46   8/10/2022            White Bolly Gum   Neolitsea         Lauraceae      Laurales  Equisetopsida  Charophyta  Plantae
-28                 Polyscias australiana           -17.26            145.46  26/10/2022             Ivory Basswood   Polyscias        Araliaceae       Apiales  Equisetopsida  Charophyta  Plantae
-29                     Coprosma hirtella           -35.66            148.15    4/3/2022         Rough Coffee-berry    Coprosma         Rubiaceae   Gentianales  Equisetopsida  Charophyta  Plantae
-30                    Daviesia latifolia           -35.66            148.15   28/6/2022             Hop Bitter-pea    Daviesia          Fabaceae       Fabales  Equisetopsida  Charophyta  Plantae
-31               Eucalyptus delegatensis           -35.66            148.15   22/1/2022                 Woollybutt  Eucalyptus         Myrtaceae      Myrtales  Equisetopsida  Charophyta  Plantae
-32                  Tasmannia lanceolata           -35.66            148.15   24/6/2022        Mountain Pepperbush   Tasmannia       Winteraceae    Canellales  Equisetopsida  Charophyta  Plantae
-33                    Eucalyptus miniata           -12.42            130.92  28/10/2022          Darwin Woollybutt  Eucalyptus         Myrtaceae      Myrtales  Equisetopsida  Charophyta  Plantae
-34                 Eucalyptus tetrodonta           -12.42            130.92   21/6/2022         Darwin Stringybark  Eucalyptus         Myrtaceae      Myrtales  Equisetopsida  Charophyta  Plantae
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="galaxias.dwca.add_unique_occurrence_IDs">
-<span class="sig-name descname"><span class="pre">add_unique_occurrence_IDs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'occurrenceID'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.add_unique_occurrence_IDs" title="Link to this definition">#</a></dt>
-<dd><p>Function that automatically adds unique IDs (in the form of uuids) to each of your occurrences.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>column_name</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – String containing name of column you want to add.  Default is <code class="docutils literal notranslate"><span class="pre">occurrenceID</span></code></p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
-</dd>
-</dl>
-<p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="kn">import</span> <span class="nn">galaxias</span></span>
-<span class="prompt1"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span></span>
-<span class="prompt1"><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;occurrences_dwc.csv&quot;</span><span class="p">)</span></span>
-<span class="prompt1"><span class="n">my_dwca</span> <span class="o">=</span> <span class="n">galaxias</span><span class="o">.</span><span class="n">dwca</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">data</span><span class="p">)</span></span>
-<span class="prompt1"><span class="n">my_dwca</span><span class="o">.</span><span class="n">add_unique_occurrence_IDs</span><span class="p">()</span></span>
-<span class="prompt1"><span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                            occurrenceID                               Species  Latitude  Longitude Collection_date
-0   5c110c34-979f-4afe-ad91-01a323f4ed3a                    Corymbia latifolia    -13.04     131.07       29/3/2022
-1   378c2b03-e36c-43fd-8619-b00856daca44                  Eucalyptus tectifica    -13.04     131.07       13/9/2022
-2   5bfe07f3-cc73-4998-a8a4-1c7556607812                        Banksia aemula    -33.60     150.72       15/8/2022
-3   1f5b4c2e-bc13-4d4c-9d64-4b19e507a341               Eucalyptus sclerophylla    -33.60     150.72       16/6/2022
-4   3ab07d24-d14a-4965-921e-0c34e5d1fed9                     Persoonia laurina    -33.60     150.72      19/10/2022
-5   5c4393d9-ea91-41b4-ad58-248705af0719                         Acacia aneura    -22.35     133.33      11/10/2022
-6   fd6041a4-e23e-468c-9e9d-9d77d841b4d8                       Acacia cambagei    -22.35     133.33       23/8/2022
-7   1420f58e-c239-473e-a41d-3219b09434f4                   Acacia dictyophleba    -22.35     133.33       11/1/2022
-8   041a9bba-b56c-498d-9cb9-c3af03b088ec                  Acacia estrophiolata    -22.35     133.33       10/7/2022
-9   4f70d29c-e268-4c63-8ce4-5364489538c2                       Acacia kempeana    -22.35     133.33       18/7/2022
-10  ae6fa613-c75f-42d7-9a31-e511f57c7ed0                     Acacia melleodora    -22.35     133.33       25/4/2022
-11  ad155021-7577-475c-ac80-8f4466f22409                       Acacia murayana    -22.35     133.33      15/12/2022
-12  098507d4-936f-4dd8-a0c5-b078b102441a                        Corymbia opaca    -22.35     133.33        6/2/2022
-13  44d26c45-2914-44cb-b708-64679590a765                   Corymbia terminalis    -22.35     133.33       21/4/2022
-14  b1c757b5-eff4-47c5-8fdf-75205d9e2c05                   Eremophila latrobei    -22.35     133.33       30/1/2022
-15  7c225f84-dcc8-4715-9a91-5dbfcb6b0853              Eucalyptus camaldulensis    -22.35     133.33       30/3/2022
-16  d469fe09-37bf-4ac5-82d2-91226daef4e4  Eucalyptus camaldulensis var. obtusa    -22.35     133.33       25/7/2022
-17  4ca0db51-c809-4632-9909-478d05c39fc3                      Hakea leucoptera    -22.35     133.33       11/3/2022
-18  60f323ae-08d5-45b2-bc88-b7c4f6c4e8f0                      Hakea macrocarpa    -22.35     133.33       28/7/2022
-19  8bccc10f-7e1a-48fb-b58d-e7750edec30f                     Psydrax latifolia    -22.35     133.33        6/3/2022
-20  0be9501c-05b3-47d1-9c2d-e2766d0e2503                          Acacia celsa    -17.26     145.46        5/9/2022
-21  5b3ab595-4ffe-4704-ad60-7f0bd9b85b7c                    Acronychia acidula    -17.26     145.46       22/4/2022
-22  04d67117-fd82-446c-a628-237da3bd30b7             Aleurites rockinghamensis    -17.26     145.46       21/7/2022
-23  e17d8d7a-3dfd-4f40-a7a2-9d3f5eabaa47                    Alphitonia petriei    -17.26     145.46       11/3/2022
-24  104171f7-ee52-43f3-89ae-9d7b1373f516                  Gillbeea adenopetala    -17.26     145.46       15/2/2022
-25  7dec0761-95d1-4ee2-a3d7-c592c7d2075b                       Litsea leefeana    -17.26     145.46       11/5/2022
-26  ba4c1d42-dd5d-44f4-a5f3-f2189fd855ed                        Myrsine porosa    -17.26     145.46      31/10/2022
-27  2fb18b9f-384c-4b54-ad05-b28436335b29                    Neolitsea dealbata    -17.26     145.46       8/10/2022
-28  c49ecebc-aa41-4bd6-aa71-2aa5c564a5b3                 Polyscias australiana    -17.26     145.46      26/10/2022
-29  5601922a-ff2e-4bd0-b1a3-23a83e1d04a3                     Coprosma hirtella    -35.66     148.15        4/3/2022
-30  e665c15a-02d5-41db-9992-3fdeca7c0e5b                    Daviesia latifolia    -35.66     148.15       28/6/2022
-31  d322b168-4c2b-4c03-bcd5-2acceebce961               Eucalyptus delegatensis    -35.66     148.15       22/1/2022
-32  9ae78f4e-2142-4b4a-95fa-ae91a24b3964                  Tasmannia lanceolata    -35.66     148.15       24/6/2022
-33  0c6c1adf-eef7-4b16-ac02-59a74bc89156                    Eucalyptus miniata    -12.42     130.92      28/10/2022
-34  b4a444e2-5311-4567-bab9-f0019cb67fa0                 Eucalyptus tetrodonta    -12.42     130.92       21/6/2022
-</pre></div>
-</div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="galaxias.dwca.check_dwca">
 <span class="sig-name descname"><span class="pre">check_dwca</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.check_dwca" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="galaxias.dwca.check_dwca_values">
-<span class="sig-name descname"><span class="pre">check_dwca_values</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.check_dwca_values" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="galaxias.dwca.check_events">
-<span class="sig-name descname"><span class="pre">check_events</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.check_events" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="galaxias.dwca.check_occurrences">
-<span class="sig-name descname"><span class="pre">check_occurrences</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.check_occurrences" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="galaxias.dwca.check_species_names">
-<span class="sig-name descname"><span class="pre">check_species_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">return_taxa</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.check_species_names" title="Link to this definition">#</a></dt>
-<dd><p>Checks species names against your specified backbone.  Can also give you higher taxon ranks for your taxon.</p>
+<dd><p>Checks whether or not your Darwin Core Archive meets the pre-defined standard.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>return_taxa</strong> (<code class="docutils literal notranslate"><span class="pre">logical</span></code>) – Option whether to return a dictionary object containing full taxonomic information on your species.  Default to <cite>False</cite>.</p>
+<dd class="field-odd"><p><strong>None</strong> – </p>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p>Either <code class="docutils literal notranslate"><span class="pre">False</span></code> if there are incorrect taxon names, or <code class="docutils literal notranslate"><span class="pre">True</span></code>.  A dictionary object containing species names and alternatives</p></li>
-<li><p>is returned with the <code class="docutils literal notranslate"><span class="pre">return_taxa=True</span></code> option.</p></li>
-</ul>
-</p>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Raises a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> if something is wrong, or returns True if it passes.</p>
 </dd>
 </dl>
-<p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="kn">import</span> <span class="nn">galaxias</span></span>
-<span class="prompt1"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span></span>
-<span class="prompt1"><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;occurrences_dwc_rename.csv&quot;</span><span class="p">)</span></span>
-<span class="prompt1"><span class="n">my_dwca</span> <span class="o">=</span> <span class="n">galaxias</span><span class="o">.</span><span class="n">dwca</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">data</span><span class="p">)</span></span>
-<span class="prompt1"><span class="n">my_dwca</span><span class="o">.</span><span class="n">check_species_names</span><span class="p">()</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>True
-</pre></div>
-</div>
 </dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="galaxias.dwca.check_unique_event_ids">
-<span class="sig-name descname"><span class="pre">check_unique_event_ids</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.check_unique_event_ids" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="galaxias.dwca.check_unique_occurrence_ids">
-<span class="sig-name descname"><span class="pre">check_unique_occurrence_ids</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.check_unique_occurrence_ids" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="galaxias.dwca.create_dwca">
 <span class="sig-name descname"><span class="pre">create_dwca</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.create_dwca" title="Link to this definition">#</a></dt>
-<dd><p>create dwca</p>
+<dd><p>Checks all your files for Darwin Core compliance, and then creates the
+Darwin Core archive in your working directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong> – </p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Raises a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> if something is wrong, or returns <code class="docutils literal notranslate"><span class="pre">None</span></code> if it passes.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -597,72 +455,6 @@ markdown, and use it to generate the metadata files.</p>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="galaxias.dwca.generate_data_report">
-<span class="sig-name descname"><span class="pre">generate_data_report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.generate_data_report" title="Link to this definition">#</a></dt>
-<dd><p>Generate a report for the data you will submit.  This currently prints out to screen, but will also
-render to HTML/MD (eventually)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>verbose</strong> (<code class="docutils literal notranslate"><span class="pre">logical</span></code>) – Option whether to generate a simple or verbose report.  Default to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>A printed report detailing what will need to be edited prior to data submission.</p>
-</dd>
-</dl>
-<p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="kn">import</span> <span class="nn">galaxias</span></span>
-<span class="prompt1"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span></span>
-<span class="prompt1"><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;occurrences_dwc.csv&quot;</span><span class="p">)</span></span>
-<span class="prompt1"><span class="n">my_dwca</span> <span class="o">=</span> <span class="n">galaxias</span><span class="o">.</span><span class="n">dwca</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">data</span><span class="p">)</span></span>
-<span class="prompt1"><span class="n">my_dwca</span><span class="o">.</span><span class="n">generate_data_report</span><span class="p">()</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Archive Report
----------------------
-Pass/Fail: Fail
-Data Type: Occurrence
-Errors:
-	- A taxonomy report could not be generated, likely because the column &#39;scientificName&#39; is not in your column names.
-	- You are missing required columns in your data.
-	- Some of your columns do not match the current Darwin Core Standard.
-	- Your datetime format in Occurrences is not in YYYY-MM-DD or iso format.
-Missing Columns Occurrence:
-	MAYBE: decimalLatitude
-	MAYBE: decimalLongitude
-	occurrenceID OR catalogNumber OR recordNumber
-	scientificName
-	vernacularName
-	genus
-	family
-	order
-	class
-	phylum
-	kingdom
-Incorrect DwC Terms Occurrence:
-	Species
-	Longitude
-	Collection_date
-	Latitude
-
-Occurrence Report
----------------------
-Coordinates Report:
-	Data has coordinate fields?: False
-	Invalid latitude count: 0
-	Invalid longitude count: 0
-Datetime Report:
-	Has invalid datetime: True
-	Number of invalid datetimes: 35
-Taxonomy Report:
-	Could not do a taxonomic classification because &#39;scientificName&#39; is likely missing from your columns.
-Column counts:
-	Species: 35
-	Latitude: 35
-	Longitude: 35
-	Collection_date: 35
-</pre></div>
-</div>
 </dd></dl>
 
 <dl class="py method">
@@ -693,6 +485,123 @@ what is in the DwCA.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxias.dwca.use_coordinates">
+<span class="sig-name descname"><span class="pre">use_coordinates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">decimalLatitude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decimalLongitude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geodeticDatum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coordinateUncertaintyInMeters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coordinatePrecision</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">assign</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.use_coordinates" title="Link to this definition">#</a></dt>
+<dd><p>Checks for location information, as well as uncertainty and coordinate reference system.
+Also runs data checks on coordinate validity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>decimalLatitude</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a column from the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> argument
+(<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) that represents latitude (unit in degrees).</p></li>
+<li><p><strong>decimalLongitude</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a column from the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> argument
+(<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) that represents longitude (unit in degrees).</p></li>
+<li><p><strong>geodeticDatum</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a column from the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> argument
+(<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) that represents the coordinate reference system (CRS).</p></li>
+<li><p><strong>coordinateUncertaintyInMeters</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a column from the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> argument
+(<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) that represents the uncertainty of the instrument measuring
+the latitude and longitude (unit is meters).</p></li>
+<li><p><strong>coordinatePrecision</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a column from the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> argument
+(<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) that represents the inherent uncertainty of your measurement
+(unit in degrees).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Raises a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> explaining what is wrong, or returns None if it passes.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxias.dwca.use_datetime">
+<span class="sig-name descname"><span class="pre">use_datetime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eventDate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">year</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">month</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">day</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">string_to_datetime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orig_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%d-%m-%Y'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.use_datetime" title="Link to this definition">#</a></dt>
+<dd><p>Checks for time information, such as the date an occurrence occurred.  Also runs checks
+on the validity of the format of the date.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eventDate</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a column from the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> argument
+(<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) that represents the date of the occurrences.</p></li>
+<li><p><strong>year</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a column from the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> argument
+(<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) that represents the year of the occurrence.</p></li>
+<li><p><strong>month</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a column from the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> argument
+(<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) that represents the date of the occurrences.</p></li>
+<li><p><strong>day</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a column from the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> argument
+(<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) that represents the day of the occurrences.</p></li>
+<li><p><strong>time</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a column from the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> argument
+(<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) that represents the time of the occurrences.</p></li>
+<li><p><strong>string_to_datetime</strong> (<code class="docutils literal notranslate"><span class="pre">logical</span></code>) – An argument that tells <code class="docutils literal notranslate"><span class="pre">galaxias</span></code> to convert dates that are in a string format
+to a <code class="docutils literal notranslate"><span class="pre">datetime</span></code> format.  Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><strong>orig_format</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – A string denoting the original format of the dates that are being converted from a
+string to a <code class="docutils literal notranslate"><span class="pre">datetime</span></code> object.  Default is <code class="docutils literal notranslate"><span class="pre">'%d-%m-%Y'</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Raises a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> explaining what is wrong, or returns None if it passes.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxias.dwca.use_locality">
+<span class="sig-name descname"><span class="pre">use_locality</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">continent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">country</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">countryCode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stateProvince</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locality</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.use_locality" title="Link to this definition">#</a></dt>
+<dd><p>(OPTIONAL) Checks for additional location information, such as country and countryCode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>continent</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a column from the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> argument
+(<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) that represents the continent of the occurrences.</p></li>
+<li><p><strong>country</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a column from the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> argument
+(<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) that represents the country of the occurrence.</p></li>
+<li><p><strong>countryCode</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a column from the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> argument
+(<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) that represents the countryCode of the occurrences.</p></li>
+<li><p><strong>stateProvince</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a column from the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> argument
+(<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) that represents the stateProvince of the occurrences.</p></li>
+<li><p><strong>locality</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a column from the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> argument
+(<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) that represents the locality of the occurrences.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Raises a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> explaining what is wrong, or returns None if it passes.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxias.dwca.use_occurrences">
+<span class="sig-name descname"><span class="pre">use_occurrences</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">occurrenceID</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">basisOfRecord</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.use_occurrences" title="Link to this definition">#</a></dt>
+<dd><p>Checks for unique identifiers of each occurrence and how the occurrence was recorded.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>occurrenceID</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a column from the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> argument
+(<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) that represents the unique occurrenceIDs of the occurrences.</p></li>
+<li><p><strong>basisOfRecord</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a column from the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> argument
+(<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) that represents how the occurrence was recorded.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Raises a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> explaining what is wrong, or returns None if it passes.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxias.dwca.use_scientific_name">
+<span class="sig-name descname"><span class="pre">use_scientific_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scientific_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.use_scientific_name" title="Link to this definition">#</a></dt>
+<dd><p>Checks for the name of the taxon you identified is present.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>scientific_name</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a column from the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> argument
+(<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) that represents the taxonomic identification of the occurrences.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Raises a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> explaining what is wrong, or returns None if it passes.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -748,20 +657,17 @@ what is in the DwCA.</p>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca"><code class="docutils literal notranslate"><span class="pre">dwca</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.add_taxonomic_information"><code class="docutils literal notranslate"><span class="pre">dwca.add_taxonomic_information()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.add_unique_occurrence_IDs"><code class="docutils literal notranslate"><span class="pre">dwca.add_unique_occurrence_IDs()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.check_data"><code class="docutils literal notranslate"><span class="pre">dwca.check_data()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.check_dwca"><code class="docutils literal notranslate"><span class="pre">dwca.check_dwca()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.check_dwca_values"><code class="docutils literal notranslate"><span class="pre">dwca.check_dwca_values()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.check_events"><code class="docutils literal notranslate"><span class="pre">dwca.check_events()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.check_occurrences"><code class="docutils literal notranslate"><span class="pre">dwca.check_occurrences()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.check_species_names"><code class="docutils literal notranslate"><span class="pre">dwca.check_species_names()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.check_unique_event_ids"><code class="docutils literal notranslate"><span class="pre">dwca.check_unique_event_ids()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.check_unique_occurrence_ids"><code class="docutils literal notranslate"><span class="pre">dwca.check_unique_occurrence_ids()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.create_dwca"><code class="docutils literal notranslate"><span class="pre">dwca.create_dwca()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.create_metadata_file"><code class="docutils literal notranslate"><span class="pre">dwca.create_metadata_file()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.generate_data_report"><code class="docutils literal notranslate"><span class="pre">dwca.generate_data_report()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.make_eml_xml"><code class="docutils literal notranslate"><span class="pre">dwca.make_eml_xml()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.make_meta_xml"><code class="docutils literal notranslate"><span class="pre">dwca.make_meta_xml()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.use_coordinates"><code class="docutils literal notranslate"><span class="pre">dwca.use_coordinates()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.use_datetime"><code class="docutils literal notranslate"><span class="pre">dwca.use_datetime()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.use_locality"><code class="docutils literal notranslate"><span class="pre">dwca.use_locality()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.use_occurrences"><code class="docutils literal notranslate"><span class="pre">dwca.use_occurrences()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.use_scientific_name"><code class="docutils literal notranslate"><span class="pre">dwca.use_scientific_name()</span></code></a></li>
 </ul>
 </li>
 </ul>

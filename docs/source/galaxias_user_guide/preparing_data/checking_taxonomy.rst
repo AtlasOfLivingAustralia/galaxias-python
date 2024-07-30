@@ -10,7 +10,7 @@ let's generate another data report to see how renaming our columns changes the r
 
     >>> my_dwca.generate_data_report()
 
-.. program-output:: python galaxias_user_guide/preparing_data_script.py check_taxon1
+# .. program-output:: python galaxias_user_guide/preparing_data_script.py check_taxon1
 
 Here, we can see that there are a few species names that are either misspelled or differ slightly from what is 
 available at the Atlas of Living Australia.  To change your species names, we will again use ``pandas`` to do 
@@ -33,7 +33,7 @@ the second one is writing a loop for changing all species names at once.
     ... 
     >>> my_dwca.occurrences
 
-.. program-output:: python galaxias_user_guide/preparing_data_script.py check_taxon
+# .. program-output:: python galaxias_user_guide/preparing_data_script.py check_taxon
 
 Adding higher order taxonomic information
 ---------------------------------------------
@@ -46,7 +46,7 @@ ensure that you have the correct taxon.  Thankfully, you can do this with one fu
     >>> my_dwca.add_taxonomic_information()
     >>> my_dwca.occurrences.head()
 
-.. program-output:: python galaxias_user_guide/preparing_data_script.py add_taxon
+# .. program-output:: python galaxias_user_guide/preparing_data_script.py add_taxon
 
 ``Note``: we have provided the higher taxonomic information we have on the backbone.  It is up to the 
 user to confirm they are happy with this taxonomy, or if they spot any errors, 

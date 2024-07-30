@@ -1,20 +1,20 @@
 import pandas as pd
 import os
-from .galaxias_config import readConfig
-from .dwca_report import dwca_report
-import json
-import uuid
-import requests
 import zipfile
 import shutil
-import xmlschema
 from .common_dictionaries import TAXON_TERMS,TITLE_LEVELS,required_columns_event
-from .common_functions import get_dwc_noncompliant_terms,read_dwc_terms_links
-# from dwc_validator.validate import validate_occurrence_dataframe,validate_media_extension
-# from dwc_validator.validate import validate_event_dataframe,validate_emof_extension
+from .get_dwc_noncompliant_terms import get_dwc_noncompliant_terms
+from .read_dwc_terms_links import read_dwc_terms_links
+from .build_subelement import build_subelement
+from .check_data_functions import *
+from .add_unique_occurrence_ids import add_unique_occurrence_IDs
+# from dwca.read import DwCAReader
 import xml.etree.ElementTree as ET
 from operator import itemgetter
 import subprocess
+from tabulate import tabulate
+from .print_dwca_report import print_dwca_report
+import datetime
 
 # TRYING THIS
 import metapype
@@ -32,18 +32,17 @@ class dwca:
                  data_proc_dir = 'data_processed',
                  dwca_name = 'dwca.zip',
                  occurrences = None,
-                 occurrences_dwc_filename = 'occurrences.csv',
+                 occurrences_dwc_filename = 'occurrences.txt',
                  multimedia = None,
-                 multimedia_dwc_filename = 'multimedia.csv',
+                 multimedia_dwc_filename = 'multimedia.txt',
                  events = None,
-                 events_dwc_filename = 'events.csv',
+                 events_dwc_filename = 'events.txt',
                  emof = None,
-                 emof_dwc_filename = 'extendedMeasurementOrFact.csv',
+                 emof_dwc_filename = 'extendedMeasurementOrFact.txt', # was .csv
                  metadata_md = 'metadata.md',
                  eml_xml = 'eml.xml',
                  meta_xml = 'meta.xml'
                  ):
-            
 
         # initialise variables
         current_dir = subprocess.check_output("pwd",shell=True,text=True).strip()
@@ -52,16 +51,16 @@ class dwca:
         self.data_proc_dir = '{}/{}/{}'.format(current_dir,working_dir,data_proc_dir)
         self.dwca_name = '{}/{}/{}'.format(current_dir,working_dir,dwca_name)
         self.occurrences = occurrences
-        self.occurrences_dwc_filename = '{}/{}'.format(self.data_proc_dir,occurrences_dwc_filename)
+        self.occurrences_dwc_filename = occurrences_dwc_filename
         self.multimedia = multimedia
-        self.multimedia_dwc_filename = '{}/{}'.format(self.data_proc_dir,multimedia_dwc_filename)
+        self.multimedia_dwc_filename = multimedia_dwc_filename
         self.events = events
-        self.events_dwc_filename = '{}/{}'.format(self.data_proc_dir,events_dwc_filename)
+        self.events_dwc_filename = events_dwc_filename
         self.emof = emof
         self.metadata_md = '{}/{}/{}'.format(current_dir,working_dir,metadata_md)
-        self.emof_dwc_filename = '{}/{}'.format(self.data_proc_dir,emof_dwc_filename)
-        self.eml_xml = '{}/{}/{}'.format(current_dir,working_dir,eml_xml)
-        self.meta_xml = '{}/{}/{}'.format(current_dir,working_dir,meta_xml)
+        self.emof_dwc_filename = emof_dwc_filename
+        self.eml_xml = eml_xml
+        self.meta_xml = meta_xml
 
         # make the working directory
         folders =  ['working_dir','data_raw_dir','data_proc_dir']
@@ -98,233 +97,144 @@ class dwca:
             else:
                 raise ValueError("Only a csv filename or Pandas dataframe will be accepted for {}.".format(var))
 
-    def add_taxonomic_information(self):
+    def check_data(self):
         """
-        Adds full taxonomic information (from kingdom to species) to your data for clearer identification
+        Checks whether or not your data (occurrences) meets the pre-defined standard.
 
         Parameters
         ----------
-            ``None``
+            None
 
         Returns
         -------
-            ``None``
-
-        Examples
-        --------
-
-        .. prompt:: python
-
-            import galaxias
-            import pandas as pd
-            data = pd.read_csv("occurrences_dwc_rename.csv")
-            my_dwca = galaxias.dwca(occurrences=data)
-            my_dwca.add_taxonomic_information()
-            my_dwca.occurrences
-            
-        .. program-output:: python -c "import galaxias;import pandas as pd;pd.set_option('display.max_columns', None);pd.set_option('display.expand_frame_repr', False);pd.set_option('max_colwidth', None);data = pd.read_csv(\\\"galaxias_user_guide/occurrences_dwc_rename.csv\\\");my_dwca = galaxias.dwca(occurrences=data);my_dwca.add_taxonomic_information();print(my_dwca.occurrences)"
+            A printed report detailing presence or absence of required data.
         """
 
-        # configs
-        # configs = readConfig()
+        # set up dict for dataframe
+        required_terms = {
+            "Type": ["Identifier (at least one)",
+                     "Record type",
+                     "Scientific name",
+                     "Location",
+                     "Date/Time"],
+            "Matched term(s)": ['-','-','-','-','-'],
+            "Missing term(s)": ['occurrenceID OR catalogNumber OR recordNumber',
+                                'basisOfRecord',
+                                'scientificName',
+                                GEO_REQUIRED_DWCA_TERMS["Australia"],
+                                'eventDate']
+        }
 
-        # get atlas
-        # atlas = configs["galaxiasSettings"]["atlas"]
-        atlas = "Australia"
+        # get matching and nonmatching terms
+        unmatched_dwc_terms = get_dwc_noncompliant_terms(self.occurrences)
+        matched_dwc_terms = list(filter(lambda x: x not in unmatched_dwc_terms, list(self.occurrences.columns)))
 
-        # check for scientificName, as users should check that they have the correct column names
-        if "scientificName" not in list(self.occurrences.columns):
-            raise ValueError("Before checking species names, ensure all your column names comply to DwCA standard.  scientificName is the correct title for species")
+        # list of all required terms
+        terms = [
+            ['occurrenceID', 'catalogNumber','recordNumber'],
+            'basisOfRecord',
+            'scientificName',
+            GEO_REQUIRED_DWCA_TERMS["Australia"],
+            'eventDate'
+        ]
 
-        # get all info     
-        species_checked = self.check_species_names(return_taxa=True)
-        
-        # merge the taxon information with the species information the user has provided
-        if type(species_checked) is tuple:
-            self.occurrences = pd.merge(self.occurrences, species_checked[1], left_on='scientificName', right_on='scientificName', how='left')
-            self.occurrences = self.occurrences.rename(
-                columns = {
-                    'rank': 'taxonRank',
-                    'classs': 'class'
-                }
-            )
-        else:
-            raise ValueError("Some species names are not correct - please generate a report to find out which ones.")
-
-    def add_unique_occurrence_IDs(self,
-                                  column_name="occurrenceID"):
-        """
-        Function that automatically adds unique IDs (in the form of uuids) to each of your occurrences.
-
-        Parameters
-        ----------
-            ``column_name`` : ``str``
-                String containing name of column you want to add.  Default is ``occurrenceID``
-
-        Returns
-        -------
-            ``None``
-
-        Examples
-        --------
-
-        .. prompt:: python
-
-            import galaxias
-            import pandas as pd
-            data = pd.read_csv("occurrences_dwc.csv")
-            my_dwca = galaxias.dwca(occurrences=data)
-            my_dwca.add_unique_occurrence_IDs()
-            my_dwca.occurrences
-
-        .. program-output:: python -c "import galaxias;import pandas as pd;pd.set_option('display.max_columns', None);pd.set_option('display.expand_frame_repr', False);pd.set_option('max_colwidth', None);data = pd.read_csv(\\\"galaxias_user_guide/occurrences_dwc.csv\\\");my_dwca = galaxias.dwca(occurrences=data);my_dwca.add_unique_occurrence_IDs();print(my_dwca.occurrences)"
-        """
-
-        if self.occurrences is None:
-            raise ValueError("Please provide a data frame.")
-        
-        if column_name == "occurrenceID" or column_name == "catalogNumber" or column_name == "recordNumber":
-            uuids = [None for i in range(self.occurrences.shape[0])]
-            for i in range(self.occurrences.shape[0]):
-                uuids[i] = str(uuid.uuid4())
-            self.occurrences.insert(0,column_name,uuids)
-            return self.occurrences
-        else:
-            raise ValueError("Please provide a string with a valid DwCA value for your column name.")
-
-    def check_species_names(self,
-                            return_taxa = False,
-                            num_matches = 5,
-                            include_synonyms = True):
-        """
-        Checks species names against your specified backbone.  Can also give you higher taxon ranks for your taxon.
-
-        Parameters
-        ----------
-            ``return_taxa`` : ``logical``
-                Option whether to return a dictionary object containing full taxonomic information on your species.  Default to `False`. 
-
-        Returns
-        -------
-            Either ``False`` if there are incorrect taxon names, or ``True``.  A dictionary object containing species names and alternatives 
-            is returned with the ``return_taxa=True`` option.
-
-        Examples
-        --------
-        .. prompt:: python
-
-            import galaxias
-            import pandas as pd
-            data = pd.read_csv("occurrences_dwc_rename.csv")
-            my_dwca = galaxias.dwca(occurrences=data)
-            my_dwca.check_species_names()
-
-        .. program-output:: python -c "import galaxias;import pandas as pd;data = pd.read_csv(\\\"galaxias_user_guide/occurrences_dwc_rename.csv\\\");my_dwca = galaxias.dwca(occurrences=data);print(my_dwca.check_species_names())"
-        """
-
-        # get configurations from user
-        # configs = readConfig()
-
-        # get atlas
-        # atlas = configs["galaxiasSettings"]["atlas"]
-        atlas = "Australia"
-
-        # check for scientificName, as users should check that they have the correct column names
-        if "scientificName" not in list(self.occurrences.columns):
-            raise ValueError("Before checking species names, ensure all your column names comply to DwCA standard.  scientificName is the correct title for species")
-        
-        # make a list of all scientific names in the dataframe
-        scientific_names_list = list(set(self.occurrences["scientificName"]))
-        
-        # initialise has_invalid_taxa
-        has_invalid_taxa=False
-        
-        # send list of scientific names to ALA to check their validity
-        payload = [{"scientificName": name} for name in scientific_names_list]
-        response = requests.request("POST","https://api.ala.org.au/namematching/api/searchAllByClassification",data=json.dumps(payload))
-        response_json = response.json()
-        terms = ["original name"] + ["proposed match(es)"] + ["rank of proposed match(es)"] + TAXON_TERMS["Australia"]
-        invalid_taxon_dict = {x: [] for x in terms}
-        
-        # loop over list of names and ensure we have gotten all the issues - might need to do single name search
-        # to ensure we get everything
-        for item in scientific_names_list:
-            item_index = next((index for (index, d) in enumerate(response_json) if "scientificName" in d and d["scientificName"] == item), None)
-            if item_index is None:
-                # make this better
-                has_invalid_taxa = True
-                response_single = requests.get("https://api.ala.org.au/namematching/api/autocomplete?q={}&max={}&includeSynonyms={}".format("%20".join(item.split(" ")),num_matches,str(include_synonyms).lower()))
-                response_json_single = response_single.json()
-                if response_json_single:
-                    if response_json_single[0]['rank'] is not None:
-                        invalid_taxon_dict["original name"].append(item)
-                        invalid_taxon_dict["proposed match(es)"].append(response_json_single[0]['name'])
-                        invalid_taxon_dict["rank of proposed match(es)"].append(response_json_single[0]['rank'])
-                        for term in TAXON_TERMS["Australia"]:
-                            if term in response_json_single[0]['cl']:
-                                invalid_taxon_dict[term].append(response_json_single[0]['cl'][term])
-                            else:
-                                invalid_taxon_dict[term].append(None)
-                    else:
-
-                        # check for synonyms
-                        for synonym in response_json_single[0]["synonymMatch"]:
-                            if synonym['rank'] is not None:
-                                invalid_taxon_dict["original name"].append(item)
-                                invalid_taxon_dict["proposed match(es)"].append(synonym['name'])
-                                invalid_taxon_dict["rank of proposed match(es)"].append(synonym['rank'])
-                                for term in TAXON_TERMS["Australia"]:
-                                    if term in synonym['cl']:
-                                        invalid_taxon_dict[term].append(synonym['cl'][term])
-                                else:
-                                    invalid_taxon_dict[term].append(None)
-                            else:
-                                print("synonym doesn't match")
+        # loop over all terms to compile what the person has int he dwca
+        for i,t in enumerate(terms):
+            if type(t) is list:
+                if 'occurrenceID' in t:
+                    # check for identifier
+                    if any(map(lambda v: v in ['occurrenceID', 'catalogNumber','recordNumber'],list(self.occurrences.columns))):
+                        column_present = list(map(lambda v: v in ['occurrenceID', 'catalogNumber','recordNumber'],list(self.occurrences.columns)))
+                        true_indices = column_present.index(True)
+                        if type(true_indices) is list:
+                            required_terms["Matched term(s)"][0] = ', '.join(list(self.occurrences.columns)[true_indices])
+                        else:
+                            required_terms["Matched term(s)"][0] = list(self.occurrences.columns)[true_indices]
+                        required_terms["Missing term(s)"][0] = '-'
+                elif 'decimalLatitude' in t:
+                    # check for Location
+                    location_names = []
+                    for name in GEO_REQUIRED_DWCA_TERMS["Australia"]:
+                        if name in self.occurrences.columns:
+                            location_names.append(name)
+                            required_terms["Missing term(s)"][3].remove(name)
+                    if len(location_names) == 0:
+                        location_names = ['-']
+                    if len(required_terms["Missing term(s)"][3]) == 0:
+                        required_terms["Missing term(s)"][3] = ['-']
+                    required_terms["Matched term(s)"][3] = ', '.join(location_names)
+                    required_terms["Missing term(s)"][3] = ', '.join(required_terms["Missing term(s)"][3])
                 else:
+                    if t in list(self.occurrences.columns):
+                        required_terms["Matched term(s)"][i] = t
+                        required_terms["Missing term(s)"][i] = '-'
 
-                    # try one last time to find a match
-                    response_search = requests.get("https://api.ala.org.au/namematching/api/search?q={}".format("%20".join(item.split(" "))))
-                    response_search_json = response_search.json()            
-                    if response_search_json['success']:
-                        invalid_taxon_dict["original name"].append(item)
-                        invalid_taxon_dict["proposed match(es)"].append(response_search_json['scientificName'])
-                        invalid_taxon_dict["rank of proposed match(es)"].append(response_search_json['rank'])
-                        for term in TAXON_TERMS["Australia"]:
-                            if term in response_search_json:
-                                invalid_taxon_dict[term].append(response_search_json[term])
-                            else:
-                                invalid_taxon_dict[term].append(None)
-                    else:
-                        print("last ditch search did not work")
-                        print(response_search_json)
-                        import sys
-                        sys.exit()
+        # first, check if all required terms are there
+        if required_terms["Missing term(s)"] == ['-','-','-','-','-']:
             
-        # check for homonyms - if there are any, then print them out to the user so the user can disambiguate the names
-        if has_invalid_taxa:
-            return False,pd.DataFrame(invalid_taxon_dict)
-        elif return_taxa:
-            payload = [{"scientificName": name} for name in scientific_names_list]
-            response = requests.request("POST","https://api.ala.org.au/namematching/api/searchAllByClassification",data=json.dumps(payload))
-            response_json = response.json()
-            verification_list = {"scientificName": scientific_names_list, "issues": [None for i in range(len(scientific_names_list))]}
-            taxonomy = pd.DataFrame({name: [None for i in range(len(scientific_names_list))] for name in TAXON_TERMS[atlas]})
-            
-            # loop over list of names and ensure we have gotten all the issues - might need to do single name search
-            # to ensure we get everything
-            for i,item in enumerate(scientific_names_list):
-                item_index = next((index for (index, d) in enumerate(response_json) if "scientificName" in d and d["scientificName"] == item), None)
-                taxonomy.loc[i,"scientificName"] = item
-                if item_index is not None:
-                    verification_list["issues"][i] = response_json[item_index]["issues"]
-                    if return_taxa:
-                        for term in TAXON_TERMS[atlas]:
-                            if term in response_json[item_index]:
-                                taxonomy.loc[i,term] = response_json[item_index][term]
-            return True,taxonomy
-        return True
+            # run data check
+            errors = check_all_data(dataframe=self.occurrences)
+
+            # check for errors in the data and change the dict accordingly
+            messages = errors["errors"]
+
+            # check for data errors
+            if any(m != '-' for m in messages):
+
+                # print data errors
+                errors_df = pd.DataFrame(errors)
+                print(tabulate(errors_df, showindex=False, headers=errors_df.columns))
+                print("\nError: Invalid data detected in {} column(s).".format(list(m != '-' for m in messages).count(True)))
+                print("\nSuggested workflow:\n")
+                if any(map(lambda v: v in errors["Column"], ['occurrenceID','basisOfRecord'])):
+                    for term in ['occurrenceID','basisOfRecord']:
+                        if term in errors["Column"]:
+                            index = errors["Column"].index(term)
+                            if errors["errors"][index] != '-':
+                                print("df.use_occurrences()")
+                if any(map(lambda v: v in errors["Column"], ['scientificName'])):
+                    index = errors["Column"].index('scientificName')
+                    if errors["errors"][index] != '-':
+                        print("df.use_scientific_name()")
+                if any(map(lambda v: v in errors["Column"], GEO_REQUIRED_DWCA_TERMS["Australia"])):
+                    for term in GEO_REQUIRED_DWCA_TERMS["Australia"]:
+                        if term in errors["Column"]:
+                            index = errors["Column"].index(term)
+                            if errors["errors"][index] != '-':
+                                print("df.use_coordinates()")
+                if any(map(lambda v: v in errors["Column"], ['eventDate', 'day', 'month', 'year', 'time'])):
+                    for term in ['eventDate', 'day', 'month', 'year', 'time']:
+                        if term in errors["Column"]:
+                            index = errors["Column"].index(term)
+                            if errors["errors"][index] != '-':
+                                print("df.use_datetime()")    
+
+            else:
+
+                print_dwca_report(dataframe=self.occurrences,
+                              matched_dwc_terms=matched_dwc_terms,
+                              unmatched_dwc_terms=unmatched_dwc_terms,
+                              required_terms=required_terms)
+
+        else:
+
+            print_dwca_report(dataframe=self.occurrences,
+                              matched_dwc_terms=matched_dwc_terms,
+                              unmatched_dwc_terms=unmatched_dwc_terms,
+                              required_terms=required_terms)
 
     def check_dwca(self):
+        """
+        Checks whether or not your Darwin Core Archive meets the pre-defined standard.
+
+        Parameters
+        ----------
+            None
+
+        Returns
+        -------
+            Raises a ``ValueError`` if something is wrong, or returns True if it passes.
+        """
 
         # get all variables
         vars_dict = vars(self)
@@ -338,45 +248,47 @@ class dwca:
         if all(type(x) == type(data_files[0]) for x in data_files):
             raise ValueError("You have no data in your DwCA.  Please at least add occurrences")
 
-        # first, check for events
-        if self.events is not None:
-            events_pass = self.check_events()
-            occurrences_pass = self.check_occurrences()
+        # # first, check for events
+        # if self.events is not None:
 
-            if self.multimedia is not None:
-                multimedia_pass = self.check_multimedia()
-                if not multimedia_pass:
-                    raise ValueError("You need to check your multimedia files to make sure they are DwC compliant.")
+        #     # events_pass = self.check_events()
+        #     occurrences_pass = self.check_data()
+        #     print("need to write this")
 
-            if self.emof is not None:
-                emof_pass = self.check_emof()
-                if not emof_pass:
-                    raise ValueError("You need to check your multimedia files to make sure they are DwC compliant.")
+            # if self.multimedia is not None:
+            #     multimedia_pass = self.check_multimedia()
+            #     if not multimedia_pass:
+            #         raise ValueError("You need to check your multimedia files to make sure they are DwC compliant.")
+
+            # if self.emof is not None:
+            #     emof_pass = self.check_emof()
+            #     if not emof_pass:
+            #         raise ValueError("You need to check your multimedia files to make sure they are DwC compliant.")
                 
-            if events_pass and occurrences_pass:
-                if os.path.exists(self.meta_xml) and os.path.exists(self.meta_xml):
-                    return True
-                else:
-                    raise ValueError('You need to include the meta.xml and eml.xml file in your DwCA.')
-            elif not events_pass:
-                raise ValueError("You need to check your events to make sure they are DwC compliant.")
-            elif not occurrences_pass:
-                raise ValueError("You need to check your occurrences to make sure they are DwC compliant.")
-            else:
-                raise ValueError("You need to check your events and occurrences to make sure they are DwC compliant.")
+            # if events_pass and occurrences_pass:
+            #     if os.path.exists("{}/{}".format(self.working_dir,self.meta_xml)) and os.path.exists("{}/{}".format(self.working_dir,self.eml_xml)):
+            #         return True
+            #     else:
+            #         raise ValueError('You need to include the meta.xml and eml.xml file in your DwCA.')
+            # elif not events_pass:
+            #     raise ValueError("You need to check your events to make sure they are DwC compliant.")
+            # elif not occurrences_pass:
+            #     raise ValueError("You need to check your occurrences to make sure they are DwC compliant.")
+            # else:
+            #     raise ValueError("You need to check your events and occurrences to make sure they are DwC compliant.")
         
         # next, check for occurrences
-        elif self.occurrences is not None:
+        if self.occurrences is not None:
             
-            occurrences_pass = self.check_occurrences()
+            occurrences_pass = self.check_data()
 
-            if self.multimedia is not None:
-                multimedia_pass = self.check_multimedia()
-                if not multimedia_pass:
-                    raise ValueError("You need to check your multimedia files to make sure they are DwC compliant.")
+            # if self.multimedia is not None:
+            #     multimedia_pass = self.check_multimedia()
+            #     if not multimedia_pass:
+            #         raise ValueError("You need to check your multimedia files to make sure they are DwC compliant.")
 
             if occurrences_pass:
-                if os.path.exists(self.meta_xml) and os.path.exists(self.meta_xml):
+                if os.path.exists("{}/{}".format(self.working_dir,self.meta_xml)) and os.path.exists("{}/{}".format(self.working_dir,self.eml_xml)):
                     return True
                 else:
                     raise ValueError('You need to include the meta.xml and eml.xml file in your DwCA.')
@@ -385,150 +297,32 @@ class dwca:
 
         else:
             return False
-
-    def check_dwca_values(self):
-
-        return True
-
-    def check_events(self):
-
-        required_columns = False
-
-        # check for required columns
-        if any(map(lambda v: v in required_columns_event, list(self.events.columns))):
-
-            # check to see if we are missing any columns
-            check_missing_fields = set(list(self.events.columns)).issuperset(required_columns_event)
-            
-            # check for any missing required fields
-            if (not check_missing_fields) or (type(check_missing_fields) is not bool and len(check_missing_fields) > 0):
-                print("You are missing {}".format(list(set(required_columns_event).difference(set(self.events.columns)))))
-                return required_columns
-            else:
-                required_columns = True
-        else:
-            return required_columns
-        
-        # check for 
-        event_ids_ok = self.check_unique_event_ids()
-        
-        if event_ids_ok and required_columns:
-            return True
-        elif not event_ids_ok:
-            list_event_ids = list(self.events['eventID'])
-            duplicates = [x for x in list_event_ids if list_event_ids.count(x) >= 2]
-            print("There are some duplicate eventIDs: {}".format(duplicates))
-            return False
-        else:
-            return False
-        
-    def check_emof(self):
-        
-        vocab_check = get_dwc_noncompliant_terms(dataframe = self.emof)
-        if len(vocab_check) > 0:
-            raise ValueError("Your column names do not comply with the DwC standard: {}".format(vocab_check))
-        
-        return True
-
-    def check_multimedia(self):
-        
-        vocab_check = get_dwc_noncompliant_terms(dataframe = self.multimedia)
-        if len(vocab_check) > 0:
-            raise ValueError("Your column names do not comply with the DwC standard: {}".format(vocab_check))
-               
-        return True
-    
-    def check_occurrences(self):
-
-        # run basic checks
-        vocab_check = get_dwc_noncompliant_terms(dataframe = self.occurrences)
-        if len(vocab_check) > 0:
-            raise ValueError("Your column names do not comply with the DwC standard.")
-        
-        # TODO: check all values in vocab are there
-        values_check = self.check_dwca_values()
-        if type(values_check) is not bool:
-            raise ValueError("The values in some of your columns do not comply with the DwC standard.")
-        
-        # check for presence of occurrenceID
-        if 'occurrenceID' not in list(self.occurrences):
-            raise ValueError("You need to add unique identifiers into your occurrences.")
-        
-        # check for unique ids
-        unique_id_check = self.check_unique_occurrence_ids()
-        if not unique_id_check:
-            list_event_ids = list(self.events['occurrenceID'])
-            duplicates = [x for x in list_event_ids if list_event_ids.count(x) >= 2]
-            raise ValueError("There are some duplicate eventIDs: {}".format(duplicates))
-        
-        return True
-
-    def check_unique_event_ids(self):
-
-        if len(list(set(self.events['eventID']))) < len(list(self.events['eventID'])):
-            return False
-        else:
-            return True
-
-    def check_unique_occurrence_ids(self):
-
-        all_unique=False
-        list_terms = list(self.occurrences.columns)
-        unique_id_columns = ['occurrenceID','catalogNumber','recordNumber']
-        for id in unique_id_columns:
-            if id in list_terms:
-                if len(list(set(self.occurrences[id]))) < len(list(self.occurrences[id])):
-                    return False
-                else:
-                    all_unique =  True
-        return all_unique
-    
-    def check_xmls(self):
-
-        try:
-            check = xmlschema.validate(self.eml_xml, 'http://rs.gbif.org/schema/eml-gbif-profile/1.1/eml-gbif-profile.xsd')
-            return check
-        except xmlschema.validators.exceptions.XMLSchemaChildrenValidationError as e:
-            print("children error")
-            print("There is an error with your eml.xml file:\n")
-            if "value doesn't match any pattern of" in e.reason:
-                value = str(e.elem).split(" ")[1]
-                print("Please provide a value to {}".format(value))
-                print()
-            else:
-                print(e.reason)
-            breakpoint
-        except xmlschema.validators.exceptions.XMLSchemaValidationError as e:
-            print("schema validation")
-            print("There is an error with your eml.xml file:\n")
-            if "value doesn't match any pattern of" in e.reason:
-                value = str(e.elem).split(" ")[1]
-                print("Please provide a value to {}".format(value))
-                print()
-            elif "character data between child elements not allowed" in e.reason:
-                value = str(e.elem).split(" ")[1]
-                print("Please remove the value you've provided for {}".format(value))
-                print()
-            else:
-                print(str(e.elem).split(" ")[1])
-                print(e.reason)
-            breakpoint
-
     
     def create_dwca(self):
         """
-        create dwca 
+        Checks all your files for Darwin Core compliance, and then creates the 
+        Darwin Core archive in your working directory.
+
+        Parameters
+        ----------
+            None
+
+        Returns
+        -------
+            Raises a ``ValueError`` if something is wrong, or returns ``None`` if it passes.
         """
         # run basic checks on data
         data_check = self.check_dwca()
 
         # run xml check
-        xml_check = self.check_xmls()
+        xml_check = check_xmls()
         if xml_check is None:
             xml_check = True
+
+        # data_check = xml_check = True
         
         if data_check and xml_check:
-        
+            
             # zip everything into file
             if self.events is not None:
                 
@@ -536,80 +330,86 @@ class dwca:
                 zf = zipfile.ZipFile(self.dwca_name,'w')
 
                 # check if your data file has been written
-                if not os.path.exists(self.occurrences_dwc_filename):
-                    self.occurrences.to_csv("{}".format(self.occurrences_dwc_filename))
+                if not os.path.exists("{}/{}".format(self.data_proc_dir,self.occurrences_dwc_filename)):
+                    self.occurrences.to_csv("{}/{}".format(self.data_proc_dir,self.occurrences_dwc_filename),index=False)
 
-                # first, write occurrences
-                occ_compression_opts = dict(method='zip',
-                                            archive_name=self.occurrences_dwc_filename)             
-                self.occurrences.to_csv(self.dwca_name,compression=occ_compression_opts)
+                # first, write occurrences to zip and disk
+                os.system("cp {}/{} .".format(self.data_proc_dir,self.occurrences_dwc_filename))
+                zf.write(self.occurrences_dwc_filename)
+                os.system("rm {}".format(self.occurrences_dwc_filename))
 
                 # check if your data file has been written
-                if not os.path.exists(self.events_dwc_filename):
-                    self.events.to_csv("{}".format(self.events_dwc_filename))
+                if not os.path.exists("{}/{}".format(self.data_proc_dir,self.events_dwc_filename)):
+                    self.events.to_csv("{}/{}".format(self.data_proc_dir,self.events_dwc_filename),index=False)
 
-                # then, write multimedia if it exists
-                events_compression_opts = dict(method='zip',
-                                            archive_name=self.events_dwc_filename)             
-                self.events.to_csv(self.dwca_name,compression=events_compression_opts)
+                # then, write events
+                os.system("cp {}/{} .".format(self.data_proc_dir,self.events_dwc_filename))
+                zf.write(self.events_dwc_filename)
+                os.system("rm {}".format(self.events_dwc_filename))
 
                 # then, write multimedia if it exists
                 if self.multimedia is not None:
 
                     # check if data exists on disk
-                    if not os.path.exists(self.multimedia_dwc_filename):
-                        self.multimedia.to_csv("{}".format(self.multimedia_dwc_filename))
+                    if not os.path.exists("{}/{}".format(self.data_proc_dir,self.multimedia_dwc_filename)):
+                        self.multimedia.to_csv("{}/{}".format(self.data_proc_dir,self.multimedia_dwc_filename),index=False)
                     
                     # write to dwca
-                    mm_compression_opts = dict(method='zip',
-                                            archive_name=self.multimedia_dwc_filename)             
-                    self.multimedia.to_csv(self.dwca_name,compression=mm_compression_opts)
+                    os.system("cp {}/{} .".format(self.data_proc_dir,self.multimedia_dwc_filename))
+                    zf.write(self.multimedia_dwc_filename)
+                    os.system("rm {}".format(self.multimedia_dwc_filename))
 
                 # then, write multimedia if it exists
                 if self.emof is not None:
                     
                     # check if data exists on disk
-                    if not os.path.exists(self.emof_dwc_filename):
-                        self.emof.to_csv("{}".format(self.emof_dwc_filename))
+                    if not os.path.exists("{}/{}".format(self.data_proc_dir,self.emof_dwc_filename)):
+                        self.emof.to_csv("{}/{}".format(self.data_proc_dir,self.emof_dwc_filename),index=False)
                     
                     # write to dwca
-                    emof_compression_opts = dict(method='zip',
-                                                archive_name=self.emof_dwc_filename)             
-                    self.emof.to_csv(self.dwca_name,compression=emof_compression_opts)
+                    os.system("cp {}/{} .".format(self.data_proc_dir,self.emof_dwc_filename))
+                    zf.write(self.emof_dwc_filename)
+                    os.system("rm {}".format(self.emof_dwc_filename))
 
             else:
-                
+
                 # open archive
                 zf = zipfile.ZipFile(self.dwca_name,'w')
 
                 # check if your data file has been written
-                if not os.path.exists(self.occurrences_dwc_filename):
-                    self.occurrences.to_csv("{}".format(self.occurrences_dwc_filename))
+                if not os.path.exists("{}/{}".format(self.data_proc_dir,self.occurrences_dwc_filename)):
+                    self.occurrences.to_csv("{}/{}".format(self.data_proc_dir,self.occurrences_dwc_filename),index=False)
 
                 # first, write occurrences
-                occ_compression_opts = dict(method='zip',
-                                            archive_name=self.occurrences_dwc_filename)         
-                self.occurrences.to_csv(self.dwca_name,compression=occ_compression_opts)
+                os.system("cp {}/{} .".format(self.data_proc_dir,self.occurrences_dwc_filename))
+                zf.write(self.occurrences_dwc_filename)
+                os.system("rm {}".format(self.occurrences_dwc_filename))
 
                 # then, write multimedia if it exists
                 if self.multimedia is not None:
-                    if not os.path.exists(self.multimedia_dwc_filename):
-                        self.multimedia.to_csv("{}".format(self.multimedia_dwc_filename))
-                    mm_compression_opts = dict(method='zip',
-                                                archive_name=self.multimedia_dwc_filename)             
-                    self.multimedia.to_csv(self.dwca_name,compression=mm_compression_opts)
+                    if not os.path.exists("{}/{}".format(self.data_proc_dir,self.multimedia_dwc_filename)):
+                        self.multimedia.to_csv("{}/{}".format(self.data_proc_dir,self.multimedia_dwc_filename),index=False)
+                    
+                    # write to dwca
+                    os.system("cp {}/{} .".format(self.data_proc_dir,self.multimedia_dwc_filename))
+                    zf.write(self.multimedia_dwc_filename)
+                    os.system("rm {}".format(self.multimedia_dwc_filename))
 
             # ensure metadata files are there
-            if os.path.exists(self.meta_xml):
-                zf.write(self.meta_xml)
-            else:
-                raise ValueError("You need to create your metadata files (eml.xml and meta.xml) - use the function make_meta_xml().")        
-            
-            if os.path.exists(self.eml_xml):
+            if os.path.exists("{}/{}".format(self.working_dir,self.eml_xml)):
+                os.system("cp {}/{} .".format(self.working_dir,self.eml_xml))
                 zf.write(self.eml_xml)
+                os.system("rm {}".format(self.eml_xml))
             else:
                 raise ValueError("You need to create your metadata files (eml.xml and meta.xml) - use the function make_meta_xml().")    
 
+            if os.path.exists("{}/{}".format(self.working_dir,self.meta_xml)):
+                os.system("cp {}/{} .".format(self.working_dir,self.meta_xml))
+                zf.write(self.meta_xml)
+                os.system("rm {}".format(self.meta_xml))
+            else:
+                raise ValueError("You need to create your metadata files (eml.xml and meta.xml) - use the function make_meta_xml().")         
+           
             # close zipfile
             zf.close()
 
@@ -620,9 +420,7 @@ class dwca:
         else:
             raise ValueError("Neither your data nor your xmls passed our compliance checks")
 
-
     def create_metadata_file(self):
-        
         """
         Creates a markdown file containing the metadata information needed for the DwCA.  The user can edit this 
         markdown, and use it to generate the metadata files.
@@ -643,72 +441,6 @@ class dwca:
             os.system("cp {} {}".format(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'metadata_template.md'),os.path.join(self.metadata_md)))
         else:
             pass
-
-    # def generate_data_report(self,
-    #                          verbose=False,
-    #                          ):
-    #     """
-    #     Generate a report for the data you will submit.  This currently prints out to screen, but will also
-    #     render to HTML/MD (eventually)
-
-    #     Parameters
-    #     ----------
-    #         ``verbose`` : ``logical``
-    #             Option whether to generate a simple or verbose report.  Default to ``False``. 
-
-    #     Returns
-    #     -------
-    #         A printed report detailing what will need to be edited prior to data submission.
-
-    #     Examples
-    #     --------
-    #     .. prompt:: python
-
-    #         import galaxias
-    #         import pandas as pd
-    #         data = pd.read_csv("occurrences_dwc.csv")
-    #         my_dwca = galaxias.dwca(occurrences=data)
-    #         my_dwca.generate_data_report()
-
-    #     .. program-output:: python -c "import galaxias;import pandas as pd;data = pd.read_csv(\\\"galaxias_user_guide/occurrences_dwc.csv\\\");my_dwca = galaxias.dwca(occurrences=data);my_dwca.generate_data_report()"
-        
-    #     """
-
-    #     # get validation report
-    #     if self.occurrences is not None:
-            
-    #         occurrences_validation_report = validate_occurrence_dataframe(self.occurrences)
-
-    #     else:
-
-    #         raise ValueError("You need occurrences to be able to run validation")
-
-    #     # next, check for events
-    #     if self.events is not None:
-    #         events_validation_report = validate_event_dataframe(self.events) #,data_type="event")
-
-    #         if self.emof is not None:
-    #             emof_validation_report = validate_emof_extension(self.emof)
-            
-    #         else:
-    #             emof_validation_report = None
-        
-    #     else:
-    #         events_validation_report = None
-    #         emof_validation_report = None
-
-    #     # finally, check for multimedia
-    #     if self.multimedia is not None:
-    #         multimedia_validation_report = validate_media_extension(self.multimedia,data_type="occurrence")
-    #     else:
-    #         multimedia_validation_report = None
-
-    #     # generate simple or complex report
-    #     dwca_report(occurrence_report=occurrences_validation_report,
-    #                 multimedia_report=multimedia_validation_report,
-    #                 events_report=events_validation_report,
-    #                 emof_report=emof_validation_report,
-    #                 verbose=verbose)
     
     def make_meta_xml(self):
         """
@@ -729,11 +461,18 @@ class dwca:
         if self.occurrences is None:
             raise ValueError("You need to have a passing, valid occurrence dataframe for this")
         
+        # get list
+        mylist = sorted(list(self.occurrences.columns),
+                    key=lambda x: x == 'occurrenceID',
+                    reverse=True)
+        self.occurrences = self.occurrences[mylist]
+
         # get dwc terms
         dwc_terms_info = read_dwc_terms_links()
 
-        if len(list(set(list(self.occurrences.columns)).intersection(list(dwc_terms_info['name'])))) < self.occurrences.shape[1]:
-            raise ValueError("You are still missing some DwCA Terms.")
+        ## TODO: ADD THIS BACK IN
+        # if len(list(set(list(self.occurrences.columns)).intersection(list(dwc_terms_info['name'])))) < self.occurrences.shape[1]:
+        #     raise ValueError("You are still missing some DwCA Terms.")
 
         # initialise metadata
         metadata = ET.Element("archive")
@@ -746,15 +485,15 @@ class dwca:
         # check if it is an eventCore or an occurrenceCore
         if self.events is not None:
             core = build_subelement(element=core,
-                                    row_type='http://rs.tdwg.org/dwc/terms/Event',
-                                    filename=self.events_dwc_filename,
-                                    data=self.events,
-                                    dwc_terms_info=dwc_terms_info)
-            ext = ET.SubElement(metadata,"extension")
-            ext = build_subelement(element=ext,
                                     row_type='http://rs.tdwg.org/dwc/terms/Occurrence',
                                     filename=self.occurrences_dwc_filename,
                                     data=self.occurrences,
+                                    dwc_terms_info=dwc_terms_info)
+            ext = ET.SubElement(metadata,"extension")
+            ext = build_subelement(element=ext,
+                                    row_type='http://rs.tdwg.org/dwc/terms/Event',
+                                    filename=self.events_dwc_filename,
+                                    data=self.events,
                                     dwc_terms_info=dwc_terms_info)
         else:
             core = build_subelement(element=core,
@@ -763,7 +502,7 @@ class dwca:
                                     data=self.occurrences,
                                     dwc_terms_info=dwc_terms_info)
 
-        ### TODO: write capability for extensions
+        # Extensions
         if self.multimedia is not None:
             ext = ET.SubElement(metadata,"extension")
             ext = build_subelement(element=ext,
@@ -783,7 +522,7 @@ class dwca:
         # write metadata
         tree = ET.ElementTree(metadata)
         ET.indent(tree, space="\t", level=0)
-        tree.write(self.meta_xml, xml_declaration=True)
+        tree.write("{}/{}".format(self.working_dir,self.meta_xml), xml_declaration=True)
         
     def make_eml_xml(self):
         """
@@ -886,37 +625,340 @@ class dwca:
             
         # write xml
         xml_str = metapype.eml.export.to_xml(metadata)
-        with open(self.eml_xml, 'w') as f:
+        with open("{}/{}".format(self.working_dir,self.eml_xml), 'w') as f:
             f.write(xml_str)
 
-def build_subelement(element=None,
-                     row_type=None,
-                     filename=None,
-                     data=None,
-                     dwc_terms_info=None):
-    
-    # set all basic elemnt things
-    element.set("rowType",row_type)
-    element.set("encoding","UTF-8")
-    element.set("fieldsTerminatedBy",",") # CHANGE THIS TO WHATEVER OCCURRENCE IS
-    element.set("linesTerminatedBy","\r\n") 
-    element.set("fieldsEnclosedBy","&quot;")
-    element.set("ignoreHeaderLines","1")
+    def use_coordinates(self,
+                        decimalLatitude=None,
+                        decimalLongitude=None,
+                        geodeticDatum=None,
+                        coordinateUncertaintyInMeters=None,
+                        coordinatePrecision=None,
+                        assign = True):
+        """
+        Checks for location information, as well as uncertainty and coordinate reference system.  
+        Also runs data checks on coordinate validity.
 
-    # set locations of occurrence data
-    element_files = ET.SubElement(element,"files")
-    location = ET.SubElement(element_files,filename)
+        Parameters
+        ----------
+            decimalLatitude: ``str`` or ``pandas.Series``
+                Either a column name (``str``) or a column from the ``occurrences`` argument 
+                (``pandas.Series``) that represents latitude (unit in degrees).
+            decimalLongitude: ``str`` or ``pandas.Series``
+                Either a column name (``str``) or a column from the ``occurrences`` argument 
+                (``pandas.Series``) that represents longitude (unit in degrees).
+            geodeticDatum: ``str`` or ``pandas.Series``
+                Either a column name (``str``) or a column from the ``occurrences`` argument 
+                (``pandas.Series``) that represents the coordinate reference system (CRS).
+            coordinateUncertaintyInMeters: ``str`` or ``pandas.Series``
+                Either a column name (``str``) or a column from the ``occurrences`` argument 
+                (``pandas.Series``) that represents the uncertainty of the instrument measuring 
+                the latitude and longitude (unit is meters).
+            coordinatePrecision: ``str`` or ``pandas.Series``
+                Either a column name (``str``) or a column from the ``occurrences`` argument 
+                (``pandas.Series``) that represents the inherent uncertainty of your measurement 
+                (unit in degrees).
 
-    # set id
-    id = ET.SubElement(element,"id")
-    id.set("index","0")
+        Returns
+        -------
+            Raises a ``ValueError`` explaining what is wrong, or returns None if it passes.
+        """
 
-    # set all fields
-    for i,fields in enumerate(list(data.columns)):
-        field = ET.SubElement(element,"field")
-        field.set("index","{}".format(i))
-        index = dwc_terms_info[dwc_terms_info['name'] == fields]['link'].index[0]
-        field.set("term",dwc_terms_info[dwc_terms_info['name'] == fields]['link'][index])
+        # make copy of occurrences
+        temp_occurrences = self.occurrences.copy()
 
-    # return element
-    return element
+        # mapping here for later
+        mapping = {}
+
+        if all(map(lambda v: v not in GEO_REQUIRED_DWCA_TERMS["Australia"],list(self.occurrences.columns))):
+            raise ValueError("No Darwin Core arguments supplied to `use_occurrences()`.  See dir(self.use_coordinates()) for valid arguments.")
+
+        # check if each variable is None
+        if decimalLatitude is not None:
+            mapping[decimalLatitude.name] = 'decimalLatitude'
+
+        if decimalLongitude is not None:
+            mapping[decimalLongitude.name] = 'decimalLongitude'
+
+        if geodeticDatum is not None:
+            if type(geodeticDatum) is pd.core.series.Series:
+                mapping[geodeticDatum.name] = 'geodeticDatum'
+            elif type(geodeticDatum) is str:
+                temp_occurrences['geodeticDatum'] = geodeticDatum
+            else:
+                raise ValueError("Only a string or pandas series is accepted for geodeticDatum")
+
+        if coordinateUncertaintyInMeters is not None:
+            if type(coordinateUncertaintyInMeters) is pd.core.series.Series:
+                mapping[coordinateUncertaintyInMeters.name] = 'coordinateUncertaintyInMeters'
+            elif (type(coordinateUncertaintyInMeters) is int or type(coordinateUncertaintyInMeters) is float):
+                temp_occurrences['coordinateUncertaintyInMeters'] = coordinateUncertaintyInMeters
+            else:
+                raise ValueError("Only an int, float or pandas series is accepted for coordinateUncertaintyInMeters")
+
+        if coordinatePrecision is not None:
+            if type(coordinatePrecision) is pd.core.series.Series:
+                mapping[coordinatePrecision.name] = 'coordinatePrecision'
+            elif (type(coordinatePrecision) is int or type(coordinatePrecision) is float):
+                temp_occurrences['coordinatePrecision'] = coordinatePrecision
+            else:
+                raise ValueError("Only an int, float or pandas series is accepted for coordinatePrecision")
+
+        # rename all necessary columns
+        temp_occurrences = temp_occurrences.rename(columns=mapping)
+
+        # check all required variables
+        check_coordinates(dataframe=temp_occurrences)
+
+        # set new occurrences to object
+        if assign:
+            self.occurrences = temp_occurrences
+        else:
+            print(temp_occurrences)
+
+    def use_datetime(self,
+                     eventDate=None,
+                     year=None,
+                     month=None,
+                     day=None,
+                     time=None,
+                     string_to_datetime=False,
+                     orig_format='%d-%m-%Y'):
+        """
+        Checks for time information, such as the date an occurrence occurred.  Also runs checks 
+        on the validity of the format of the date.
+
+        Parameters
+        ----------
+            eventDate: ``str`` or ``pandas.Series``
+                Either a column name (``str``) or a column from the ``occurrences`` argument 
+                (``pandas.Series``) that represents the date of the occurrences.
+            year: ``str`` or ``pandas.Series``
+                Either a column name (``str``) or a column from the ``occurrences`` argument 
+                (``pandas.Series``) that represents the year of the occurrence.
+            month: ``str`` or ``pandas.Series``
+                Either a column name (``str``) or a column from the ``occurrences`` argument 
+                (``pandas.Series``) that represents the date of the occurrences.
+            day: ``str`` or ``pandas.Series``
+                Either a column name (``str``) or a column from the ``occurrences`` argument 
+                (``pandas.Series``) that represents the day of the occurrences.
+            time: ``str`` or ``pandas.Series``
+                Either a column name (``str``) or a column from the ``occurrences`` argument 
+                (``pandas.Series``) that represents the time of the occurrences.
+            string_to_datetime: ``logical``
+                An argument that tells ``galaxias`` to convert dates that are in a string format 
+                to a ``datetime`` format.  Default is ``False``.
+            orig_format: ``str``
+                A string denoting the original format of the dates that are being converted from a 
+                string to a ``datetime`` object.  Default is ``'%d-%m-%Y'``.
+
+        Returns
+        -------
+            Raises a ``ValueError`` explaining what is wrong, or returns None if it passes.
+        """
+
+        if all(map(lambda v: v not in ["eventDate","year","month","day", "time"],list(self.occurrences.columns))):
+            raise ValueError("No Darwin Core arguments supplied to `use_datetime()`.  See dir(self.use_datetime()) for valid arguments.")
+
+        # create a temporary occurrences variable
+        temp_occurrences = self.occurrences
+
+        # create a dictionary of names for renaming
+        names = {}
+
+        for var in [eventDate,year,month,day,time]:
+            if var is not None and var is eventDate:
+                names[var.name] = 'eventDate'
+            elif var is not None and var is year:
+                names[var.name] = 'year'
+            elif var is not None and var is month:
+                names[var.name] = 'month'
+            elif var is not None and var is day:
+                names[var.name] = 'day'
+            elif var is not None and var is time:
+                names[var.name] = 'time'
+            else:
+                pass
+
+        # check name of columns
+        for var in [eventDate,year,month,day,time]:
+            if var is not None:        
+                if type(var) is datetime.datetime:
+                    pass
+                elif type(var) is pd.core.series.Series:
+                    temp_occurrences = temp_occurrences.rename(columns={var.name: names[var.name]})
+                else:
+                    raise ValueError("only accepts datetime data types or pandas series as eventDate")
+
+        # options to convert strings to datetime
+        if string_to_datetime:
+            for i,entry in enumerate(temp_occurrences['eventDate']):
+                temp_occurrences['eventDate'][i] = datetime.datetime.strptime(entry,orig_format)
+
+        # check format
+        check_eventDate(dataframe=temp_occurrences)
+        
+        # assign updated occurrences to object
+        self.occurrences = temp_occurrences
+
+    def use_locality(self,
+                     continent = None,
+                     country = None,
+                     countryCode = None,
+                     stateProvince = None,
+                     locality = None):
+        """
+        (OPTIONAL) Checks for additional location information, such as country and countryCode.
+
+        Parameters
+        ----------
+            continent: ``str`` or ``pandas.Series``
+                Either a column name (``str``) or a column from the ``occurrences`` argument 
+                (``pandas.Series``) that represents the continent of the occurrences.
+            country: ``str`` or ``pandas.Series``
+                Either a column name (``str``) or a column from the ``occurrences`` argument 
+                (``pandas.Series``) that represents the country of the occurrence.
+            countryCode: ``str`` or ``pandas.Series``
+                Either a column name (``str``) or a column from the ``occurrences`` argument 
+                (``pandas.Series``) that represents the countryCode of the occurrences.
+            stateProvince: ``str`` or ``pandas.Series``
+                Either a column name (``str``) or a column from the ``occurrences`` argument 
+                (``pandas.Series``) that represents the stateProvince of the occurrences.
+            locality: ``str`` or ``pandas.Series``
+                Either a column name (``str``) or a column from the ``occurrences`` argument 
+                (``pandas.Series``) that represents the locality of the occurrences.
+        Returns
+        -------
+            Raises a ``ValueError`` explaining what is wrong, or returns None if it passes.
+        """
+
+        if all(map(lambda v: v not in ["continent","country","countryCode","stateProvince", "locality"],list(self.occurrences.columns))):
+            raise ValueError("No Darwin Core arguments supplied to `use_locality()`.  See dir(self.use_locality()) for valid arguments.")
+        
+        # create a temporary occurrences variable
+        temp_occurrences = self.occurrences
+
+        # create a dictionary of names for renaming
+        names = {}
+
+        for var in [continent,country,countryCode,stateProvince,locality]:
+            if var is not None and var is continent:
+                names[var.name] = 'continent'
+            elif var is not None and var is country:
+                names[var.name] = 'country'
+            elif var is not None and var is countryCode:
+                names[var.name] = 'countryCode'
+            elif var is not None and var is stateProvince:
+                names[var.name] = 'stateProvince'
+            elif var is not None and var is locality:
+                names[var.name] = 'locality'
+            else:
+                pass
+
+        # check name of columns
+        for var in [continent,country,countryCode,stateProvince,locality]:
+            if var is not None:        
+                if type(var) is str:
+                    pass
+                elif type(var) is pd.core.series.Series:
+                    temp_occurrences = temp_occurrences.rename(columns={var.name: names[var.name]})
+                else:
+                    raise ValueError("only accepts str types or pandas series as {}".format(var.name))
+        
+        check_locality(dataframe=temp_occurrences)
+
+        self.occurrences = temp_occurrences
+
+
+    def use_occurrences(self,occurrenceID=None,basisOfRecord=None):
+        """
+        Checks for unique identifiers of each occurrence and how the occurrence was recorded.
+
+        Parameters
+        ----------
+            occurrenceID: ``str`` or ``pandas.Series``
+                Either a column name (``str``) or a column from the ``occurrences`` argument 
+                (``pandas.Series``) that represents the unique occurrenceIDs of the occurrences.
+            basisOfRecord: ``str`` or ``pandas.Series``
+                Either a column name (``str``) or a column from the ``occurrences`` argument 
+                (``pandas.Series``) that represents how the occurrence was recorded.
+
+        Returns
+        -------
+            Raises a ``ValueError`` explaining what is wrong, or returns None if it passes.
+        """
+
+        if occurrenceID is not None or basisOfRecord is not None:
+
+            # create temporary occurrences
+            temp_occurrences = self.occurrences.copy()
+
+            if occurrenceID is not None:
+                if type(occurrenceID) is bool:
+                    temp_occurrences = add_unique_occurrence_IDs(column_name='occurrenceID',
+                                                                 dataframe=temp_occurrences)
+                elif type(occurrenceID) is pd.core.series.Series:
+                    temp_occurrences['occurrenceID'] = occurrenceID.copy()
+                    temp_occurrences.drop(occurrenceID.name,axis=1)
+                else:
+                    raise ValueError("occurrenceID argument must be a boolean or pandas Series (i.e. column)")
+
+                # check values
+                check_occurrenceIDs(dataframe=temp_occurrences)
+
+            if basisOfRecord is not None:
+                if type(basisOfRecord) is str:
+                    temp_occurrences['basisOfRecord'] = basisOfRecord
+                elif type(basisOfRecord) is pd.core.series.Series:
+                    temp_occurrences['basisOfRecord'] = basisOfRecord.copy()
+                    temp_occurrences.drop(basisOfRecord.name,axis=1)
+                else:
+                    raise ValueError("occurrenceID argument must be a string or pandas Series (i.e. column)")
+
+                # check values
+                check_basisOfRecord(dataframe=temp_occurrences) 
+
+        else:
+            
+            raise ValueError("No Darwin Core arguments supplied to `use_occurrences()`.  See dir(self.use_occurrences()) for valid arguments.")
+           
+
+        # assign new occurrences to archive
+        self.occurrences = temp_occurrences
+
+    def use_scientific_name(self,scientific_name=None):
+        """
+        Checks for the name of the taxon you identified is present.
+
+        Parameters
+        ----------
+            scientific_name: ``str`` or ``pandas.Series``
+                Either a column name (``str``) or a column from the ``occurrences`` argument 
+                (``pandas.Series``) that represents the taxonomic identification of the occurrences.
+
+        Returns
+        -------
+            Raises a ``ValueError`` explaining what is wrong, or returns None if it passes.
+        """
+
+        if scientific_name is not None:
+
+            # create temporary occurrences
+            temp_occurrences = self.occurrences.copy()
+
+            # check type of variable
+            if type(scientific_name) is pd.core.series.Series:
+                temp_occurrences['scientificName'] = scientific_name.copy()
+                temp_occurrences = temp_occurrences.drop(scientific_name.name,axis=1)
+            else:
+                raise ValueError("occurrenceID argument must be a pandas Series (i.e. column)")
+
+            # check values
+            check_scientificName(dataframe=temp_occurrences)
+
+            # assign temp_occurrences to occurrences
+            self.occurrences = temp_occurrences
+        
+        else:
+
+            raise ValueError("No Darwin Core arguments supplied to `use_scientific_name()`.  See dir(self.use_scientific_name()) for valid arguments.")

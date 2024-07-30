@@ -3,7 +3,7 @@
 |galaxias-logo|   galaxias
 =====================================
 
-.. |galaxias-logo| image:: _static/logo/cake_logo.png   
+.. |galaxias-logo| image:: _static/logo/logo.png   
     :width: 150px
     :alt: galaxias hexagon logo
 

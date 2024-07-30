@@ -12,42 +12,116 @@ pd.set_option('display.expand_frame_repr', False)
 pd.set_option('max_colwidth', None) #;
 
 # --------------------------------------------------------
-# Part 1
+# Part 1: Read In Data
 # --------------------------------------------------------
-
 # read in data
 my_dwca = galaxias.dwca(occurrences="galaxias_user_guide/occurrences_dwc.csv")
 
-if stopping_point == "rename1":
+if stopping_point == "1":
+    my_dwca.check_data() #print()
+    sys.exit()
+
+# --------------------------------------------------------
+# Part 2: use_occurrences()
+# --------------------------------------------------------
+
+my_dwca.use_occurrences(occurrenceID = True)
+
+if stopping_point == "2":
     print(my_dwca.occurrences.head())
     sys.exit()
 
-temp_occurrences = my_dwca.occurrences.rename(
-    columns = {
-        "Species": "scientificName",
-        "Latitude": "decimalLatitude",
-        "Longitude": "decimalLongitude",
-        "Collection_date": "eventDate",
-    }
-)
-if stopping_point == "rename2":
-    print(temp_occurrences.head())
-    sys.exit()
+my_dwca.use_occurrences(basisOfRecord = "HumanObservation")
+# my_dwca.occurrences['basisOfRecord'] = "HumaObservation"
 
-my_dwca.occurrences = temp_occurrences
-if stopping_point == "rename3":
+if stopping_point == "3":
     print(my_dwca.occurrences.head())
     sys.exit()
 
-if stopping_point == "rename4":
-    print(my_dwca.generate_data_report())
+if stopping_point == "4":
+    my_dwca.check_data() #print()
     sys.exit()
 
+# --------------------------------------------------------
+# Part 3: use_scientific_name()
+# --------------------------------------------------------
+
+my_dwca.use_scientific_name(scientific_name = my_dwca.occurrences['Species'])
+
+if stopping_point == "5":
+    print(my_dwca.occurrences.head())
+    sys.exit()
+
+if stopping_point == "6":
+    my_dwca.check_data() #print()
+    sys.exit()
 
 # --------------------------------------------------------
-# Part 2
+# Part 4: use_coordinates()
 # --------------------------------------------------------
 
+# my_dwca.use_coordinates()
+
+my_dwca.use_coordinates(decimalLatitude=my_dwca.occurrences['Latitude'],
+                        decimalLongitude=my_dwca.occurrences['Longitude'])
+
+if stopping_point == "7":
+    print(my_dwca.occurrences.head())
+    sys.exit()
+
+my_dwca.use_coordinates(geodeticDatum='WGS84',
+                        coordinateUncertaintyInMeters=100,
+                        coordinatePrecision=0.01)
+
+if stopping_point == "8":
+    print(my_dwca.occurrences.head())
+    sys.exit()
+
+if stopping_point == "9":
+    my_dwca.check_data()
+    sys.exit()
+
+# --------------------------------------------------------
+# Part 5: use_datetime()
+# --------------------------------------------------------
+
+if stopping_point == "10":
+    print(my_dwca.occurrences.head())
+    sys.exit()
+
+if stopping_point == "11":
+    my_dwca.use_datetime(eventDate=my_dwca.occurrences['Collection_date'])
+
+my_dwca.use_datetime(eventDate=my_dwca.occurrences['Collection_date'],
+                     string_to_datetime=True,
+                     orig_format='%d/%m/%Y')
+
+if stopping_point == "12":
+    print(my_dwca.occurrences.head())
+    sys.exit()
+
+if stopping_point == "13":
+    my_dwca.check_data()
+    sys.exit()
+# --------------------------------------------------------
+# Part 6: use_locality() (OPTIONAL)
+# --------------------------------------------------------
+
+# --------------------------------------------------------
+# Part 7: write out data
+# --------------------------------------------------------
+
+if stopping_point == "99":
+    my_dwca.check_data() #print()
+    sys.exit()
+
+my_dwca.occurrences.to_csv("galaxias_user_guide/occurrences_dwc_clean.csv",index=False)
+# sys.exit()
+
+
+# --------------------------------------------------------
+
+'''
 if "check_taxon" in stopping_point or stopping_point == "add_taxon":
 
     if stopping_point == "check_taxon1":
@@ -126,8 +200,4 @@ if stopping_point == "final":
     for i,row in my_dwca.occurrences.iterrows():
         split_date = list(map(int, row["eventDate"].split("/")))
         my_dwca.occurrences.at[i,"eventDate"] = str(datetime.date(split_date[2],split_date[1],split_date[0]))
-
-    my_dwca.occurrences.to_csv("galaxias_user_guide/occurrences_dwc_clean.csv",index=False)
-
-    my_dwca.generate_data_report(verbose=True)
-    # sys.exit()
+'''

@@ -6,96 +6,93 @@ Preparing Your Data for a DwCA
 *To follow along with these steps using example files, download occurrences and/or events here:* 
 
 :download:`occurrences <occurrences_dwc.csv>`
-:download:`events <events.csv>`
 
+.. :download:`events <events.csv>`
 .. :download:`multimedia <multimedia_occ.csv>`
 
 For these exercises, we are assuming your data is currently in a ``csv`` format.  
 
-To build a Darwin Core Archive, your will need to ensure your data has a particular naming convention and 
-is in a particular format.  However, this is relatively straightforward!  As you've done the bulk collection 
-of your data, it is likely that your data is close to submission already, and will only require a few steps 
-to ready it. 
+To build a Darwin Core Archive, your will need to ensure your data is "Darwin Core Compliant".  However, 
+this is relatively straightforward!  As you've done the bulk collection of your data, it is likely that 
+your data is close to submission already, and will only require a few preparation steps. 
 
 Step-By-Step Preparation of Occurrence Data
-----------------------------------------------
+---------------------------------------------- 
 
-These steps are showing you how to generate a "report", which will tell you what needs to be edited before your data 
-can be submitted to your chosen atlas.  It also shows you how to rename columns, as your data won't be checked if the 
-column name is not a Darwin Core term.  
+Something here.
 
 .. grid:: 3
     :gutter: 3
 
     .. grid-item-card::
-        :link: preparing_data/reading_in_data.html
+        :link: preparing_data/data_directory_creation.html
         :class-card: sd-text-black
         :text-align: center
 
         .. raw:: html
             :file: ../../source/_static/icons/user_guide.svg
 
-        **Reading your data into Python**
+        **Reading and Storing Your Data**
 
     .. grid-item-card::
-        :link: preparing_data/rename_columns_to_dwca.html
+        :link: preparing_data/initial_report.html
         :class-card: sd-text-black
         :text-align: center
 
         .. raw:: html
             :file: ../../source/_static/icons/user_guide.svg
 
-        **Renaming Columns to Darwin Core**
+        **Generating An Initial Report**
 
     .. grid-item-card::
-        :link: preparing_data/geodeticDatum.html
+        :link: preparing_data/use_occurrences.html
         :class-card: sd-text-black
         :text-align: center
 
         .. raw:: html
             :file: ../../source/_static/icons/user_guide.svg
 
-        **Adding ``geodeticDatum``**
+        **Adding Occurrence-Specific Terms**
 
     .. grid-item-card::
-        :link: preparing_data/basisOfRecord.html
+        :link: preparing_data/use_scientific_name.html
         :class-card: sd-text-black
         :text-align: center
 
         .. raw:: html
             :file: ../../source/_static/icons/user_guide.svg
 
-        **``basisOfRecord``**
+        **Checking Scientific Names**
 
     .. grid-item-card::
-        :link: preparing_data/unique_ids.html
+        :link: preparing_data/use_coordinates.html
         :class-card: sd-text-black
         :text-align: center
 
         .. raw:: html
             :file: ../../source/_static/icons/user_guide.svg
 
-        **Adding Unique Identifiers**
+        **Adding Location Data**
 
     .. grid-item-card::
-        :link: preparing_data/convert_coordinates.html
+        :link: preparing_data/use_datetime.html
         :class-card: sd-text-black
         :text-align: center
 
         .. raw:: html
             :file: ../../source/_static/icons/user_guide.svg
 
-        **Formatting Lat/Long**
+        **Adding Dates and Times**
 
     .. grid-item-card::
-        :link: preparing_data/convert_datetime.html
+        :link: preparing_data/additional_geo.html
         :class-card: sd-text-black
         :text-align: center
 
         .. raw:: html
             :file: ../../source/_static/icons/user_guide.svg
 
-        **Formatting Dates and Times**
+        **OPTIONAL: Additional Location Data**
 
 Additional fields
 ------------------------------------------------

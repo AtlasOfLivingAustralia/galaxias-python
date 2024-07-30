@@ -52,8 +52,8 @@ html_theme_options = {
 	"github_url": "https://github.com/AtlasOfLivingAustralia/galaxias-python",
 	"secondary_sidebar_items": ["page-toc"],
     "logo": {
-		"image_light": "_static/logo/cake_logo.png", # didn't have dir before
-        "image_dark": "_static/logo/cake_logo.png", 
+		"image_light": "_static/logo/logo.png", # didn't have dir before
+        "image_dark": "_static/logo/logo.png", 
 	},
 }
 
@@ -66,9 +66,9 @@ html_sidebars = {
 
 html_static_path = ['_static']
 
-# html_logo = "_static/logo/logo.png"
+html_logo = "_static/logo/logo.png"
 
-html_logo = "_static/logo/cake_logo.png"
+# html_logo = "_static/logo/cake_logo.png"
 
 # html_favicon = '_static/logo/favicon.ico'
 

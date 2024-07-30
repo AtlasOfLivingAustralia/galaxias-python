@@ -9,8 +9,8 @@ ID_REQUIRED_DWCA_TERMS = {
 }
 
 GEO_REQUIRED_DWCA_TERMS = {
-    "Australia": ["decimalLatitude", "decimalLongitude", "geodeticDatum","coordinateUncertaintyInMeters"], 
-    "ALA": ["decimalLatitude", "decimalLongitude", "geodeticDatum","coordinateUncertaintyInMeters"],
+    "Australia": ['decimalLatitude','decimalLongitude','geodeticDatum','coordinateUncertaintyInMeters','coordinatePrecision'], 
+    "ALA": ['decimalLatitude','decimalLongitude','geodeticDatum','coordinateUncertaintyInMeters','coordinatePrecision'],
 }
 
 NAME_MATCHING_TERMS = {

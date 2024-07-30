@@ -19,6 +19,6 @@ pd.set_option('max_colwidth', None) #;
 my_dwca = galaxias.dwca(occurrences="galaxias_user_guide/occurrences_dwc_clean.csv")
 
 # start with one test
-my_dwca.check_occurrences()
+my_dwca.check_data()
 
 # my_dwca.create_dwca()

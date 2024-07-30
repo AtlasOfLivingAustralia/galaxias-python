@@ -6,3 +6,4 @@ requests
 xmlschema
 shutils
 metapype
+tabulate

@@ -127,8 +127,8 @@
       
     
     
-    <img src="../../_static/cake_logo.png" class="logo__image only-light" alt="Galaxias 0.1.0 documentation - Home"/>
-    <script>document.write(`<img src="../../_static/cake_logo.png" class="logo__image only-dark" alt="Galaxias 0.1.0 documentation - Home"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Galaxias 0.1.0 documentation - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Galaxias 0.1.0 documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -397,60 +397,34 @@ span.prompt1:before {
   content: " ";
 }
 </style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">generate_data_report</span><span class="p">()</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Archive Report
----------------------
-Pass/Fail: Fail
-Data Type: Event
-Errors:
-	- You are missing required columns in your data.
-	- Your datetime format in Events Report is not in YYYY-MM-DD or iso format.
-	- Your datetime format in Occurrences is not in YYYY-MM-DD or iso format.
-Missing Columns Occurrence:
-	phylum
-	genus
-	class
-	order
-	kingdom
-	family
-	geodeticDatum
-	basisOfRecord
-Missing Columns Events:
-	samplingProtocol
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-Events Report
----------------------
-Number of Events: 78
-Datetime Report:
-	Has invalid datetime: True
-	Number of invalid datetimes: 78
-Column counts:
-	eventID: 78
-	parentEventID: 52
-	eventType: 78
-	locality: 78
-	eventDate: 78
-	Event: 78
+── All DwC terms ──
 
-Occurrence Report
----------------------
-Coordinates Report:
-	Data has coordinate fields?: True
-	Invalid latitude count: 0
-	Invalid longitude count: 0
-Datetime Report:
-	Has invalid datetime: True
-	Number of invalid datetimes: 205
-Taxonomy Report:
-	Invalid taxon present: False
-	Valid Taxon count: 205
-Column counts:
-	eventID: 205
-	occurrenceID: 205
-	scientificName: 205
-	decimalLatitude: 205
-	decimalLongitude: 205
-	eventDate: 205
-	individualCount: 205
+Matched 7 of 7 column names to DwC terms:
+
+✓ Matched: eventID, occurrenceID, scientificName, decimalLatitude, decimalLongitude, eventDate, individualCount
+✗ Unmatched: 
+
+── Minimum required DwC terms ──
+
+Type                       Matched term(s)    Missing term(s)
+-------------------------  -----------------  -----------------------------------------------------------------------------------
+Identifier (at least one)  occurrenceID       -
+Record type                -                  basisOfRecord
+Scientific name            -                  scientificName
+Location                   decimalLatitude    decimalLongitude, geodeticDatum, coordinateUncertaintyInMeters, coordinatePrecision
+Date/Time                  -                  eventDate
+
+── Suggested workflow ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+To make your data Darwin Core compliant, use the following workflow:
+
+df.use_occurrences()
+df.use_scientific_name()
+df.use_coordinates()
+df.use_datetime()
+
+Additional functions: use_locality()
 None
 </pre></div>
 </div>
@@ -471,60 +445,40 @@ the second one is writing a loop for changing all species names at once.</p>
 <span class="prompt1"><span class="o">...</span>     <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span><span class="p">[</span><span class="s1">&#39;scientificName&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">occurrences</span><span class="p">[</span><span class="s1">&#39;scientificName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">regex</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">name_changes</span><span class="p">[</span><span class="n">name</span><span class="p">])</span></span>
 <span class="prompt1"><span class="o">...</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Archive Report
----------------------
-Pass/Fail: Fail
-Data Type: Event
-Errors:
-	- Your datetime format in Events Report is not in YYYY-MM-DD or iso format.
-	- You are missing required columns in your data.
-	- Your datetime format in Occurrences is not in YYYY-MM-DD or iso format.
-Missing Columns Occurrence:
-	kingdom
-	class
-	order
-	phylum
-	genus
-	family
-	geodeticDatum
-	basisOfRecord
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-Events Report
----------------------
-Number of Events: 78
-Datetime Report:
-	Has invalid datetime: True
-	Number of invalid datetimes: 78
-Column counts:
-	eventID: 78
-	parentEventID: 52
-	eventType: 78
-	locality: 78
-	eventDate: 78
-	Event: 78
-	samplingProtocol: 78
+── All DwC terms ──
 
-Occurrence Report
----------------------
-Coordinates Report:
-	Data has coordinate fields?: True
-	Invalid latitude count: 0
-	Invalid longitude count: 0
-Datetime Report:
-	Has invalid datetime: True
-	Number of invalid datetimes: 205
-Taxonomy Report:
-	Invalid taxon present: False
-	Valid Taxon count: 205
-Column counts:
-	eventID: 205
-	occurrenceID: 205
-	scientificName: 205
-	decimalLatitude: 205
-	decimalLongitude: 205
-	eventDate: 205
-	individualCount: 205
+Matched 7 of 7 column names to DwC terms:
+
+✓ Matched: eventID, occurrenceID, scientificName, decimalLatitude, decimalLongitude, eventDate, individualCount
+✗ Unmatched: 
+
+── Minimum required DwC terms ──
+
+Type                       Matched term(s)    Missing term(s)
+-------------------------  -----------------  -----------------------------------------------------------------------------------
+Identifier (at least one)  occurrenceID       -
+Record type                -                  basisOfRecord
+Scientific name            -                  scientificName
+Location                   decimalLatitude    decimalLongitude, geodeticDatum, coordinateUncertaintyInMeters, coordinatePrecision
+Date/Time                  -                  eventDate
+
+── Suggested workflow ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+To make your data Darwin Core compliant, use the following workflow:
+
+df.use_occurrences()
+df.use_scientific_name()
+df.use_coordinates()
+df.use_datetime()
+
+Additional functions: use_locality()
 None
+Traceback (most recent call last):
+  File &quot;/Users/buy003/Documents/GitHub/galaxias-python/docs/source/galaxias_user_guide/preparing_eventcore_script.py&quot;, line 143, in &lt;module&gt;
+    my_dwca.add_taxonomic_information()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: &#39;dwca&#39; object has no attribute &#39;add_taxonomic_information&#39;
 </pre></div>
 </div>
 <p>To add higher level taxonomy according to the chosen backbone, see <a class="reference external" href="add_higher_taxon.html">here</a></p>
