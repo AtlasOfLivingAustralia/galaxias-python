@@ -34,7 +34,10 @@ setup(
         'requests',
         'xmlschema',
         'shutils',
-        'metapype'
+        'metapype',
+        'tabulate',
+        # 'corella-python',
+        # 'paperbark-python'
     ],
 
     include_package_data = True,

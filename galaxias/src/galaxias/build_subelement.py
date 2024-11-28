@@ -1,4 +1,3 @@
-import pandas as pd
 import xml.etree.ElementTree as ET
 
 def build_subelement(element=None,
@@ -6,6 +5,24 @@ def build_subelement(element=None,
                      filename=None,
                      data=None,
                      dwc_terms_info=None):
+    """
+    Builds a subelement of the eml.xml tree.
+
+    Parameters
+    ----------
+        ``element``: ``xml ElementTree subelement`` 
+            Option whether to return a dictionary object containing full taxonomic information on your species.  Default to ``False``. 
+        ``path`` : ``str``
+            File path to your working directory.  Default is directory you are currently in.
+    Returns
+    -------
+        Raises a ``ValueError`` if something is wrong, or returns True if it passes.
+
+    Examples
+    --------
+    Amanda to add here later.
+
+    """
 
     # set all basic elemnt things
     element.set("rowType",row_type)

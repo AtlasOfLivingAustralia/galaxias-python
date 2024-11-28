@@ -91,18 +91,63 @@ def test_data_directory_creation_specific_metadata():
 # use_* function tests
 # -------------------------------------------------------------------------------------------------
 
-def use_occurrences():
-    n=1
+def test_use_occurrences_catch_error():
+    occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc_clean.csv',working_dir='dwca_data_occ')
+    with pytest.raises(Exception) as e_info:
+        occ_dwca.use_occurrences()
+    assert "No Darwin Core" in str(e_info.value)
+    
+def test_use_occurrences_add_bor_correct():
+    occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc_clean.csv',working_dir='dwca_data_occ')
+    temp = occ_dwca.use_occurrences(basisOfRecord='HumanObservation')
+    assert temp is None
 
-def use_scientific_name():
-    n=1
+def test_use_occurrences_add_bor_incorrect():
+    occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc_clean.csv',working_dir='dwca_data_occ')
+    with pytest.raises(Exception) as e_info:
+        occ_dwca.use_occurrences(basisOfRecord='HumaObservation')
+    assert "There are invalid basisOfRecord values." in str(e_info.value)
 
-def use_datetime():
-    n=1
+def test_use_occurrences_rename_bor():
+    occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc_rename.csv',working_dir='dwca_data_occ')
+    occ_dwca.occurrences['bor'] = 'HumanObservation'
+    temp = occ_dwca.use_occurrences(basisOfRecord=occ_dwca.occurrences['bor'])
+    assert temp is None
 
-def use_coordinates():
-    n=1
+def test_use_occurrences_rename_occID():
+    occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc_rename.csv',working_dir='dwca_data_occ')
+    occ_dwca.occurrences['id'] = [i for i in range(occ_dwca.occurrences.shape[0])]
+    temp = occ_dwca.use_occurrences(occurrenceID = occ_dwca.occurrences['id'])
+    assert temp is None
 
+def test_use_occurrences_create_unique_ids():
+    occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc.csv',working_dir='dwca_data_occ')
+    temp = occ_dwca.use_occurrences(occurrenceID = True)
+    assert temp is None
+
+def test_use_scientific_name_rename():
+    occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc.csv',working_dir='dwca_data_occ')
+    temp = occ_dwca.use_scientific_name(scientific_name=occ_dwca.occurrences['Species'])
+    assert temp is None
+
+def test_use_datetime_format_error():
+    occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc.csv',working_dir='dwca_data_occ')
+    with pytest.raises(Exception) as e_info:
+        occ_dwca.use_datetime(eventDate=occ_dwca.occurrences['Collection_date'])
+    assert "Data is not in datetime format" in str(e_info.value)
+
+def test_use_datetime_string_to_datetime():
+    occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc.csv',working_dir='dwca_data_occ')
+    temp = occ_dwca.use_datetime(eventDate=occ_dwca.occurrences['Collection_date'],
+                                 string_to_datetime=True,
+                                 orig_format='%d/%m/%Y')
+    assert temp is None
+
+def test_use_coordinates():
+    occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc.csv',working_dir='dwca_data_occ')
+    temp = occ_dwca.use_coordinates(decimalLatitude=occ_dwca.occurrences['Latitude'],
+                                    decimalLongitude=occ_dwca.occurrences['Longitude'])
+    assert temp is None
 
 # -------------------------------------------------------------------------------------------------
 # metadata function tests
@@ -119,92 +164,10 @@ def use_coordinates():
 #     occ_dwca.make_meta_xml()
 #     assert os.path.exists(occ_dwca.meta_xml) is True
 
-
-
-
-
-# def test_add_taxonomic_information():
-#     occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc_rename.csv',working_dir='dwca_data_occ_rename')
-#     occ_dwca.add_taxonomic_information()
-#     assert set(list(occ_dwca.occurrences.columns)).issuperset(set(["scientificName","vernacularName","genus","family","order","class","phylum","kingdom"]))
-
-# def test_add_unique_occurrence_IDs_default():
-#     occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc_rename.csv',working_dir='dwca_data_occ_rename')
-#     occ_dwca.add_unique_occurrence_IDs()
-#     assert 'occurrenceID' in list(occ_dwca.occurrences.columns)
-
-# def test_add_unique_occurrence_IDs_specific():
-#     occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc_rename.csv',working_dir='dwca_data_occ_rename')
-#     occ_dwca.add_unique_occurrence_IDs(column_name='catalogNumber')
-#     assert 'catalogNumber' in list(occ_dwca.occurrences.columns)
-
-
-'''
-# -------------------------------------------------------------------------------------------------
-# Check occurrences information
-# -------------------------------------------------------------------------------------------------
-def test_check_species_names_true():
-    occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc_clean.csv',working_dir='dwca_data_occ_spec')
-    test = occ_dwca.check_species_names()
-    assert type(test) is bool
-
-def test_check_species_names_true():
-    occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc_clean.csv',working_dir='dwca_data_occ_spec')
-    test = occ_dwca.check_species_names()
-    assert test is True
-
-def test_check_species_false_type():
-    occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc_rename.csv',working_dir='dwca_data_occ_rename')
-    test = occ_dwca.check_species_names()
-    assert type(test) is tuple
-
-def test_check_species_false_false():
-    occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc_rename.csv',working_dir='dwca_data_occ_rename')
-    test = occ_dwca.check_species_names()
-    assert test[0] is False
-
-def test_check_species_false_type_dataframe():
-    occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc_rename.csv',working_dir='dwca_data_occ_rename')
-    test = occ_dwca.check_species_names()
-    assert type(test[1]) is pd.core.frame.DataFrame
-
-def test_check_species_false_dataframe_empty():
-    occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc_rename.csv',working_dir='dwca_data_occ_rename')
-    test = occ_dwca.check_species_names()
-    assert not test[1].empty
-
-def test_check_occurrences():
-    occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc_clean.csv',working_dir='dwca_data_occ')
-    check_occ = occ_dwca.check_occurrences()
-    assert check_occ is True
-
-def test_check_occurrences_wrong_dwc_terms():
-    occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrence_data_ORIG.csv',working_dir='dwca_data_occ_orig') 
-    with pytest.raises(Exception) as e_info:
-        check_occ = occ_dwca.check_occurrences()
-    assert str(e_info.value) == "Your column names do not comply with the DwC standard."
-
-# def test_check_occurrences_wrong_dwc_values():
-#     occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrence_data_ORIG.csv',working_dir='dwca_data_occ') 
-#     with pytest.raises(Exception) as e_info:
-#         check_occ = occ_dwca.check_occurrences()
-#     assert str(e_info.value) == "The values in some of your columns do not comply with the DwC standard."
-
-def test_check_occurrences_no_occurrence_ids():
-    occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc_rename.csv',working_dir='dwca_data_occ_rename') 
-    with pytest.raises(Exception) as e_info:
-        check_occ = occ_dwca.check_occurrences()
-    assert str(e_info.value) == "You need to add unique identifiers into your occurrences."
-
-def test_check_unique_occurrence_ids():
-    occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc_rename.csv',working_dir='dwca_data_occ_rename')
-    occ_dwca.add_unique_occurrence_IDs()
-    test = occ_dwca.check_unique_occurrence_ids()
-    assert test is True
-
 # -------------------------------------------------------------------------------------------------
 # Check events information
 # -------------------------------------------------------------------------------------------------
+'''
 def test_check_events_False():
     events_dwca = galaxias.dwca(events="data_for_testing/events.csv",occurrences="data_for_testing/occurrences_event_multi.csv",working_dir='dwca_events')
     test = events_dwca.check_events()
