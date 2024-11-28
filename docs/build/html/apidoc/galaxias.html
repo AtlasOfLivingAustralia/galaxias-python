@@ -399,7 +399,8 @@ document.write(`
 <dl class="py method">
 <dt class="sig sig-object py" id="galaxias.dwca.check_data">
 <span class="sig-name descname"><span class="pre">check_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.check_data" title="Link to this definition">#</a></dt>
-<dd><p>Checks whether or not your data (occurrences) meets the pre-defined standard.</p>
+<dd><p>Checks whether or not your data (only occurrences for now) meets the predefined Darwin Core
+standard.  Calls the <code class="docutils literal notranslate"><span class="pre">corella</span></code> package for this.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>None</strong> – </p>
@@ -425,6 +426,21 @@ document.write(`
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="galaxias.dwca.check_eml_xml">
+<span class="sig-name descname"><span class="pre">check_eml_xml</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.check_eml_xml" title="Link to this definition">#</a></dt>
+<dd><p>Checks whether or not your data (only occurrences for now) meets the predefined Darwin Core
+standard.  Calls the <code class="docutils literal notranslate"><span class="pre">corella</span></code> package for this.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong> – </p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>A printed report detailing presence or absence of required data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="galaxias.dwca.create_dwca">
 <span class="sig-name descname"><span class="pre">create_dwca</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.create_dwca" title="Link to this definition">#</a></dt>
 <dd><p>Checks all your files for Darwin Core compliance, and then creates the
@@ -435,40 +451,6 @@ Darwin Core archive in your working directory.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>Raises a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> if something is wrong, or returns <code class="docutils literal notranslate"><span class="pre">None</span></code> if it passes.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="galaxias.dwca.create_metadata_file">
-<span class="sig-name descname"><span class="pre">create_metadata_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.create_metadata_file" title="Link to this definition">#</a></dt>
-<dd><p>Creates a markdown file containing the metadata information needed for the DwCA.  The user can edit this
-markdown, and use it to generate the metadata files.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>filename</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – Option whether to return a dictionary object containing full taxonomic information on your species.  Default to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
-<li><p><strong>path</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – File path to your working directory.  Default is directory you are currently in.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="galaxias.dwca.make_eml_xml">
-<span class="sig-name descname"><span class="pre">make_eml_xml</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.make_eml_xml" title="Link to this definition">#</a></dt>
-<dd><p>Makes the <code class="docutils literal notranslate"><span class="pre">eml.xml</span></code> file from the metadata markdown file into your current working directory.
-The <code class="docutils literal notranslate"><span class="pre">eml.xml</span></code> file is the metadata file containing things like authorship, licence, institution,
-etc.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>None</strong> – </p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
 </dd>
 </dl>
 </dd></dl>
@@ -485,123 +467,6 @@ what is in the DwCA.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="galaxias.dwca.use_coordinates">
-<span class="sig-name descname"><span class="pre">use_coordinates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">decimalLatitude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decimalLongitude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geodeticDatum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coordinateUncertaintyInMeters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coordinatePrecision</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">assign</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.use_coordinates" title="Link to this definition">#</a></dt>
-<dd><p>Checks for location information, as well as uncertainty and coordinate reference system.
-Also runs data checks on coordinate validity.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>decimalLatitude</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a column from the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> argument
-(<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) that represents latitude (unit in degrees).</p></li>
-<li><p><strong>decimalLongitude</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a column from the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> argument
-(<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) that represents longitude (unit in degrees).</p></li>
-<li><p><strong>geodeticDatum</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a column from the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> argument
-(<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) that represents the coordinate reference system (CRS).</p></li>
-<li><p><strong>coordinateUncertaintyInMeters</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a column from the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> argument
-(<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) that represents the uncertainty of the instrument measuring
-the latitude and longitude (unit is meters).</p></li>
-<li><p><strong>coordinatePrecision</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a column from the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> argument
-(<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) that represents the inherent uncertainty of your measurement
-(unit in degrees).</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>Raises a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> explaining what is wrong, or returns None if it passes.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="galaxias.dwca.use_datetime">
-<span class="sig-name descname"><span class="pre">use_datetime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eventDate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">year</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">month</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">day</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">string_to_datetime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orig_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%d-%m-%Y'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.use_datetime" title="Link to this definition">#</a></dt>
-<dd><p>Checks for time information, such as the date an occurrence occurred.  Also runs checks
-on the validity of the format of the date.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>eventDate</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a column from the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> argument
-(<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) that represents the date of the occurrences.</p></li>
-<li><p><strong>year</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a column from the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> argument
-(<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) that represents the year of the occurrence.</p></li>
-<li><p><strong>month</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a column from the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> argument
-(<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) that represents the date of the occurrences.</p></li>
-<li><p><strong>day</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a column from the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> argument
-(<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) that represents the day of the occurrences.</p></li>
-<li><p><strong>time</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a column from the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> argument
-(<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) that represents the time of the occurrences.</p></li>
-<li><p><strong>string_to_datetime</strong> (<code class="docutils literal notranslate"><span class="pre">logical</span></code>) – An argument that tells <code class="docutils literal notranslate"><span class="pre">galaxias</span></code> to convert dates that are in a string format
-to a <code class="docutils literal notranslate"><span class="pre">datetime</span></code> format.  Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
-<li><p><strong>orig_format</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – A string denoting the original format of the dates that are being converted from a
-string to a <code class="docutils literal notranslate"><span class="pre">datetime</span></code> object.  Default is <code class="docutils literal notranslate"><span class="pre">'%d-%m-%Y'</span></code>.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>Raises a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> explaining what is wrong, or returns None if it passes.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="galaxias.dwca.use_locality">
-<span class="sig-name descname"><span class="pre">use_locality</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">continent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">country</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">countryCode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stateProvince</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locality</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.use_locality" title="Link to this definition">#</a></dt>
-<dd><p>(OPTIONAL) Checks for additional location information, such as country and countryCode.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>continent</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a column from the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> argument
-(<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) that represents the continent of the occurrences.</p></li>
-<li><p><strong>country</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a column from the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> argument
-(<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) that represents the country of the occurrence.</p></li>
-<li><p><strong>countryCode</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a column from the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> argument
-(<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) that represents the countryCode of the occurrences.</p></li>
-<li><p><strong>stateProvince</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a column from the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> argument
-(<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) that represents the stateProvince of the occurrences.</p></li>
-<li><p><strong>locality</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a column from the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> argument
-(<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) that represents the locality of the occurrences.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>Raises a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> explaining what is wrong, or returns None if it passes.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="galaxias.dwca.use_occurrences">
-<span class="sig-name descname"><span class="pre">use_occurrences</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">occurrenceID</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">basisOfRecord</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.use_occurrences" title="Link to this definition">#</a></dt>
-<dd><p>Checks for unique identifiers of each occurrence and how the occurrence was recorded.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>occurrenceID</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a column from the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> argument
-(<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) that represents the unique occurrenceIDs of the occurrences.</p></li>
-<li><p><strong>basisOfRecord</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a column from the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> argument
-(<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) that represents how the occurrence was recorded.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>Raises a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> explaining what is wrong, or returns None if it passes.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="galaxias.dwca.use_scientific_name">
-<span class="sig-name descname"><span class="pre">use_scientific_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scientific_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.use_scientific_name" title="Link to this definition">#</a></dt>
-<dd><p>Checks for the name of the taxon you identified is present.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>scientific_name</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a column from the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> argument
-(<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>) that represents the taxonomic identification of the occurrences.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>Raises a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> explaining what is wrong, or returns None if it passes.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -659,15 +524,9 @@ string to a <code class="docutils literal notranslate"><span class="pre">datetim
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca"><code class="docutils literal notranslate"><span class="pre">dwca</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.check_data"><code class="docutils literal notranslate"><span class="pre">dwca.check_data()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.check_dwca"><code class="docutils literal notranslate"><span class="pre">dwca.check_dwca()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.check_eml_xml"><code class="docutils literal notranslate"><span class="pre">dwca.check_eml_xml()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.create_dwca"><code class="docutils literal notranslate"><span class="pre">dwca.create_dwca()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.create_metadata_file"><code class="docutils literal notranslate"><span class="pre">dwca.create_metadata_file()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.make_eml_xml"><code class="docutils literal notranslate"><span class="pre">dwca.make_eml_xml()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.make_meta_xml"><code class="docutils literal notranslate"><span class="pre">dwca.make_meta_xml()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.use_coordinates"><code class="docutils literal notranslate"><span class="pre">dwca.use_coordinates()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.use_datetime"><code class="docutils literal notranslate"><span class="pre">dwca.use_datetime()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.use_locality"><code class="docutils literal notranslate"><span class="pre">dwca.use_locality()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.use_occurrences"><code class="docutils literal notranslate"><span class="pre">dwca.use_occurrences()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.use_scientific_name"><code class="docutils literal notranslate"><span class="pre">dwca.use_scientific_name()</span></code></a></li>
 </ul>
 </li>
 </ul>

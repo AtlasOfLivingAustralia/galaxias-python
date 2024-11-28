@@ -9,16 +9,17 @@
 
 **Date**: |today|  **Version**: |version|  
 
-The galaxias package offers a streamlined workflow for users to prepare their biodiversity data for submission 
-to the `Atlas of Living Australia (ALA) <https://www.ala.org.au/>`_. Aggregating biodiversity datasets requires 
-a standardised format be used, and living atlases use the Darwin Core data standard. This package allows users 
-to reformat their data according to Darwin Core standards prior to submission, while still maintaining control 
-of their data.
+The ``galaxias`` package offers a streamlined workflow for users to prepare 
+their biodiversity data for submission to the living atlases. This package 
+helps users to reformat their data according to Darwin Core standards 
+prior to submission, while still maintaining control over their data.
 
-``galaxias`` was built and is maintained by the `Science & Decision Support Team <https://labs.ala.org.au/>`_ 
-at the `Atlas of Living Australia (ALA) <https://www.ala.org.au/>`_.  ``galaxias`` is named for the freshwater 
-fish of the same name (*galaxias ????*), a widely-distributed endemic Australian species.  The logo was designed 
-by `Ian Brennan <http://www.iangbrennan.org/>`_.
+``galaxias-python`` was built and is maintained by the 
+`Science & Decision Support Team <https://labs.ala.org.au/>`_ 
+at the `Atlas of Living Australia (ALA) <https://www.ala.org.au/>`_.  
+``galaxias-python`` is a collective name for cockatoos (udner the subgenus 
+*Licmetis*), a widely-distributed endemic Australian species.  
+The logo was designed by `Ian Brennan <http://www.iangbrennan.org/>`_.
 
 If you have any comments, questions or suggestions, please `contact us <mailto:support@ala.org.au>`_.
 

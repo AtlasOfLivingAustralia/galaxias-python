@@ -1,4 +1,4 @@
-:orphan:
+.. _Installation:
 
 Installation
 ==============
@@ -15,6 +15,4 @@ type the following:
 .. prompt:: bash
 
     git clone https://github.com/AtlasOfLivingAustralia/galaxias-python.git
-    poetry install
-
-Go to `Choosing Atlas <choosing_atlas.html>`_.
+    pip install .
