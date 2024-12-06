@@ -19,6 +19,6 @@ To install all of these at once, run
 
 .. prompt:: 
 
-    pip install pandas beautifulsoup4 configparser pytest requests shutils tabulate
+    pip install pandas beautifulsoup4 configparser pytest requests shutils tabulate corella-python paperbark-python
 
 WARNING: If you're installing all of the packages in one go, make sure you check that the installation ran successfully.  If one package doesnt work, the rest following wont install...

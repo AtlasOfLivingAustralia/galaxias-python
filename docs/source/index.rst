@@ -17,8 +17,8 @@ prior to submission, while still maintaining control over their data.
 ``galaxias-python`` was built and is maintained by the 
 `Science & Decision Support Team <https://labs.ala.org.au/>`_ 
 at the `Atlas of Living Australia (ALA) <https://www.ala.org.au/>`_.  
-``galaxias-python`` is a collective name for cockatoos (udner the subgenus 
-*Licmetis*), a widely-distributed endemic Australian species.  
+``galaxias-python`` is a genus of small freshwater fish (under the family 
+*Galaxiidae*), a widely-distributed endemic Australian species.  
 The logo was designed by `Ian Brennan <http://www.iangbrennan.org/>`_.
 
 If you have any comments, questions or suggestions, please `contact us <mailto:support@ala.org.au>`_.

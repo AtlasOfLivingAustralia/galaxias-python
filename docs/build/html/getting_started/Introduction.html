@@ -395,9 +395,16 @@ document.write(`
                   
   <section id="introduction">
 <span id="id1"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
-<p><strong>REWRITE</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">galaxias</span></code> is a package for collating prepared biodiversity data for submission to
-one of the living atlases.</p>
+<p><code class="docutils literal notranslate"><span class="pre">galaxias</span></code> is a package for collating prepared biodiversity data into Darwin Core Archives
+for submission to the Atlas of Living Australia.  This package assumes you have used our sister
+packages to prepare the following different parts of the Darwin Core Archive:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">corella</span></code>: this package will help you reformat your data to be in the Darwin Core standard <a class="reference external" href="corella.ala.org.au/Python">website here</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">paperbark</span></code>: this package will help you write and format your metadata by converting a readable markdown file into a metadata xml file (<code class="docutils literal notranslate"><span class="pre">eml.xml</span></code>) <a class="reference external" href="paperbark.ala.org.au/Python">website here</a></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">galaxias</span></code> will then take these files and use them to generate another metadata file, which will
+describe your Darwin Core Archive.  It will then put all of this data into a Darwin Core Archive,
+which you can submit to the Atlas of Living Australia.</p>
 </section>
 
 

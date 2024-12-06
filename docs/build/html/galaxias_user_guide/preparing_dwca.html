@@ -390,22 +390,54 @@ document.write(`
                   
   <section id="preparing-the-dwca-itself">
 <h1>Preparing the DwCA itself<a class="headerlink" href="#preparing-the-dwca-itself" title="Link to this heading">#</a></h1>
-<p><em>Note: this workflow assumes that your data will pass all checks.  If it doesn’t, see the Troubleshooting
-guide below</em></p>
-<p>Preparing your Darwin Core Archive is straightforward.  For a simple occurrences DwCA, the process
-looks like this from start to finish:</p>
+<p>Preparing your Darwin Core Archive can be relatively straightforward.
+However, this also assumes that you have already prepared your data
+and metadata to comply with Darwin Core standards.  If you have not done
+this, please see our Darwin Core data package, <a class="reference external" href="corella.ala.org.au/Python">corella</a>
+and <a class="reference external" href="paperbark.ala.org.au/Python">paperbark</a>.</p>
+<section id="initialising-a-darwin-core-archive">
+<h2>Initialising a Darwin Core Archive<a class="headerlink" href="#initialising-a-darwin-core-archive" title="Link to this heading">#</a></h2>
+<p>For a Darwin Core Archive containing only a list of occurrences, the
+process is relatively straightforward.  For this example, we will assume
+that all the data has been formatted to comply with Dariwn Core Archive
+standards, and the variable name is <code class="docutils literal notranslate"><span class="pre">df</span></code>.  We will also assume that your
+metadata has been filled in, correctly rendered and is named <code class="docutils literal notranslate"><span class="pre">eml.xml</span></code>.</p>
+<p>First, we will create the Darwin Core Archive object, and specify our
+occurrences and metadata.  This will automatically assume you want to make
+a directory in the folder you are working in.  If you want to specify a different
+folder, you can set the variable <code class="docutils literal notranslate"><span class="pre">working_dir=&lt;NAME&gt;</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
 span.prompt1:before {
   content: " ";
 }
 </style><span class="prompt1">&gt;&gt;&gt; import galaxias</span>
-<span class="prompt1">&gt;&gt;&gt; my_dwca = galaxias.dwca(occurrences=&quot;occurrences.csv&quot;)</span>
-<span class="prompt1">&gt;&gt;&gt; ### edit metadata.md</span>
-<span class="prompt1">&gt;&gt;&gt; my_dwca.make_eml_xml()</span>
-<span class="prompt1">&gt;&gt;&gt; my_dwca.make_meta_xml()</span>
-<span class="prompt1">&gt;&gt;&gt; my_dwca.create_dwca()</span>
-</pre></div></div><p>This will produce a Darwin Core Archive titled <code class="docutils literal notranslate"><span class="pre">dwca.zip</span></code>, which contains the files <code class="docutils literal notranslate"><span class="pre">occurrences.csv</span></code>,
+<span class="prompt1">&gt;&gt;&gt; my_dwca = galaxias.dwca(occurrences=df,</span>
+<span class="prompt1">...                         eml_xml=&#39;eml.xml&#39;)</span>
+</pre></div></div><p>This will create a <code class="docutils literal notranslate"><span class="pre">dwca</span></code> object with all of your information in one place.
+Now, we will create the <code class="docutils literal notranslate"><span class="pre">meta.xml</span></code> file.</p>
+</section>
+<section id="metadata-files-in-a-darwin-core-archive">
+<h2>Metadata files in a Darwin Core Archive<a class="headerlink" href="#metadata-files-in-a-darwin-core-archive" title="Link to this heading">#</a></h2>
+<p>Darwin Core Archives require two metadata files: one to describe the dataset
+itself (i.e. what license is attached to it, who collected the data, etc.),
+and one to describe the Darwin Core Archive itself.  The former is the <code class="docutils literal notranslate"><span class="pre">eml.xml</span></code>
+file you provided above, while the other is the one we will create right now.
+If you use the function</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">&gt;&gt;&gt; my_dwca.make_meta_xml()</span>
+</pre></div></div><p>it will create a file called <code class="docutils literal notranslate"><span class="pre">meta.xml</span></code> in your working directory.  This contains
+a list of the files in the archive, as well as a list of what is in the data files (
+in this case, occurrences).</p>
+</section>
+<section id="creating-a-darwin-core-archive">
+<h2>Creating a Darwin Core Archive<a class="headerlink" href="#creating-a-darwin-core-archive" title="Link to this heading">#</a></h2>
+<p>If you have not gotten any errors thus far, and are happy with your filenames being the
+default in <code class="docutils literal notranslate"><span class="pre">galaxias</span></code>, you can now run</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_dwca</span><span class="o">.</span><span class="n">create_dwca</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This will produce a Darwin Core Archive titled <code class="docutils literal notranslate"><span class="pre">dwca.zip</span></code>, which contains the files <code class="docutils literal notranslate"><span class="pre">occurrences.csv</span></code>,
 <code class="docutils literal notranslate"><span class="pre">eml.xml</span></code> and <code class="docutils literal notranslate"><span class="pre">meta.xml</span></code>.</p>
+</section>
 </section>
 
 
@@ -425,7 +457,24 @@ span.prompt1:before {
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialising-a-darwin-core-archive">Initialising a Darwin Core Archive</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata-files-in-a-darwin-core-archive">Metadata files in a Darwin Core Archive</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-darwin-core-archive">Creating a Darwin Core Archive</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

@@ -12,7 +12,7 @@ Galaxias User Guide
         .. raw:: html
             :file: ../../source/_static/icons/user_guide.svg
 
-        **Build Archive and Publish Data**
+        **Build Archive**
 
         Want to publish your data to a living atlas?
 
