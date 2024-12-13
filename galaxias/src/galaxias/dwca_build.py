@@ -94,7 +94,14 @@ class dwca:
         -------
             A printed report detailing presence or absence of required data.
         """
-        corella.check_data(occurrences=self.occurences)
+        result = corella.check_data(occurrences=self.occurrences,
+                                    events=self.events,
+                                    # multimedia=self.multimedia,
+                                    # emof=self.emof,
+                                    print_report=False)
+        if result:
+            return result
+        print("Your data does not comply with the Darwin Core standard.  Please run corella.check_data() and/or corella.suggest_workflow().")
 
     def check_dwca(self):
         """
@@ -120,56 +127,21 @@ class dwca:
         # check for empty archive
         if all(type(x) == type(data_files[0]) for x in data_files):
             raise ValueError("You have no data in your DwCA.  Please at least add occurrences")
-
-        # # first, check for events
-        # if self.events is not None:
-
-        #     # events_pass = self.check_events()
-        #     occurrences_pass = self.check_data()
-        #     print("need to write this")
-
-            # if self.multimedia is not None:
-            #     multimedia_pass = self.check_multimedia()
-            #     if not multimedia_pass:
-            #         raise ValueError("You need to check your multimedia files to make sure they are DwC compliant.")
-
-            # if self.emof is not None:
-            #     emof_pass = self.check_emof()
-            #     if not emof_pass:
-            #         raise ValueError("You need to check your multimedia files to make sure they are DwC compliant.")
-                
-            # if events_pass and occurrences_pass:
-            #     if os.path.exists("{}/{}".format(self.working_dir,self.meta_xml)) and os.path.exists("{}/{}".format(self.working_dir,self.eml_xml)):
-            #         return True
-            #     else:
-            #         raise ValueError('You need to include the meta.xml and eml.xml file in your DwCA.')
-            # elif not events_pass:
-            #     raise ValueError("You need to check your events to make sure they are DwC compliant.")
-            # elif not occurrences_pass:
-            #     raise ValueError("You need to check your occurrences to make sure they are DwC compliant.")
-            # else:
-            #     raise ValueError("You need to check your events and occurrences to make sure they are DwC compliant.")
         
-        # next, check for occurrences
-        if self.occurrences is not None:
-            
-            occurrences_pass = self.check_data()
+        result = corella.check_data(occurrences=self.occurrences,
+                                    events=self.events,
+                                    # multimedia=self.multimedia,
+                                    # emof=self.emof,
+                                    print=False)
+        if result:
 
-            # if self.multimedia is not None:
-            #     multimedia_pass = self.check_multimedia()
-            #     if not multimedia_pass:
-            #         raise ValueError("You need to check your multimedia files to make sure they are DwC compliant.")
-
-            if occurrences_pass:
-                if os.path.exists("{}/{}".format(self.working_dir,self.meta_xml)) and os.path.exists("{}/{}".format(self.working_dir,self.eml_xml)):
-                    return True
-                else:
-                    raise ValueError('You need to include the meta.xml and eml.xml file in your DwCA.')
+            if os.path.exists("{}/{}".format(self.working_dir,self.meta_xml)) and os.path.exists("{}/{}".format(self.working_dir,self.eml_xml)):
+                return True
             else:
-                raise ValueError('Your occurrences are not formatted correctly.')
+                raise ValueError('You need to include the meta.xml and eml.xml file in your DwCA.')
 
         else:
-            return False
+            raise ValueError("Some of your data does not comply with the Darwin Core standard.  Please run corella.check_data() and/or corella.suggest_workflow().")
     
     def check_eml_xml(self):
         """
@@ -184,7 +156,28 @@ class dwca:
         -------
             A printed report detailing presence or absence of required data.
         """
-        paperbark.check_eml_xml(eml_xml=self.eml_xml)
+        if os.path.exists("{}/{}".format(self.working_dir,self.eml_xml)):
+            paperbark.check_eml_xml(eml_xml=self.eml_xml)
+        else:
+            raise ValueError()
+        
+    def check_meta_xml(self):
+        """
+        Checks whether or not your data (only occurrences for now) meets the predefined Darwin Core 
+        standard.  Calls the ``corella`` package for this.
+
+        Parameters
+        ----------
+            None
+
+        Returns
+        -------
+            A printed report detailing presence or absence of required data.
+        """
+        if os.path.exists("{}/{}".format(self.working_dir,self.meta_xml)):
+            return True
+        else:
+            raise ValueError()
 
     def create_dwca(self):
         """
@@ -202,15 +195,18 @@ class dwca:
         # run basic checks on data
         data_check = self.check_dwca()
 
-        # run xml check
-        xml_check = self.check_eml_xml()
+        # run eml.xml check
+        eml_xml_check = self.check_eml_xml()
+
+        # run meta.xml check
+        meta_xml_check = self.check_meta_xml()
 
         # set the boolean for xml_check
         if xml_check is None:
             xml_check = True
 
         # write dwca if data and xml passes
-        if data_check and xml_check:
+        if data_check and eml_xml_check and meta_xml_check:
             
             # open archive
             zf = zipfile.ZipFile(self.dwca_name,'w')
@@ -232,31 +228,18 @@ class dwca:
                                     file_to_write='{}/{}'.format(self.data_proc_dir,filename),
                                     removefile=filename)
 
-            # ensure eml.xml file is there
-            if os.path.exists("{}/{}".format(self.working_dir,self.eml_xml)):
-                write_to_zip_and_disk(zf=zf,
+            # write eml.xml
+            write_to_zip_and_disk(zf=zf,
                                       copyfile="{}/{} .".format(self.working_dir,self.eml_xml),
-                                      removefile=self.eml_xml)
-            else:
-                raise ValueError("You need to create your eml metadata files - use the paperbark package")    
-
-            # ensure meta.xml.xml file is there
-            if os.path.exists("{}/{}".format(self.working_dir,self.meta_xml)):
-                write_to_zip_and_disk(zf=zf,
+                                      removefile=self.eml_xml)  
+              
+            # write meta.xml
+            write_to_zip_and_disk(zf=zf,
                         copyfile="{}/{} .".format(self.working_dir,self.meta_xml),
                         removefile=self.meta_xml)
-            else:
-                raise ValueError("You need to create your meta.xml file - use the function make_meta_xml().")         
-           
+            
             # close zipfile
             zf.close()
-
-        elif not data_check and xml_check:
-            raise ValueError("Your data did not pass our basic compliance checks.")
-        elif data_check and not xml_check:
-            raise ValueError("Your xmls did not pass our basic compliance checks.")
-        else:
-            raise ValueError("Neither your data nor your xmls passed our compliance checks")
     
     def make_meta_xml(self):
         """
