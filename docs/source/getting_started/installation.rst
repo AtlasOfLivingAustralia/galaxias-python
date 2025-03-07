@@ -3,6 +3,8 @@
 Installation
 ==============
 
+*Note: if you prefer to install prerequisites first, go to* `Prerequisites <Prerequisites.html>`_
+
 To install ``galaxias-python``, type the following into the terminal:
 
 .. prompt:: bash

@@ -48,7 +48,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/Introduction';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Prerequisites" href="Prerequisites.html" />
+    <link rel="next" title="Installation" href="Installation.html" />
     <link rel="prev" title="Getting Started" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -395,16 +395,45 @@ document.write(`
                   
   <section id="introduction">
 <span id="id1"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">galaxias</span></code> is a package for collating prepared biodiversity data into Darwin Core Archives
-for submission to the Atlas of Living Australia.  This package assumes you have used our sister
-packages to prepare the following different parts of the Darwin Core Archive:</p>
+<section id="what-are-darwin-core-archives">
+<h2>What are Darwin Core Archives?<a class="headerlink" href="#what-are-darwin-core-archives" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://ipt.gbif.org/manual/en/ipt/latest/dwca-guide#what-is-darwin-core-archive-dwc-a">Darwin Core Archives</a>
+are the format in which the <a class="reference external" href="https://www.ala.org.au/">Atlas of Living Australia</a> accepts and publishes biodiversity
+data.  Each archive contains:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">corella</span></code>: this package will help you reformat your data to be in the Darwin Core standard <a class="reference external" href="corella.ala.org.au/Python">website here</a></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">paperbark</span></code>: this package will help you write and format your metadata by converting a readable markdown file into a metadata xml file (<code class="docutils literal notranslate"><span class="pre">eml.xml</span></code>) <a class="reference external" href="paperbark.ala.org.au/Python">website here</a></p></li>
+<li><p><strong>Data:</strong> This is the data you (and/or others) have collected.  This can include, but is not</p></li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">galaxias</span></code> will then take these files and use them to generate another metadata file, which will
-describe your Darwin Core Archive.  It will then put all of this data into a Darwin Core Archive,
-which you can submit to the Atlas of Living Australia.</p>
+<p>limited to: observations, data on longitudinal studies, and environmental data.
+- <strong>Metadata:</strong> This is information about the data.  This can include, but is not limited to:
+who collected the data, what methods were used to collect the data, and the license you would like
+attributed to your data.
+- <strong>Description of DwCA</strong>: Each archive contains a file that describes how the data and the metadata
+are linked.</p>
+</section>
+<section id="what-type-of-data-do-i-have">
+<h2>What type of data do I have?<a class="headerlink" href="#what-type-of-data-do-i-have" title="Link to this heading">#</a></h2>
+<p>We currently support two types of archives, with extensions coming in the future.</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-4 sd-g-xs-4 sd-g-sm-4 sd-g-md-4 sd-g-lg-4 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover sd-text-center sd-text-black docutils">
+<div class="sd-card-body docutils">
+<?xml version="1.0" ?><svg class="svg-button" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><title/><path d="M477.64,38.26a4.75,4.75,0,0,0-3.55-3.66c-58.57-14.32-193.9,36.71-267.22,110a317,317,0,0,0-35.63,42.1c-22.61-2-45.22-.33-64.49,8.07C52.38,218.7,36.55,281.14,32.14,308a9.64,9.64,0,0,0,10.55,11.2L130,309.57a194.1,194.1,0,0,0,1.19,19.7,19.53,19.53,0,0,0,5.7,12L170.7,375a19.59,19.59,0,0,0,12,5.7,193.53,193.53,0,0,0,19.59,1.19l-9.58,87.2a9.65,9.65,0,0,0,11.2,10.55c26.81-4.3,89.36-20.13,113.15-74.5,8.4-19.27,10.12-41.77,8.18-64.27a317.66,317.66,0,0,0,42.21-35.64C441,232.05,491.74,99.74,477.64,38.26ZM294.07,217.93a48,48,0,1,1,67.86,0A47.95,47.95,0,0,1,294.07,217.93Z"/><path d="M168.4,399.43c-5.48,5.49-14.27,7.63-24.85,9.46-23.77,4.05-44.76-16.49-40.49-40.52,1.63-9.11,6.45-21.88,9.45-24.88a4.37,4.37,0,0,0-3.65-7.45,60,60,0,0,0-35.13,17.12C50.22,376.69,48,464,48,464s87.36-2.22,110.87-25.75A59.69,59.69,0,0,0,176,403.09C176.37,398.91,171.28,396.42,168.4,399.43Z"/></svg>
+<p class="sd-card-text"><strong>Independent Observations</strong></p>
+</div>
+<a class="sd-stretched-link reference external" href="independent_observations.html"></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover sd-text-center sd-text-black docutils">
+<div class="sd-card-body docutils">
+<?xml version="1.0" ?><!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'><svg class="svg-button" enable-background="new 0 0 500 500" id="Layer_1" version="1.1" viewBox="0 0 500 500" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path clip-rule="evenodd" d="M31.949,403.452c0,35.164,28.435,63.599,63.599,63.599  c17.529,0,33.891-6.637,45.426-18.172l115.93-116.018l31.072,31.071c-4.182,15.265-0.181,32.345,11.905,44.518l45.063,45.063  c17.985,17.901,46.782,18.08,64.504,0.362c17.719-17.721,17.539-46.511-0.366-64.504l-45.063-45.063  c-12.174-12.085-29.254-16.078-44.514-11.898l-31.072-30.991l19.983-19.983c42.516,10.722,89.397-0.459,122.563-32.888  c22.803-22.35,35.352-50.698,37.07-80.04v-1.543c0-9.91-8.181-17.905-18.26-17.905c-5.001,0-9.544,2.006-12.907,5.181l-5.353,5.271  l-18.356,17.985c-11.543,11.268-27.984,17.896-45.701,17.896c-17.622,0-33.165-7.718-44.701-19.076  c-11.355-11.533-19.166-27.167-19.166-44.788c0-17.717,6.63-34.159,17.897-45.702l17.985-18.358l5.269-5.351  c3.18-3.363,5.181-7.906,5.181-12.91c0-10.079-7.992-18.26-17.904-18.26h-1.544c-29.34,1.721-57.687,14.268-80.038,37.071  c-32.43,33.165-43.52,80.047-32.802,122.477l-20.069,20.069l-83.863-83.943v-22.988L59.205,76.376l-27.256,27.256l27.256,54.513  h22.891l83.951,83.863L50.119,358.026C38.586,369.561,31.949,385.923,31.949,403.452z M77.375,398.909  c0-12.536,10.177-22.711,22.714-22.711c12.538,0,22.713,10.175,22.713,22.711s-10.175,22.716-22.713,22.716  C87.553,421.625,77.375,411.445,77.375,398.909z"/></svg>
+<p class="sd-card-text"><strong>Longitudinal Studies</strong></p>
+</div>
+<a class="sd-stretched-link reference external" href="longitudinal_studies.html"></a></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
 
@@ -427,11 +456,11 @@ which you can submit to the Atlas of Living Australia.</p>
       </div>
     </a>
     <a class="right-next"
-       href="Prerequisites.html"
+       href="Installation.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Prerequisites</p>
+        <p class="prev-next-title">Installation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -442,7 +471,23 @@ which you can submit to the Atlas of Living Australia.</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-darwin-core-archives">What are Darwin Core Archives?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-type-of-data-do-i-have">What type of data do I have?</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

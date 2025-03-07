@@ -1,0 +1,36 @@
+occurrenceID,decimalLatitude,decimalLongitude,eventDate,basisOfRecord,scientificName,geodeticDatum,coordinateUncertaintyInMeters,coordinatePrecision
+9c62b807-fba2-460a-befc-c928fa70a4e1,-13.04,131.07,2022-03-29 00:00:00,HumaObservation,Corymbia latifolia,WGS84,100,0.01
+6b010bfc-b861-40da-b42a-78ab9c84619b,-13.04,131.07,2022-09-13 00:00:00,HumaObservation,Eucalyptus tectifica,WGS84,100,0.01
+36b2a189-bbdc-41a6-a2e5-cb410ce44f6a,-33.6,150.72,2022-08-15 00:00:00,HumaObservation,Banksia aemula,WGS84,100,0.01
+ad50e723-905e-4a73-b445-fa2f78f64b08,-33.6,150.72,2022-06-16 00:00:00,HumaObservation,Eucalyptus sclerophylla,WGS84,100,0.01
+69d78b0f-b5eb-4932-88dd-479966bb44ee,-33.6,150.72,2022-10-19 00:00:00,HumaObservation,Persoonia laurina,WGS84,100,0.01
+424e7e66-1781-44c6-87f9-98b8328640da,-22.35,133.33,2022-10-11 00:00:00,HumaObservation,Acacia aneura,WGS84,100,0.01
+0aa381e5-0657-4202-bf2e-89b77d19ea69,-22.35,133.33,2022-08-23 00:00:00,HumaObservation,Acacia cambagei,WGS84,100,0.01
+e9f65186-8f40-412b-9b94-0d0595884b3b,-22.35,133.33,2022-01-11 00:00:00,HumaObservation,Acacia dictyophleba,WGS84,100,0.01
+2d6fb884-1512-4bf4-bbe7-2a4efd41fcf8,-22.35,133.33,2022-07-10 00:00:00,HumaObservation,Acacia estrophiolata,WGS84,100,0.01
+07a28c38-35af-446d-96ab-dc4b2a95115d,-22.35,133.33,2022-07-18 00:00:00,HumaObservation,Acacia kempeana,WGS84,100,0.01
+e07b5712-f2d6-48cd-afe2-350d659f06f9,-22.35,133.33,2022-04-25 00:00:00,HumaObservation,Acacia melleodora,WGS84,100,0.01
+2a3c0ede-a084-4a4a-8ba0-3187e427b842,-22.35,133.33,2022-12-15 00:00:00,HumaObservation,Acacia murayana,WGS84,100,0.01
+a94db500-fd71-42df-9d10-3fe04c06fba4,-22.35,133.33,2022-02-06 00:00:00,HumaObservation,Corymbia opaca,WGS84,100,0.01
+75704050-7137-4418-b8fe-05efdcde80b6,-22.35,133.33,2022-04-21 00:00:00,HumaObservation,Corymbia terminalis,WGS84,100,0.01
+e9a8d903-67df-4f9c-849a-619690c52a3f,-22.35,133.33,2022-01-30 00:00:00,HumaObservation,Eremophila latrobei,WGS84,100,0.01
+062a1766-7163-4fb5-805c-58f4cfbf9f13,-22.35,133.33,2022-03-30 00:00:00,HumaObservation,Eucalyptus camaldulensis,WGS84,100,0.01
+a790c681-6424-4f7b-867f-50d0fa6507e9,-22.35,133.33,2022-07-25 00:00:00,HumaObservation,Eucalyptus camaldulensis var. obtusa,WGS84,100,0.01
+4c45aeac-7948-4151-b751-41c6f033db24,-22.35,133.33,2022-03-11 00:00:00,HumaObservation,Hakea leucoptera,WGS84,100,0.01
+bc2b6645-df37-4c57-9d31-a8c1a2769575,-22.35,133.33,2022-07-28 00:00:00,HumaObservation,Hakea macrocarpa,WGS84,100,0.01
+9e4f7b39-bccf-43ae-a265-7dfd575294c4,-22.35,133.33,2022-03-06 00:00:00,HumaObservation,Psydrax latifolia,WGS84,100,0.01
+a1f30f57-c76b-4089-a669-e6996fe026b0,-17.26,145.46,2022-09-05 00:00:00,HumaObservation,Acacia celsa,WGS84,100,0.01
+fc475aff-be3f-430d-a7c6-56cee13bfa32,-17.26,145.46,2022-04-22 00:00:00,HumaObservation,Acronychia acidula,WGS84,100,0.01
+da25d8cc-2541-4265-ae98-032647fe585b,-17.26,145.46,2022-07-21 00:00:00,HumaObservation,Aleurites rockinghamensis,WGS84,100,0.01
+ea76b38f-32aa-412a-8b60-793db97adb4a,-17.26,145.46,2022-03-11 00:00:00,HumaObservation,Alphitonia petriei,WGS84,100,0.01
+f2d24766-bb2a-4196-bc67-a4a5871fa71e,-17.26,145.46,2022-02-15 00:00:00,HumaObservation,Gillbeea adenopetala,WGS84,100,0.01
+ccfc7c03-6eec-4ef3-93bc-d198c2808512,-17.26,145.46,2022-05-11 00:00:00,HumaObservation,Litsea leefeana,WGS84,100,0.01
+15ce0135-164d-4094-b6eb-53b8110d870f,-17.26,145.46,2022-10-31 00:00:00,HumaObservation,Myrsine porosa,WGS84,100,0.01
+a5ed0947-20e0-4ef6-a96f-bbc157788c4d,-17.26,145.46,2022-10-08 00:00:00,HumaObservation,Neolitsea dealbata,WGS84,100,0.01
+646db6da-f19f-4a34-8841-e6b969b89361,-17.26,145.46,2022-10-26 00:00:00,HumaObservation,Polyscias australiana,WGS84,100,0.01
+56a5e1fb-244e-4548-b75b-de99752ebfed,-35.66,148.15,2022-03-04 00:00:00,HumaObservation,Coprosma hirtella,WGS84,100,0.01
+f0318cf6-0e8a-4b5d-9de2-5835e9ecab3f,-35.66,148.15,2022-06-28 00:00:00,HumaObservation,Daviesia latifolia,WGS84,100,0.01
+04e4f379-d540-4a2c-bdf3-f5dab2a0d880,-35.66,148.15,2022-01-22 00:00:00,HumaObservation,Eucalyptus delegatensis,WGS84,100,0.01
+5d815efc-34a7-4a85-ace1-fa2f58cac251,-35.66,148.15,2022-06-24 00:00:00,HumaObservation,Tasmannia lanceolata,WGS84,100,0.01
+0f04948e-3b1d-484c-b5a7-9a55d733fc6f,-12.42,130.92,2022-10-28 00:00:00,HumaObservation,Eucalyptus miniata,WGS84,100,0.01
+e43bf54e-8a45-4b7a-b1e0-cefb0cb31d32,-12.42,130.92,2022-06-21 00:00:00,HumaObservation,Eucalyptus tetrodonta,WGS84,100,0.01

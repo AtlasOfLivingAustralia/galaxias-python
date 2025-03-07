@@ -36,8 +36,8 @@ setup(
         'shutils',
         'metapype',
         'tabulate',
-        # 'corella-python',
-        # 'paperbark-python'
+        'corella-python',
+        'delma-python'
     ],
 
     include_package_data = True,
