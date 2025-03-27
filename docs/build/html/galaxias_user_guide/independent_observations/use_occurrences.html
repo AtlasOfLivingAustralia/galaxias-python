@@ -398,23 +398,6 @@ This function aims to check that you have the following Darwin Core Vocabulary T
 <li><p><code class="docutils literal notranslate"><span class="pre">occurrenceStatus</span></code> (OPTIONAL): whether a species is present or absent.  Not required for data submission.</p></li>
 </ul>
 </section>
-<section id="initial-run-of-use-occurrences">
-<h1>Initial run of <code class="docutils literal notranslate"><span class="pre">use_occurrences</span></code><a class="headerlink" href="#initial-run-of-use-occurrences" title="Link to this heading">#</a></h1>
-<p>Initally, let’s run <code class="docutils literal notranslate"><span class="pre">use_occurrences()</span></code> to see if any of our columns match the Darwin
-Core Vocabulary mentioned above:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
-span.prompt1:before {
-  content: " ";
-}
-</style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_archive</span><span class="o">.</span><span class="n">use_occurrences</span><span class="p">()</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<p>Here, we can see that we don’t have any column names matching <code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code>, <code class="docutils literal notranslate"><span class="pre">occurrenceStatus</span></code>,
-<code class="docutils literal notranslate"><span class="pre">occurrenceID</span></code>, <code class="docutils literal notranslate"><span class="pre">catalogNumber</span></code> or <code class="docutils literal notranslate"><span class="pre">recordNumber</span></code>.  Luckily, there are options in <code class="docutils literal notranslate"><span class="pre">use_occurrences()</span></code>
-that allow the user to specify a column of data as one of the column names, or to set a default value for
-the column.</p>
-</section>
 <section id="specifying-basisofrecord-value">
 <h1>Specifying <code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code> value<a class="headerlink" href="#specifying-basisofrecord-value" title="Link to this heading">#</a></h1>
 <p>As mentioned above, the <code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code> value is a required and important
@@ -424,21 +407,25 @@ that’s part of a collection?</p>
 <p>Depending on your answer to these questions, the information you provide will differ.
 Luckily, Darwin Core has a predefined vocabulary to help you with this.  The current
 accepted values are as follows:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>- LivingSpecimen
-- MaterialCitation
-- MachineObservation
-- Occurrence
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>- FossilSpecimen
+- LivingSpecimen
+- PreservedSpecimen
 - MaterialSample
 - Observation
-- PreservedSpecimen
-- FossilSpecimen
+- Occurrence
+- MaterialCitation
 - HumanObservation
+- MachineObservation
 </pre></div>
 </div>
 <p>For this exercise, let’s assume a human has seen these, which equates to a value of
 <code class="docutils literal notranslate"><span class="pre">HumanObservation</span></code>.  We can then set the <code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code> argument as <code class="docutils literal notranslate"><span class="pre">HumanObservation</span></code>,
 and it will, by default, set the value of <code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code> for the whole dataframe.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_archive</span><span class="o">.</span><span class="n">use_occurrences</span><span class="p">(</span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
+span.prompt1:before {
+  content: " ";
+}
+</style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_archive</span><span class="o">.</span><span class="n">use_occurrences</span><span class="p">(</span></span>
 <span class="prompt1"><span class="o">...</span>     <span class="n">basisOfRecord</span><span class="o">=</span><span class="s1">&#39;HumanObservation&#39;</span></span>
 <span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_archive</span><span class="o">.</span><span class="n">occurrences</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
@@ -468,11 +455,11 @@ will be generated for you.</p>
 <span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_archive</span><span class="o">.</span><span class="n">occurrences</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                           occurrenceID                  Species  Latitude  Longitude Collection_date     basisOfRecord
-0  57a7c322-1211-4d9b-bc6f-e2a20a9c9e26       Corymbia latifolia    -13.04     131.07       29/3/2022  HumanObservation
-1  d2bc0778-cfd2-4680-b37c-51d63a102b6f     Eucalyptus tectifica    -13.04     131.07       13/9/2022  HumanObservation
-2  5279d51d-7a8e-428b-a307-911bb3cce8a1           Banksia aemula    -33.60     150.72       15/8/2022  HumanObservation
-3  9ce412dd-bade-41bd-a8b0-36df9ce02354  Eucalyptus sclerophylla    -33.60     150.72       16/6/2022  HumanObservation
-4  a0039d9f-09a2-4715-83ae-8c07ad144b84        Persoonia laurina    -33.60     150.72      19/10/2022  HumanObservation
+0  f63ca014-bbe5-4308-a313-504064dc8abf       Corymbia latifolia    -13.04     131.07       29/3/2022  HumanObservation
+1  155c10eb-9889-4c94-aa7a-2434d65746c1     Eucalyptus tectifica    -13.04     131.07       13/9/2022  HumanObservation
+2  7bec3dda-c1c3-475e-a87e-924d54631c7f           Banksia aemula    -33.60     150.72       15/8/2022  HumanObservation
+3  0e278d4d-03a4-416b-99f2-cb2aef1ab795  Eucalyptus sclerophylla    -33.60     150.72       16/6/2022  HumanObservation
+4  da2c6ebf-57de-46c3-9ef5-9adca62bb505        Persoonia laurina    -33.60     150.72      19/10/2022  HumanObservation
 </pre></div>
 </div>
 </section>
@@ -491,11 +478,11 @@ Darwin Core standard.</p>
 <span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_archive</span><span class="o">.</span><span class="n">occurrences</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                           occurrenceID                  Species  Latitude  Longitude Collection_date     basisOfRecord occurrenceStatus
-0  187dc718-5b4d-4c63-a14b-6ab7782ca111       Corymbia latifolia    -13.04     131.07       29/3/2022  HumanObservation          PRESENT
-1  181ae8c5-3fcc-4fe4-96a9-09872820826d     Eucalyptus tectifica    -13.04     131.07       13/9/2022  HumanObservation          PRESENT
-2  4af3745e-4a18-43b3-849a-fd4bf46393ce           Banksia aemula    -33.60     150.72       15/8/2022  HumanObservation          PRESENT
-3  35a770f7-206d-4937-9e7e-d6dd40022fc6  Eucalyptus sclerophylla    -33.60     150.72       16/6/2022  HumanObservation          PRESENT
-4  2e7c6179-6e29-42af-a171-e02afcea1e02        Persoonia laurina    -33.60     150.72      19/10/2022  HumanObservation          PRESENT
+0  626f0c58-5425-4f0e-9522-9d34d7d99d14       Corymbia latifolia    -13.04     131.07       29/3/2022  HumanObservation          PRESENT
+1  51605053-3b9c-4663-b36a-bafbc7a35239     Eucalyptus tectifica    -13.04     131.07       13/9/2022  HumanObservation          PRESENT
+2  e00ce1e9-fe63-40f3-9cfd-bf653369ca59           Banksia aemula    -33.60     150.72       15/8/2022  HumanObservation          PRESENT
+3  c626a995-e97d-42b1-b0da-063e1be6f512  Eucalyptus sclerophylla    -33.60     150.72       16/6/2022  HumanObservation          PRESENT
+4  597585cb-b35d-4d2d-86b5-2731c74e1963        Persoonia laurina    -33.60     150.72      19/10/2022  HumanObservation          PRESENT
 </pre></div>
 </div>
 </section>
@@ -527,8 +514,6 @@ Errors: 0 | Passes: 3
 
 ✗ Data does not meet minimum Darwin core requirements
 Use corella.suggest_workflow()
-
-Your data does not comply with the Darwin Core standard.  Please run galaxias.suggest_workflow().
 </pre></div>
 </div>
 <p>However, since we don’t have all of the required columns, we can run <code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code>
@@ -541,7 +526,7 @@ again to see what other functions we can use to check our data:</p>
 Matched 3 of 7 column names to DwC terms:
 
 ✓ Matched: occurrenceID, basisOfRecord, occurrenceStatus
-✗ Unmatched: Latitude, Collection_date, Longitude, Species
+✗ Unmatched: Longitude, Species, Latitude, Collection_date
 
 ── Minimum required DwC terms occurrences ──
 
@@ -615,7 +600,6 @@ Additional functions: use_abundance(), use_locality()
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">use_occurrences</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-run-of-use-occurrences">Initial run of <code class="docutils literal notranslate"><span class="pre">use_occurrences</span></code></a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#specifying-basisofrecord-value">Specifying <code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code> value</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-generate-occurrence-ids">How to generate occurrence IDs</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#specify-occurrencestatus-column">specify <code class="docutils literal notranslate"><span class="pre">occurrenceStatus</span></code> column</a></li>

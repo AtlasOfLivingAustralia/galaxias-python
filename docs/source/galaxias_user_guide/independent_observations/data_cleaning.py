@@ -9,14 +9,13 @@ pd.set_option('max_colwidth', None) #;
 
 # get arguments
 stop = int(sys.argv[1])
-
-# data
-my_dwca = galaxias.dwca(occurrences = 'galaxias_user_guide/data/occurrences_dwc.csv')
-
+my_dwca = galaxias.dwca(occurrences = 'galaxias_user_guide/data/occurrences_dwc.csv', print_notices = False)
+    
 # -----------------------------------------------------------------------------
 # use_occurrences
 # -----------------------------------------------------------------------------
 if stop == 1:
+    # data
     print(my_dwca.check_dataset())
     sys.exit()
 
@@ -24,27 +23,27 @@ if stop == 2:
     print(my_dwca.suggest_workflow())
     sys.exit()
 
-if stop == 5:
+if stop == 3:
     my_dwca.use_occurrences(basisOfRecord='HumanObservation')
     print(my_dwca.occurrences.head())
-    sys.exit()
+    sys.exit() 
 
-if stop == 6:
+if stop == 4:
     my_dwca.use_occurrences(basisOfRecord='HumanObservation',occurrenceID=True)
     print(my_dwca.occurrences.head())
     sys.exit()
 
-if stop == 7:
+if stop == 5:
     my_dwca.use_occurrences(basisOfRecord='HumanObservation',occurrenceStatus='PRESENT',occurrenceID=True)
     print(my_dwca.occurrences.head())
     sys.exit()
     
-if stop == 8:
+if stop == 6:
     my_dwca.use_occurrences(basisOfRecord='HumanObservation',occurrenceStatus='PRESENT',occurrenceID=True)
     my_dwca.check_dataset()
     sys.exit()
 
-if stop == 9:
+if stop == 7:
     my_dwca.use_occurrences(basisOfRecord='HumanObservation',occurrenceStatus='PRESENT',occurrenceID=True)
     my_dwca.suggest_workflow()
 
@@ -149,7 +148,7 @@ occ = pd.DataFrame({'species': ['Callocephalon fimbriatum', 'Eolophus roseicapil
                    'status': ['present', 'present'],
                    'count': [2,1]})
 
-temp_dwca = galaxias.dwca(occurrences=occ)
+temp_dwca = galaxias.dwca(occurrences=occ,print_notices = False)
 
 if stop == 27:
     temp_dwca.use_abundance(individualCount='count')
@@ -161,7 +160,7 @@ if stop == 27:
 # -----------------------------------------------------------------------------
 occ = pd.read_csv('galaxias_user_guide/data/occurrences_dwc.csv')
 
-temp_dwca = galaxias.dwca(occurrences=occ)
+temp_dwca = galaxias.dwca(occurrences=occ, print_notices = False)
 
 if stop == 29:
     temp_dwca.use_locality(continent='Australia')
@@ -176,13 +175,13 @@ if stop == 30:
 # -----------------------------------------------------------------------------
 # final
 # -----------------------------------------------------------------------------
-my_dwca = galaxias.dwca(occurrences = 'galaxias_user_guide/data/occurrences_dwc.csv')
+my_dwca = galaxias.dwca(occurrences = 'galaxias_user_guide/data/occurrences_dwc.csv', print_notices = False)
 
 if stop == 31:
-    my_dwca.use_occurrences(basisOfRecord='HumanObservation',occurrenceStatus='PRESENT',occurrenceID=True
-            ).use_scientific_name(scientificName='Species'
-            ).use_coordinates(decimalLatitude='Latitude',decimalLongitude='Longitude',geodeticDatum='WGS84',coordinatePrecision=0.1
-            ).use_datetime(eventDate='Collection_date',string_to_datetime=True,yearfirst=False,dayfirst=True)
+    my_dwca.use_occurrences(basisOfRecord='HumanObservation',occurrenceStatus='PRESENT',occurrenceID=True)
+    my_dwca.use_scientific_name(scientificName='Species')
+    my_dwca.use_coordinates(decimalLatitude='Latitude',decimalLongitude='Longitude',geodeticDatum='WGS84',coordinatePrecision=0.1)
+    my_dwca.use_datetime(eventDate='Collection_date',string_to_datetime=True,yearfirst=False,dayfirst=True)
     my_dwca.check_dataset()
     import sys
     sys.exit()

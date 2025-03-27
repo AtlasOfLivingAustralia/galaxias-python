@@ -419,11 +419,11 @@ use the function <code class="docutils literal notranslate"><span class="pre">us
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">use_datetime</span><span class="p">(</span><span class="n">check_events</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                      <span class="n">eventDate</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File &quot;/Users/buy003/Documents/GitHub/galaxias-python/docs/source/galaxias_user_guide/longitudinal_studies/events_workflow.py&quot;, line 63, in &lt;module&gt;
-    my_dwca.use_datetime(check_events=True,eventDate=&#39;Collection_date&#39;)
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/galaxias/dwca_build.py&quot;, line 464, in use_datetime
-    self.events = corella.use_datetime(dataframe=self.occurrences,eventDate=eventDate,year=year,month=month,
-                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/Users/buy003/Documents/GitHub/galaxias-python/docs/source/galaxias_user_guide/longitudinal_studies/events_workflow.py&quot;, line 73, in &lt;module&gt;
+    my_dwca.use_datetime(check_events=True,eventDate=&#39;date&#39;)
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/galaxias/dwca_build.py&quot;, line 467, in use_datetime
+    self.events = corella.use_datetime(dataframe=self.events,eventDate=eventDate,year=year,month=month,
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_datetime.py&quot;, line 108, in use_datetime
     raise ValueError(&quot;There are some errors in your data.  They are as follows:\n\n{}&quot;.format(&#39;\n&#39;.join(errors)))
 ValueError: There are some errors in your data.  They are as follows:
@@ -445,12 +445,12 @@ arguments that will convert dates in strings to <code class="docutils literal no
 <span class="prompt1"><span class="o">...</span>                      <span class="n">string_to_datetime</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                      <span class="n">yearfirst</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                      <span class="n">dayfirst</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                             Species  Latitude  Longitude  eventDate  number_birds
-0  Eopsaltria (Eopsaltria) australis    -20.29      148.7 2023-01-03             3
-1          Symposiachrus trivirgatus    -20.29      148.7 2023-01-03             3
-2                Zosterops lateralis    -20.29      148.7 2023-01-03             2
-3              Ptilinopus magnificus    -20.29      148.7 2023-01-03             1
-4           Pitta (Pitta) versicolor    -20.29      148.7 2023-01-03             3
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>        type    location  eventDate                                             name
+0  siteVisit  Cannonvale 2023-01-03  bird survey local park honeyeater lookout point
+1  siteVisit  Cannonvale 2023-01-17  bird survey local park honeyeater lookout point
+2  siteVisit  Cannonvale 2023-01-31  bird survey local park honeyeater lookout point
+3  siteVisit  Cannonvale 2023-02-14  bird survey local park honeyeater lookout point
+4  siteVisit  Cannonvale 2023-02-28  bird survey local park honeyeater lookout point
 </pre></div>
 </div>
 </section>
@@ -477,62 +477,38 @@ Use corella.suggest_workflow()
 
 eventDate is a required field. Please ensure it is in your dataframe
 eventDate is a required field. Please ensure it is in your dataframe
-
-Your data does not comply with the Darwin Core standard.  Please run galaxias.suggest_workflow().
 </pre></div>
 </div>
 <p>However, since we don’t have all of the required columns, we can run <code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code>
 again to see how our data is doing this time round.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">suggest_workflow</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">events</span><span class="p">)</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
-── All DwC terms ──
-
-Matched 1 of 10 column names to DwC terms:
-
-✓ Matched: eventDate
-✗ Unmatched: Species, Latitude, Longitude, Collection_date, number_birds, Latitude, Longitude, number_birds, Species
-
-── Minimum required DwC terms occurrences ──
-
-Type                       Matched term(s)    Missing term(s)
--------------------------  -----------------  ------------------------------------------------
-Identifier (at least one)  -                  occurrenceID OR catalogNumber OR recordNumber
-Record type                -                  basisOfRecord
-Scientific name            -                  scientificName
-Location                   -                  decimalLatitude, decimalLongitude, geodeticDatum
-Date/Time                  -                  eventDate
-Associated event ID        -                  eventID
-
-── Minimum required DwC terms events ──
-
-Type                   Matched term(s)    Missing term(s)
----------------------  -----------------  -----------------
-Identifier             -                  eventID
-Linking identifier     -                  parentEventID
-Type of Event          -                  eventType
-Name of Event          -                  Event
-How data was acquired  -                  samplingProtocol
-Date of Event          eventDate          -
-
-── Suggested workflow ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
-── Occurrences ──
-
-To make your occurrences Darwin Core compliant, use the following workflow:
-
-corella.use_occurrences()
-corella.use_scientific_name()
-corella.use_coordinates()
-corella.use_datetime()
-
-Additional functions: use_abundance(), use_locality()
-
-── Events ──
-
-To make your events Darwin Core compliant, use the following workflow:
-
-corella.use_events()
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_datetime.py:95: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  dataframe[&#39;eventDate&#39;] = pd.to_datetime(dataframe[&#39;eventDate&#39;],dayfirst=dayfirst)
+Traceback (most recent call last):
+  File &quot;/Users/buy003/Documents/GitHub/galaxias-python/docs/source/galaxias_user_guide/longitudinal_studies/events_workflow.py&quot;, line 91, in &lt;module&gt;
+    my_dwca.use_datetime(check_events=True,eventDate=&#39;Collection_date&#39;,string_to_datetime=True,yearfirst=False,dayfirst=True)
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/galaxias/dwca_build.py&quot;, line 467, in use_datetime
+    self.events = corella.use_datetime(dataframe=self.events,eventDate=eventDate,year=year,month=month,
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_datetime.py&quot;, line 95, in use_datetime
+    dataframe[&#39;eventDate&#39;] = pd.to_datetime(dataframe[&#39;eventDate&#39;],dayfirst=dayfirst)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/pandas/core/tools/datetimes.py&quot;, line 1050, in to_datetime
+    values = convert_listlike(arg._values, format)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/pandas/core/tools/datetimes.py&quot;, line 455, in _convert_listlike_datetimes
+    result, tz_parsed = objects_to_datetime64ns(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/pandas/core/arrays/datetimes.py&quot;, line 2177, in objects_to_datetime64ns
+    result, tz_parsed = tslib.array_to_datetime(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;pandas/_libs/tslib.pyx&quot;, line 402, in pandas._libs.tslib.array_to_datetime
+  File &quot;pandas/_libs/tslib.pyx&quot;, line 551, in pandas._libs.tslib.array_to_datetime
+  File &quot;pandas/_libs/tslib.pyx&quot;, line 516, in pandas._libs.tslib.array_to_datetime
+  File &quot;pandas/_libs/tslibs/conversion.pyx&quot;, line 557, in pandas._libs.tslibs.conversion.convert_str_to_tsobject
+  File &quot;pandas/_libs/tslibs/parsing.pyx&quot;, line 329, in pandas._libs.tslibs.parsing.parse_datetime_string
+  File &quot;pandas/_libs/tslibs/parsing.pyx&quot;, line 658, in pandas._libs.tslibs.parsing.dateutil_parse
+pandas._libs.tslibs.parsing.DateParseError: Unknown datetime string format, unable to parse: Collection_date, at position 0
 </pre></div>
 </div>
 </section>
@@ -541,8 +517,6 @@ corella.use_events()
 <p>To learn more about how to use these functions, go to</p>
 <ul class="simple">
 <li><p><a class="reference external" href="use_events.html">use_events</a></p></li>
-<li><p><a class="reference external" href="use_coordinates.html">use_coordinates</a></p></li>
-<li><p><a class="reference external" href="use_scientific_name.html">use_scientific_name</a></p></li>
 </ul>
 <p>Optional functions:</p>
 <ul class="simple">

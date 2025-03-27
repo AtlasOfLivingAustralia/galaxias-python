@@ -29,7 +29,8 @@ class dwca:
                  emof_archive_filename = 'extendedMeasurementOrFact.txt', # was .csv
                  metadata_md = 'metadata.md',
                  eml_xml = 'eml.xml',
-                 meta_xml = 'meta.xml'
+                 meta_xml = 'meta.xml',
+                 print_notices = True
                  ):
 
         # initialise variables
@@ -60,8 +61,8 @@ class dwca:
         # now initialise the data variables
         vars = ['occurrences','multimedia','events','emof']
 
-        # create markdown
-        delma.create_md(working_dir = working_dir)
+        # create markdown - do we want this....?
+        delma.create_md(working_dir = working_dir, print_notices = print_notices)
 
         # loop over all data variables
         for var in vars:
@@ -104,8 +105,7 @@ class dwca:
                                        print_report=True)
         if result:
             return result
-        print("Your data does not comply with the Darwin Core standard.  Please run galaxias.suggest_workflow().")
-
+        
     def check_dwca(self):
         """
         Checks whether or not your Darwin Core Archive meets the pre-defined standard.
@@ -464,7 +464,7 @@ class dwca:
             None - the occurrences dataframe is updated
         """
         if check_events:
-            self.events = corella.use_datetime(dataframe=self.occurrences,eventDate=eventDate,year=year,month=month,
+            self.events = corella.use_datetime(dataframe=self.events,eventDate=eventDate,year=year,month=month,
                                                day=day,eventTime=eventTime,string_to_datetime=string_to_datetime,
                                                yearfirst=yearfirst,dayfirst=dayfirst,time_format=time_format)
         else:
@@ -511,6 +511,7 @@ class dwca:
                                          event_hierarchy=event_hierarchy)
 
     def use_locality(self,
+                     check_events = False,
                      continent = None,
                      country = None,
                      countryCode = None,
@@ -521,6 +522,8 @@ class dwca:
 
         Parameters
         ----------
+            check_events: ``logical``
+                Check to see if user wants to edit ``events`` dataframe.  Default is ``False``.
             continent: ``str``
                 Either a column name (``str``) or a string denoting one of the seven continents.
             country: ``str`` or ``pandas.Series``
@@ -536,9 +539,14 @@ class dwca:
             None - the occurrences dataframe is updated
         """
         
-        self.occurrences = corella.use_locality(dataframe=self.occurrences,continent=continent,
-                                                country=country,countryCode=countryCode,
-                                                stateProvince=stateProvince,locality=locality)
+        if check_events:
+            self.events = corella.use_locality(dataframe=self.events,continent=continent,
+                                               country=country,countryCode=countryCode,
+                                               stateProvince=stateProvince,locality=locality)
+        else:
+            self.occurrences = corella.use_locality(dataframe=self.occurrences,continent=continent,
+                                                    country=country,countryCode=countryCode,
+                                                    stateProvince=stateProvince,locality=locality)
 
     def use_occurrences(self,
                         occurrenceID=None,

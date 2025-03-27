@@ -414,9 +414,9 @@ span.prompt1:before {
 <span class="prompt1"><span class="o">...</span>                    <span class="n">Event</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File &quot;/Users/buy003/Documents/GitHub/galaxias-python/docs/source/galaxias_user_guide/longitudinal_studies/events_workflow.py&quot;, line 35, in &lt;module&gt;
+  File &quot;/Users/buy003/Documents/GitHub/galaxias-python/docs/source/galaxias_user_guide/longitudinal_studies/events_workflow.py&quot;, line 41, in &lt;module&gt;
     my_dwca.use_events(eventType=&#39;type&#39;,samplingProtocol=&#39;Observation&#39;,Event=&#39;name&#39;)
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/galaxias/dwca_build.py&quot;, line 506, in use_events
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/galaxias/dwca_build.py&quot;, line 509, in use_events
     self.events = corella.use_events(dataframe=self.events,eventID=eventID,parentEventID=parentEventID,
                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_events.py&quot;, line 83, in use_events
@@ -424,20 +424,32 @@ span.prompt1:before {
 ValueError: Please provide column names for eventID and parentEventID.  Or, provide an event_hierarchy dictionary for automatic ID generation.
 </pre></div>
 </div>
-<p>Next.</p>
+<p>The reason that the <code class="docutils literal notranslate"><span class="pre">events</span></code> file needs these IDs is because each event may have multiple things happening
+during it.  For example, when you visit a site (highest order of event happening), you usually take what is
+termed a ‘sample’ (second highest order of event happening).  After this, there are many activities that can
+constitute a ‘sample’:</p>
+<ul class="simple">
+<li><p>take measurements of environment (ambient temperature, for example)</p></li>
+<li><p>quantify species traits</p></li>
+<li><p>observe what species are at the site</p></li>
+</ul>
+<p>The way to quantify this in your <code class="docutils literal notranslate"><span class="pre">events</span></code> file is via an “Event Hierarchy”.</p>
 </section>
-<section id="event-hierarchy">
-<h2>Event hierarchy<a class="headerlink" href="#event-hierarchy" title="Link to this heading">#</a></h2>
+<section id="event-hierarchy-example">
+<h2>Event hierarchy example<a class="headerlink" href="#event-hierarchy-example" title="Link to this heading">#</a></h2>
+<p>For our example, we are only concerned with observations, or what species were observed at the site.
+<code class="docutils literal notranslate"><span class="pre">galaxias</span></code> takes a dictionary with each event given a ranking: <code class="docutils literal notranslate"><span class="pre">1</span></code> for the highest ‘order’ event,
+<code class="docutils literal notranslate"><span class="pre">2</span></code> for the second highest event, and so on.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">use_events</span><span class="p">(</span><span class="n">eventType</span><span class="o">=</span><span class="s1">&#39;type&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                    <span class="n">samplingProtocol</span><span class="o">=</span><span class="s1">&#39;Observation&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                    <span class="n">Event</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                    <span class="n">event_hierarchy</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;Site Visit&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;Sample&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s2">&quot;Observation&quot;</span><span class="p">})</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                                eventID                         parentEventID    eventType    location       date                                            Event samplingProtocol
-0  2c4a2348-5d5d-4799-9f58-c508625e4a7f                                         Site Visit  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
-1  472a1ca8-8778-46b1-8782-40f63d6a2f7a  2c4a2348-5d5d-4799-9f58-c508625e4a7f       Sample  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
-2  d13712a0-79f8-4c45-9665-7115c3a7a5e3  472a1ca8-8778-46b1-8782-40f63d6a2f7a  Observation  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
-3  81c31661-4a6e-4f55-b152-b1ed8fa96c6f                                         Site Visit  Cannonvale  17/1/2023  bird survey local park honeyeater lookout point      Observation
-4  40d93bb3-d61e-46b6-b67a-35f3f3e40603  81c31661-4a6e-4f55-b152-b1ed8fa96c6f       Sample  Cannonvale  17/1/2023  bird survey local park honeyeater lookout point      Observation
+0  7654c805-620c-4ef2-9bb8-f0ddca24c977                                         Site Visit  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
+1  f2b1ab30-2cbb-416b-b5b5-65478f3e17c5  7654c805-620c-4ef2-9bb8-f0ddca24c977       Sample  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
+2  4f07ca5b-ba05-4351-9124-3139f76ef062  f2b1ab30-2cbb-416b-b5b5-65478f3e17c5  Observation  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
+3  71d3fe67-d0d0-4580-950e-db5973d30d27                                         Site Visit  Cannonvale  17/1/2023  bird survey local park honeyeater lookout point      Observation
+4  d3423af8-4cd7-4992-85dc-97654a4de4a2  71d3fe67-d0d0-4580-950e-db5973d30d27       Sample  Cannonvale  17/1/2023  bird survey local park honeyeater lookout point      Observation
 </pre></div>
 </div>
 </section>
@@ -446,8 +458,7 @@ ValueError: Please provide column names for eventID and parentEventID.  Or, prov
 <p><em>Note:</em> each of the <code class="docutils literal notranslate"><span class="pre">use_*</span></code> functions checks your data for compliance with the
 Darwin core standard, but it’s always good to double-check your data.</p>
 <p>Now, we can check that our data column do comply with the Darwin Core standard.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">check_data</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">occurrences</span><span class="p">,</span></span>
-<span class="prompt1"><span class="o">...</span>                    <span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">)</span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">check_data</span><span class="p">()</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  Number of Errors  Pass/Fail    Column name
 ------------------  -----------  ----------------
                  0  ✓            eventID
@@ -464,13 +475,11 @@ Errors: 0 | Passes: 5
 
 ✗ Data does not meet minimum Darwin core requirements
 Use corella.suggest_workflow()
-
-Your data does not comply with the Darwin Core standard.  Please run galaxias.suggest_workflow().
 </pre></div>
 </div>
 <p>However, since we don’t have all of the required columns, we can run <code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code>
 again to see how our data is doing this time round.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">suggest_workflow</span><span class="p">(</span><span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">)</span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">suggest_workflow</span><span class="p">()</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ── All DwC terms ──
@@ -478,7 +487,7 @@ again to see how our data is doing this time round.</p>
 Matched 5 of 12 column names to DwC terms:
 
 ✓ Matched: eventID, parentEventID, eventType, Event, samplingProtocol
-✗ Unmatched: Longitude, Latitude, Species, Collection_date, number_birds, date, location
+✗ Unmatched: Latitude, Species, number_birds, Longitude, Collection_date, date, location
 
 ── Minimum required DwC terms occurrences ──
 
@@ -567,7 +576,7 @@ corella.use_datetime()
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-event-specific-information">Adding event-specific information</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#event-hierarchy">Event hierarchy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#event-hierarchy-example">Event hierarchy example</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-check-data-and-suggest-workflow-say-now">what does <code class="docutils literal notranslate"><span class="pre">check_data</span></code> and <code class="docutils literal notranslate"><span class="pre">suggest_workflow</span></code> say now?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-functions">Other functions</a></li>
 </ul>

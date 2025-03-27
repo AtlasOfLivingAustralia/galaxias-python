@@ -11,53 +11,41 @@ What Does A Passing Events Dataset Look Like?
 
         >>> # this is each individual step as a command
         >>> import pandas as pd
-        >>> import corella
+        >>> import galaxias
         >>>
         >>> # first, events
-        >>> events = pd.read_csv('<NAME-OF-EVENTSE>.csv')
-        >>> events = corella.use_events(dataframe=events,
-        ...                             eventType='type',
-        ...                             samplingProtocol='Observation',
-        ...                             Event='name',
-        ....                            event_hierarchy={1: "Site Visit", 2: "Sample", 3: "Observation"})
-        >>> events = corella.use_datetime(dataframe=events,
-        ...                               eventDate='date',
-        ...                               string_to_datetime=True,
-        ...                               yearfirst=False,
-        ...                               dayfirst=True)
-        >>> events = corella.use_locality(dataframe=events,
-        >>>                               locality='location')
-        >>>
-        >>> # now, use_occurrences
-        >>> occ = pd.read_csv('<NAME-OF-OCCURRENCES>.csv')
-        >>> occ = corella.use_scientific_name(dataframe=occ,
-        ...                                   scientificName='Species')
-        >>> occ = corella.use_coordinates(dataframe=occ,
-        ...                               decimalLatitude='Latitude',
-        ...                               decimalLongitude='Longitude',
-        ...                               geodeticDatum='WGS84',
-        ...                               coordinatePrecision=0.1)
-        >>> occ = corella.use_datetime(dataframe=occ,
-        ...                            eventDate='Collection_date',
-        ...                            string_to_datetime=True,
-        ...                            yearfirst=False,
-        ...                            dayfirst=True)
-        >>> corella.use_occurrences(dataframe=occ,
-        ...                         add_eventID=True,
-        ...                         occurrenceStatus='PRESENT',
-        ...                         occurrenceID=True,
-        ...                         add_eventID=True,
-        ...                         events=events,
-        ...                         eventType='Observation')
+        >>> my_dwca=galaxias.dwca(occurrences="galaxias_user_guide/data/occurrences_event_nomulti.csv",
+        ...                       events="galaxias_user_guide/data/events_use.csv")
+        >>> my_dwca.use_events(eventType='type',
+        ...                    samplingProtocol='Observation',
+        ...                    Event='name',
+        ...                    event_hierarchy={1: "Site Visit", 2: "Sample", 3: "Observation"})
+        >>> my_dwca.occurrences['Latitude'] = pd.to_numeric(my_dwca.occurrences['Latitude'],errors='coerce')
+        >>> my_dwca.occurrences['Longitude'] = pd.to_numeric(my_dwca.occurrences['Longitude'],errors='coerce')
+        >>> my_dwca.use_datetime(check_events=True,eventDate='date',string_to_datetime=True,yearfirst=False,dayfirst=True)
+        >>> my_dwca.use_occurrences(basisOfRecord='HumanObservation',
+        ...                         occurrenceID=True)
+        >>> my_dwca.use_scientific_name(scientificName='Species')
+        >>> my_dwca.use_coordinates(decimalLatitude='Latitude',
+        ...                         decimalLongitude='Longitude',
+        ...                         geodeticDatum='WGS84',
+        ...                         coordinatePrecision=0.1)
+        >>> my_dwca.use_datetime(eventDate='Collection_date',
+        ...                     string_to_datetime=True,
+        ...                     yearfirst=False,
+        ...                     dayfirst=True)
+        >>> my_dwca.use_occurrences(add_eventID=True,eventType='Observation')
+        >>> my_dwca.use_abundance(individualCount='number_birds')
+        >>> my_dwca.use_locality(check_events = True, locality='location')
+        >>> my_dwca.check_dataset()
 
-Before you write your metadata using ``paperbark`` or package your Darwin Core Archive using ``galaxias``, 
+Before you write your metadata using ``delma`` or package your Darwin Core Archive using ``galaxias``, 
 run ``check_data()`` for the final time.
 
 .. prompt:: python
 
-    >> corella.check_data(occurrences=occ,
-    ...                   events=events)
+    >> galaxias.check_data()
 
 If everything passes, you will get the following output:
 
-#.. program-output:: python corella_user_guide/occurrences/events_workflow.py 14
+.. program-output:: python galaxias_user_guide/longitudinal_studies/events_workflow.py 16

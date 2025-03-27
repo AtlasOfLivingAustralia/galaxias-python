@@ -8,11 +8,11 @@ use_locality
 One of the functions you can use to check your data is ``use_locality()``.  
 This function aims to check if you have the following:
 
-- ``continent``: the latitude of your observation
-- ``country``: the latitude of your observation
-- ``countryCode``: the coordinate reference system (CRS) of your latitude and longitude
-- ``stateProvince``: uncertainty of your measurements in meters
-- ``locality``: uncertainty of your measurements in decimal degrees
+- ``continent``: the continent of your observation
+- ``country``: the country of your observation
+- ``countryCode``: the country code of your observation
+- ``stateProvince``: the state or province of your observation
+- ``locality``: locality name of your observation
 
 If you haven't read in our example dataset in the initial data cleaning page, 
 here is an example and how to read it in:

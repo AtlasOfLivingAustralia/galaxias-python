@@ -29,10 +29,23 @@ we need to specify the name of the event, which is the column headed ``name``.
 
 .. program-output:: python galaxias_user_guide/longitudinal_studies/events_workflow.py 4
 
-Next.
+The reason that the ``events`` file needs these IDs is because each event may have multiple things happening 
+during it.  For example, when you visit a site (highest order of event happening), you usually take what is 
+termed a 'sample' (second highest order of event happening).  After this, there are many activities that can 
+constitute a 'sample': 
 
-Event hierarchy
+- take measurements of environment (ambient temperature, for example)
+- quantify species traits
+- observe what species are at the site
+
+The way to quantify this in your ``events`` file is via an "Event Hierarchy".
+
+Event hierarchy example
 -----------------------------------------
+
+For our example, we are only concerned with observations, or what species were observed at the site.  
+``galaxias`` takes a dictionary with each event given a ranking: ``1`` for the highest 'order' event, 
+``2`` for the second highest event, and so on.
 
 .. prompt:: python
 
@@ -53,8 +66,7 @@ Now, we can check that our data column do comply with the Darwin Core standard.
 
 .. prompt:: python
 
-    >>> my_dwca.check_data(occurrences=occurrences,
-    ...                    events=events)
+    >>> my_dwca.check_data()
 
 .. program-output:: python galaxias_user_guide/longitudinal_studies/events_workflow.py 6
 
@@ -63,7 +75,7 @@ again to see how our data is doing this time round.
 
 .. prompt:: python
 
-    >>> my_dwca.suggest_workflow(events=events)
+    >>> my_dwca.suggest_workflow()
 
 .. program-output:: python galaxias_user_guide/longitudinal_studies/events_workflow.py 7
 

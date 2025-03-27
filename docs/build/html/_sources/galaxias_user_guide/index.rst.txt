@@ -37,7 +37,32 @@ Preparing data
 Preparing metadata
 ---------------------------
 
-Something here.
+.. grid:: 1 2 2 2
+    :gutter: 4
+    
+    .. grid-item-card:: 
+        :class-card: sd-text-black
+        :link: template_vs_extant_xml.html
+        :text-align: center
+
+        .. raw:: html
+            :file: ../../source/_static/icons/user_guide.svg
+
+        **Choosing Metadata Template**
+
+        What template should I use?
+
+    .. grid-item-card:: 
+        :link: longitudinal_studies/index.html
+        :class-card: sd-text-black
+        :text-align: center
+
+        .. raw:: html
+            :file: ../../source/_static/icons/user_guide.svg
+                
+        **Creating the `eml.xml` file** 
+
+        How do I create the ``eml.xml`` file?
 
 
 

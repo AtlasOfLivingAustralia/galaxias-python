@@ -7,7 +7,7 @@ Preparing your Darwin Core Archive can be relatively straightforward.
 However, this also assumes that you have already prepared your data 
 and metadata to comply with Darwin Core standards.  If you have not done 
 this, please see our Darwin Core data package, `corella <corella.ala.org.au/Python>`_ 
-and `paperbark <paperbark.ala.org.au/Python>`_.
+and `delma <delma.ala.org.au/Python>`_.
 
 Initialising a Darwin Core Archive
 --------------------------------------

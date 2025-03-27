@@ -394,11 +394,11 @@ document.write(`
 <p>One of the functions you can use to check your data is <code class="docutils literal notranslate"><span class="pre">use_locality()</span></code>.
 This function aims to check if you have the following:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">continent</span></code>: the latitude of your observation</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">country</span></code>: the latitude of your observation</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">countryCode</span></code>: the coordinate reference system (CRS) of your latitude and longitude</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">stateProvince</span></code>: uncertainty of your measurements in meters</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">locality</span></code>: uncertainty of your measurements in decimal degrees</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">continent</span></code>: the continent of your observation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">country</span></code>: the country of your observation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">countryCode</span></code>: the country code of your observation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stateProvince</span></code>: the state or province of your observation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">locality</span></code>: locality name of your observation</p></li>
 </ul>
 <p>If you haven’t read in our example dataset in the initial data cleaning page,
 here is an example and how to read it in:</p>
@@ -425,9 +425,9 @@ in your csv file:</p>
 <h1>specifying <code class="docutils literal notranslate"><span class="pre">continent</span></code> and <code class="docutils literal notranslate"><span class="pre">country</span></code><a class="headerlink" href="#specifying-continent-and-country" title="Link to this heading">#</a></h1>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">use_locality</span><span class="p">(</span><span class="n">continent</span><span class="o">=</span><span class="s1">&#39;Australia&#39;</span><span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File &quot;/Users/buy003/Documents/GitHub/galaxias-python/docs/source/galaxias_user_guide/independent_observations/data_cleaning.py&quot;, line 167, in &lt;module&gt;
+  File &quot;/Users/buy003/Documents/GitHub/galaxias-python/docs/source/galaxias_user_guide/independent_observations/data_cleaning.py&quot;, line 166, in &lt;module&gt;
     temp_dwca.use_locality(continent=&#39;Australia&#39;)
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/galaxias/dwca_build.py&quot;, line 536, in use_locality
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/galaxias/dwca_build.py&quot;, line 547, in use_locality
     self.occurrences = corella.use_locality(dataframe=self.occurrences,continent=continent,
                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_locality.py&quot;, line 69, in use_locality

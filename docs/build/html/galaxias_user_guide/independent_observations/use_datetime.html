@@ -412,9 +412,9 @@ span.prompt1:before {
 </style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">use_datetime</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span><span class="n">eventDate</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File &quot;/Users/buy003/Documents/GitHub/galaxias-python/docs/source/galaxias_user_guide/independent_observations/data_cleaning.py&quot;, line 114, in &lt;module&gt;
+  File &quot;/Users/buy003/Documents/GitHub/galaxias-python/docs/source/galaxias_user_guide/independent_observations/data_cleaning.py&quot;, line 113, in &lt;module&gt;
     my_dwca.use_datetime(eventDate=&#39;Collection_date&#39;)
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/galaxias/dwca_build.py&quot;, line 468, in use_datetime
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/galaxias/dwca_build.py&quot;, line 471, in use_datetime
     self.occurrences = corella.use_datetime(dataframe=self.occurrences,eventDate=eventDate,year=year,month=month,
                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_datetime.py&quot;, line 108, in use_datetime
@@ -466,7 +466,6 @@ Errors: 0 | Passes: 1
 ✗ Data does not meet minimum Darwin core requirements
 Use corella.suggest_workflow()
 
-Your data does not comply with the Darwin Core standard.  Please run galaxias.suggest_workflow().
 None
 </pre></div>
 </div>
@@ -480,7 +479,7 @@ again to see how our data is doing this time round.</p>
 Matched 1 of 4 column names to DwC terms:
 
 ✓ Matched: eventDate
-✗ Unmatched: Latitude, Longitude, Species
+✗ Unmatched: Longitude, Species, Latitude
 
 ── Minimum required DwC terms occurrences ──
 

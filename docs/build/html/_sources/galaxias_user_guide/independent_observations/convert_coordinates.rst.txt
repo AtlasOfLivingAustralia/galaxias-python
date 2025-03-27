@@ -55,7 +55,7 @@ like the following example:
     ...     occ.at[i, 'decimalLongitude'] = round(parse(row['decimalLongitude']),2)
     >>> occ
 
-.. program-output:: python corella_user_guide/occurrences/convert_coords.py
+.. program-output:: python galaxias_user_guide/independent_observations/convert_coords.py
 
 Here, we have converted a ``pandas DataFrame`` containing coordinates in degrees minutes seconds 
 to decimal degrees, and have rounded the answer to two decimal places.  This is to ensure 

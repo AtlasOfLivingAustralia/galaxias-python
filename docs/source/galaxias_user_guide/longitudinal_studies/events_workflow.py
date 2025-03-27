@@ -15,12 +15,14 @@ pd.set_option('display.expand_frame_repr', False)
 pd.set_option('max_colwidth', None) #;
 
 # --------------------------------------------------------
-# Part 1
+# Initialising and suggesting workflow
 # --------------------------------------------------------
 
 # read in data
 my_dwca=galaxias.dwca(occurrences="galaxias_user_guide/data/occurrences_event_nomulti.csv",
-                      events="galaxias_user_guide/data/events_use.csv")
+                    events="galaxias_user_guide/data/events_use.csv",
+                    working_dir="dwca_data_events",
+                    print_notices=False)
 
 # generate initial data report and exit
 if stopping_point == "1":
@@ -30,6 +32,10 @@ if stopping_point == "1":
 if stopping_point == "2":
     my_dwca.suggest_workflow()
     sys.exit()
+
+# --------------------------------------------------------
+# Use events
+# --------------------------------------------------------
 
 if stopping_point == "4":
     my_dwca.use_events(eventType='type',samplingProtocol='Observation',Event='name')
@@ -54,25 +60,29 @@ if stopping_point == "7":
     my_dwca.suggest_workflow()
     sys.exit()
 
+# --------------------------------------------------------
+# use_datetime
+# --------------------------------------------------------
+
 if stopping_point == "8":
     my_dwca.use_datetime(check_events=True)
     import sys
     sys.exit()
 
 if stopping_point == "9":
-    my_dwca.use_datetime(check_events=True,eventDate='Collection_date')
+    my_dwca.use_datetime(check_events=True,eventDate='date')
     print(my_dwca.events.head())
     import sys
     sys.exit()
 
 if stopping_point == "10":
-    my_dwca.use_datetime(check_events=True,eventDate='Collection_date',string_to_datetime=True,yearfirst=False,dayfirst=True)
+    my_dwca.use_datetime(check_events=True,eventDate='date',string_to_datetime=True,yearfirst=False,dayfirst=True)
     print(my_dwca.events.head())
     import sys
     sys.exit()
 
 if stopping_point == "11":
-    my_dwca.use_datetime(check_events=True,eventDate='Collection_date',string_to_datetime=True,yearfirst=False,dayfirst=True)
+    my_dwca.use_datetime(check_events=True,eventDate='date',string_to_datetime=True,yearfirst=False,dayfirst=True)
     my_dwca.check_dataset()
     import sys
     sys.exit()
@@ -83,59 +93,74 @@ if stopping_point == "12":
     import sys
     sys.exit()
 
+# --------------------------------------------------------
+# adding eventID to occurrences
+# --------------------------------------------------------
+
 if stopping_point == "13":
-    events = my_dwca.use_events(dataframe=events,
-                             eventType='type',
-                             samplingProtocol='Observation',
-                             Event='name',
-                             event_hierarchy={1: "Site Visit", 2: "Sample", 3: "Observation"})
-    events = my_dwca.use_datetime(dataframe=events,eventDate='date',string_to_datetime=True,yearfirst=False,dayfirst=True)
-    occ = my_dwca.use_occurrences(dataframe=occ,
-                                  basisOfRecord='HumanObservation',
-                                  occurrenceStatus='PRESENT',
-                                  occurrenceID=True)
-    occ = my_dwca.use_scientific_name(dataframe=occ,
-                                      scientificName='Species')
-    occ = my_dwca.use_coordinates(dataframe=occ,
-                                  decimalLatitude='Latitude',
-                                  decimalLongitude='Longitude',
-                                  geodeticDatum='WGS84',
-                                  coordinatePrecision=0.1)
-    occ = my_dwca.use_datetime(dataframe=occ,
-                               eventDate='Collection_date',
-                               string_to_datetime=True,
-                               yearfirst=False,
-                               dayfirst=True)
-    print(my_dwca.use_occurrences(dataframe=occ,add_eventID=True,events=events,eventType='Observation'))
+    my_dwca.use_events(eventType='type',
+                       samplingProtocol='Observation',
+                       Event='name',
+                       event_hierarchy={1: "Site Visit", 2: "Sample", 3: "Observation"})
+    my_dwca.occurrences['Latitude'] = pd.to_numeric(my_dwca.occurrences['Latitude'],errors='coerce')
+    my_dwca.occurrences['Longitude'] = pd.to_numeric(my_dwca.occurrences['Longitude'],errors='coerce')
+    my_dwca.use_datetime(check_events=True,eventDate='date',string_to_datetime=True,yearfirst=False,dayfirst=True)
+    my_dwca.use_occurrences(basisOfRecord='HumanObservation',
+                            occurrenceStatus='PRESENT',
+                            occurrenceID=True)
+    my_dwca.use_scientific_name(scientificName='Species')
+    my_dwca.use_coordinates(decimalLatitude='Latitude',
+                            decimalLongitude='Longitude',
+                            geodeticDatum='WGS84',
+                            coordinatePrecision=0.1)
+    my_dwca.use_datetime(eventDate='Collection_date',
+                         string_to_datetime=True,
+                         yearfirst=False,
+                         dayfirst=True)
+    my_dwca.use_occurrences(add_eventID=True,
+                            eventType='Observation')
+    print(my_dwca.occurrences.head())
 
-if stopping_point == "14":
-    events = my_dwca.use_events(dataframe=events,
-                             eventType='type',
-                             samplingProtocol='Observation',
-                             Event='name',
-                             event_hierarchy={1: "Site Visit", 2: "Sample", 3: "Observation"})
-    events = my_dwca.use_datetime(dataframe=events,eventDate='date',string_to_datetime=True,yearfirst=False,dayfirst=True)
-    occ = my_dwca.use_occurrences(dataframe=occ,
-                                  basisOfRecord='HumanObservation',
-                                  occurrenceStatus='PRESENT',
-                                  occurrenceID=True,
-                                  add_eventID=True,
-                                  events=events,
-                                  eventType='Observation')
-    occ = my_dwca.use_scientific_name(dataframe=occ,
-                                      scientificName='Species')
-    occ = my_dwca.use_coordinates(dataframe=occ,
-                                  decimalLatitude='Latitude',
-                                  decimalLongitude='Longitude',
-                                  geodeticDatum='WGS84',
-                                  coordinatePrecision=0.1)
-    occ = my_dwca.use_datetime(dataframe=occ,
-                               eventDate='Collection_date',
-                               string_to_datetime=True,
-                               yearfirst=False,
-                               dayfirst=True)
-    print(my_dwca.check_dataset(occurrences=occ,events=events))
+# --------------------------------------------------------
+# use_abundance
+# --------------------------------------------------------
+if stopping_point == '14':
+    my_dwca.use_abundance(individualCount='number_birds')
+    print(my_dwca.occurrences.head())
 
+# --------------------------------------------------------
+# use_locality
+# --------------------------------------------------------
+if stopping_point == '15':
+    my_dwca.use_locality(check_events = True, locality='location')
+    print(my_dwca.events.head())
+# --------------------------------------------------------
+# Passing dataset
+# --------------------------------------------------------
+
+if stopping_point == "16":
+    my_dwca.use_events(eventType='type',
+                       samplingProtocol='Observation',
+                       Event='name',
+                       event_hierarchy={1: "Site Visit", 2: "Sample", 3: "Observation"})
+    my_dwca.occurrences['Latitude'] = pd.to_numeric(my_dwca.occurrences['Latitude'],errors='coerce')
+    my_dwca.occurrences['Longitude'] = pd.to_numeric(my_dwca.occurrences['Longitude'],errors='coerce')
+    my_dwca.use_datetime(check_events=True,eventDate='date',string_to_datetime=True,yearfirst=False,dayfirst=True)
+    my_dwca.use_occurrences(basisOfRecord='HumanObservation',
+                            occurrenceID=True)
+    my_dwca.use_scientific_name(scientificName='Species')
+    my_dwca.use_coordinates(decimalLatitude='Latitude',
+                            decimalLongitude='Longitude',
+                            geodeticDatum='WGS84',
+                            coordinatePrecision=0.1)
+    my_dwca.use_datetime(eventDate='Collection_date',
+                         string_to_datetime=True,
+                         yearfirst=False,
+                         dayfirst=True)
+    my_dwca.use_occurrences(add_eventID=True,eventType='Observation')
+    my_dwca.use_abundance(individualCount='number_birds')
+    my_dwca.use_locality(check_events = True, locality='location')
+    my_dwca.check_dataset()
 
 # temp_emof = my_dwca.emof.rename(
 #     columns = {

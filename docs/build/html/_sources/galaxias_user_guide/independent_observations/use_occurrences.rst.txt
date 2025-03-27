@@ -10,23 +10,6 @@ This function aims to check that you have the following Darwin Core Vocabulary T
 - ``occurrenceID`` or ``catalogNumber`` or ``recordNumber``: a unique identifier for the record (only one of these is necessary)
 - ``occurrenceStatus`` (OPTIONAL): whether a species is present or absent.  Not required for data submission.
 
-Initial run of ``use_occurrences``
----------------------------------------
-
-Initally, let's run ``use_occurrences()`` to see if any of our columns match the Darwin 
-Core Vocabulary mentioned above:
-
-.. prompt:: python
-
-    >>> my_archive.use_occurrences()
-
-.. program-output:: python galaxias_user_guide/independent_observations/data_cleaning.py 3
-
-Here, we can see that we don't have any column names matching ``basisOfRecord``, ``occurrenceStatus``, 
-``occurrenceID``, ``catalogNumber`` or ``recordNumber``.  Luckily, there are options in ``use_occurrences()`` 
-that allow the user to specify a column of data as one of the column names, or to set a default value for 
-the column.
-
 Specifying ``basisOfRecord`` value
 ---------------------------------------
 
@@ -52,7 +35,7 @@ and it will, by default, set the value of ``basisOfRecord`` for the whole datafr
     ... )
     >>> my_archive.occurrences.head()    
 
-.. program-output:: python galaxias_user_guide/independent_observations/data_cleaning.py 5
+.. program-output:: python galaxias_user_guide/independent_observations/data_cleaning.py 3
 
 How to generate occurrence IDs 
 ---------------------------------------
@@ -77,7 +60,7 @@ will be generated for you.
     ... )
     >>> my_archive.occurrences.head()
 
-.. program-output:: python galaxias_user_guide/independent_observations/data_cleaning.py 6
+.. program-output:: python galaxias_user_guide/independent_observations/data_cleaning.py 4
 
 specify ``occurrenceStatus`` column
 ---------------------------------------
@@ -100,7 +83,7 @@ Darwin Core standard.
     ... )
     >>> my_archive.occurrences.head()
 
-.. program-output:: python galaxias_user_guide/independent_observations/data_cleaning.py 7
+.. program-output:: python galaxias_user_guide/independent_observations/data_cleaning.py 5
 
 what does ``check_data`` and ``suggest_workflow`` say now? 
 -------------------------------------------------------------
@@ -126,7 +109,7 @@ Now, we can check that this new dataframe complies with the Darwin Core standard
 
     >>> my_archive.check_dataset()
 
-.. program-output:: python galaxias_user_guide/independent_observations/data_cleaning.py 8
+.. program-output:: python galaxias_user_guide/independent_observations/data_cleaning.py 6
 
 However, since we don't have all of the required columns, we can run ``suggest_workflow()`` 
 again to see what other functions we can use to check our data:
@@ -135,7 +118,7 @@ again to see what other functions we can use to check our data:
 
     >>> my_archive.suggest_workflow()
 
-.. program-output:: python galaxias_user_guide/independent_observations/data_cleaning.py 9
+.. program-output:: python galaxias_user_guide/independent_observations/data_cleaning.py 7
 
 Other functions
 ---------------------------------------

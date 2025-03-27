@@ -85,8 +85,6 @@ Other functions
 To learn more about how to use these functions, go to 
 
 - `use_events <use_events.html>`_
-- `use_coordinates <use_coordinates.html>`_
-- `use_scientific_name <use_scientific_name.html>`_
 
 Optional functions:
 

@@ -15,13 +15,28 @@ Before Processing Data
 
 - :ref:`How_to_Structure_Events`
 
-Required 
------------
+Formatting Events 
+-------------------------
 
-- :ref:`Initial_Data_Check_Events`
-- :ref:`use_events`
-- :ref:`use_datetime`
-- :ref:`adding_eventID_occurrences`
+.. grid:: 1 2 2 2
+    :gutter: 4
+
+    .. grid-item:: **Required**
+
+         - :ref:`Initial_Data_Check_Events`
+         - :ref:`use_events`
+         - :ref:`use_datetime`
+         - :ref:`adding_eventID_occurrences`
+
+    .. grid-item:: **Optional**
+
+        - :ref:`use_abundance_events`
+        - :ref:`use_locality_events`
+
+Example of Passing Dataset 
+----------------------------
+
+- :ref:`What Does A Passing Events Dataset Look Like?`
 
 .. toctree::
    :maxdepth: 5
@@ -33,8 +48,6 @@ Required
    use_events
    use_datetime
    adding_eventID_occurrences
-
-Example of Passing Dataset 
-----------------------------
-
-- :ref:`What Does A Passing Events Dataset Look Like?`
+   use_abundance_events
+   use_locality_events
+   passing_dataset
