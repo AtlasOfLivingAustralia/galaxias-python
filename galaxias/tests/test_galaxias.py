@@ -88,64 +88,64 @@ def test_data_directory_creation_specific_metadata():
     assert os.path.exists('dwca_data_occ/metadata.md')
 
 # -------------------------------------------------------------------------------------------------
-# use_* function tests
+# set_* function tests
 # -------------------------------------------------------------------------------------------------
 
-def test_use_occurrences_catch_error():
+def test_set_occurrences_catch_error():
     occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc_clean.csv',working_dir='dwca_data_occ')
     with pytest.raises(Exception) as e_info:
-        occ_dwca.use_occurrences()
+        occ_dwca.set_occurrences()
     assert "No Darwin Core" in str(e_info.value)
     
-def test_use_occurrences_add_bor_correct():
+def test_set_occurrences_add_bor_correct():
     occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc_clean.csv',working_dir='dwca_data_occ')
-    temp = occ_dwca.use_occurrences(basisOfRecord='HumanObservation')
+    temp = occ_dwca.set_occurrences(basisOfRecord='HumanObservation')
     assert temp is None
 
-def test_use_occurrences_add_bor_incorrect():
+def test_set_occurrences_add_bor_incorrect():
     occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc_clean.csv',working_dir='dwca_data_occ')
     with pytest.raises(Exception) as e_info:
-        occ_dwca.use_occurrences(basisOfRecord='HumaObservation')
+        occ_dwca.set_occurrences(basisOfRecord='HumaObservation')
     assert "There are invalid basisOfRecord values." in str(e_info.value)
 
-def test_use_occurrences_rename_bor():
+def test_set_occurrences_rename_bor():
     occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc_rename.csv',working_dir='dwca_data_occ')
     occ_dwca.occurrences['bor'] = 'HumanObservation'
-    temp = occ_dwca.use_occurrences(basisOfRecord=occ_dwca.occurrences['bor'])
+    temp = occ_dwca.set_occurrences(basisOfRecord=occ_dwca.occurrences['bor'])
     assert temp is None
 
-def test_use_occurrences_rename_occID():
+def test_set_occurrences_rename_occID():
     occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc_rename.csv',working_dir='dwca_data_occ')
     occ_dwca.occurrences['id'] = [i for i in range(occ_dwca.occurrences.shape[0])]
-    temp = occ_dwca.use_occurrences(occurrenceID = occ_dwca.occurrences['id'])
+    temp = occ_dwca.set_occurrences(occurrenceID = occ_dwca.occurrences['id'])
     assert temp is None
 
-def test_use_occurrences_create_unique_ids():
+def test_set_occurrences_create_unique_ids():
     occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc.csv',working_dir='dwca_data_occ')
-    temp = occ_dwca.use_occurrences(occurrenceID = True)
+    temp = occ_dwca.set_occurrences(occurrenceID = True)
     assert temp is None
 
-def test_use_scientific_name_rename():
+def test_set_scientific_name_rename():
     occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc.csv',working_dir='dwca_data_occ')
-    temp = occ_dwca.use_scientific_name(scientific_name=occ_dwca.occurrences['Species'])
+    temp = occ_dwca.set_scientific_name(scientific_name=occ_dwca.occurrences['Species'])
     assert temp is None
 
-def test_use_datetime_format_error():
+def test_set_datetime_format_error():
     occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc.csv',working_dir='dwca_data_occ')
     with pytest.raises(Exception) as e_info:
-        occ_dwca.use_datetime(eventDate=occ_dwca.occurrences['Collection_date'])
+        occ_dwca.set_datetime(eventDate=occ_dwca.occurrences['Collection_date'])
     assert "Data is not in datetime format" in str(e_info.value)
 
-def test_use_datetime_string_to_datetime():
+def test_set_datetime_string_to_datetime():
     occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc.csv',working_dir='dwca_data_occ')
-    temp = occ_dwca.use_datetime(eventDate=occ_dwca.occurrences['Collection_date'],
+    temp = occ_dwca.set_datetime(eventDate=occ_dwca.occurrences['Collection_date'],
                                  string_to_datetime=True,
                                  orig_format='%d/%m/%Y')
     assert temp is None
 
-def test_use_coordinates():
+def test_set_coordinates():
     occ_dwca = galaxias.dwca(occurrences='data_for_testing/occurrences_dwc.csv',working_dir='dwca_data_occ')
-    temp = occ_dwca.use_coordinates(decimalLatitude=occ_dwca.occurrences['Latitude'],
+    temp = occ_dwca.set_coordinates(decimalLatitude=occ_dwca.occurrences['Latitude'],
                                     decimalLongitude=occ_dwca.occurrences['Longitude'])
     assert temp is None
 

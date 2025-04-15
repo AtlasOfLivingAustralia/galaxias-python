@@ -14,21 +14,25 @@ These are all the functions for your ``occurrences.txt`` file.
     .. grid-item:: **Required**
 
         - :ref:`Initial Data Check`
-        - :ref:`use_occurrences`
-        - :ref:`use_scientific_name`
-        - :ref:`use_coordinates`
-        - :ref:`use_datetime`
+        - :ref:`set_coordinates`
+        - :ref:`set_datetime`
+        - :ref:`set_occurrences`
+        - :ref:`set_scientific_name`
 
     .. grid-item:: **Optional**
 
-        - :ref:`use_abundance`
-        - :ref:`use_locality`
         - :ref:`convert_coordinates`
+        - :ref:`Creating Unique IDs`
+        - :ref:`set_abundance`
+        - :ref:`set_collection`
+        - :ref:`set_individual_traits`
+        - :ref:`set_license`
+        - :ref:`set_locality`
+        - :ref:`set_taxonomy`
 
 Example of Passing Dataset 
 ----------------------------
 - :ref:`What Does A Passing Occurrences Dataset Look Like?`
-
 
 .. toctree::
    :maxdepth: 5
@@ -36,11 +40,16 @@ Example of Passing Dataset
    :hidden:
 
    Initial_Data_Check
-   use_occurrences
-   use_scientific_name
-   use_coordinates
-   use_datetime
-   use_abundance
-   use_locality
+   set_coordinates
+   set_datetime
+   set_occurrences
+   set_scientific_name
    convert_coordinates
+   Creating Unique IDs
+   set_abundance
+   set_collection
+   set_individual_traits
+   set_license
+   set_locality
+   set_taxonomy
    passing_dataset

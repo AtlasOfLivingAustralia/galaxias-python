@@ -21,5 +21,5 @@ If you would prefer to follow along using our example datasets, go to the `event
 
 To get started, choose one of the following pages:
 
-- `use_datetime <use_datetime.html>`_
-- `use_events <use_events.html>`_
+- `set_datetime <set_datetime.html>`_
+- `set_events <set_events.html>`_

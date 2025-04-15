@@ -409,60 +409,48 @@ span.prompt1:before {
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="c1"># first, events</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">=</span><span class="n">galaxias</span><span class="o">.</span><span class="n">dwca</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="s2">&quot;galaxias_user_guide/data/occurrences_event_nomulti.csv&quot;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                       <span class="n">events</span><span class="o">=</span><span class="s2">&quot;galaxias_user_guide/data/events_use.csv&quot;</span><span class="p">)</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">use_events</span><span class="p">(</span><span class="n">eventType</span><span class="o">=</span><span class="s1">&#39;type&#39;</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">set_events</span><span class="p">(</span><span class="n">eventType</span><span class="o">=</span><span class="s1">&#39;type&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                    <span class="n">samplingProtocol</span><span class="o">=</span><span class="s1">&#39;Observation&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                    <span class="n">Event</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                    <span class="n">event_hierarchy</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;Site Visit&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;Sample&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s2">&quot;Observation&quot;</span><span class="p">})</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span><span class="p">[</span><span class="s1">&#39;Latitude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span><span class="p">[</span><span class="s1">&#39;Latitude&#39;</span><span class="p">],</span><span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span><span class="p">[</span><span class="s1">&#39;Longitude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span><span class="p">[</span><span class="s1">&#39;Longitude&#39;</span><span class="p">],</span><span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">use_datetime</span><span class="p">(</span><span class="n">check_events</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">eventDate</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="n">string_to_datetime</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">yearfirst</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">dayfirst</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">use_occurrences</span><span class="p">(</span><span class="n">basisOfRecord</span><span class="o">=</span><span class="s1">&#39;HumanObservation&#39;</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">set_datetime</span><span class="p">(</span><span class="n">check_events</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">eventDate</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="n">string_to_datetime</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">yearfirst</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">dayfirst</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">set_occurrences</span><span class="p">(</span><span class="n">basisOfRecord</span><span class="o">=</span><span class="s1">&#39;HumanObservation&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                         <span class="n">occurrenceID</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">use_scientific_name</span><span class="p">(</span><span class="n">scientificName</span><span class="o">=</span><span class="s1">&#39;Species&#39;</span><span class="p">)</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">use_coordinates</span><span class="p">(</span><span class="n">decimalLatitude</span><span class="o">=</span><span class="s1">&#39;Latitude&#39;</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">set_scientific_name</span><span class="p">(</span><span class="n">scientificName</span><span class="o">=</span><span class="s1">&#39;Species&#39;</span><span class="p">)</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">set_coordinates</span><span class="p">(</span><span class="n">decimalLatitude</span><span class="o">=</span><span class="s1">&#39;Latitude&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                         <span class="n">decimalLongitude</span><span class="o">=</span><span class="s1">&#39;Longitude&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                         <span class="n">geodeticDatum</span><span class="o">=</span><span class="s1">&#39;WGS84&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                         <span class="n">coordinatePrecision</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">use_datetime</span><span class="p">(</span><span class="n">eventDate</span><span class="o">=</span><span class="s1">&#39;Collection_date&#39;</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">set_datetime</span><span class="p">(</span><span class="n">eventDate</span><span class="o">=</span><span class="s1">&#39;Collection_date&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                     <span class="n">string_to_datetime</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                     <span class="n">yearfirst</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                     <span class="n">dayfirst</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">use_occurrences</span><span class="p">(</span><span class="n">add_eventID</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">eventType</span><span class="o">=</span><span class="s1">&#39;Observation&#39;</span><span class="p">)</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">use_abundance</span><span class="p">(</span><span class="n">individualCount</span><span class="o">=</span><span class="s1">&#39;number_birds&#39;</span><span class="p">)</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">use_locality</span><span class="p">(</span><span class="n">check_events</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">locality</span><span class="o">=</span><span class="s1">&#39;location&#39;</span><span class="p">)</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">set_occurrences</span><span class="p">(</span><span class="n">add_eventID</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">eventType</span><span class="o">=</span><span class="s1">&#39;Observation&#39;</span><span class="p">)</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">set_abundance</span><span class="p">(</span><span class="n">individualCount</span><span class="o">=</span><span class="s1">&#39;number_birds&#39;</span><span class="p">)</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">set_locality</span><span class="p">(</span><span class="n">check_events</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">locality</span><span class="o">=</span><span class="s1">&#39;location&#39;</span><span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">check_dataset</span><span class="p">()</span></span>
 </pre></div></div></div>
 </details><p>Before you write your metadata using <code class="docutils literal notranslate"><span class="pre">delma</span></code> or package your Darwin Core Archive using <code class="docutils literal notranslate"><span class="pre">galaxias</span></code>,
 run <code class="docutils literal notranslate"><span class="pre">check_data()</span></code> for the final time.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;</span> <span class="n">galaxias</span><span class="o">.</span><span class="n">check_data</span><span class="p">()</span></span>
 </pre></div></div><p>If everything passes, you will get the following output:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  Number of Errors  Pass/Fail    Column name
-------------------  -----------  -------------------
-                 0  ✓            occurrenceID
-                 0  ✓            eventID
-                 0  ✓            scientificName
-                 0  ✓            decimalLatitude
-                 0  ✓            decimalLongitude
-                 0  ✓            eventDate
-                 0  ✓            individualCount
-                 0  ✓            basisOfRecord
-                 0  ✓            geodeticDatum
-                 0  ✓            coordinatePrecision
-                 0  ✓            eventID
-                 0  ✓            parentEventID
-                 0  ✓            eventType
-                 0  ✓            locality
-                 0  ✓            eventDate
-                 0  ✓            Event
-                 0  ✓            samplingProtocol
-
-
-══ Results ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
-
-
-Errors: 0 | Passes: 17
-
-✓ Data meets minimum Darwin core requirements
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
+  File &quot;/Users/buy003/Documents/GitHub/galaxias-python/docs/source/galaxias_user_guide/longitudinal_studies/events_workflow.py&quot;, line 145, in &lt;module&gt;
+    my_dwca.set_events(eventType=&#39;type&#39;,
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/galaxias/dwca_build.py&quot;, line 633, in set_events
+    self.events = corella.set_events(dataframe=self.events,eventID=eventID,parentEventID=parentEventID,
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/set_events.py&quot;, line 117, in set_events
+    dataframe=generate_eventID_parentEventID(dataframe=dataframe,event_hierarchy=event_hierarchy,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/generate_eventID_parentEventID.py&quot;, line 36, in generate_eventID_parentEventID
+    new_dataframe = add_unique_IDs(dataframe=new_dataframe,column_name=&#39;eventID&#39;,
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/add_unique_IDs.py&quot;, line 110, in add_unique_IDs
+    raise ValueError(&quot;Please specify whether or not you want a random ID, sequential ID or composite ID.&quot;)
+ValueError: Please specify whether or not you want a random ID, sequential ID or composite ID.
 </pre></div>
 </div>
 </section>

@@ -53,7 +53,7 @@ Preparing metadata
         What template should I use?
 
     .. grid-item-card:: 
-        :link: longitudinal_studies/index.html
+        :link: writing_eml_xml.html
         :class-card: sd-text-black
         :text-align: center
 

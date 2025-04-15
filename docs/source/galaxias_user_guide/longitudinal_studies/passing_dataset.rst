@@ -16,27 +16,27 @@ What Does A Passing Events Dataset Look Like?
         >>> # first, events
         >>> my_dwca=galaxias.dwca(occurrences="galaxias_user_guide/data/occurrences_event_nomulti.csv",
         ...                       events="galaxias_user_guide/data/events_use.csv")
-        >>> my_dwca.use_events(eventType='type',
+        >>> my_dwca.set_events(eventType='type',
         ...                    samplingProtocol='Observation',
         ...                    Event='name',
         ...                    event_hierarchy={1: "Site Visit", 2: "Sample", 3: "Observation"})
         >>> my_dwca.occurrences['Latitude'] = pd.to_numeric(my_dwca.occurrences['Latitude'],errors='coerce')
         >>> my_dwca.occurrences['Longitude'] = pd.to_numeric(my_dwca.occurrences['Longitude'],errors='coerce')
-        >>> my_dwca.use_datetime(check_events=True,eventDate='date',string_to_datetime=True,yearfirst=False,dayfirst=True)
-        >>> my_dwca.use_occurrences(basisOfRecord='HumanObservation',
+        >>> my_dwca.set_datetime(check_events=True,eventDate='date',string_to_datetime=True,yearfirst=False,dayfirst=True)
+        >>> my_dwca.set_occurrences(basisOfRecord='HumanObservation',
         ...                         occurrenceID=True)
-        >>> my_dwca.use_scientific_name(scientificName='Species')
-        >>> my_dwca.use_coordinates(decimalLatitude='Latitude',
+        >>> my_dwca.set_scientific_name(scientificName='Species')
+        >>> my_dwca.set_coordinates(decimalLatitude='Latitude',
         ...                         decimalLongitude='Longitude',
         ...                         geodeticDatum='WGS84',
         ...                         coordinatePrecision=0.1)
-        >>> my_dwca.use_datetime(eventDate='Collection_date',
+        >>> my_dwca.set_datetime(eventDate='Collection_date',
         ...                     string_to_datetime=True,
         ...                     yearfirst=False,
         ...                     dayfirst=True)
-        >>> my_dwca.use_occurrences(add_eventID=True,eventType='Observation')
-        >>> my_dwca.use_abundance(individualCount='number_birds')
-        >>> my_dwca.use_locality(check_events = True, locality='location')
+        >>> my_dwca.set_occurrences(add_eventID=True,eventType='Observation')
+        >>> my_dwca.set_abundance(individualCount='number_birds')
+        >>> my_dwca.set_locality(check_events = True, locality='location')
         >>> my_dwca.check_dataset()
 
 Before you write your metadata using ``delma`` or package your Darwin Core Archive using ``galaxias``, 

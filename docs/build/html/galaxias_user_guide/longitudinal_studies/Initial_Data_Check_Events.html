@@ -437,7 +437,7 @@ are the results of this particular dataset:</p>
 Matched 0 of 9 column names to DwC terms:
 
 ✓ Matched: 
-✗ Unmatched: Longitude, Latitude, Species, number_birds, Collection_date, date, type, name, location
+✗ Unmatched: Collection_date, Latitude, number_birds, Longitude, Species, name, location, date, type
 
 ── Minimum required DwC terms occurrences ──
 
@@ -467,25 +467,25 @@ Date of Event          -                  eventDate
 
 To make your occurrences Darwin Core compliant, use the following workflow:
 
-corella.use_occurrences()
-corella.use_scientific_name()
-corella.use_coordinates()
-corella.use_datetime()
+corella.set_occurrences()
+corella.set_scientific_name()
+corella.set_coordinates()
+corella.set_datetime()
 
-Additional functions: use_abundance(), use_locality()
+Additional functions: set_abundance(), set_collection(), set_individual_traits(), set_license(), set_locality(), set_taxonomy()
 
 ── Events ──
 
 To make your events Darwin Core compliant, use the following workflow:
 
-corella.use_events()
-corella.use_datetime()
+corella.set_events()
+corella.set_datetime()
 </pre></div>
 </div>
 <p>To learn more about how to use these functions, go to</p>
 <ul class="simple">
-<li><p><a class="reference external" href="use_events.html">use_events</a></p></li>
-<li><p><a class="reference external" href="use_datetime.html">use_datetime</a></p></li>
+<li><p><a class="reference external" href="set_events.html">set_events</a></p></li>
+<li><p><a class="reference external" href="set_datetime.html">set_datetime</a></p></li>
 </ul>
 </section>
 

@@ -10,13 +10,12 @@ What are Darwin Core Archives?
 are the format in which the `Atlas of Living Australia <https://www.ala.org.au/>`_ accepts and publishes biodiversity 
 data.  Each archive contains:
 
-- **Data:** This is the data you (and/or others) have collected.  This can include, but is not 
-limited to: observations, data on longitudinal studies, and environmental data.
+- **Data:** This is the data you (and/or others) have collected.  This can include, but is not limited to: observations, data on longitudinal studies, and environmental data.
 - **Metadata:** This is information about the data.  This can include, but is not limited to: 
-who collected the data, what methods were used to collect the data, and the license you would like 
-attributed to your data.
-- **Description of DwCA**: Each archive contains a file that describes how the data and the metadata 
-are linked.
+    - who collected the data
+    - what methods were used to collect the data
+    - the license you would like attributed to your data
+- **Description of DwCA**: Each archive contains a file that describes how the data and the metadata are linked.
 
 What type of data do I have?
 ---------------------------------

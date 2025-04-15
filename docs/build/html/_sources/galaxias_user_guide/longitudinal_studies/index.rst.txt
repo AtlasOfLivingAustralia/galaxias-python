@@ -24,14 +24,14 @@ Formatting Events
     .. grid-item:: **Required**
 
          - :ref:`Initial_Data_Check_Events`
-         - :ref:`use_events`
-         - :ref:`use_datetime`
+         - :ref:`set_events`
+         - :ref:`set_datetime`
          - :ref:`adding_eventID_occurrences`
 
     .. grid-item:: **Optional**
 
-        - :ref:`use_abundance_events`
-        - :ref:`use_locality_events`
+        - :ref:`set_abundance_events`
+        - :ref:`set_locality_events`
 
 Example of Passing Dataset 
 ----------------------------
@@ -45,9 +45,9 @@ Example of Passing Dataset
 
    How_to_Structure_Events
    Initial_Data_Check_Events
-   use_events
-   use_datetime
+   set_events
+   set_datetime
    adding_eventID_occurrences
-   use_abundance_events
-   use_locality_events
+   set_abundance_events
+   set_locality_events
    passing_dataset

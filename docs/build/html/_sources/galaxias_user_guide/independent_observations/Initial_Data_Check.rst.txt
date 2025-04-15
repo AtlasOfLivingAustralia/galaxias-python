@@ -42,14 +42,26 @@ are the results of this particular dataset:
 
 .. program-output:: python galaxias_user_guide/independent_observations/data_cleaning.py 2
 
-To learn more about how to use these functions, go to 
+To learn more about how to use other functions, go to 
 
-- `use_occurrences <use_occurrences.html>`_
-- `use_coordinates <use_coordinates.html>`_
-- `use_datetime <use_datetime.html>`_
-- `use_scientific_name <use_scientific_name.html>`_
+- `set_occurrences <set_occurrences.html>`_
+- `set_coordinates <set_coordinates.html>`_
+- `set_datetime <set_datetime.html>`_
+- `set_scientific_name <set_scientific_name.html>`_
 
 Optional functions:
 
-- `use_abundance <use_abundance.html>`_
-- `use_locality <use_locality.html>`_
+- `set_abundance <set_abundance.html>`_
+- `set_collection <set_collection.html>`_
+- `set_individual_traits <set_individual_traits.html>`
+- `set_license <set_license.html>`_
+- `set_locality <set_locality.html>`_
+- `set_taxonomy <set_taxonomy.html>`_
+
+Creating Unique IDs:
+
+- `Creating Unique IDs for your Occurrences <creating_unique_IDs.html>`_
+
+Passing Dataset:
+
+- `Passing Dataset <passing_dataset.html>`_

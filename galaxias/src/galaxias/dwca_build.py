@@ -62,6 +62,7 @@ class dwca:
         vars = ['occurrences','multimedia','events','emof']
 
         # create markdown - do we want this....?
+        # make this optional; add warnings about not having it
         delma.create_md(working_dir = working_dir, print_notices = print_notices)
 
         # loop over all data variables
@@ -182,6 +183,29 @@ class dwca:
         else:
             raise ValueError()
 
+    def countryCode_values():
+        """
+        A ``pandas.Series`` of accepted (but not mandatory) values for ``countryCode`` values.
+
+        Parameters
+        ----------
+            None
+
+        Returns
+        -------
+            A ``pandas.Series`` of accepted (but not mandatory) values for ``countryCode`` values..
+        
+        Examples
+        --------
+
+        .. prompt:: python
+
+            >>> galaxias.countryCode_values()
+
+        .. program-output:: python -c "import galaxias;print(galaxias.countryCode_values())"
+        """
+        return corella.countryCode_values()
+
     def create_dwca(self):
         """
         Checks all your files for Darwin Core compliance, and then creates the 
@@ -244,6 +268,29 @@ class dwca:
             # close zipfile
             zf.close()
     
+    def event_terms():
+        """
+        A ``pandas.Series`` of accepted (but not mandatory) values for event data.
+
+        Parameters
+        ----------
+            None
+
+        Returns
+        -------
+            A ``pandas.Series`` of accepted (but not mandatory) values for event data.
+        
+        Examples
+        --------
+
+        .. prompt:: python
+
+            >>> galaxias.event_terms()
+
+        .. program-output:: python -c "import galaxias;print(galaxias.event_terms())"
+        """
+        return corella.event_terms()
+
     def make_meta_xml(self):
         """
         Makes the ``metadata.xml`` file from your ``eml.xml`` file and information from your ``occurrences`` 
@@ -322,9 +369,9 @@ class dwca:
         ET.indent(tree, space="\t", level=0)
         tree.write("{}/{}".format(self.working_dir,self.meta_xml), xml_declaration=True)
 
-    def suggest_workflow(self):
+    def occurrence_terms():
         """
-        Suggests a workflow to ensure your data conforms with the pre-defined Darwin Core standard.
+        A ``pandas.Series`` of accepted (but not mandatory) values for occurrence data.
 
         Parameters
         ----------
@@ -332,27 +379,20 @@ class dwca:
 
         Returns
         -------
-            A printed report detailing presence or absence of required data.
-
+            A ``pandas.Series`` of accepted (but not mandatory) values for occurrence data.
+        
         Examples
         --------
-            Suggest a workflow for a small dataset
 
-            .. prompt:: python
+        .. prompt:: python
 
-                import pandas as pd
-                import galaxias
-                df = pd.DataFrame({'species': ['Callocephalon fimbriatum', 'Eolophus roseicapilla'], 'latitude': [-35.310, '-35.273'], 'longitude': [149.125, 149.133], 'eventDate': ['14-01-2023', '15-01-2023'], 'status': ['present', 'present']})
-                my_dwca = galaxias.dwca(occurrences=df)
-                my_dwca.suggest_workflow()
-                
-            .. program-output:: python -c "import pandas as pd;import galaxias;df = pd.DataFrame({'species': ['Callocephalon fimbriatum', 'Eolophus roseicapilla'], 'latitude': [-35.310, '-35.273'], 'longitude': [149.125, 149.133], 'eventDate': ['14-01-2023', '15-01-2023'], 'status': ['present', 'present']});my_dwca = galaxias.dwca(occurrences=df);print(my_dwca.suggest_workflow())"
+            >>> galaxias.occurrence_terms()
+
+        .. program-output:: python -c "import galaxias;print(galaxias.occurrence_terms())"
         """
-            
-        corella.suggest_workflow(occurrences=self.occurrences,
-                                 events=self.events)
-        
-    def use_abundance(self,
+        return corella.occurrence_terms()
+
+    def set_abundance(self,
                       individualCount=None,
                       organismQuantity=None,
                       organismQuantityType=None):
@@ -362,21 +402,59 @@ class dwca:
 
         Parameters
         ----------
+            dataframe: ``pandas.DataFrame``
+                The ``pandas.DataFrame`` that contains your data to check
             individualCount: ``str``
-                A column name (``str``) that contains your individual counts (should be whole numbers).
-            organismQuantity: ``str`` or 
-                A column name (``str``) that contains a description of your individual counts.
+                A column name that contains your individual counts (should be whole numbers).
+            organismQuantity: ``str``
+                A column name that contains a number or enumeration value for the quantity of organisms.  
+                Used together with ``organismQuantityType`` to provide context.
             organismQuantityType: ``str`` 
-                A column name (``str``) that describes what your organismQuantity is.
+                A column name or phrase denoting the type of quantification system used for ``organismQuantity``.
 
         Returns
         -------
-            None - the occurrences dataframe is updated
+            ``pandas.DataFrame`` with the updated data.
+
+        Examples
+        ----------
+            `set_abundance vignette <../../html/galaxias_user_guide/independent_observations/set_abundance.html>`_
         """
-        self.occurrences = corella.use_abundance(dataframe=self.occurrences,individualCount=individualCount,
+        self.occurrences = corella.set_abundance(dataframe=self.occurrences,individualCount=individualCount,
                                                  organismQuantity=organismQuantity,organismQuantityType=organismQuantityType)
 
-    def use_coordinates(self,
+    def set_collection(self,
+                       datasetID=None,
+                       datasetName=None,
+                       catalogNumber=None):
+        """
+        Checks for location information, as well as uncertainty and coordinate reference system.  
+        Also runs data checks on coordinate validity.
+
+        Parameters
+        ----------
+            dataframe: ``pandas.DataFrame``
+                The ``pandas.DataFrame`` that contains your data to check
+            datasetID: ``str``
+                A column name or other string denoting the identifier for the set of data. May be a global unique 
+                identifier or an identifier specific to a collection or institution.
+            datasetName: ``str``
+                A column name or other string identifying the data set from which the record was derived.
+            catalogNumber: ``str`` 
+                A column name or other string denoting a unique identifier for the record within the data set or collection.
+
+        Returns
+        -------
+            ``pandas.DataFrame`` with the updated data.
+
+        Examples
+        ----------
+            `set_collection vignette <../../html/galaxias_user_guide/independent_observations/set_collection.html>`_
+        """
+        self.occurrences = corella.set_collection(dataframe=self.occurrences,datasetID=datasetID,
+                                                    datasetName=datasetName,catalogNumber=catalogNumber)
+
+    def set_coordinates(self,
                         decimalLatitude=None,
                         decimalLongitude=None,
                         geodeticDatum=None,
@@ -388,31 +466,41 @@ class dwca:
 
         Parameters
         ----------
+            dataframe: ``pandas.DataFrame``
+                The ``pandas.DataFrame`` that contains your data to check
             decimalLatitude: ``str``
-                A column name (``str``) that contains your latitudes (units in degrees).
-            decimalLongitude: ``str`` or ``pandas.Series``
-                A column name (``str``) that contains your longitudes (units in degrees).
+                A column name that contains your latitudes (units in degrees).
+            decimalLongitude: ``str``
+                A column name that contains your longitudes (units in degrees).
             geodeticDatum: ``str`` 
-                A column name (``str``) or a ``str`` with the name of a valid Coordinate 
-                Reference System (CRS).
+                A column name or a ``str`` with he datum or spatial reference system 
+                that coordinates are recorded against (usually "WGS84" or "EPSG:4326"). 
+                This is often known as the Coordinate Reference System (CRS). If your 
+                coordinates are from a GPS system, your data are already using WGS84.
             coordinateUncertaintyInMeters: ``str``, ``float`` or ``int`` 
-                A column name (``str``) or a ``str`` with the name of a valid Coordinate 
-                Reference System (CRS).
-            coordinatePrecision: ``str`` or ``pandas.Series``
-                Either a column name (``str``) or a column from the ``occurrences`` argument 
-                (``pandas.Series``) that represents the inherent uncertainty of your measurement 
-                (unit in degrees).
+                A column name (``str``) or a ``float``/``int`` with the value of the 
+                coordinate uncertainty. ``coordinateUncertaintyInMeters`` will typically 
+                be around ``30`` (metres) if recorded with a GPS after 2000, or ``100`` 
+                before that year.
+            coordinatePrecision: ``str``, ``float`` or ``int``
+                Either a column name (``str``) or a ``float``/``int`` with the value of the 
+                coordinate precision. ``coordinatePrecision`` should be no less than 
+                ``0.00001`` if data were collected using GPS.
 
         Returns
         -------
-            None - the occurrences dataframe is updated
+            ``pandas.DataFrame`` with the updated data.
+
+        Examples
+        ----------
+            `set_coordinates vignette <../../html/galaxias_user_guide/independent_observations/set_coordinates.html>`_
         """
-        self.occurrences = corella.use_coordinates(dataframe=self.occurrences,decimalLatitude=decimalLatitude,
+        self.occurrences = corella.set_coordinates(dataframe=self.occurrences,decimalLatitude=decimalLatitude,
                                                    decimalLongitude=decimalLongitude,geodeticDatum=geodeticDatum,
                                                    coordinateUncertaintyInMeters=coordinateUncertaintyInMeters,
                                                    coordinatePrecision=coordinatePrecision)
 
-    def use_datetime(self,
+    def set_datetime(self,
                      check_events=False,
                      eventDate=None,
                      year=None,
@@ -462,31 +550,63 @@ class dwca:
         Returns
         -------
             None - the occurrences dataframe is updated
+        
+        Examples
+        ----------
+            `set_datetime vignette <../../html/galaxias_user_guide/independent_observations/set_datetime.html>`_
         """
         if check_events:
-            self.events = corella.use_datetime(dataframe=self.events,eventDate=eventDate,year=year,month=month,
+            self.events = corella.set_datetime(dataframe=self.events,eventDate=eventDate,year=year,month=month,
                                                day=day,eventTime=eventTime,string_to_datetime=string_to_datetime,
                                                yearfirst=yearfirst,dayfirst=dayfirst,time_format=time_format)
         else:
-            self.occurrences = corella.use_datetime(dataframe=self.occurrences,eventDate=eventDate,year=year,month=month,
+            self.occurrences = corella.set_datetime(dataframe=self.occurrences,eventDate=eventDate,year=year,month=month,
                                                 day=day,eventTime=eventTime,string_to_datetime=string_to_datetime,
                                                 yearfirst=yearfirst,dayfirst=dayfirst,time_format=time_format)
 
-    def use_events(self,
+    def set_events(self,
                    eventID=None,
                    parentEventID=None,
                    eventType=None,
                    Event=None,
                    samplingProtocol=None,
-                   event_hierarchy=None):
+                   event_hierarchy=None,
+                   sequential_id=False,
+                   add_sequential_id='first',
+                   add_random_id='first',
+                   composite_id=None,
+                   sep='-',
+                   random_id=False):
         """
-        Checks for event-specific information, such as how the data was collected, what type of 
-        event it was, and names of events.
+        Identify or format columns that contain information about an Event. An "Event" in Darwin Core Standard refers to an action that occurs at a place and time. Examples include:
+
+        - A specimen collecting event
+        - A survey or sampling event
+        - A camera trap image capture
+        - A marine trawl
+        - A camera trap deployment event
+        - A camera trap burst image event (with many images for one observation)
 
         Parameters
         ----------
-            eventID: ``str``
-                A column name (``str``) that contains a unique ID for your event.
+            dataframe: ``pandas.DataFrame``
+                The ``pandas.DataFrame`` that contains your data to check
+            eventID: ``str``, ``logical``
+                A column name (``str``) that contains a unique identifier for your event.  Can also be set 
+                to ``True`` to generate values.  Parameters for these values can be specified with the arguments 
+                ``sequential_id``, ``add_sequential_id``, ``composite_id``, ``sep`` and ``random_id``
+            sequential_id: ``logical``
+                Create sequential IDs and/or add sequential ids to composite ID.  Default is ``False``.
+            add_sequential_id: ``str``
+                Determine where to add sequential id in composite id.  Values are ``first`` and ``last``.  Default is ``first``.
+            composite_id: ``str``, ``list``
+                ``str`` or ``list`` containing columns to create composite IDs.  Can be combined with sequential ID.
+            sep: ``char``
+                Separation character for composite IDs.  Default is ``-``.
+            random_id: ``logical``
+                Create a random ID using the ``uuid`` package.  Default is ``False``.
+            add_random_id: ``str``
+                Determine where to add sequential id in random id.  Values are ``first`` and ``last``.  Default is ``first``.
             parentEventID: ``str``
                 A column name (``str``) that contains a unique ID belonging to an event below 
                 it in the event hierarchy.
@@ -502,15 +622,96 @@ class dwca:
                 if you have a set of observations that were taken at a particular site, you can use the 
                 dict {1: "Site Visit", 2: "Sample", 3: "Observation"}.
 
+            Returns
+            -------
+                None - the occurrences dataframe is updated
+
+            Examples
+            ----------
+                `set_events vignette <../../html/galaxias_user_guide/longitudinal_studies/set_events.html>`_
+        """
+        self.events = corella.set_events(dataframe=self.events,eventID=eventID,parentEventID=parentEventID,
+                                         eventType=eventType,Event=Event,samplingProtocol=samplingProtocol,
+                                         event_hierarchy=event_hierarchy,sequential_id=sequential_id,
+                                         add_sequential_id=add_sequential_id,add_random_id=add_random_id,
+                                         composite_id=composite_id,sep=sep,random_id=random_id)
+
+    def set_individual_traits(self,
+                              individualID=None,
+                              lifeStage=None,
+                              sex=None,
+                              vitality=None,
+                              reproductiveCondition=None):
+        
+        """
+        Checks for location information, as well as uncertainty and coordinate reference system.  
+        Also runs data checks on coordinate validity.
+
+        Parameters
+        ----------
+            dataframe: ``pandas.DataFrame``
+                The ``pandas.DataFrame`` that contains your data to check
+            individualID: ``str``
+                A column name containing an identifier for an individual or named group of 
+                individual organisms represented in the Occurrence. Meant to accommodate 
+                resampling of the same individual or group for monitoring purposes. May be 
+                a global unique identifier or an identifier specific to a data set.
+            lifeStage: ``str``
+                A column name containing the age, class or life stage of an organism at the time of occurrence.
+            sex: ``str`` 
+                A column name or value denoting the sex of the biological individual.
+            vitality: ``str``
+                A column name or value denoting whether an organism was alive or dead at the time of collection or observation.
+            reproductiveCondition: ``str``
+                A column name or value denoting the reproductive condition of the biological individual.
+            
         Returns
         -------
-            None - the occurrences dataframe is updated
-        """
-        self.events = corella.use_events(dataframe=self.events,eventID=eventID,parentEventID=parentEventID,
-                                         eventType=eventType,Event=Event,samplingProtocol=samplingProtocol,
-                                         event_hierarchy=event_hierarchy)
+            ``pandas.DataFrame`` with the updated data.
 
-    def use_locality(self,
+        Examples
+        ----------
+            `set_individual_traits vignette <../../html/galaxias_user_guide/independent_observations/set_individual_traits.html>`_
+        """
+        self.occurrences = corella.set_individual_traits(dataframe=self.occurrences,individualID=individualID,
+                                                         lifeStage=lifeStage,sex=sex,vitality=vitality,
+                                                         reproductiveCondition=reproductiveCondition)
+
+    def set_license(self,
+                    license=None,
+                    rightsHolder=None,
+                    accessRights=None):
+        """
+        Checks for location information, as well as uncertainty and coordinate reference system.  
+        Also runs data checks on coordinate validity.
+
+        Parameters
+        ----------
+            dataframe: ``pandas.DataFrame``
+                The ``pandas.DataFrame`` that contains your data to check
+            license: ``str``
+                A column name or value denoting a legal document giving official 
+                permission to do something with the resource. Must be provided as a 
+                url to a valid license.
+            rightsHolder: ``str``
+                A column name or value denoting the person or organisation owning or 
+                managing rights to resource.
+            accessRights: ``str``
+                A column name or value denoting any access or restrictions based on 
+                privacy or security.
+
+        Returns
+        -------
+            ``pandas.DataFrame`` with the updated data.
+
+        Examples
+        ----------
+            `set_license vignette <../../html/galaxias_user_guide/independent_observations/set_license.html>`_
+        """
+        self.occurrences = corella.set_license(dataframe=self.occurrences,license=license,rightsHolder=rightsHolder,
+                                               accessRights=accessRights)
+
+    def set_locality(self,
                      check_events = False,
                      continent = None,
                      country = None,
@@ -537,23 +738,61 @@ class dwca:
         Returns
         -------
             None - the occurrences dataframe is updated
+
+        Examples
+        ----------
+            `set_locality vignette <../../html/galaxias_user_guide/independent_observations/set_locality.html>`_
         """
         
         if check_events:
-            self.events = corella.use_locality(dataframe=self.events,continent=continent,
+            self.events = corella.set_locality(dataframe=self.events,continent=continent,
                                                country=country,countryCode=countryCode,
                                                stateProvince=stateProvince,locality=locality)
         else:
-            self.occurrences = corella.use_locality(dataframe=self.occurrences,continent=continent,
+            self.occurrences = corella.set_locality(dataframe=self.occurrences,continent=continent,
                                                     country=country,countryCode=countryCode,
                                                     stateProvince=stateProvince,locality=locality)
 
-    def use_occurrences(self,
+    def set_observer(self,
+                     recordedBy=None,
+                     recordedByID=None):
+        """
+        Checks for the name of the taxon you identified is present.
+
+        Parameters
+        ----------
+            dataframe: ``pandas.DataFrame``
+                The ``pandas.DataFrame`` that contains your data to check
+            recordedBy: ``str``
+                A column name or name(s) of people, groups, or organizations responsible 
+                for recording the original occurrence. The primary collector or observer should be 
+                listed first.
+            recordedByID: ``str``
+                A column name or the globally unique identifier for the person, people, groups, or organizations 
+                responsible for recording the original occurrence.
+
+        Returns
+        -------
+            ``pandas.DataFrame`` with the updated data.
+
+        Examples
+        ----------
+            `set_observer vignette <../../html/galaxias_user_guide/independent_observations/set_observer.html>`_
+        """
+        self.occurrences = corella.set_observer(dataframe=self.occurrences,recordedBy=recordedBy,recordedByID=recordedByID)
+
+    def set_occurrences(self,
                         occurrenceID=None,
                         catalogNumber=None,
                         recordNumber=None,
                         basisOfRecord=None,
                         occurrenceStatus=None,
+                        sequential_id=False,
+                        add_sequential_id='first',
+                        composite_id=None,
+                        sep='-',
+                        random_id=False,
+                        add_random_id='first',
                         add_eventID=False,
                         eventType=None):
         """
@@ -573,6 +812,18 @@ class dwca:
                 Either a column name (``str``) or ``True`` (``bool``).  If a column name is 
                 provided, the column will be renamed.  If ``True`` is provided, unique identifiers
                 will be generated in the dataset.
+            sequential_id: ``logical``
+                Create sequential IDs and/or add sequential ids to composite ID.  Default is ``False``.
+            add_sequential_id: ``str``
+                Determine where to add sequential id in composite id.  Values are ``first`` and ``last``.  Default is ``first``.
+            composite_id: ``str``, ``list``
+                ``str`` or ``list`` containing columns to create composite IDs.  Can be combined with sequential ID.
+            sep: ``char``
+                Separation character for composite IDs.  Default is ``-``.
+            random_id: ``logical``
+                Create a random ID using the ``uuid`` package.  Default is ``False``.
+            add_random_id: ``str``
+                Determine where to add sequential id in random id.  Values are ``first`` and ``last``.  Default is ``first``.        
             basisOfRecord: ``str``
                 Either a column name (``str``) or a valid value for ``basisOfRecord`` to add to 
                 the dataset.
@@ -588,20 +839,22 @@ class dwca:
 
         Returns
         -------
-            None - the occurrences dataframe is updated
+            ``pandas.DataFrame`` with the updated data.
+
+        Examples
+        ----------
+            `set_occurrences vignette <../../html/galaxias_user_guide/independent_observations/set_occurrences.html>`_
         """
         
-        if self.events is None:
-            self.occurrences = corella.use_occurrences(dataframe=self.occurrences,occurrenceID=occurrenceID,
-                                                       catalogNumber=catalogNumber,recordNumber=recordNumber,
-                                                       basisOfRecord=basisOfRecord,occurrenceStatus=occurrenceStatus)
-        else:
-            self.occurrences = corella.use_occurrences(dataframe=self.occurrences,occurrenceID=occurrenceID,
+        self.occurrences = corella.set_occurrences(dataframe=self.occurrences,occurrenceID=occurrenceID,
                                                        catalogNumber=catalogNumber,recordNumber=recordNumber,
                                                        basisOfRecord=basisOfRecord,occurrenceStatus=occurrenceStatus,
-                                                       add_eventID=add_eventID,events=self.events,eventType=eventType)
+                                                       sequential_id=sequential_id,add_sequential_id=add_sequential_id,
+                                                       composite_id=composite_id,sep=sep,random_id=random_id,
+                                                       add_random_id=add_random_id,add_eventID=add_eventID,
+                                                       events=self.events,eventType=eventType)
 
-    def use_scientific_name(self,
+    def set_scientific_name(self,
                             scientificName=None,
                             taxonRank=None,
                             scientificNameAuthorship=None):
@@ -619,10 +872,91 @@ class dwca:
 
         Returns
         -------
-            None - the occurrences dataframe is updated
+            ``pandas.DataFrame`` with the updated data.
+
+        Examples
+        ----------
+            `set_scientific_name vignette <../../html/galaxias_user_guide/independent_observations/set_scientific_name.html>`_
         """
-        self.occurrences = corella.use_scientific_name(dataframe=self.occurrences,scientificName=scientificName,
+        self.occurrences = corella.set_scientific_name(dataframe=self.occurrences,scientificName=scientificName,
                                                       taxonRank=taxonRank,scientificNameAuthorship=scientificNameAuthorship)
+
+    def set_taxonomy(self,
+                     kingdom=None,
+                     phylum=None,
+                     taxon_class=None, 
+                     order=None,
+                     family=None,
+                     genus=None,
+                     specificEpithet=None,
+                     vernacularName=None):
+        """
+        Adds extra taxonomic information.  Also runs checks on whether or not the names are the 
+        correct data type.
+
+        Parameters
+        ----------
+            dataframe: ``pandas.DataFrame``
+                The ``pandas.DataFrame`` that contains your data to check
+            kingdom: ``str``,``list``
+                A column name, kingdom name (``str``) or list of kingdom names (``list``).
+            phylum: ``str``,``list``
+                A column name, phylum name (``str``) or list of phylum names (``list``).
+            taxon_class: ``str``,``list``
+                A column name, class name (``str``) or list of class names (``list``).
+            order: ``str``,``list``
+                A column name, order name (``str``) or list of order names (``list``).
+            family: ``str``,``list``
+                A column name, family name (``str``) or list of family names (``list``).
+            genus: ``str``,``list``
+                A column name, genus name (``str``) or list of genus names (``list``).
+            specificEpithet: ``str``,``list``
+                A column name, specificEpithet name (``str``) or list of specificEpithet names (``list``).
+                **Note**: If ``scientificName`` is *Abies concolor*, the ``specificEpithet`` is *concolor*.
+            vernacularName: ``str``,``list``
+                A column name, vernacularName name (``str``) or list of vernacularName names (``list``).
+
+        Returns
+        -------
+            ``pandas.DataFrame`` with the updated data.
+
+        Examples
+        ----------
+            `set_taxonomy vignette <../../html/galaxias_user_guide/independent_observations/set_taxonomy.html>`_
+        """
+        self.occurrences = corella.set_taxonomy(dataframe=self.occurrences,kingdom=kingdom,phylum=phylum,taxon_class=taxon_class,
+                                                order=order,family=family,genus=genus,specificEpithet=specificEpithet,
+                                                vernacularName=vernacularName)
+
+    def suggest_workflow(self):
+        """
+        Suggests a workflow to ensure your data conforms with the pre-defined Darwin Core standard.
+
+        Parameters
+        ----------
+            None
+
+        Returns
+        -------
+            A printed report detailing presence or absence of required data.
+
+        Examples
+        --------
+            Suggest a workflow for a small dataset
+
+            .. prompt:: python
+
+                import pandas as pd
+                import galaxias
+                df = pd.DataFrame({'species': ['Callocephalon fimbriatum', 'Eolophus roseicapilla'], 'latitude': [-35.310, '-35.273'], 'longitude': [149.125, 149.133], 'eventDate': ['14-01-2023', '15-01-2023'], 'status': ['present', 'present']})
+                my_dwca = galaxias.dwca(occurrences=df)
+                my_dwca.suggest_workflow()
+                
+            .. program-output:: python -c "import pandas as pd;import galaxias;df = pd.DataFrame({'species': ['Callocephalon fimbriatum', 'Eolophus roseicapilla'], 'latitude': [-35.310, '-35.273'], 'longitude': [149.125, 149.133], 'eventDate': ['14-01-2023', '15-01-2023'], 'status': ['present', 'present']});my_dwca = galaxias.dwca(occurrences=df);print(my_dwca.suggest_workflow())"
+        """
+            
+        corella.suggest_workflow(occurrences=self.occurrences,
+                                 events=self.events)
 
     def validate_dwca(self):
         """

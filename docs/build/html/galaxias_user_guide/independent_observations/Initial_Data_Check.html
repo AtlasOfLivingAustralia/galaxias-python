@@ -437,7 +437,7 @@ are the results of this particular dataset:</p>
 Matched 0 of 4 column names to DwC terms:
 
 ✓ Matched: 
-✗ Unmatched: Collection_date, Longitude, Latitude, Species
+✗ Unmatched: Species, Latitude, Longitude, Collection_date
 
 ── Minimum required DwC terms occurrences ──
 
@@ -455,26 +455,38 @@ Date/Time                  -                  eventDate
 
 To make your occurrences Darwin Core compliant, use the following workflow:
 
-corella.use_occurrences()
-corella.use_scientific_name()
-corella.use_coordinates()
-corella.use_datetime()
+corella.set_occurrences()
+corella.set_scientific_name()
+corella.set_coordinates()
+corella.set_datetime()
 
-Additional functions: use_abundance(), use_locality()
+Additional functions: set_abundance(), set_collection(), set_individual_traits(), set_license(), set_locality(), set_taxonomy()
 None
 </pre></div>
 </div>
-<p>To learn more about how to use these functions, go to</p>
+<p>To learn more about how to use other functions, go to</p>
 <ul class="simple">
-<li><p><a class="reference external" href="use_occurrences.html">use_occurrences</a></p></li>
-<li><p><a class="reference external" href="use_coordinates.html">use_coordinates</a></p></li>
-<li><p><a class="reference external" href="use_datetime.html">use_datetime</a></p></li>
-<li><p><a class="reference external" href="use_scientific_name.html">use_scientific_name</a></p></li>
+<li><p><a class="reference external" href="set_occurrences.html">set_occurrences</a></p></li>
+<li><p><a class="reference external" href="set_coordinates.html">set_coordinates</a></p></li>
+<li><p><a class="reference external" href="set_datetime.html">set_datetime</a></p></li>
+<li><p><a class="reference external" href="set_scientific_name.html">set_scientific_name</a></p></li>
 </ul>
 <p>Optional functions:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="use_abundance.html">use_abundance</a></p></li>
-<li><p><a class="reference external" href="use_locality.html">use_locality</a></p></li>
+<li><p><a class="reference external" href="set_abundance.html">set_abundance</a></p></li>
+<li><p><a class="reference external" href="set_collection.html">set_collection</a></p></li>
+<li><p><cite>set_individual_traits &lt;set_individual_traits.html&gt;</cite></p></li>
+<li><p><a class="reference external" href="set_license.html">set_license</a></p></li>
+<li><p><a class="reference external" href="set_locality.html">set_locality</a></p></li>
+<li><p><a class="reference external" href="set_taxonomy.html">set_taxonomy</a></p></li>
+</ul>
+<p>Creating Unique IDs:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="creating_unique_IDs.html">Creating Unique IDs for your Occurrences</a></p></li>
+</ul>
+<p>Passing Dataset:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="passing_dataset.html">Passing Dataset</a></p></li>
 </ul>
 </section>
 

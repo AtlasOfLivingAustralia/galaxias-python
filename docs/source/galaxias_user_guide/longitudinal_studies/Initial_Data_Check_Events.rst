@@ -43,5 +43,5 @@ are the results of this particular dataset:
 
 To learn more about how to use these functions, go to 
 
-- `use_events <use_events.html>`_
-- `use_datetime <use_datetime.html>`_
+- `set_events <set_events.html>`_
+- `set_datetime <set_datetime.html>`_
