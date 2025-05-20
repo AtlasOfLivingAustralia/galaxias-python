@@ -15,10 +15,11 @@ import delma
 class dwca:
 
     def __init__(self,
-                 working_dir = 'dwca_data',
-                 data_raw_dir = 'data_raw',
-                 data_proc_dir = 'data_processed',
+                 create_dir = True,
+                 working_dir = './',
                  dwca_name = 'dwca.zip',
+                 create_md = True,
+                 xml_url = None,
                  occurrences = None,
                  occurrences_archive_filename = 'occurrences.txt',
                  multimedia = None,
@@ -30,14 +31,14 @@ class dwca:
                  metadata_md = 'metadata.md',
                  eml_xml = 'eml.xml',
                  meta_xml = 'meta.xml',
-                 print_notices = True
-                 ):
+                 print_notices = True):
 
         # initialise variables
         current_dir = subprocess.check_output("pwd",shell=True,text=True).strip()
-        self.working_dir = '{}/{}'.format(current_dir,working_dir)
-        self.data_raw_dir = '{}/{}/{}'.format(current_dir,working_dir,data_raw_dir)
-        self.data_proc_dir = '{}/{}/{}'.format(current_dir,working_dir,data_proc_dir)
+        if working_dir not in ['./','.']:
+            self.working_dir = '{}/{}'.format(current_dir,working_dir)
+        else:
+            self.working_dir = subprocess.check_output("pwd",shell=True,text=True).strip()
         self.dwca_name = '{}/{}/{}'.format(current_dir,working_dir,dwca_name)
         self.occurrences = occurrences
         self.occurrences_archive_filename = occurrences_archive_filename
@@ -46,24 +47,23 @@ class dwca:
         self.events = events
         self.events_archive_filename = events_archive_filename
         self.emof = emof
-        self.metadata_md = '{}/{}/{}'.format(current_dir,working_dir,metadata_md)
+        self.metadata_md = metadata_md
         self.emof_archive_filename = emof_archive_filename
         self.eml_xml = eml_xml
         self.meta_xml = meta_xml
 
-        # make the working directory
-        folders =  ['working_dir','data_raw_dir','data_proc_dir']
-        for folder in folders:
-            folder_name = getattr(self,folder)
+        if create_dir:
+            folder_name = getattr(self,'working_dir')
             if not os.path.isdir(folder_name):
                 os.mkdir(folder_name)
         
         # now initialise the data variables
         vars = ['occurrences','multimedia','events','emof']
 
-        # create markdown - do we want this....?
-        # make this optional; add warnings about not having it
-        delma.create_md(working_dir = working_dir, print_notices = print_notices)
+        # optionally create markdown
+        if create_md:
+            delma.create_md(metadata_md = metadata_md, working_dir = working_dir, 
+                            xml_url = xml_url, print_notices = print_notices)
 
         # loop over all data variables
         for var in vars:
@@ -76,10 +76,10 @@ class dwca:
                 # object, attribute, value
                 setattr(self,var,var_value) 
                 if var == 'occurrences' and var_value is None:
-                    print('WARNING: You will need occurrences for both Darwin Core and Event Core Archives.')
+                    if print_notices:
+                        print('WARNING: You will need occurrences for both Darwin Core and Event Core Archives.')
             elif type(var_value) is str:
                 if any(x in var_value for x in ['txt','csv']):
-                    shutil.copy2(var_value,self.data_raw_dir)
                     setattr(self,var,pd.read_csv(var_value))
                 else:
                     raise ValueError("If providing a filename, you must provide a csv file")
@@ -149,8 +149,7 @@ class dwca:
     
     def check_eml_xml(self):
         """
-        Checks whether or not your data (only occurrences for now) meets the predefined Darwin Core 
-        standard.  Calls the ``corella`` package for this.
+        Change this.
 
         Parameters
         ----------
@@ -167,8 +166,7 @@ class dwca:
         
     def check_meta_xml(self):
         """
-        Checks whether or not your data (only occurrences for now) meets the predefined Darwin Core 
-        standard.  Calls the ``corella`` package for this.
+        Something here  dd.
 
         Parameters
         ----------
@@ -268,6 +266,25 @@ class dwca:
             # close zipfile
             zf.close()
     
+    def display_metadata_as_dataframe(self):
+        """
+        Writes the ``eml.xml`` file from the metadata markdown file into your current working directory.  
+        The ``eml.xml`` file is the metadata file containing things like authorship, licence, institution, 
+        etc.
+
+        Parameters
+        ----------
+            ``metadata_md``: ``str``
+                Name of the markdown file that you want to convert to EML.  Default value is ``'metadata.md'``.
+            ``working_dir``: ``str``
+                Name of your working directory.  Default value is ``'./'``.
+                    
+        Returns
+        -------
+            ``pandas dataframe`` denoting all the information in the metadata file
+        """
+        return delma.display_as_dataframe(metadata_md = self.metadata_md,working_dir=self.working_dir)
+
     def event_terms():
         """
         A ``pandas.Series`` of accepted (but not mandatory) values for event data.
@@ -966,5 +983,20 @@ class dwca:
 
     def write_eml_xml(self):
         """
+        Writes the ``eml.xml`` file from the metadata markdown file into your current working directory.  
+        The ``eml.xml`` file is the metadata file containing things like authorship, licence, institution, 
+        etc.
+
+        Parameters
+        ----------
+            None
+                    
+        Returns
+        -------
+            ``pandas.DataFrame`` with the updated data.
+
+        Examples
+        ----------
+            `write_eml_xml vignette <../../html/galaxias_user_guide/independent_observations/write_eml_xml.html>`_
         """
         delma.write_eml_xml(eml_xml = self.eml_xml, working_dir = self.working_dir)

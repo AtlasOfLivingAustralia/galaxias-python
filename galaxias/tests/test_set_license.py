@@ -19,7 +19,7 @@ def test_set_license_rename():
     df = pd.DataFrame({'lic.': ['CC-BY 4.0','CC-BY 4.0']})
     occ_dwca = galaxias.dwca(occurrences=df)
     occ_dwca.set_license(license='lic.')
-    assert 'license' in new_df.columns
+    assert 'license' in occ_dwca.occurrences.columns
 
 def test_set_license_incorrect_type():
     df = pd.DataFrame({'license': [1,1]})
