@@ -53,7 +53,7 @@ For our example, we are only concerned with observations, or what species were o
     ...                    samplingProtocol='Observation',
     ...                    Event='name',
     ...                    event_hierarchy={1: "Site Visit", 2: "Sample", 3: "Observation"},
-    ...                    random_id=True)
+    ...                    eventID='random')
     >>> my_dwca.events.head()
 
 .. program-output:: python galaxias_user_guide/longitudinal_studies/events_workflow.py 5

@@ -8,7 +8,7 @@ Not sure where to begin?
    :hidden: 
 
    Introduction <Introduction>
-   Installation <Installation>
+   Installation <installation>
 
 .. grid:: 1 2 2 2
     :gutter: 4
@@ -26,7 +26,7 @@ Not sure where to begin?
         New to Darwin Core? Unsure what type of data you have?
 
     .. grid-item-card::
-        :link: Installation.html
+        :link: installation.html
         :class-card: sd-text-black
         :text-align: center
 

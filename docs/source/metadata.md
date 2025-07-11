@@ -53,6 +53,7 @@ Australia
 firstname.lastname@email.com
 
 ### User ID
+#### directory
 This is optional; however, if you would like to include ORCIDs, this is great
 
 ## Pubdate
@@ -62,15 +63,10 @@ This is optional; however, if you would like to include ORCIDs, this is great
 EN
 
 ## Abstract
-This section can include any methods you like, but should, at minimum, give a
-simple description of how the data were collected. To link to a publication with
-more complete information, add a level-2 heading called `Reference Publication`
-and add the citation to your paper.
-
-If applicable, you can also choose to add information on data processing that
-are specific to this version of your dataset. This may include information on
-whether data on threatened species have been removed, or spatial data have been
-generalised (i.e. set to a lower spatial precision than the source dataset).
+A brief overview of the resource. This should provide enough information to help 
+potential users of the data to understand if it may be of interest. Example 
+content may include what the study was designed to investigate, what taxa were 
+observed, and over what time period.
 
 ## Keyword Set
 

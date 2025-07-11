@@ -451,23 +451,22 @@ so it is best to go with <code class="docutils literal notranslate"><span class=
 </div>
 <p>Every occurrence needs a unique identifier for easy future identification.  If your
 occurences don’t have either an <code class="docutils literal notranslate"><span class="pre">occurrenceID</span></code>, <code class="docutils literal notranslate"><span class="pre">catalogNumber</span></code> or <code class="docutils literal notranslate"><span class="pre">recordNumber</span></code>,
-you can provide a value of <code class="docutils literal notranslate"><span class="pre">True</span></code> to the <code class="docutils literal notranslate"><span class="pre">occurrenceID</span></code>.  You will then have to
-further specify whether or not you want a randomly generated UUID for each occurrence
-(<code class="docutils literal notranslate"><span class="pre">random_id</span></code>), composite IDs (<code class="docutils literal notranslate"><span class="pre">composite_id</span></code>) or sequential IDs (<code class="docutils literal notranslate"><span class="pre">sequential_id</span></code>).
-The example used here will be random; however, you can see a vignette <strong>HERE</strong> all about
-generating IDs.</p>
+you can then provide keywords and/or column names to create unique occurrenceIDs.
+The example used here will be providing the <code class="docutils literal notranslate"><span class="pre">'random'</span></code> keyword to <code class="docutils literal notranslate"><span class="pre">occurrenceID</span></code>;
+however, if you want to create sequential or composite ids, you can read the vignette
+<a class="reference external" href="creating_unique_ids.html">here</a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_archive</span><span class="o">.</span><span class="n">set_occurrences</span><span class="p">(</span></span>
 <span class="prompt1"><span class="o">...</span>     <span class="n">basisOfRecord</span><span class="o">=</span><span class="s1">&#39;HumanObservation&#39;</span><span class="p">,</span></span>
-<span class="prompt1"><span class="o">...</span>     <span class="n">occurrenceID</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span></span>
-<span class="prompt1"><span class="o">...</span>     <span class="n">random_id</span><span class="o">=</span><span class="kc">True</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="n">occurrenceID</span><span class="o">=</span><span class="s1">&#39;random&#39;</span></span>
 <span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_archive</span><span class="o">.</span><span class="n">occurrences</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                           occurrenceID                  Species  Latitude  Longitude Collection_date     basisOfRecord
-0  0b0ef912-52c6-481d-8a10-ddbd7dbf97b6       Corymbia latifolia    -13.04     131.07       29/3/2022  HumanObservation
-1  c0f38a6b-9f7f-44f5-be10-302de750083c     Eucalyptus tectifica    -13.04     131.07       13/9/2022  HumanObservation
-2  7b4dba12-dba3-4be7-b761-803c8c0a33b6           Banksia aemula    -33.60     150.72       15/8/2022  HumanObservation
-3  5cd50060-7e66-4ddf-b585-e62479b33540  Eucalyptus sclerophylla    -33.60     150.72       16/6/2022  HumanObservation
-4  0e00432a-6122-481f-a12d-d4b0a9c65b10        Persoonia laurina    -33.60     150.72      19/10/2022  HumanObservation
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>random
+                           occurrenceID                  Species  Latitude  Longitude Collection_date     basisOfRecord
+0  b7f86a2d-d4a1-4211-9f16-7bca78928f29       Corymbia latifolia    -13.04     131.07       29/3/2022  HumanObservation
+1  108e698d-949f-4373-adc1-89f8cba1788c     Eucalyptus tectifica    -13.04     131.07       13/9/2022  HumanObservation
+2  894e9cbd-4d6a-4411-9043-8594355d7609           Banksia aemula    -33.60     150.72       15/8/2022  HumanObservation
+3  8337e69d-4302-43a9-80ec-c4385ff5e655  Eucalyptus sclerophylla    -33.60     150.72       16/6/2022  HumanObservation
+4  e2e59f67-10dd-46ba-ae0e-9d053334ca2b        Persoonia laurina    -33.60     150.72      19/10/2022  HumanObservation
 </pre></div>
 </div>
 </section>
@@ -489,12 +488,13 @@ Darwin Core standard.</p>
 <span class="prompt1"><span class="o">...</span>     <span class="n">occurrenceStatus</span><span class="o">=</span><span class="s1">&#39;PRESENT&#39;</span></span>
 <span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_archive</span><span class="o">.</span><span class="n">occurrences</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                           occurrenceID                  Species  Latitude  Longitude Collection_date     basisOfRecord occurrenceStatus
-0  05a20950-691d-4c82-9e8c-e67c37c0683b       Corymbia latifolia    -13.04     131.07       29/3/2022  HumanObservation          PRESENT
-1  956f448f-e583-47df-bb8f-55c5d8d351c7     Eucalyptus tectifica    -13.04     131.07       13/9/2022  HumanObservation          PRESENT
-2  bd86192c-d530-4cd5-89f8-025127dc70bf           Banksia aemula    -33.60     150.72       15/8/2022  HumanObservation          PRESENT
-3  26000299-5928-4419-b6c7-6d6803a7f442  Eucalyptus sclerophylla    -33.60     150.72       16/6/2022  HumanObservation          PRESENT
-4  d49b3c32-6921-4f21-9f28-b919327ce90b        Persoonia laurina    -33.60     150.72      19/10/2022  HumanObservation          PRESENT
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>random
+                           occurrenceID                  Species  Latitude  Longitude Collection_date     basisOfRecord occurrenceStatus
+0  b728c26d-2f88-4d5b-ba3f-c85e6969637e       Corymbia latifolia    -13.04     131.07       29/3/2022  HumanObservation          PRESENT
+1  e0537722-5eda-48b8-9754-217f8b671b77     Eucalyptus tectifica    -13.04     131.07       13/9/2022  HumanObservation          PRESENT
+2  3754eff3-845c-42f8-8454-2529bd8327a4           Banksia aemula    -33.60     150.72       15/8/2022  HumanObservation          PRESENT
+3  a8b7f174-a30a-4f38-a801-c1ab884b94ee  Eucalyptus sclerophylla    -33.60     150.72       16/6/2022  HumanObservation          PRESENT
+4  22f39be8-75ab-4673-8044-fdd930328db2        Persoonia laurina    -33.60     150.72      19/10/2022  HumanObservation          PRESENT
 </pre></div>
 </div>
 </section>
@@ -510,12 +510,13 @@ for, we can assign the new dataframe to a variable:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">my_archive</span><span class="o">.</span><span class="n">set_occurrences</span><span class="p">(</span></span>
 <span class="prompt1"><span class="o">...</span>     <span class="n">basisOfRecord</span><span class="o">=</span><span class="s1">&#39;HumanObservation&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>     <span class="n">occurrenceStatus</span><span class="o">=</span><span class="s1">&#39;status&#39;</span><span class="p">,</span></span>
-<span class="prompt1"><span class="o">...</span>     <span class="n">occurrenceID</span><span class="o">=</span><span class="kc">True</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="n">occurrenceID</span><span class="o">=</span><span class="s1">&#39;random&#39;</span></span>
 <span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
 </pre></div></div><p>Now, we can check that this new dataframe complies with the Darwin Core standard for the <code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code>,
 <code class="docutils literal notranslate"><span class="pre">occurrenceStatus</span></code>, <code class="docutils literal notranslate"><span class="pre">occurrenceID</span></code>, <code class="docutils literal notranslate"><span class="pre">catalogNumber</span></code> and <code class="docutils literal notranslate"><span class="pre">recordNumber</span></code> columns.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_archive</span><span class="o">.</span><span class="n">check_dataset</span><span class="p">()</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  Number of Errors  Pass/Fail    Column name
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>random
+  Number of Errors  Pass/Fail    Column name
 ------------------  -----------  ----------------
                  0  ✓            occurrenceID
                  0  ✓            basisOfRecord
@@ -534,14 +535,16 @@ Use corella.suggest_workflow()
 <p>However, since we don’t have all of the required columns, we can run <code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code>
 again to see what other functions we can use to check our data:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_archive</span><span class="o">.</span><span class="n">suggest_workflow</span><span class="p">()</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>random
+
+── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ── All DwC terms ──
 
 Matched 3 of 7 column names to DwC terms:
 
 ✓ Matched: occurrenceID, basisOfRecord, occurrenceStatus
-✗ Unmatched: Species, Latitude, Collection_date, Longitude
+✗ Unmatched: Collection_date, Latitude, Longitude, Species
 
 ── Minimum required DwC terms occurrences ──
 

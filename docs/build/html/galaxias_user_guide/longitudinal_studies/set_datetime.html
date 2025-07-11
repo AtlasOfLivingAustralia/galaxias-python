@@ -421,7 +421,7 @@ use the function <code class="docutils literal notranslate"><span class="pre">se
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
   File &quot;/Users/buy003/Documents/GitHub/galaxias-python/docs/source/galaxias_user_guide/longitudinal_studies/events_workflow.py&quot;, line 76, in &lt;module&gt;
     my_dwca.set_datetime(check_events=True,eventDate=&#39;date&#39;)
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/galaxias/dwca_build.py&quot;, line 559, in set_datetime
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/galaxias/dwca_build.py&quot;, line 509, in set_datetime
     self.events = corella.set_datetime(dataframe=self.events,eventDate=eventDate,year=year,month=month,
                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/set_datetime.py&quot;, line 101, in set_datetime
@@ -489,7 +489,7 @@ again to see how our data is doing this time round.</p>
 Matched 1 of 9 column names to DwC terms:
 
 ✓ Matched: eventDate
-✗ Unmatched: Longitude, Species, Collection_date, number_birds, Latitude, name, location, type
+✗ Unmatched: Collection_date, Latitude, Species, Longitude, number_birds, name, type, location
 
 ── Minimum required DwC terms occurrences ──
 

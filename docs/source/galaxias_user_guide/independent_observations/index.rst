@@ -3,10 +3,20 @@
 Independent Observations
 ===================================
 
-Example Data: 
 :download:`Example Occurrences<../data/occurrences_dwc.csv>`
 
-These are all the functions for your ``occurrences.txt`` file.
+Data of species observations is referred to as occurrence data. 
+In Living Atlases like the Atlas of Living Australia (ALA), this is 
+the default type of data stored.
+
+Using occurrence-based datasets assume that all observations are 
+independent of each other. The benefit of this assumption is that 
+observational data can remain simple in structure - every observation 
+is made at a specific place and time. This simplicity allows all 
+occurrence-based data to be aggregated and used together.
+
+Below are examples of how to prepare both required and optional 
+data for an occurrence dataset.
 
 .. grid:: 1 2 2 2
     :gutter: 4
@@ -18,6 +28,7 @@ These are all the functions for your ``occurrences.txt`` file.
         - :ref:`set_datetime`
         - :ref:`set_occurrences`
         - :ref:`set_scientific_name`
+        - :ref:`What Does A Passing Occurrences Dataset Look Like?`
 
     .. grid-item:: **Optional**
 
@@ -30,10 +41,6 @@ These are all the functions for your ``occurrences.txt`` file.
         - :ref:`set_locality`
         - :ref:`set_taxonomy`
 
-Example of Passing Dataset 
-----------------------------
-- :ref:`What Does A Passing Occurrences Dataset Look Like?`
-
 .. toctree::
    :maxdepth: 5
    :titlesonly:
@@ -45,7 +52,7 @@ Example of Passing Dataset
    set_occurrences
    set_scientific_name
    convert_coordinates
-   Creating Unique IDs
+   creating_unique_IDs
    set_abundance
    set_collection
    set_individual_traits

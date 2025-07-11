@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Events &#8212; Galaxias 0.1.0 documentation</title>
+    <title>Longitudinal Studies (Events) &#8212; Galaxias 0.1.0 documentation</title>
   
   
   
@@ -371,7 +371,7 @@ document.write(`
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page">Events</li>
+    <li class="breadcrumb-item active" aria-current="page">Longitudinal...</li>
   </ul>
 </nav>
 </div>
@@ -388,11 +388,25 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="events">
-<h1>Events<a class="headerlink" href="#events" title="Link to this heading">#</a></h1>
-<p>Example Data:
-<a class="reference download internal" download="" href="../../_downloads/ad2b003c1057af35a4438365f27d3414/events_use.csv"><code class="xref download docutils literal notranslate"><span class="pre">Example</span> <span class="pre">Events</span></code></a>
+  <section id="longitudinal-studies-events">
+<h1>Longitudinal Studies (Events)<a class="headerlink" href="#longitudinal-studies-events" title="Link to this heading">#</a></h1>
+<p><a class="reference download internal" download="" href="../../_downloads/ad2b003c1057af35a4438365f27d3414/events_use.csv"><code class="xref download docutils literal notranslate"><span class="pre">Example</span> <span class="pre">Events</span></code></a>
 <a class="reference download internal" download="" href="../../_downloads/4ec2d20e6816b670b5b24343574a758a/occurrences_event_nomulti.csv"><code class="xref download docutils literal notranslate"><span class="pre">Example</span> <span class="pre">Occurrences</span></code></a></p>
+<p>In a research project, data collection can take place at multiple
+locations and times. At each location and time, there are often
+multiple collected samples to capture variation in a study area
+or time-period. In Darwin Core, the data collected from this type
+of project is Event-based.</p>
+<p>Events are any action that “occurs at some location during some time.”
+[from TDWG](<a class="reference external" href="https://dwc.tdwg.org/list/#dwc_Event">https://dwc.tdwg.org/list/#dwc_Event</a>). Each sample, for
+example, is a unique event, with its own environmental attributes
+(like topography, tree cover and soil composition) that affect what
+organisms occur there and how likely they are to occur. Observations
+of organisms take place within each Event. As such, Events add hierarchy
+to a dataset by grouping simultaneous observations into groups, as
+opposed to Occurrence-only data which is processed as if all occurrences
+are independent. Event-based data collection adds richness to ecological
+data that can be useful for more advanced modelling techniques.</p>
 <p>These are all the functions an explanation for your <code class="docutils literal notranslate"><span class="pre">events.txt</span></code> file.  For how to structure
 your <code class="docutils literal notranslate"><span class="pre">occurrences.txt</span></code> file, go <a class="reference external" href="../independent_observations/index.html">here</a>.</p>
 <section id="before-processing-data">

@@ -29,22 +29,22 @@ if stop == 3:
     sys.exit() 
 
 if stop == 4:
-    my_dwca.set_occurrences(basisOfRecord='HumanObservation',occurrenceID=True,random_id=True)
+    my_dwca.set_occurrences(basisOfRecord='HumanObservation',occurrenceID='random')
     print(my_dwca.occurrences.head())
     sys.exit()
 
 if stop == 5:
-    my_dwca.set_occurrences(basisOfRecord='HumanObservation',occurrenceStatus='PRESENT',occurrenceID=True,random_id=True)
+    my_dwca.set_occurrences(basisOfRecord='HumanObservation',occurrenceStatus='PRESENT',occurrenceID='random')
     print(my_dwca.occurrences.head())
     sys.exit()
     
 if stop == 6:
-    my_dwca.set_occurrences(basisOfRecord='HumanObservation',occurrenceStatus='PRESENT',occurrenceID=True,random_id=True)
+    my_dwca.set_occurrences(basisOfRecord='HumanObservation',occurrenceStatus='PRESENT',occurrenceID='random')
     my_dwca.check_dataset()
     sys.exit()
 
 if stop == 7:
-    my_dwca.set_occurrences(basisOfRecord='HumanObservation',occurrenceStatus='PRESENT',occurrenceID=True,random_id=True)
+    my_dwca.set_occurrences(basisOfRecord='HumanObservation',occurrenceStatus='PRESENT',occurrenceID='random')
     my_dwca.suggest_workflow()
 
 # -----------------------------------------------------------------------------
@@ -228,7 +228,7 @@ if stop == 35:
                         'longitude': [149.125, 149.133], 
                         'date': ['14-01-2023', '15-01-2023']})
     temp_dwca = galaxias.dwca(occurrences=occ,print_notices = False)
-    temp_dwca.set_occurrences(occurrenceID=True,random_id=True)
+    temp_dwca.set_occurrences(occurrenceID='random')
     print(temp_dwca.occurrences.head())
     sys.exit()
 
@@ -238,7 +238,7 @@ if stop == 36:
                         'longitude': [149.125, 149.133], 
                         'date': ['14-01-2023', '15-01-2023']})
     temp_dwca = galaxias.dwca(occurrences=occ,print_notices = False)
-    temp_dwca.set_occurrences(occurrenceID=True,sequential_id=True)
+    temp_dwca.set_occurrences(occurrenceID='sequential')
     print(temp_dwca.occurrences.head())
     sys.exit()
 
@@ -248,7 +248,7 @@ if stop == 37:
                         'longitude': [149.125, 149.133], 
                         'date': ['14-01-2023', '15-01-2023']})
     temp_dwca = galaxias.dwca(occurrences=occ,print_notices = False)
-    temp_dwca.set_occurrences(occurrenceID=True,composite_id='date',sequential_id=True,add_sequential_id='first')
+    temp_dwca.set_occurrences(occurrenceID=['sequential','date'])
     print(temp_dwca.occurrences.head())
     sys.exit()
 
@@ -258,7 +258,7 @@ if stop == 38:
                         'longitude': [149.125, 149.133], 
                         'date': ['14-01-2023', '15-01-2023']})
     temp_dwca = galaxias.dwca(occurrences=occ,print_notices = False)
-    temp_dwca.set_occurrences(occurrenceID=True,composite_id='date',random_id=True,add_random_id='last')
+    temp_dwca.set_occurrences(occurrenceID=['date','random'])
     print(temp_dwca.occurrences.head())
     sys.exit()
 
@@ -268,7 +268,7 @@ if stop == 38:
 my_dwca = galaxias.dwca(occurrences = 'galaxias_user_guide/data/occurrences_dwc.csv', print_notices = False)
 
 if stop == 39:
-    my_dwca.set_occurrences(basisOfRecord='HumanObservation',occurrenceID=True,random_id=True)
+    my_dwca.set_occurrences(basisOfRecord='HumanObservation',occurrenceID='random')
     my_dwca.set_scientific_name(scientificName='Species')
     my_dwca.set_coordinates(decimalLatitude='Latitude',decimalLongitude='Longitude',
                             geodeticDatum='WGS84',coordinatePrecision=0.1)

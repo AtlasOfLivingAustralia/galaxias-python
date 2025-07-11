@@ -1,12 +1,15 @@
 Galaxias User Guide
 =====================
 
-Below are guides on how to prepare your data.
+Below are guides on the process of creating your Darwin Core Archive.
 
-Preparing data
----------------------------
+If you're unsure what type of archive you should prepare, a short description of 
+what data each type of Darwin Core Archive has is provided on the relevant page.
 
-.. grid:: 1 2 2 2
+Preparing data and metadata
+-----------------------------------
+
+.. grid:: 1 3 3 3
     :gutter: 4
     
     .. grid-item-card:: 
@@ -15,11 +18,11 @@ Preparing data
         :text-align: center
 
         .. raw:: html
-            :file: ../../source/_static/icons/user_guide.svg
+            :file: ../../source/_static/icons/occurrences.svg
 
         **Independent Observations**
 
-        Do you have independent observations?
+        Do you only have one set of data?
 
     .. grid-item-card:: 
         :link: longitudinal_studies/index.html
@@ -27,30 +30,11 @@ Preparing data
         :text-align: center
 
         .. raw:: html
-            :file: ../../source/_static/icons/user_guide.svg
+            :file: ../../source/_static/icons/event.svg
                 
         **Longitudinal Studies** 
 
-        Do you have data over periods of time?
-
-
-Preparing metadata
----------------------------
-
-.. grid:: 1 2 2 2
-    :gutter: 4
-    
-    .. grid-item-card:: 
-        :class-card: sd-text-black
-        :link: template_vs_extant_xml.html
-        :text-align: center
-
-        .. raw:: html
-            :file: ../../source/_static/icons/user_guide.svg
-
-        **Choosing Metadata Template**
-
-        What template should I use?
+        Do you have regular data over periods of time?
 
     .. grid-item-card:: 
         :link: writing_eml_xml.html
@@ -58,18 +42,16 @@ Preparing metadata
         :text-align: center
 
         .. raw:: html
-            :file: ../../source/_static/icons/user_guide.svg
+            :file: ../../source/_static/icons/metadata.svg
                 
-        **Creating the `eml.xml` file** 
+        **Capturing Metadata** 
 
-        How do I create the ``eml.xml`` file?
-
-
+        How do I prepare my metadata?
 
 Preparing archive
 ---------------------------
 
-.. grid:: 1 2 2 2
+.. grid:: 1 3 3 3
     :gutter: 4
     
     .. grid-item-card:: 
@@ -78,11 +60,9 @@ Preparing archive
         :text-align: center
 
         .. raw:: html
-            :file: ../../source/_static/icons/user_guide.svg
+            :file: ../../source/_static/icons/archive.svg
 
-        **Build Archive**
-
-        Want to publish your data to a living atlas?
+        **Build Your Archive**
 
     .. grid-item-card:: 
         :link: troubleshooting.html
@@ -90,8 +70,16 @@ Preparing archive
         :text-align: center
 
         .. raw:: html
-            :file: ../../source/_static/icons/user_guide.svg
+            :file: ../../source/_static/icons/validate.svg
                 
-        **Troubleshooting** 
+        **Validate Archive against GBIF Standard** 
 
-        Having trouble interpreting error messages??
+    .. grid-item-card:: 
+        :link: troubleshooting.html
+        :class-card: sd-text-black
+        :text-align: center
+
+        .. raw:: html
+            :file: ../../source/_static/icons/publish.svg
+                
+        **Publish Archive to ALA** 
