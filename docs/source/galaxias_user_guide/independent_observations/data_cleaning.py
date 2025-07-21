@@ -191,7 +191,7 @@ if stop == 32:
     occ = pd.DataFrame({'scientificName': ['Eolophus roseicapilla','Eolophus roseicapilla']})
     temp_dwca = galaxias.dwca(occurrences=occ,print_notices = False)
     temp_dwca.set_collection(datasetID='b15d4952-7d20-46f1-8a3e-556a512b04c5',
-                                 datasetName='Lacey Ctenomys Recaptures',catalogNumber='2008.1334')
+                             datasetName='Lacey Ctenomys Recaptures',catalogNumber='2008.1334')
     print(temp_dwca.occurrences.head())
     sys.exit()
 

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Preparing the DwCA itself &#8212; Galaxias 0.1.0 documentation</title>
+    <title>Validating the DwCA against GBIF &#8212; Galaxias 0.1.0 documentation</title>
   
   
   
@@ -45,7 +45,7 @@
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/design-tabs.js?v=36754332"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'galaxias_user_guide/preparing_dwca';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'galaxias_user_guide/publishing_dwca';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -371,7 +371,7 @@ document.write(`
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page">Preparing...</li>
+    <li class="breadcrumb-item active" aria-current="page">Validating...</li>
   </ul>
 </nav>
 </div>
@@ -388,31 +388,21 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="preparing-the-dwca-itself">
-<h1>Preparing the DwCA itself<a class="headerlink" href="#preparing-the-dwca-itself" title="Link to this heading">#</a></h1>
-<p>Preparing your Darwin Core Archive is a straightforward process.
-However, this also assumes that you have already prepared your data
-and metadata to comply with Darwin Core standards.  If you have not done
-this, please see our vignettes on preparing an
-<a class="reference external" href="independent_observations/index.html">independent observations dataset</a>
-or a <a class="reference external" href="longitudinal_studies/index.html">longitudinal studies dataset</a>.</p>
-<section id="creating-a-darwin-core-archive">
-<h2>Creating a Darwin Core Archive<a class="headerlink" href="#creating-a-darwin-core-archive" title="Link to this heading">#</a></h2>
-<p>When your data passes all of the internal data checks, and you have
-written out your metadata statement into XML format, you can then
-run the <code class="docutils literal notranslate"><span class="pre">create_dwca()</span></code> function.</p>
+  <section id="validating-the-dwca-against-gbif">
+<h1>Validating the DwCA against GBIF<a class="headerlink" href="#validating-the-dwca-against-gbif" title="Link to this heading">#</a></h1>
+<p>After successfully building and validating your archive, now you can
+publish your data to the ALA!  If you are ok with your data being in
+the public space, you can create a Github issue by using the <code class="docutils literal notranslate"><span class="pre">submit_archive()</span></code>
+function:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
 span.prompt1:before {
   content: " ";
 }
-</style><span class="prompt1">&gt;&gt;&gt; my_dwca.build_archive()</span>
-</pre></div></div><p>Before this function creates the archive file, it will again check your
-data and metadata.  If something doesn’t comply with Darwin Core standards,
-you will get an error message.  If everything passes, this will produce a
-Darwin Core Archive titled <code class="docutils literal notranslate"><span class="pre">dwca.zip</span></code>, which contains all of your data
-and metadata, and is located in the <code class="docutils literal notranslate"><span class="pre">data-publish</span></code> folder in your
-current working directory.</p>
-</section>
+</style><span class="prompt1">&gt;&gt;&gt; my_dwca.submit_archive()</span>
+</pre></div></div><p>If, you are not entirely comfortable with this, and/or your
+data contains information on sensitive species, send us your file
+and a brief description to
+<a class="reference external" href="mailto:support&#37;&#52;&#48;ala&#46;org&#46;au">our support queue</a>.</p>
 </section>
 
 
@@ -432,22 +422,7 @@ current working directory.</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-<div
-    id="pst-page-navigation-heading-2"
-    class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> On this page
-  </div>
-  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-darwin-core-archive">Creating a Darwin Core Archive</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
+                <div class="bd-sidebar-secondary bd-toc"></div>
               
             
           </div>

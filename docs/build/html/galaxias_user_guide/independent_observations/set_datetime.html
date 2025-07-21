@@ -414,7 +414,7 @@ span.prompt1:before {
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
   File &quot;/Users/buy003/Documents/GitHub/galaxias-python/docs/source/galaxias_user_guide/independent_observations/data_cleaning.py&quot;, line 113, in &lt;module&gt;
     my_dwca.set_datetime(eventDate=&#39;Collection_date&#39;)
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/galaxias/dwca_build.py&quot;, line 513, in set_datetime
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/galaxias/dwca_build.py&quot;, line 563, in set_datetime
     self.occurrences = corella.set_datetime(dataframe=self.occurrences,eventDate=eventDate,year=year,month=month,
                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/set_datetime.py&quot;, line 101, in set_datetime
@@ -482,7 +482,7 @@ again to see how our data is doing this time round.</p>
 Matched 1 of 4 column names to DwC terms:
 
 ✓ Matched: eventDate
-✗ Unmatched: Longitude, Species, Latitude
+✗ Unmatched: Species, Longitude, Latitude
 
 ── Minimum required DwC terms occurrences ──
 

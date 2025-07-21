@@ -26,10 +26,10 @@ data that can be useful for more advanced modelling techniques.
 These are all the functions an explanation for your ``events.txt`` file.  For how to structure 
 your ``occurrences.txt`` file, go `here <../independent_observations/index.html>`_.
 
-Before Processing Data
-------------------------
+.. Before Processing Data
+.. ------------------------
 
-- :ref:`How_to_Structure_Events`
+.. - :ref:`How_to_Structure_Events`
 
 Formatting Events 
 -------------------------
@@ -43,16 +43,12 @@ Formatting Events
          - :ref:`set_events`
          - :ref:`set_datetime`
          - :ref:`adding_eventID_occurrences`
+         - :ref:`What Does A Passing Events Dataset Look Like?`
 
     .. grid-item:: **Optional**
 
         - :ref:`set_abundance_events`
         - :ref:`set_locality_events`
-
-Example of Passing Dataset 
-----------------------------
-
-- :ref:`What Does A Passing Events Dataset Look Like?`
 
 .. toctree::
    :maxdepth: 5

@@ -65,7 +65,7 @@ Preparing archive
         **Build Your Archive**
 
     .. grid-item-card:: 
-        :link: troubleshooting.html
+        :link: validating_dwca.html
         :class-card: sd-text-black
         :text-align: center
 
@@ -75,7 +75,7 @@ Preparing archive
         **Validate Archive against GBIF Standard** 
 
     .. grid-item-card:: 
-        :link: troubleshooting.html
+        :link: publishing_dwca.html
         :class-card: sd-text-black
         :text-align: center
 

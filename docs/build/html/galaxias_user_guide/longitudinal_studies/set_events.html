@@ -416,7 +416,7 @@ span.prompt1:before {
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
   File &quot;/Users/buy003/Documents/GitHub/galaxias-python/docs/source/galaxias_user_guide/longitudinal_studies/events_workflow.py&quot;, line 41, in &lt;module&gt;
     my_dwca.set_events(eventType=&#39;type&#39;,samplingProtocol=&#39;Observation&#39;,Event=&#39;name&#39;)
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/galaxias/dwca_build.py&quot;, line 568, in set_events
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/galaxias/dwca_build.py&quot;, line 618, in set_events
     self.events = corella.set_events(dataframe=self.events,eventID=eventID,parentEventID=parentEventID,
                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/set_events.py&quot;, line 116, in set_events
@@ -446,13 +446,12 @@ constitute a ‘sample’:</p>
 <span class="prompt1"><span class="o">...</span>                    <span class="n">event_hierarchy</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;Site Visit&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;Sample&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s2">&quot;Observation&quot;</span><span class="p">},</span></span>
 <span class="prompt1"><span class="o">...</span>                    <span class="n">eventID</span><span class="o">=</span><span class="s1">&#39;random&#39;</span><span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>random
-                                eventID                         parentEventID    eventType    location       date                                            Event samplingProtocol
-0  9c4bbbc3-c9de-4dba-ab43-48b7169111e6                                         Site Visit  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
-1  f8122166-fd20-47be-82e3-a17d0f1e96b6  9c4bbbc3-c9de-4dba-ab43-48b7169111e6       Sample  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
-2  5e4c92a9-3912-478a-a7c3-da9183bd59e2  f8122166-fd20-47be-82e3-a17d0f1e96b6  Observation  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
-3  b8fa8eae-944d-43da-8f8c-e5dfeda1e9d9                                         Site Visit  Cannonvale  17/1/2023  bird survey local park honeyeater lookout point      Observation
-4  d79546c3-5542-41e6-a5cb-9afa20ba5cd1  b8fa8eae-944d-43da-8f8c-e5dfeda1e9d9       Sample  Cannonvale  17/1/2023  bird survey local park honeyeater lookout point      Observation
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                                eventID                         parentEventID    eventType    location       date                                            Event samplingProtocol
+0  fa26de1b-ac8d-488d-a62d-8b8b1f8cdc4b                                         Site Visit  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
+1  c53b5045-4062-4043-9d27-c8cf41a9c2bf  fa26de1b-ac8d-488d-a62d-8b8b1f8cdc4b       Sample  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
+2  4d41c671-c5d5-4245-9145-2992b6b41d41  c53b5045-4062-4043-9d27-c8cf41a9c2bf  Observation  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
+3  d048c28c-8cd3-4057-b445-220b86122301                                         Site Visit  Cannonvale  17/1/2023  bird survey local park honeyeater lookout point      Observation
+4  dfe472ef-ffcc-4c7c-b587-210fafae9b6e  d048c28c-8cd3-4057-b445-220b86122301       Sample  Cannonvale  17/1/2023  bird survey local park honeyeater lookout point      Observation
 </pre></div>
 </div>
 </section>
@@ -462,8 +461,7 @@ constitute a ‘sample’:</p>
 Darwin core standard, but it’s always good to double-check your data.</p>
 <p>Now, we can check that our data column do comply with the Darwin Core standard.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">check_dataset</span><span class="p">()</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>random
-  Number of Errors  Pass/Fail    Column name
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  Number of Errors  Pass/Fail    Column name
 ------------------  -----------  ----------------
                  0  ✓            eventID
                  0  ✓            parentEventID
@@ -484,16 +482,14 @@ Use corella.suggest_workflow()
 <p>However, since we don’t have all of the required columns, we can run <code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code>
 again to see how our data is doing this time round.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">suggest_workflow</span><span class="p">()</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>random
-
-── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ── All DwC terms ──
 
 Matched 5 of 12 column names to DwC terms:
 
 ✓ Matched: eventID, parentEventID, eventType, Event, samplingProtocol
-✗ Unmatched: Species, Latitude, Collection_date, number_birds, Longitude, date, location
+✗ Unmatched: Latitude, number_birds, Species, Collection_date, Longitude, date, location
 
 ── Minimum required DwC terms occurrences ──
 

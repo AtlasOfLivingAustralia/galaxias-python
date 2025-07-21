@@ -456,8 +456,37 @@ Name: Code, Length: 249, dtype: object
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">galaxias.</span></span><span class="sig-name descname"><span class="pre">dwca</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">working_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">publishing_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'data-publish'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dwca_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dwca.zip'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">create_md</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xml_url</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">occurrences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">occurrences_archive_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'occurrences.txt'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multimedia</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multimedia_archive_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'multimedia.txt'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">events</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">events_archive_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'events.txt'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emof</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emof_archive_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'extendedMeasurementOrFact.txt'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata_md</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'metadata.md'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eml_xml</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'eml.xml'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">meta_xml</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'meta.xml'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_notices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py method">
+<dt class="sig sig-object py" id="galaxias.dwca.build_archive">
+<span class="sig-name descname"><span class="pre">build_archive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">print_report</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.build_archive" title="Link to this definition">#</a></dt>
+<dd><p>Checks all your files for Darwin Core compliance, and then creates the
+Darwin Core archive in your working directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong> – </p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Raises a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> if something is wrong, or returns <code class="docutils literal notranslate"><span class="pre">None</span></code> if it passes.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxias.dwca.check_archive">
+<span class="sig-name descname"><span class="pre">check_archive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">email</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.check_archive" title="Link to this definition">#</a></dt>
+<dd><p>Checks whether or not your Darwin Core Archive is formatted correctly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong> – </p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Raises a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> if something is wrong, or returns True if it passes.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="galaxias.dwca.check_dataset">
-<span class="sig-name descname"><span class="pre">check_dataset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.check_dataset" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">check_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">print_report</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.check_dataset" title="Link to this definition">#</a></dt>
 <dd><p>Checks whether or not your data meets the predefined Darwin Core
 standard.  Calls the <code class="docutils literal notranslate"><span class="pre">corella</span></code> package for this.</p>
 <dl class="field-list simple">
@@ -509,21 +538,6 @@ for this.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>A printed report detailing presence or absence of required data.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="galaxias.dwca.create_dwca">
-<span class="sig-name descname"><span class="pre">create_dwca</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.create_dwca" title="Link to this definition">#</a></dt>
-<dd><p>Checks all your files for Darwin Core compliance, and then creates the
-Darwin Core archive in your working directory.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>None</strong> – </p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>Raises a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> if something is wrong, or returns <code class="docutils literal notranslate"><span class="pre">None</span></code> if it passes.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -832,12 +846,7 @@ will be generated in the dataset.</p></li>
 <li><p><strong>recordNumber</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">bool</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or <code class="docutils literal notranslate"><span class="pre">True</span></code> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>).  If a column name is
 provided, the column will be renamed.  If <code class="docutils literal notranslate"><span class="pre">True</span></code> is provided, unique identifiers
 will be generated in the dataset.</p></li>
-<li><p><strong>sequential_id</strong> (<code class="docutils literal notranslate"><span class="pre">logical</span></code>) – Create sequential IDs and/or add sequential ids to composite ID.  Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
-<li><p><strong>add_sequential_id</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – Determine where to add sequential id in composite id.  Values are <code class="docutils literal notranslate"><span class="pre">first</span></code> and <code class="docutils literal notranslate"><span class="pre">last</span></code>.  Default is <code class="docutils literal notranslate"><span class="pre">first</span></code>.</p></li>
-<li><p><strong>composite_id</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>, <code class="docutils literal notranslate"><span class="pre">list</span></code>) – <code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">list</span></code> containing columns to create composite IDs.  Can be combined with sequential ID.</p></li>
 <li><p><strong>sep</strong> (<code class="docutils literal notranslate"><span class="pre">char</span></code>) – Separation character for composite IDs.  Default is <code class="docutils literal notranslate"><span class="pre">-</span></code>.</p></li>
-<li><p><strong>random_id</strong> (<code class="docutils literal notranslate"><span class="pre">logical</span></code>) – Create a random ID using the <code class="docutils literal notranslate"><span class="pre">uuid</span></code> package.  Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
-<li><p><strong>add_random_id</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – Determine where to add sequential id in random id.  Values are <code class="docutils literal notranslate"><span class="pre">first</span></code> and <code class="docutils literal notranslate"><span class="pre">last</span></code>.  Default is <code class="docutils literal notranslate"><span class="pre">first</span></code>.</p></li>
 <li><p><strong>basisOfRecord</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a valid value for <code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code> to add to
 the dataset.</p></li>
 <li><p><strong>occurrenceStatus</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – Either a column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) or a valid value for <code class="docutils literal notranslate"><span class="pre">occurrenceStatus</span></code> to add to
@@ -905,6 +914,20 @@ correct data type.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="galaxias.dwca.submit_archive">
+<span class="sig-name descname"><span class="pre">submit_archive</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.submit_archive" title="Link to this definition">#</a></dt>
+<dd><p>Checks whether or not your Darwin Core Archive is formatted correctly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong> – </p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Raises a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> if something is wrong, or returns True if it passes.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="galaxias.dwca.suggest_workflow">
 <span class="sig-name descname"><span class="pre">suggest_workflow</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.suggest_workflow" title="Link to this definition">#</a></dt>
 <dd><p>Suggests a workflow to ensure your data conforms with the pre-defined Darwin Core standard.</p>
@@ -930,7 +953,7 @@ correct data type.</p>
 Matched 1 of 5 column names to DwC terms:
 
 ✓ Matched: eventDate
-✗ Unmatched: status, latitude, species, longitude
+✗ Unmatched: longitude, species, latitude, status
 
 ── Minimum required DwC terms occurrences ──
 
@@ -957,11 +980,6 @@ None
 </pre></div>
 </div>
 </dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="galaxias.dwca.validate_dwca">
-<span class="sig-name descname"><span class="pre">validate_dwca</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.validate_dwca" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="galaxias.dwca.write_eml">
@@ -1094,11 +1112,12 @@ Name: term_localName, Length: 215, dtype: object
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.basisOfRecord_values"><code class="docutils literal notranslate"><span class="pre">basisOfRecord_values()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.countryCode_values"><code class="docutils literal notranslate"><span class="pre">countryCode_values()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca"><code class="docutils literal notranslate"><span class="pre">dwca</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.build_archive"><code class="docutils literal notranslate"><span class="pre">dwca.build_archive()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.check_archive"><code class="docutils literal notranslate"><span class="pre">dwca.check_archive()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.check_dataset"><code class="docutils literal notranslate"><span class="pre">dwca.check_dataset()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.check_dwca"><code class="docutils literal notranslate"><span class="pre">dwca.check_dwca()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.check_meta_xml"><code class="docutils literal notranslate"><span class="pre">dwca.check_meta_xml()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.check_metadata"><code class="docutils literal notranslate"><span class="pre">dwca.check_metadata()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.create_dwca"><code class="docutils literal notranslate"><span class="pre">dwca.create_dwca()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.display_metadata_as_dataframe"><code class="docutils literal notranslate"><span class="pre">dwca.display_metadata_as_dataframe()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.make_meta_xml"><code class="docutils literal notranslate"><span class="pre">dwca.make_meta_xml()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.set_abundance"><code class="docutils literal notranslate"><span class="pre">dwca.set_abundance()</span></code></a></li>
@@ -1113,8 +1132,8 @@ Name: term_localName, Length: 215, dtype: object
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.set_occurrences"><code class="docutils literal notranslate"><span class="pre">dwca.set_occurrences()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.set_scientific_name"><code class="docutils literal notranslate"><span class="pre">dwca.set_scientific_name()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.set_taxonomy"><code class="docutils literal notranslate"><span class="pre">dwca.set_taxonomy()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.submit_archive"><code class="docutils literal notranslate"><span class="pre">dwca.submit_archive()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.suggest_workflow"><code class="docutils literal notranslate"><span class="pre">dwca.suggest_workflow()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.validate_dwca"><code class="docutils literal notranslate"><span class="pre">dwca.validate_dwca()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxias.dwca.write_eml"><code class="docutils literal notranslate"><span class="pre">dwca.write_eml()</span></code></a></li>
 </ul>
 </li>

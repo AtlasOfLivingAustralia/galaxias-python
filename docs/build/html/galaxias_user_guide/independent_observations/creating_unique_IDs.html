@@ -419,10 +419,9 @@ span.prompt1:before {
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span> <span class="o">=</span> <span class="n">galaxias</span><span class="o">.</span><span class="n">dwca</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">occ</span><span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">set_occurrences</span><span class="p">(</span><span class="n">occurrenceID</span><span class="o">=</span><span class="s1">&#39;random&#39;</span><span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>random
-                           occurrenceID         scientificName  latitude  longitude        date
-0  4a592efb-c70a-49e5-8198-8e9e46eedcd6  Eolophus roseicapilla   -35.310    149.125  14-01-2023
-1  8a526f5b-913d-4759-982d-0de23a392707  Eolophus roseicapilla   -35.273    149.133  15-01-2023
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                           occurrenceID         scientificName  latitude  longitude        date
+0  3100550c-661c-4ac3-a006-85f603b05183  Eolophus roseicapilla   -35.310    149.125  14-01-2023
+1  8b284fad-40b6-4b26-860a-6f9eeb5ab7b1  Eolophus roseicapilla   -35.273    149.133  15-01-2023
 </pre></div>
 </div>
 </section>
@@ -437,8 +436,7 @@ ids, set <code class="docutils literal notranslate"><span class="pre">sequential
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span> <span class="o">=</span> <span class="n">galaxias</span><span class="o">.</span><span class="n">dwca</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">occ</span><span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">set_occurrences</span><span class="p">(</span><span class="n">occurrenceID</span><span class="o">=</span><span class="s1">&#39;sequential&#39;</span><span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>sequential
-  occurrenceID         scientificName  latitude  longitude        date
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  occurrenceID         scientificName  latitude  longitude        date
 0            0  Eolophus roseicapilla   -35.310    149.125  14-01-2023
 1            1  Eolophus roseicapilla   -35.273    149.133  15-01-2023
 </pre></div>
@@ -464,7 +462,7 @@ exists.  You can do the following:</p>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
   File &quot;/Users/buy003/Documents/GitHub/galaxias-python/docs/source/galaxias_user_guide/independent_observations/data_cleaning.py&quot;, line 251, in &lt;module&gt;
     temp_dwca.set_occurrences(occurrenceID=[&#39;sequential&#39;,&#39;date&#39;])
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/galaxias/dwca_build.py&quot;, line 777, in set_occurrences
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/galaxias/dwca_build.py&quot;, line 816, in set_occurrences
     self.occurrences = corella.set_occurrences(dataframe=self.occurrences,occurrenceID=occurrenceID,
                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/set_occurrences.py&quot;, line 111, in set_occurrences
@@ -472,7 +470,7 @@ exists.  You can do the following:</p>
                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/common_functions.py&quot;, line 15, in set_data_workflow
     check_if_all_args_empty(dataframe=dataframe,func=func,keys=variables,values=values)
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/common_functions.py&quot;, line 180, in check_if_all_args_empty
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/common_functions.py&quot;, line 179, in check_if_all_args_empty
     raise ValueError(&quot;No Darwin Core arguments supplied to `{}()`.  See dir(corella.{}()) for valid arguments.&quot;.format(func,func))
 ValueError: No Darwin Core arguments supplied to `set_occurrences()`.  See dir(corella.set_occurrences()) for valid arguments.
 </pre></div>
@@ -487,7 +485,7 @@ ValueError: No Darwin Core arguments supplied to `set_occurrences()`.  See dir(c
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
   File &quot;/Users/buy003/Documents/GitHub/galaxias-python/docs/source/galaxias_user_guide/independent_observations/data_cleaning.py&quot;, line 261, in &lt;module&gt;
     temp_dwca.set_occurrences(occurrenceID=[&#39;date&#39;,&#39;random&#39;])
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/galaxias/dwca_build.py&quot;, line 777, in set_occurrences
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/galaxias/dwca_build.py&quot;, line 816, in set_occurrences
     self.occurrences = corella.set_occurrences(dataframe=self.occurrences,occurrenceID=occurrenceID,
                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/set_occurrences.py&quot;, line 111, in set_occurrences
@@ -495,7 +493,7 @@ ValueError: No Darwin Core arguments supplied to `set_occurrences()`.  See dir(c
                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/common_functions.py&quot;, line 15, in set_data_workflow
     check_if_all_args_empty(dataframe=dataframe,func=func,keys=variables,values=values)
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/common_functions.py&quot;, line 180, in check_if_all_args_empty
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/common_functions.py&quot;, line 179, in check_if_all_args_empty
     raise ValueError(&quot;No Darwin Core arguments supplied to `{}()`.  See dir(corella.{}()) for valid arguments.&quot;.format(func,func))
 ValueError: No Darwin Core arguments supplied to `set_occurrences()`.  See dir(corella.set_occurrences()) for valid arguments.
 </pre></div>
