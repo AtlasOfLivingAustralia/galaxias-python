@@ -53,7 +53,7 @@ Optional functions:
 
 - `set_abundance <set_abundance.html>`_
 - `set_collection <set_collection.html>`_
-- `set_individual_traits <set_individual_traits.html>`
+- `set_individual_traits <set_individual_traits.html>`_
 - `set_license <set_license.html>`_
 - `set_locality <set_locality.html>`_
 - `set_taxonomy <set_taxonomy.html>`_

@@ -45,21 +45,21 @@ if stopping_point == "4":
 if stopping_point == "5":
     my_dwca.set_events(eventType='type',samplingProtocol='Observation',Event='name',
                        event_hierarchy={1: "Site Visit", 2: "Sample", 3: "Observation"},
-                       random_id=True)
+                       eventID='random')
     print(my_dwca.events.head())
     sys.exit()
 
 if stopping_point == "6":
     my_dwca.set_events(eventType='type',samplingProtocol='Observation',Event='name',
                        event_hierarchy={1: "Site Visit", 2: "Sample", 3: "Observation"},
-                       random_id=True)
+                       eventID='random')
     my_dwca.check_dataset()
     sys.exit()
 
 if stopping_point == "7":
     my_dwca.set_events(eventType='type',samplingProtocol='Observation',Event='name',
                        event_hierarchy={1: "Site Visit", 2: "Sample", 3: "Observation"},
-                       random_id=True)
+                       eventID='random')
     my_dwca.suggest_workflow()
     sys.exit()
 
@@ -110,7 +110,7 @@ if stopping_point == "13":
     my_dwca.set_datetime(check_events=True,eventDate='date',string_to_datetime=True,yearfirst=False,dayfirst=True)
     my_dwca.set_occurrences(basisOfRecord='HumanObservation',
                             occurrenceStatus='PRESENT',
-                            occurrenceID=True,random_id=True)
+                            occurrenceID=True,eventID='random')
     my_dwca.set_scientific_name(scientificName='Species')
     my_dwca.set_coordinates(decimalLatitude='Latitude',
                             decimalLongitude='Longitude',
@@ -150,7 +150,7 @@ if stopping_point == "16":
     my_dwca.occurrences['Longitude'] = pd.to_numeric(my_dwca.occurrences['Longitude'],errors='coerce')
     my_dwca.set_datetime(check_events=True,eventDate='date',string_to_datetime=True,yearfirst=False,dayfirst=True)
     my_dwca.set_occurrences(basisOfRecord='HumanObservation',
-                            occurrenceID=True,random_id=True)
+                            occurrenceID=True,eventID='random')
     my_dwca.set_scientific_name(scientificName='Species')
     my_dwca.set_coordinates(decimalLatitude='Latitude',
                             decimalLongitude='Longitude',

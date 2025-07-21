@@ -439,18 +439,16 @@ run <code class="docutils literal notranslate"><span class="pre">check_data()</s
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
   File &quot;/Users/buy003/Documents/GitHub/galaxias-python/docs/source/galaxias_user_guide/longitudinal_studies/events_workflow.py&quot;, line 145, in &lt;module&gt;
     my_dwca.set_events(eventType=&#39;type&#39;,
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/galaxias/dwca_build.py&quot;, line 633, in set_events
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/galaxias/dwca_build.py&quot;, line 618, in set_events
     self.events = corella.set_events(dataframe=self.events,eventID=eventID,parentEventID=parentEventID,
                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/set_events.py&quot;, line 117, in set_events
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/set_events.py&quot;, line 118, in set_events
     dataframe=generate_eventID_parentEventID(dataframe=dataframe,event_hierarchy=event_hierarchy,
               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/generate_eventID_parentEventID.py&quot;, line 36, in generate_eventID_parentEventID
-    new_dataframe = add_unique_IDs(dataframe=new_dataframe,column_name=&#39;eventID&#39;,
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/add_unique_IDs.py&quot;, line 110, in add_unique_IDs
-    raise ValueError(&quot;Please specify whether or not you want a random ID, sequential ID or composite ID.&quot;)
-ValueError: Please specify whether or not you want a random ID, sequential ID or composite ID.
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/generate_eventID_parentEventID.py&quot;, line 35, in generate_eventID_parentEventID
+    new_dataframe.insert(1,&#39;parentEventID&#39;,[&#39;&#39; for i in list(range(new_dataframe.shape[0]))])
+    ^^^^^^^^^^^^^^^^^^^^
+AttributeError: &#39;NoneType&#39; object has no attribute &#39;insert&#39;
 </pre></div>
 </div>
 </section>

@@ -22,7 +22,7 @@ random IDs
 =============
 
 Random IDs are created automatically in ``galaxias`` using the `uuid package <https://pypi.org/project/uuid/>`_.  
-To automatically generate random IDs, set ``random_id=True`` like so:
+To automatically generate random IDs, add ``random``:
 
 .. prompt:: python
 
@@ -31,7 +31,7 @@ To automatically generate random IDs, set ``random_id=True`` like so:
     ...                     'longitude': [149.125, 149.133], 
     ...                     'date': ['14-01-2023', '15-01-2023']})
     >>> my_dwca = galaxias.dwca(occurrences=occ)
-    >>> my_dwca.set_occurrences(dataframe=occ,occurrenceID=True,random_id=True)
+    >>> my_dwca.set_occurrences(occurrenceID='random')
     >>> occ
 
 .. program-output:: python galaxias_user_guide/independent_observations/data_cleaning.py 35
@@ -49,7 +49,7 @@ ids, set ``sequential_id=True``.
     ...                     'longitude': [149.125, 149.133], 
     ...                     'date': ['14-01-2023', '15-01-2023']})
     >>> my_dwca = galaxias.dwca(occurrences=occ)
-    >>> my_dwca.set_occurrences(dataframe=occ,occurrenceID=True,sequential_id=True)
+    >>> my_dwca.set_occurrences(occurrenceID='sequential')
     >>> occ
 
 .. program-output:: python galaxias_user_guide/independent_observations/data_cleaning.py 36
@@ -73,7 +73,7 @@ Below are examples with sequential ID and random ID, both at the beginning or th
     ...                     'longitude': [149.125, 149.133], 
     ...                     'date': ['14-01-2023', '15-01-2023']})
     >>> my_dwca = galaxias.dwca(occurrences=occ)
-    >>> my_dwca.set_occurrences(dataframe=occ,occurrenceID=True,composite_id='date',sequential_id=True,add_sequential_id='first')
+    >>> my_dwca.set_occurrences(occurrenceID=['sequential','date'])
     >>> occ
 
 .. program-output:: python galaxias_user_guide/independent_observations/data_cleaning.py 37
@@ -85,7 +85,7 @@ Below are examples with sequential ID and random ID, both at the beginning or th
     ...                     'longitude': [149.125, 149.133], 
     ...                     'date': ['14-01-2023', '15-01-2023']})
     >>> my_dwca = galaxias.dwca(occurrences=occ)
-    >>> my_dwca.set_occurrences(dataframe=occ,occurrenceID=True,composite_id='date',random_id=True,add_random_id='last')
+    >>> my_dwca.set_occurrences(occurrenceID=['date','random'])
     >>> occ
 
 .. program-output:: python galaxias_user_guide/independent_observations/data_cleaning.py 38

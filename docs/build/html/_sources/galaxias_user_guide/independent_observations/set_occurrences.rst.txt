@@ -54,19 +54,16 @@ How to generate occurrence IDs
 
 Every occurrence needs a unique identifier for easy future identification.  If your 
 occurences don't have either an ``occurrenceID``, ``catalogNumber`` or ``recordNumber``, 
-you can provide a value of ``True`` to the ``occurrenceID``.  You will then have to 
-further specify whether or not you want a randomly generated UUID for each occurrence 
-(``random_id``), composite IDs (``composite_id``) or sequential IDs (``sequential_id``).  
-The example used here will be random; however, you can see a vignette **HERE** all about 
-generating IDs.
-
+you can then provide keywords and/or column names to create unique occurrenceIDs.  
+The example used here will be providing the ``'random'`` keyword to ``occurrenceID``; 
+however, if you want to create sequential or composite ids, you can read the vignette 
+`here <creating_unique_ids.html>`_.
 
 .. prompt:: python
 
     >>> my_archive.set_occurrences(
     ...     basisOfRecord='HumanObservation',
-    ...     occurrenceID=True,
-    ...     random_id=True
+    ...     occurrenceID='random'
     ... )
     >>> my_archive.occurrences.head()
 
@@ -114,7 +111,7 @@ for, we can assign the new dataframe to a variable:
     >>> occ = my_archive.set_occurrences(
     ...     basisOfRecord='HumanObservation',
     ...     occurrenceStatus='status',
-    ...     occurrenceID=True
+    ...     occurrenceID='random'
     ... )
 
 Now, we can check that this new dataframe complies with the Darwin Core standard for the ``basisOfRecord``, 
