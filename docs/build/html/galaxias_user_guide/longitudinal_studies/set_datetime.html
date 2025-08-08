@@ -418,10 +418,11 @@ use the function <code class="docutils literal notranslate"><span class="pre">se
 <code class="docutils literal notranslate"><span class="pre">eventDate</span></code>  column to be <code class="docutils literal notranslate"><span class="pre">'date'</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">set_datetime</span><span class="p">(</span><span class="n">check_events</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                      <span class="n">eventDate</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">)</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>cp: /Users/buy003/Documents/GitHub/galaxias-python/docs/source/dwca_data_events/metadata.md: No such file or directory
+Traceback (most recent call last):
   File &quot;/Users/buy003/Documents/GitHub/galaxias-python/docs/source/galaxias_user_guide/longitudinal_studies/events_workflow.py&quot;, line 76, in &lt;module&gt;
     my_dwca.set_datetime(check_events=True,eventDate=&#39;date&#39;)
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/galaxias/dwca_build.py&quot;, line 559, in set_datetime
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/galaxias/dwca_build.py&quot;, line 586, in set_datetime
     self.events = corella.set_datetime(dataframe=self.events,eventDate=eventDate,year=year,month=month,
                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/set_datetime.py&quot;, line 101, in set_datetime
@@ -445,7 +446,8 @@ arguments that will convert dates in strings to <code class="docutils literal no
 <span class="prompt1"><span class="o">...</span>                      <span class="n">string_to_datetime</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                      <span class="n">yearfirst</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                      <span class="n">dayfirst</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>        type    location  eventDate                                             name
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>cp: /Users/buy003/Documents/GitHub/galaxias-python/docs/source/dwca_data_events/metadata.md: No such file or directory
+        type    location  eventDate                                             name
 0  siteVisit  Cannonvale 2023-01-03  bird survey local park honeyeater lookout point
 1  siteVisit  Cannonvale 2023-01-17  bird survey local park honeyeater lookout point
 2  siteVisit  Cannonvale 2023-01-31  bird survey local park honeyeater lookout point
@@ -460,7 +462,8 @@ arguments that will convert dates in strings to <code class="docutils literal no
 Darwin core standard, but it’s always good to double-check your data.</p>
 <p>Now, we can check that our data column do comply with the Darwin Core standard.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">check_data</span><span class="p">(</span><span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">)</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  Number of Errors  Pass/Fail    Column name
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>cp: /Users/buy003/Documents/GitHub/galaxias-python/docs/source/dwca_data_events/metadata.md: No such file or directory
+  Number of Errors  Pass/Fail    Column name
 ------------------  -----------  -------------
                  1  ✗            eventDate
 
@@ -482,14 +485,16 @@ eventDate is a required field. Please ensure it is in your dataframe
 <p>However, since we don’t have all of the required columns, we can run <code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code>
 again to see how our data is doing this time round.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">suggest_workflow</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">events</span><span class="p">)</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>cp: /Users/buy003/Documents/GitHub/galaxias-python/docs/source/dwca_data_events/metadata.md: No such file or directory
+
+── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ── All DwC terms ──
 
 Matched 1 of 9 column names to DwC terms:
 
 ✓ Matched: eventDate
-✗ Unmatched: Latitude, Longitude, Species, Collection_date, number_birds, location, type, name
+✗ Unmatched: Collection_date, Latitude, Longitude, Species, number_birds, type, location, name
 
 ── Minimum required DwC terms occurrences ──
 

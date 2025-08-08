@@ -428,7 +428,8 @@ and it will, by default, set the value of <code class="docutils literal notransl
 <span class="prompt1"><span class="o">...</span>     <span class="n">basisOfRecord</span><span class="o">=</span><span class="s1">&#39;HumanObservation&#39;</span></span>
 <span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_archive</span><span class="o">.</span><span class="n">occurrences</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                   Species  Latitude  Longitude Collection_date     basisOfRecord
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>There is already a metadata file.
+                   Species  Latitude  Longitude Collection_date     basisOfRecord
 0       Corymbia latifolia    -13.04     131.07       29/3/2022  HumanObservation
 1     Eucalyptus tectifica    -13.04     131.07       13/9/2022  HumanObservation
 2           Banksia aemula    -33.60     150.72       15/8/2022  HumanObservation
@@ -460,12 +461,13 @@ however, if you want to create sequential or composite ids, you can read the vig
 <span class="prompt1"><span class="o">...</span>     <span class="n">occurrenceID</span><span class="o">=</span><span class="s1">&#39;random&#39;</span></span>
 <span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_archive</span><span class="o">.</span><span class="n">occurrences</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                           occurrenceID                  Species  Latitude  Longitude Collection_date     basisOfRecord
-0  65a9a7ae-b74c-4263-8cf9-b0a96fd5c454       Corymbia latifolia    -13.04     131.07       29/3/2022  HumanObservation
-1  55a5cfdf-0e50-4fcb-9108-98a0ec5dc75b     Eucalyptus tectifica    -13.04     131.07       13/9/2022  HumanObservation
-2  1a2d9591-377d-4003-8e45-1f316679e577           Banksia aemula    -33.60     150.72       15/8/2022  HumanObservation
-3  d3eaa143-2526-4540-9655-b048ec0cf313  Eucalyptus sclerophylla    -33.60     150.72       16/6/2022  HumanObservation
-4  b33166a3-561c-4588-ae9d-f44ddea06283        Persoonia laurina    -33.60     150.72      19/10/2022  HumanObservation
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>There is already a metadata file.
+                           occurrenceID                  Species  Latitude  Longitude Collection_date     basisOfRecord
+0  3a923285-20cd-43bf-a235-3c10a350d71a       Corymbia latifolia    -13.04     131.07       29/3/2022  HumanObservation
+1  58f3d1d6-d702-412e-926c-b77b75376104     Eucalyptus tectifica    -13.04     131.07       13/9/2022  HumanObservation
+2  02955103-2622-4e4f-a97a-189cdb486096           Banksia aemula    -33.60     150.72       15/8/2022  HumanObservation
+3  51a36817-1007-4e19-8176-db56c6b90a64  Eucalyptus sclerophylla    -33.60     150.72       16/6/2022  HumanObservation
+4  6bc0c778-d569-4401-bab6-5d1a9d666aed        Persoonia laurina    -33.60     150.72      19/10/2022  HumanObservation
 </pre></div>
 </div>
 </section>
@@ -487,12 +489,13 @@ Darwin Core standard.</p>
 <span class="prompt1"><span class="o">...</span>     <span class="n">occurrenceStatus</span><span class="o">=</span><span class="s1">&#39;PRESENT&#39;</span></span>
 <span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_archive</span><span class="o">.</span><span class="n">occurrences</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                           occurrenceID                  Species  Latitude  Longitude Collection_date     basisOfRecord occurrenceStatus
-0  68e36d3c-1179-4ac1-a503-916ecc0651e7       Corymbia latifolia    -13.04     131.07       29/3/2022  HumanObservation          PRESENT
-1  3616d971-2da9-44e9-b0d2-9909a566b83b     Eucalyptus tectifica    -13.04     131.07       13/9/2022  HumanObservation          PRESENT
-2  944ecae8-aab7-4467-931d-5398a5078672           Banksia aemula    -33.60     150.72       15/8/2022  HumanObservation          PRESENT
-3  a4fd4ce7-8658-4de3-b2f8-ae0a15c5f77d  Eucalyptus sclerophylla    -33.60     150.72       16/6/2022  HumanObservation          PRESENT
-4  4f715e43-bb66-4a13-8331-e48a74d4d30f        Persoonia laurina    -33.60     150.72      19/10/2022  HumanObservation          PRESENT
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>There is already a metadata file.
+                           occurrenceID                  Species  Latitude  Longitude Collection_date     basisOfRecord occurrenceStatus
+0  4e0bed34-7956-46ba-a7a8-e73a9eda67cf       Corymbia latifolia    -13.04     131.07       29/3/2022  HumanObservation          PRESENT
+1  dfa09b74-7e25-4076-9205-c6c8ce8005ac     Eucalyptus tectifica    -13.04     131.07       13/9/2022  HumanObservation          PRESENT
+2  5197654b-e0bf-4a19-a428-43e3c4b5c9ff           Banksia aemula    -33.60     150.72       15/8/2022  HumanObservation          PRESENT
+3  625b781c-622c-4194-bcfe-da391eca172a  Eucalyptus sclerophylla    -33.60     150.72       16/6/2022  HumanObservation          PRESENT
+4  febe417b-a4fa-4af1-818f-71d2bdeb4a87        Persoonia laurina    -33.60     150.72      19/10/2022  HumanObservation          PRESENT
 </pre></div>
 </div>
 </section>
@@ -513,7 +516,8 @@ for, we can assign the new dataframe to a variable:</p>
 </pre></div></div><p>Now, we can check that this new dataframe complies with the Darwin Core standard for the <code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code>,
 <code class="docutils literal notranslate"><span class="pre">occurrenceStatus</span></code>, <code class="docutils literal notranslate"><span class="pre">occurrenceID</span></code>, <code class="docutils literal notranslate"><span class="pre">catalogNumber</span></code> and <code class="docutils literal notranslate"><span class="pre">recordNumber</span></code> columns.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_archive</span><span class="o">.</span><span class="n">check_dataset</span><span class="p">()</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  Number of Errors  Pass/Fail    Column name
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>There is already a metadata file.
+  Number of Errors  Pass/Fail    Column name
 ------------------  -----------  ----------------
                  0  ✓            occurrenceID
                  0  ✓            basisOfRecord
@@ -532,14 +536,16 @@ Use corella.suggest_workflow()
 <p>However, since we don’t have all of the required columns, we can run <code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code>
 again to see what other functions we can use to check our data:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_archive</span><span class="o">.</span><span class="n">suggest_workflow</span><span class="p">()</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>There is already a metadata file.
+
+── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ── All DwC terms ──
 
 Matched 3 of 7 column names to DwC terms:
 
 ✓ Matched: occurrenceID, basisOfRecord, occurrenceStatus
-✗ Unmatched: Collection_date, Species, Longitude, Latitude
+✗ Unmatched: Longitude, Collection_date, Species, Latitude
 
 ── Minimum required DwC terms occurrences ──
 
@@ -562,6 +568,9 @@ corella.set_coordinates()
 corella.set_datetime()
 
 Additional functions: set_abundance(), set_collection(), set_individual_traits(), set_license(), set_locality(), set_taxonomy()
+There is already a metadata file.
+There is already a metadata file.
+There is already a metadata file.
 </pre></div>
 </div>
 </section>

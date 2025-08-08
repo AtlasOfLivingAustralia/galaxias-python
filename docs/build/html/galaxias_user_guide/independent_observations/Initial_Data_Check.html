@@ -407,7 +407,8 @@ span.prompt1:before {
 </pre></div></div><p>Now that you have a dataframe with data in it, we can check the data using the
 function <code class="docutils literal notranslate"><span class="pre">galaxias.check_dataset()</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">galaxias</span><span class="o">.</span><span class="n">check_dataset</span><span class="p">()</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Number of Errors    Pass/Fail    Column name
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>There is already a metadata file.
+Number of Errors    Pass/Fail    Column name
 ------------------  -----------  -------------
 
 
@@ -430,14 +431,16 @@ Darwin Core standard.  To show the functions <code class="docutils literal notra
 do this, we have developed an all-purpose function called <code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code>.  Here
 are the results of this particular dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">galaxias</span><span class="o">.</span><span class="n">suggest_workflow</span><span class="p">()</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>There is already a metadata file.
+
+── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ── All DwC terms ──
 
 Matched 0 of 4 column names to DwC terms:
 
 ✓ Matched: 
-✗ Unmatched: Species, Longitude, Latitude, Collection_date
+✗ Unmatched: Collection_date, Longitude, Latitude, Species
 
 ── Minimum required DwC terms occurrences ──
 

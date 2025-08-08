@@ -395,13 +395,13 @@ document.write(`
 <dl class="py function">
 <dt class="sig sig-object py" id="galaxias.basisOfRecord_values">
 <span class="sig-prename descclassname"><span class="pre">galaxias.</span></span><span class="sig-name descname"><span class="pre">basisOfRecord_values</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.basisOfRecord_values" title="Link to this definition">#</a></dt>
-<dd><p>A <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code> of accepted values for <code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code> values.</p>
+<dd><p>A <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code> of accepted (but not mandatory) values for <code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code> values.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>None</strong> – </p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>A <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code> of accepted values for <code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code> values..</p>
+<dd class="field-even"><p>A <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code> of accepted (but not mandatory) values for <code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code> values..</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -424,13 +424,13 @@ span.prompt1:before {
 <dl class="py function">
 <dt class="sig sig-object py" id="galaxias.countryCode_values">
 <span class="sig-prename descclassname"><span class="pre">galaxias.</span></span><span class="sig-name descname"><span class="pre">countryCode_values</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.countryCode_values" title="Link to this definition">#</a></dt>
-<dd><p>A <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code> of accepted values for <code class="docutils literal notranslate"><span class="pre">countryCode</span></code> values.</p>
+<dd><p>A <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code> of accepted (but not mandatory) values for <code class="docutils literal notranslate"><span class="pre">countryCode</span></code> values.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>None</strong> – </p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>A <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code> of accepted values for <code class="docutils literal notranslate"><span class="pre">countryCode</span></code> values..</p>
+<dd class="field-even"><p>A <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code> of accepted (but not mandatory) values for <code class="docutils literal notranslate"><span class="pre">countryCode</span></code> values..</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -953,7 +953,7 @@ correct data type.</p>
 Matched 1 of 5 column names to DwC terms:
 
 ✓ Matched: eventDate
-✗ Unmatched: longitude, species, latitude, status
+✗ Unmatched: species, longitude, status, latitude
 
 ── Minimum required DwC terms occurrences ──
 
@@ -984,7 +984,7 @@ None
 <dl class="py method">
 <dt class="sig sig-object py" id="galaxias.dwca.write_eml">
 <span class="sig-name descname"><span class="pre">write_eml</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.dwca.write_eml" title="Link to this definition">#</a></dt>
-<dd><p>Writes the <code class="docutils literal notranslate"><span class="pre">eml.xml</span></code> file from the metadata markdown file into your current working directory.
+<dd><p>Writes the <code class="docutils literal notranslate"><span class="pre">eml.xml</span></code> file from the metadata markdown file into your publishing directory.
 The <code class="docutils literal notranslate"><span class="pre">eml.xml</span></code> file is the metadata file containing things like authorship, licence, institution,
 etc.</p>
 <dl class="field-list simple">
@@ -1004,13 +1004,13 @@ etc.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="galaxias.event_terms">
 <span class="sig-prename descclassname"><span class="pre">galaxias.</span></span><span class="sig-name descname"><span class="pre">event_terms</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.event_terms" title="Link to this definition">#</a></dt>
-<dd><p>A <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code> of accepted values for event data.</p>
+<dd><p>A <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code> of accepted (but not mandatory) values for event data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>None</strong> – </p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>A <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code> of accepted values for event data.</p>
+<dd class="field-even"><p>A <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code> of accepted (but not mandatory) values for event data.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -1034,13 +1034,13 @@ Name: term_localName, Length: 86, dtype: object
 <dl class="py function">
 <dt class="sig sig-object py" id="galaxias.occurrence_terms">
 <span class="sig-prename descclassname"><span class="pre">galaxias.</span></span><span class="sig-name descname"><span class="pre">occurrence_terms</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.occurrence_terms" title="Link to this definition">#</a></dt>
-<dd><p>A <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code> of accepted values for occurrence data.</p>
+<dd><p>A <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code> of accepted (but not mandatory) values for occurrence data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>None</strong> – </p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>A <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code> of accepted values for occurrence data.</p>
+<dd class="field-even"><p>A <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code> of accepted (but not mandatory) values for occurrence data.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>

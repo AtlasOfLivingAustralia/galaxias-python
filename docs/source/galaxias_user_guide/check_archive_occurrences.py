@@ -17,5 +17,5 @@ my_dwca.write_eml()
 my_dwca.build_archive(print_report=False)
 
 # validate archive
-my_dwca.check_archive(username = "atlasoflivingaustralia",email = "ala4r@ala.org.au",
-                         password = "galah-gbif-test-login")
+my_dwca.check_archive(username = "acbuyan",email = "amanda.buyan@csiro.au",
+                         password = "galaxias-gbif-testing-login")

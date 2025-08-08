@@ -20,14 +20,12 @@ def write_to_zip_and_disk(zf=None,
 
 def add_file_to_dwca(zf=None,
                      dataframe=None,
-                     file_to_write=None,
-                     removefile=None):
+                     publishing_dir=None,
+                     file_to_write=None):
     
     # check if your data file has been written
     if not os.path.exists("{}".format(file_to_write)):
         dataframe.to_csv("{}".format(file_to_write),index=False)
 
     # first, write occurrences to zip and disk
-    write_to_zip_and_disk(zf=zf,
-                          copyfile="{} .".format(file_to_write),
-                          removefile=removefile)
+    zf.write("{}/{}".format(publishing_dir,file_to_write))

@@ -1,22 +1,25 @@
 import pandas as pd
 import os
 import zipfile
-import shutil
+from .version import __version__
 from .read_dwc_terms_links import read_dwc_terms_links
 from .build_subelement import build_subelement
-from .common_functions import add_file_to_dwca,write_to_zip_and_disk
-# from dwca.read import DwCAReader
+from .common_functions import add_file_to_dwca
+import json
 import xml.etree.ElementTree as ET
 from operator import itemgetter
 import subprocess
+import time
+import requests
+import webbrowser
 import corella
 import delma
 
 class dwca:
 
     def __init__(self,
-                 create_dir = True,
                  working_dir = './',
+                 publishing_dir = 'data-publish',
                  dwca_name = 'dwca.zip',
                  create_md = True,
                  xml_url = None,
@@ -35,11 +38,12 @@ class dwca:
 
         # initialise variables
         current_dir = subprocess.check_output("pwd",shell=True,text=True).strip()
-        if working_dir not in ['./','.']:
+        if working_dir[0] != '.' or working_dir[0:2] != './':
             self.working_dir = '{}/{}'.format(current_dir,working_dir)
         else:
-            self.working_dir = subprocess.check_output("pwd",shell=True,text=True).strip()
-        self.dwca_name = '{}/{}/{}'.format(current_dir,working_dir,dwca_name)
+            self.working_dir = working_dir
+        self.publishing_dir = publishing_dir
+        self.dwca_name = '{}/{}/{}'.format(self.working_dir,publishing_dir,dwca_name)
         self.occurrences = occurrences
         self.occurrences_archive_filename = occurrences_archive_filename
         self.multimedia = multimedia
@@ -47,23 +51,22 @@ class dwca:
         self.events = events
         self.events_archive_filename = events_archive_filename
         self.emof = emof
-        self.metadata_md = metadata_md
         self.emof_archive_filename = emof_archive_filename
+        self.metadata_md = metadata_md
         self.eml_xml = eml_xml
         self.meta_xml = meta_xml
 
-        if create_dir:
-            folder_name = getattr(self,'working_dir')
-            if not os.path.isdir(folder_name):
-                os.mkdir(folder_name)
+        # create directory for publishing
+        if not os.path.isdir(publishing_dir):
+            os.mkdir(publishing_dir)
         
         # now initialise the data variables
         vars = ['occurrences','multimedia','events','emof']
 
         # optionally create markdown
         if create_md:
-            delma.create_md(metadata_md = metadata_md, working_dir = working_dir, 
-                            xml_url = xml_url, print_notices = print_notices)
+            delma.create_md(metadata_md = metadata_md, working_dir = self.working_dir, 
+                            xml_url = xml_url)
 
         # loop over all data variables
         for var in vars:
@@ -82,13 +85,149 @@ class dwca:
                 if any(x in var_value for x in ['txt','csv']):
                     setattr(self,var,pd.read_csv(var_value))
                 else:
-                    raise ValueError("If providing a filename, you must provide a csv file")
+                    raise ValueError("If providing a filename, you must provide a csv-formatted file file")
             else:
-                raise ValueError("Only a csv filename or Pandas dataframe will be accepted for {}.".format(var))
+                raise ValueError("Only a csv-formatted filename or Pandas dataframe will be accepted for {}.".format(var))
 
-    def check_dataset(self):
+    def build_archive(self,
+                      print_report=True):
         """
-        Checks whether or not your data (only occurrences for now) meets the predefined Darwin Core 
+        Checks all your files for Darwin Core compliance, and then creates the 
+        Darwin Core archive in your working directory.
+
+        Parameters
+        ----------
+            None
+
+        Returns
+        -------
+            Raises a ``ValueError`` if something is wrong, or returns ``None`` if it passes.
+        """
+        # run basic checks on data
+        data_check = self.check_dataset(print_report=print_report)
+
+        # run eml.xml check
+        eml_xml_check = self.check_metadata()
+
+        # run meta.xml check
+        self.make_meta_xml()
+        meta_xml_check = self.check_meta_xml()
+
+        # set the boolean for xml_check
+        if eml_xml_check is None and meta_xml_check:
+            xml_check = True
+        else:
+            xml_check = False
+
+        # write dwca if data and xml passes
+        if data_check and xml_check:
+            
+            # open archive
+            zf = zipfile.ZipFile(self.dwca_name,'w')
+
+            # list for looping
+            objects_list = [self.occurrences,self.events,self.multimedia,self.emof]
+            filename_list = [self.occurrences_archive_filename,self.events_archive_filename,self.multimedia_archive_filename,self.emof_archive_filename]
+
+            # looping over associated objects and filenames
+            # for i,(dataframe,filename) in enumerate(zip(objects_list,filename_list)):
+            for i,(dataframe,filename) in enumerate(zip(objects_list,filename_list)):
+                if dataframe is not None:
+                    add_file_to_dwca(zf=zf,
+                                     dataframe=dataframe,
+                                     publishing_dir=self.publishing_dir,
+                                     file_to_write=filename)
+
+            # write eml.xml
+            zf.write("{}/{}".format(self.publishing_dir,self.eml_xml))
+            
+            # write meta.xml
+            zf.write("{}/{}".format(self.publishing_dir,self.meta_xml))
+            
+            # close zipfile
+            zf.close()
+        
+        else:
+            raise ValueError("You need to check your data or metadata for errors.")
+    
+    def check_archive(self,
+                      username = None,
+                      email = None,
+                      password = None):
+        """
+        Checks whether or not your Darwin Core Archive is formatted correctly.
+
+        Parameters
+        ----------
+            None
+
+        Returns
+        -------
+            Raises a ``ValueError`` if something is wrong, or returns True if it passes.
+        """
+
+        version_string = 'galaxias-python v{}'.format(__version__)
+
+        # create URL
+        validate_url = 'http://api.gbif.org/v1/validation'
+        result_url = 'https://api.gbif.org/v1/validation/{key}'
+
+        validation_request = {
+            "sourceId": "string",
+            "installationKey": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+            "notificationEmail": [email]
+        }
+
+        archive = self.dwca_name
+        
+        with open(archive, 'rb') as f:
+            files = {
+                # added .read() at the end
+                'file': (archive, f.read(), 'application/zip')  # @RequestPart
+            }
+
+        validator_response = requests.post(validate_url, 
+                                 files=files, 
+                                 data={'validationRequest': json.dumps(validation_request)}, 
+                                 auth=(username, password), 
+                                 headers={})
+
+        response_json = validator_response.json()
+        key = response_json['key']
+        result_response = requests.get(result_url.replace('{key}',key),
+                                       auth=(username, password))
+        result_response_json = result_response.json()
+
+        if result_response_json['status'] == 'QUEUED':
+            while result_response_json['status'] == 'QUEUED':
+                time.sleep(5)
+                result_response = requests.get(result_url.replace('{key}',key),
+                                        auth=(username, password))
+                result_response_json = result_response.json()
+
+        if result_response_json['status'] == 'FAILED':
+            print("Number of errors: {}\n".format(len(result_response_json['metrics']['files'])))
+            for f in result_response_json['metrics']['files']:
+                if 'fileName' in f:
+                    print('{}: {}'.format('fileName',f['fileName']))
+                    if len(f['issues'][0]['samples']) < 1:
+                        print('{}: {}'.format('issues',f['issues'][0]['samples']))
+                    else:
+                        print('{}: {}'.format('issues',f['issues'][0]['samples'][0]['relatedData']))
+                if 'rowType' in f:
+                    print('{}: {}'.format('rowType',f['rowType']))
+                    print('{}: {}'.format('issues',f['issues'][0]['samples'][0]['relatedData']))
+                print()
+        elif result_response_json['status'] == 'PASSED':
+            print("Congratulations! Your archive passed validation.")
+        else:
+            print("status not in galaxias")
+            print(result_response_json['status'])
+
+    def check_dataset(self,
+                      print_report=True):
+        """
+        Checks whether or not your data meets the predefined Darwin Core 
         standard.  Calls the ``corella`` package for this.
 
         Parameters
@@ -103,13 +242,13 @@ class dwca:
                                        events=self.events,
                                        # multimedia=self.multimedia,
                                        # emof=self.emof,
-                                       print_report=True)
+                                       print_report=print_report)
         if result:
             return result
         
     def check_dwca(self):
         """
-        Checks whether or not your Darwin Core Archive meets the pre-defined standard.
+        Checks whether or not your Darwin Core Archive is formatted correctly.
 
         Parameters
         ----------
@@ -147,9 +286,10 @@ class dwca:
         else:
             raise ValueError("Some of your data does not comply with the Darwin Core standard.  Please run corella.check_data() and/or corella.suggest_workflow().")
     
-    def check_eml_xml(self):
+    def check_metadata(self):
         """
-        Change this.
+        Checks whether or not the metadata xml is formatted correctly.  Calls ``delma`` 
+        for this.
 
         Parameters
         ----------
@@ -159,14 +299,14 @@ class dwca:
         -------
             A printed report detailing presence or absence of required data.
         """
-        if os.path.exists("{}/{}".format(self.working_dir,self.eml_xml)):
-            delma.check_eml_xml(eml_xml=self.eml_xml,working_dir=self.working_dir)
+        if os.path.exists("{}/{}".format(self.publishing_dir,self.eml_xml)):
+            delma.check_metadata(eml_xml=self.eml_xml,eml_dir=self.publishing_dir)
         else:
             raise ValueError()
         
     def check_meta_xml(self):
         """
-        Something here  dd.
+        Checks whether your schema (``meta.xml``) is formatted correctly.
 
         Parameters
         ----------
@@ -176,96 +316,11 @@ class dwca:
         -------
             A printed report detailing presence or absence of required data.
         """
-        if os.path.exists("{}/{}".format(self.working_dir,self.meta_xml)):
+        if os.path.exists("{}/{}".format(self.publishing_dir,self.meta_xml)):
             return True
         else:
-            raise ValueError()
+            raise ValueError("Cannot find meta.xml file.")
 
-    def countryCode_values():
-        """
-        A ``pandas.Series`` of accepted (but not mandatory) values for ``countryCode`` values.
-
-        Parameters
-        ----------
-            None
-
-        Returns
-        -------
-            A ``pandas.Series`` of accepted (but not mandatory) values for ``countryCode`` values..
-        
-        Examples
-        --------
-
-        .. prompt:: python
-
-            >>> galaxias.countryCode_values()
-
-        .. program-output:: python -c "import galaxias;print(galaxias.countryCode_values())"
-        """
-        return corella.countryCode_values()
-
-    def create_dwca(self):
-        """
-        Checks all your files for Darwin Core compliance, and then creates the 
-        Darwin Core archive in your working directory.
-
-        Parameters
-        ----------
-            None
-
-        Returns
-        -------
-            Raises a ``ValueError`` if something is wrong, or returns ``None`` if it passes.
-        """
-        # run basic checks on data
-        data_check = self.check_dwca()
-
-        # run eml.xml check
-        eml_xml_check = self.check_eml_xml()
-
-        # run meta.xml check
-        meta_xml_check = self.check_meta_xml()
-
-        # set the boolean for xml_check
-        if xml_check is None:
-            xml_check = True
-
-        # write dwca if data and xml passes
-        if data_check and eml_xml_check and meta_xml_check:
-            
-            # open archive
-            zf = zipfile.ZipFile(self.dwca_name,'w')
-
-            # list for looping
-            objects_list = [self.occurrences,self.events,self.multimedia,self.emof]
-            filename_list = [self.occurrences_archive_filename,self.events_archive_filename,self.multimedia_archive_filename,self.emof_archive_filename]
-
-            # looping over associated objects and filenames
-            for dataframe,filename in enumerate(zip(objects_list,filename_list)):
-                print("testing...")
-                print(dataframe)
-                print(filename)
-                import sys
-                sys.exit()
-                if dataframe is not None:
-                    add_file_to_dwca(zf=zf,
-                                    dataframe=dataframe,
-                                    file_to_write='{}/{}'.format(self.data_proc_dir,filename),
-                                    removefile=filename)
-
-            # write eml.xml
-            write_to_zip_and_disk(zf=zf,
-                                      copyfile="{}/{} .".format(self.working_dir,self.eml_xml),
-                                      removefile=self.eml_xml)  
-              
-            # write meta.xml
-            write_to_zip_and_disk(zf=zf,
-                        copyfile="{}/{} .".format(self.working_dir,self.meta_xml),
-                        removefile=self.meta_xml)
-            
-            # close zipfile
-            zf.close()
-    
     def display_metadata_as_dataframe(self):
         """
         Writes the ``eml.xml`` file from the metadata markdown file into your current working directory.  
@@ -283,30 +338,8 @@ class dwca:
         -------
             ``pandas dataframe`` denoting all the information in the metadata file
         """
-        return delma.display_as_dataframe(metadata_md = self.metadata_md,working_dir=self.working_dir)
-
-    def event_terms():
-        """
-        A ``pandas.Series`` of accepted (but not mandatory) values for event data.
-
-        Parameters
-        ----------
-            None
-
-        Returns
-        -------
-            A ``pandas.Series`` of accepted (but not mandatory) values for event data.
-        
-        Examples
-        --------
-
-        .. prompt:: python
-
-            >>> galaxias.event_terms()
-
-        .. program-output:: python -c "import galaxias;print(galaxias.event_terms())"
-        """
-        return corella.event_terms()
+        return delma.display_as_dataframe(metadata_md = self.metadata_md,
+                                          working_dir = self.working_dir)
 
     def make_meta_xml(self):
         """
@@ -384,30 +417,7 @@ class dwca:
         # write metadata
         tree = ET.ElementTree(metadata)
         ET.indent(tree, space="\t", level=0)
-        tree.write("{}/{}".format(self.working_dir,self.meta_xml), xml_declaration=True)
-
-    def occurrence_terms():
-        """
-        A ``pandas.Series`` of accepted (but not mandatory) values for occurrence data.
-
-        Parameters
-        ----------
-            None
-
-        Returns
-        -------
-            A ``pandas.Series`` of accepted (but not mandatory) values for occurrence data.
-        
-        Examples
-        --------
-
-        .. prompt:: python
-
-            >>> galaxias.occurrence_terms()
-
-        .. program-output:: python -c "import galaxias;print(galaxias.occurrence_terms())"
-        """
-        return corella.occurrence_terms()
+        tree.write("{}/{}".format(self.publishing_dir,self.meta_xml), xml_declaration=True)
 
     def set_abundance(self,
                       individualCount=None,
@@ -588,12 +598,7 @@ class dwca:
                    Event=None,
                    samplingProtocol=None,
                    event_hierarchy=None,
-                   sequential_id=False,
-                   add_sequential_id='first',
-                   add_random_id='first',
-                   composite_id=None,
-                   sep='-',
-                   random_id=False):
+                   sep='-'):
         """
         Identify or format columns that contain information about an Event. An "Event" in Darwin Core Standard refers to an action that occurs at a place and time. Examples include:
 
@@ -612,18 +617,8 @@ class dwca:
                 A column name (``str``) that contains a unique identifier for your event.  Can also be set 
                 to ``True`` to generate values.  Parameters for these values can be specified with the arguments 
                 ``sequential_id``, ``add_sequential_id``, ``composite_id``, ``sep`` and ``random_id``
-            sequential_id: ``logical``
-                Create sequential IDs and/or add sequential ids to composite ID.  Default is ``False``.
-            add_sequential_id: ``str``
-                Determine where to add sequential id in composite id.  Values are ``first`` and ``last``.  Default is ``first``.
-            composite_id: ``str``, ``list``
-                ``str`` or ``list`` containing columns to create composite IDs.  Can be combined with sequential ID.
             sep: ``char``
                 Separation character for composite IDs.  Default is ``-``.
-            random_id: ``logical``
-                Create a random ID using the ``uuid`` package.  Default is ``False``.
-            add_random_id: ``str``
-                Determine where to add sequential id in random id.  Values are ``first`` and ``last``.  Default is ``first``.
             parentEventID: ``str``
                 A column name (``str``) that contains a unique ID belonging to an event below 
                 it in the event hierarchy.
@@ -639,19 +634,17 @@ class dwca:
                 if you have a set of observations that were taken at a particular site, you can use the 
                 dict {1: "Site Visit", 2: "Sample", 3: "Observation"}.
 
-            Returns
-            -------
-                None - the occurrences dataframe is updated
+        Returns
+        -------
+            None - the occurrences dataframe is updated
 
-            Examples
-            ----------
-                `set_events vignette <../../html/galaxias_user_guide/longitudinal_studies/set_events.html>`_
+        Examples
+        ----------
+            `set_events vignette <../../html/galaxias_user_guide/longitudinal_studies/set_events.html>`_
         """
         self.events = corella.set_events(dataframe=self.events,eventID=eventID,parentEventID=parentEventID,
                                          eventType=eventType,Event=Event,samplingProtocol=samplingProtocol,
-                                         event_hierarchy=event_hierarchy,sequential_id=sequential_id,
-                                         add_sequential_id=add_sequential_id,add_random_id=add_random_id,
-                                         composite_id=composite_id,sep=sep,random_id=random_id)
+                                         event_hierarchy=event_hierarchy)
 
     def set_individual_traits(self,
                               individualID=None,
@@ -804,12 +797,7 @@ class dwca:
                         recordNumber=None,
                         basisOfRecord=None,
                         occurrenceStatus=None,
-                        sequential_id=False,
-                        add_sequential_id='first',
-                        composite_id=None,
                         sep='-',
-                        random_id=False,
-                        add_random_id='first',
                         add_eventID=False,
                         eventType=None):
         """
@@ -829,18 +817,8 @@ class dwca:
                 Either a column name (``str``) or ``True`` (``bool``).  If a column name is 
                 provided, the column will be renamed.  If ``True`` is provided, unique identifiers
                 will be generated in the dataset.
-            sequential_id: ``logical``
-                Create sequential IDs and/or add sequential ids to composite ID.  Default is ``False``.
-            add_sequential_id: ``str``
-                Determine where to add sequential id in composite id.  Values are ``first`` and ``last``.  Default is ``first``.
-            composite_id: ``str``, ``list``
-                ``str`` or ``list`` containing columns to create composite IDs.  Can be combined with sequential ID.
             sep: ``char``
                 Separation character for composite IDs.  Default is ``-``.
-            random_id: ``logical``
-                Create a random ID using the ``uuid`` package.  Default is ``False``.
-            add_random_id: ``str``
-                Determine where to add sequential id in random id.  Values are ``first`` and ``last``.  Default is ``first``.        
             basisOfRecord: ``str``
                 Either a column name (``str``) or a valid value for ``basisOfRecord`` to add to 
                 the dataset.
@@ -862,14 +840,10 @@ class dwca:
         ----------
             `set_occurrences vignette <../../html/galaxias_user_guide/independent_observations/set_occurrences.html>`_
         """
-        
-        self.occurrences = corella.set_occurrences(dataframe=self.occurrences,occurrenceID=occurrenceID,
-                                                       catalogNumber=catalogNumber,recordNumber=recordNumber,
-                                                       basisOfRecord=basisOfRecord,occurrenceStatus=occurrenceStatus,
-                                                       sequential_id=sequential_id,add_sequential_id=add_sequential_id,
-                                                       composite_id=composite_id,sep=sep,random_id=random_id,
-                                                       add_random_id=add_random_id,add_eventID=add_eventID,
-                                                       events=self.events,eventType=eventType)
+        self.occurrences = corella.set_occurrences(dataframe=self.occurrences,occurrenceID=occurrenceID,sep=sep,
+                                                   catalogNumber=catalogNumber,recordNumber=recordNumber,
+                                                   basisOfRecord=basisOfRecord,occurrenceStatus=occurrenceStatus,
+                                                   add_eventID=add_eventID,events=self.events,eventType=eventType)
 
     def set_scientific_name(self,
                             scientificName=None,
@@ -945,6 +919,21 @@ class dwca:
                                                 order=order,family=family,genus=genus,specificEpithet=specificEpithet,
                                                 vernacularName=vernacularName)
 
+    def submit_archive(self):
+        """
+        Checks whether or not your Darwin Core Archive is formatted correctly.
+
+        Parameters
+        ----------
+            None
+
+        Returns
+        -------
+            Raises a ``ValueError`` if something is wrong, or returns True if it passes.
+        """
+
+        temp = webbrowser.open('https://github.com/AtlasOfLivingAustralia/data-publication/issues/new?template=new-dataset.md', new=2)
+
     def suggest_workflow(self):
         """
         Suggests a workflow to ensure your data conforms with the pre-defined Darwin Core standard.
@@ -975,15 +964,9 @@ class dwca:
         corella.suggest_workflow(occurrences=self.occurrences,
                                  events=self.events)
 
-    def validate_dwca(self):
+    def write_eml(self):
         """
-        """
-        print("Amanda write this function")
-        n=1
-
-    def write_eml_xml(self):
-        """
-        Writes the ``eml.xml`` file from the metadata markdown file into your current working directory.  
+        Writes the ``eml.xml`` file from the metadata markdown file into your publishing directory.  
         The ``eml.xml`` file is the metadata file containing things like authorship, licence, institution, 
         etc.
 
@@ -997,6 +980,6 @@ class dwca:
 
         Examples
         ----------
-            `write_eml_xml vignette <../../html/galaxias_user_guide/independent_observations/write_eml_xml.html>`_
+            `write_eml vignette <../../html/galaxias_user_guide/independent_observations/write_eml_xml.html>`_
         """
-        delma.write_eml_xml(eml_xml = self.eml_xml, working_dir = self.working_dir)
+        delma.write_eml(eml_xml = self.eml_xml, working_dir = self.working_dir, publishing_dir = self.publishing_dir)

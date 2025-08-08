@@ -67,7 +67,7 @@ def test_display_metadata_as_dataframe_default():
     assert type(df) is pd.core.frame.DataFrame
 
 def test_display_metadata_as_dataframe_specify_markdown():
-    my_dwca = galaxias.dwca('testing.md')
+    my_dwca = galaxias.dwca(metadata_md='testing.md')
     df = my_dwca.display_metadata_as_dataframe()
     assert type(df) is pd.core.frame.DataFrame
 
@@ -110,137 +110,137 @@ def test_display_metadata_as_dataframe_xml_rename_change_working_dir():
     assert type(df) is pd.core.frame.DataFrame
 
 # ------------------------------------
-# write_eml_xml.py
+# write_eml.py
 # ------------------------------------
-def test_write_eml_xml_default():
+def test_write_eml_default():
     if os.path.exists('metadata.md'):
         os.remove('metadata.md')
     my_dwca = galaxias.dwca()
-    my_dwca.write_eml_xml()
-    assert os.path.isfile('eml.xml')
+    my_dwca.write_eml()
+    assert os.path.isfile('data-publish/eml.xml')
 
-def test_write_eml_xml_markdown():
+def test_write_eml_markdown():
     if os.path.exists('eml.xml'):
         os.remove('eml.xml')
     if os.path.exists('testing.md'):
         os.remove('testing.md')
     my_dwca = galaxias.dwca(metadata_md='testing.md')
-    my_dwca.write_eml_xml()
-    assert os.path.isfile('eml.xml')
+    my_dwca.write_eml()
+    assert os.path.isfile('data-publish/eml.xml')
 
-def test_write_eml_xml_directory():
+def test_write_eml_directory():
     if os.path.exists('testing/metadata.md'):
         os.remove('testing/metadata.md')
     if os.path.exists('testing/eml.xml'):
         os.remove('testing/eml.xml')
     my_dwca = galaxias.dwca(working_dir='testing')
-    my_dwca.write_eml_xml()
-    assert os.path.isfile('testing/eml.xml')
+    my_dwca.write_eml()
+    assert os.path.isfile('data-publish/eml.xml')
 
-def test_write_eml_xml_markdown_directory():
+def test_write_eml_markdown_directory():
     if os.path.exists('testing/testing.md'):
         os.remove('testing/testing.md')
-    if os.path.exists('testing/eml.xml'):
-        os.remove('testing/eml.xml')
+    if os.path.exists('data-publish/eml.xml'):
+        os.remove('data-publish/eml.xml')
     my_dwca = galaxias.dwca(working_dir='testing',metadata_md='testing.md')
-    my_dwca.write_eml_xml()
-    assert os.path.isfile('testing/eml.xml')
+    my_dwca.write_eml()
+    assert os.path.isfile('data-publish/eml.xml')
 
-def test_write_eml_xml_directory_eml_xml():
+def test_write_eml_directory_eml_xml():
     if os.path.exists('testing/metadata.md'):
         os.remove('testing/metadata.md')
-    if os.path.exists('testing/testing.xml'):
-        os.remove('testing/testing.xml')
+    if os.path.exists('data-publish/testing.xml'):
+        os.remove('data-publish/testing.xml')
     my_dwca = galaxias.dwca(xml_url="https://collections.ala.org.au/ws/eml/dr368",working_dir='testing',eml_xml='testing.xml')
-    my_dwca.write_eml_xml()
-    assert os.path.isfile('testing/testing.xml')
+    my_dwca.write_eml()
+    assert os.path.isfile('data-publish/testing.xml')
 
-def test_write_eml_xml_markdown_eml_xml():
+def test_write_eml_markdown_eml_xml():
     if os.path.exists('testing.md'):
         os.remove('testing.md')
-    if os.path.exists('testing.xml'):
-        os.remove('testing.xml')
+    if os.path.exists('data-publish/testing.xml'):
+        os.remove('data-publish/testing.xml')
     my_dwca = galaxias.dwca(xml_url="https://collections.ala.org.au/ws/eml/dr368",metadata_md='testing.md',eml_xml='testing.xml')
-    my_dwca.write_eml_xml()
-    assert os.path.isfile('testing.xml')
+    my_dwca.write_eml()
+    assert os.path.isfile('data-publish/testing.xml')
 
-def test_write_eml_xml_markdown_directory_xml_rename():
+def test_write_eml_markdown_directory_xml_rename():
     if os.path.exists('testing/testing.md'):
         os.remove('testing/testing.md')
-    if os.path.exists('testing/testing.xml'):
-        os.remove('testing/testing.xml')
+    if os.path.exists('data-publish/testing.xml'):
+        os.remove('data-publish/testing.xml')
     my_dwca = galaxias.dwca(xml_url="https://collections.ala.org.au/ws/eml/dr368",working_dir='testing',metadata_md='testing.md',eml_xml='testing.xml')
-    my_dwca.write_eml_xml()
-    assert os.path.isfile('testing/testing.xml')
+    my_dwca.write_eml()
+    assert os.path.isfile('data-publish/testing.xml')
 
 # ------------------------------------
-# check_eml_xml.py
+# check_metadata.py
 # ------------------------------------
-def test_check_eml_xml_default():
+def test_check_metadata_default():
     if os.path.exists('metadata.md'):
         os.remove('metadata.md')
     my_dwca = galaxias.dwca()
-    my_dwca.write_eml_xml()
-    check = my_dwca.check_eml_xml()
+    my_dwca.write_eml()
+    check = my_dwca.check_metadata()
     assert check is None
 
-def test_check_eml_xml_markdown():
+def test_check_metadata_markdown():
     if os.path.exists('eml.xml'):
         os.remove('eml.xml')
     if os.path.exists('testing.md'):
         os.remove('testing.md')
     my_dwca = galaxias.dwca(metadata_md='testing.md')
-    my_dwca.write_eml_xml()
-    check = my_dwca.check_eml_xml()
+    my_dwca.write_eml()
+    check = my_dwca.check_metadata()
     assert check is None
 
-def test_check_eml_xml_directory():
+def test_check_metadata_directory():
     if os.path.exists('testing/metadata.md'):
         os.remove('testing/metadata.md')
     if os.path.exists('testing/eml.xml'):
         os.remove('testing/eml.xml')
     my_dwca = galaxias.dwca(working_dir='testing')
-    my_dwca.write_eml_xml()
-    check = my_dwca.check_eml_xml()
+    my_dwca.write_eml()
+    check = my_dwca.check_metadata()
     assert check is None
 
-def test_check_eml_xml_markdown_directory():
+def test_check_metadata_markdown_directory():
     if os.path.exists('testing/testing.md'):
         os.remove('testing/testing.md')
     if os.path.exists('testing/eml.xml'):
         os.remove('testing/eml.xml')
     my_dwca = galaxias.dwca(working_dir='testing',metadata_md='testing.md')
-    my_dwca.write_eml_xml()
-    check = my_dwca.check_eml_xml()
+    my_dwca.write_eml()
+    check = my_dwca.check_metadata()
     assert check is None
 
-def test_check_eml_xml_directory_eml_xml():
+def test_check_metadata_directory_eml_xml():
     if os.path.exists('testing/metadata.md'):
         os.remove('testing/metadata.md')
     if os.path.exists('testing/testing.xml'):
         os.remove('testing/testing.xml')
     my_dwca = galaxias.dwca(xml_url="https://collections.ala.org.au/ws/eml/dr368",working_dir='testing')
-    my_dwca.write_eml_xml()
-    check = my_dwca.check_eml_xml()
+    my_dwca.write_eml()
+    check = my_dwca.check_metadata()
     assert check is None
 
-def test_check_eml_xml_markdown_eml_xml():
+def test_check_metadata_markdown_eml_xml():
     if os.path.exists('testing.md'):
         os.remove('testing.md')
     if os.path.exists('testing.xml'):
         os.remove('testing.xml')
     my_dwca = galaxias.dwca(xml_url="https://collections.ala.org.au/ws/eml/dr368",metadata_md='testing.md')
-    my_dwca.write_eml_xml()
-    check = my_dwca.check_eml_xml()
+    my_dwca.write_eml()
+    check = my_dwca.check_metadata()
     assert check is None
 
-def test_check_eml_xml_markdown_directory_xml_rename():
+def test_check_metadata_markdown_directory_xml_rename():
     if os.path.exists('testing/testing.md'):
         os.remove('testing/testing.md')
     if os.path.exists('testing/testing.xml'):
         os.remove('testing/testing.xml')
     my_dwca = galaxias.dwca(xml_url="https://collections.ala.org.au/ws/eml/dr368",working_dir='testing',metadata_md='testing.md')
-    my_dwca.write_eml_xml()
-    check = my_dwca.check_eml_xml()
+    my_dwca.write_eml()
+    check = my_dwca.check_metadata()
     assert check is None
 #'''

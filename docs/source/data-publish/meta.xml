@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='us-ascii'?>
+<archive xmlns="http://rs.tdwg.org/dwc/text/" metadata="eml.xml">
+	<core rowType="http://rs.tdwg.org/dwc/terms/Occurrence" encoding="UTF-8" fieldsTerminatedBy="," linesTerminatedBy="\r\n" fieldsEnclosedBy="&amp;quot;" ignoreHeaderLines="1">
+		<files>
+			<location>occurrences.txt</location>
+		</files>
+		<id index="0" />
+		<field index="0" term="http://rs.tdwg.org/dwc/terms/occurrenceID" />
+		<field index="1" term="http://rs.tdwg.org/dwc/terms/scientificName" />
+		<field index="2" term="http://rs.tdwg.org/dwc/terms/decimalLatitude" />
+		<field index="3" term="http://rs.tdwg.org/dwc/terms/decimalLongitude" />
+		<field index="4" term="http://rs.tdwg.org/dwc/terms/eventDate" />
+		<field index="5" term="http://rs.tdwg.org/dwc/terms/basisOfRecord" />
+		<field index="6" term="http://rs.tdwg.org/dwc/terms/geodeticDatum" />
+		<field index="7" term="http://rs.tdwg.org/dwc/terms/coordinatePrecision" />
+	</core>
+</archive>

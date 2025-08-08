@@ -72,7 +72,7 @@ Preparing archive
         .. raw:: html
             :file: ../../source/_static/icons/validate.svg
                 
-        **Validate Archive against GBIF Standard** 
+        **OPTIONAL: Validate Archive against GBIF Standard** 
 
     .. grid-item-card:: 
         :link: publishing_dwca.html
