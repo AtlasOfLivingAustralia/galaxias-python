@@ -52,4 +52,3 @@ REPORT_TERMS = {
         'incorrect_dwc_terms': 'incorrect_dwc_terms'
     }
 }
-

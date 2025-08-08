@@ -411,10 +411,11 @@ span.prompt1:before {
 }
 </style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">set_datetime</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span><span class="n">eventDate</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>There is already a metadata file.
+Traceback (most recent call last):
   File &quot;/Users/buy003/Documents/GitHub/galaxias-python/docs/source/galaxias_user_guide/independent_observations/data_cleaning.py&quot;, line 113, in &lt;module&gt;
     my_dwca.set_datetime(eventDate=&#39;Collection_date&#39;)
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/galaxias/dwca_build.py&quot;, line 563, in set_datetime
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/galaxias/dwca_build.py&quot;, line 590, in set_datetime
     self.occurrences = corella.set_datetime(dataframe=self.occurrences,eventDate=eventDate,year=year,month=month,
                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/set_datetime.py&quot;, line 101, in set_datetime
@@ -438,7 +439,8 @@ arguments that will convert dates in strings to <code class="docutils literal no
 <span class="prompt1"><span class="o">...</span>                      <span class="n">yearfirst</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                      <span class="n">dayfirst</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                   Species  Latitude  Longitude  eventDate
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>There is already a metadata file.
+                   Species  Latitude  Longitude  eventDate
 0       Corymbia latifolia    -13.04     131.07 2022-03-29
 1     Eucalyptus tectifica    -13.04     131.07 2022-09-13
 2           Banksia aemula    -33.60     150.72 2022-08-15
@@ -456,7 +458,8 @@ Darwin core standard, but it’s always good to double-check your data.</p>
 </div>
 <p>Now, we can check that our data column do comply with the Darwin Core standard.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">check_data</span><span class="p">()</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  Number of Errors  Pass/Fail    Column name
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>There is already a metadata file.
+  Number of Errors  Pass/Fail    Column name
 ------------------  -----------  -------------
                  0  ✓            eventDate
 
@@ -475,7 +478,9 @@ None
 <p>However, since we don’t have all of the required columns, we can run <code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code>
 again to see how our data is doing this time round.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">suggest_workflow</span><span class="p">()</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>There is already a metadata file.
+
+── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ── All DwC terms ──
 

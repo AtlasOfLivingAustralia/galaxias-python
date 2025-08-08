@@ -1,4 +1,4 @@
-Metadata-Version: 2.1
+Metadata-Version: 2.4
 Name: galaxias-python
 Version: 0.1.0
 Summary: Package for creating Darwin Core Archives
@@ -17,5 +17,16 @@ Requires-Dist: xmlschema
 Requires-Dist: shutils
 Requires-Dist: metapype
 Requires-Dist: tabulate
+Requires-Dist: corella-python
+Requires-Dist: delma-python
+Dynamic: author
+Dynamic: author-email
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: keywords
+Dynamic: license
+Dynamic: requires-dist
+Dynamic: summary
 
 Package for creating Darwin Core Archives

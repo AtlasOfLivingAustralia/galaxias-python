@@ -392,12 +392,11 @@ document.write(`
 <h1>Validating the DwCA against GBIF<a class="headerlink" href="#validating-the-dwca-against-gbif" title="Link to this heading">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This is an optional step; however, validating the format of your
-archive is recommended, as it could save you from having to fix
-potential mistakes in your archive.</p>
+<p>This currently doesn’t work very well. This will point to an ALA validator
+in the future, and should be used with caution.</p>
 </div>
-<p>After you have successfully built your archive, now is the time to
-validate your archive against GBIF’s standard.  To do this, <code class="docutils literal notranslate"><span class="pre">galaxias</span></code>
+<p>After you have successfully built your archive, you might want to
+validate your archive against the GBIF API.  To do this, <code class="docutils literal notranslate"><span class="pre">galaxias</span></code>
 has a function called <code class="docutils literal notranslate"><span class="pre">check_archive()</span></code>, which will send your archive
 to GBIF’s validator tool, and give you back a report.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
@@ -405,18 +404,16 @@ span.prompt1:before {
   content: " ";
 }
 </style><span class="prompt1">&gt;&gt;&gt; my_dwca.check_archive()</span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>cp: ./. and . are identical (not copied).
-cp: ./eml.xml and /Users/buy003/Documents/GitHub/galaxias-python/docs/source/eml.xml are identical (not copied).
-cp: ./. and . are identical (not copied).
-cp: ./meta.xml and /Users/buy003/Documents/GitHub/galaxias-python/docs/source/meta.xml are identical (not copied).
-cp: ./. and . are identical (not copied).
-/Users/buy003/Documents/GitHub/galaxias-python/docs/source/.//data-publish/dwca.zip
-&lt;Response [400]&gt;
-&lt;urllib3.response.HTTPResponse object at 0x124c35000&gt;
-Bad Request
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>There is already a metadata file.
+Number of errors: 2
+
+fileName: eml.xml
+issues: {&#39;EML document&#39;: &#39;https://nis.lternet.edu/schemas/EML/eml-2.2.0/xsd/eml.xsdXML schema not supported&#39;}
+
+rowType: http://rs.tdwg.org/dwc/terms/Occurrence
+issues: {&#39;FATAL&#39;: &#39;Only darwin core archives with a single quotation character are supported, but found &gt;&gt;&gt;&amp;quot;&lt;&lt;&lt;&#39;}
 </pre></div>
 </div>
-<p>Something more here.</p>
 </section>
 
 

@@ -104,7 +104,7 @@ def test_set_occurrences_occurrenceStatus__wrong_value_rename():
 def test_set_occurrences_add_occurrenceIDs_random():
     df = pd.DataFrame({'species': ['Eolophus roseicapilla','Eolophus roseicapilla']})
     occ_dwca = galaxias.dwca(occurrences=df,create_md=False)
-    occ_dwca.set_occurrences(occurrenceID=True,random_id=True)
+    occ_dwca.set_occurrences(occurrenceID='random')
     assert 'occurrenceID' in occ_dwca.occurrences.columns
 
 def test_set_occurrences_add_occurrenceIDs_sequential():
@@ -112,7 +112,7 @@ def test_set_occurrences_add_occurrenceIDs_sequential():
                        'decimalLatitude': [1.0,1.0],
                        'decimalLongitude': [1.0,1.0]})
     occ_dwca = galaxias.dwca(occurrences=df,create_md=False)
-    occ_dwca.set_occurrences(occurrenceID=True,sequential_id=True)
+    occ_dwca.set_occurrences(occurrenceID='sequential')
     assert 'occurrenceID' in occ_dwca.occurrences.columns
 
 def test_set_occurrences_add_occurrenceIDs_composite():
@@ -120,7 +120,7 @@ def test_set_occurrences_add_occurrenceIDs_composite():
                        'eventDate': ['2024-10-10','2024-10-10'],
                        'catalogNumber': ['1','2']})
     occ_dwca = galaxias.dwca(occurrences=df,create_md=False)
-    occ_dwca.set_occurrences(occurrenceID=True,composite_id=['eventDate','catalogNumber'])
+    occ_dwca.set_occurrences(occurrenceID=['eventDate','catalogNumber'])
     assert 'occurrenceID' in occ_dwca.occurrences.columns
 
 def test_set_occurrences_add_occurrenceIDs_composite_random():
@@ -128,7 +128,7 @@ def test_set_occurrences_add_occurrenceIDs_composite_random():
                        'eventDate': ['2024-10-10','2024-10-10'],
                        'catalogNumber': ['1','2']})
     occ_dwca = galaxias.dwca(occurrences=df,create_md=False)
-    occ_dwca.set_occurrences(occurrenceID=True,composite_id=['eventDate','catalogNumber'],random_id=True)
+    occ_dwca.set_occurrences(occurrenceID=['random','eventDate','catalogNumber'])
     assert 'occurrenceID' in occ_dwca.occurrences.columns
 
 def test_set_occurrences_add_occurrenceIDs_composite_random_last():
@@ -136,7 +136,7 @@ def test_set_occurrences_add_occurrenceIDs_composite_random_last():
                        'eventDate': ['2024-10-10','2024-10-10'],
                        'catalogNumber': ['1','2']})
     occ_dwca = galaxias.dwca(occurrences=df,create_md=False)
-    occ_dwca.set_occurrences(occurrenceID=True,composite_id=['eventDate','catalogNumber'],random_id=True,add_random_id='last')
+    occ_dwca.set_occurrences(occurrenceID=['eventDate','catalogNumber','random'])
     assert 'occurrenceID' in occ_dwca.occurrences.columns
 
 def test_set_occurrences_add_occurrenceIDs_composite_sequential():
@@ -144,7 +144,7 @@ def test_set_occurrences_add_occurrenceIDs_composite_sequential():
                        'eventDate': ['2024-10-10','2024-10-10'],
                        'catalogNumber': ['1','2']})
     occ_dwca = galaxias.dwca(occurrences=df,create_md=False)
-    occ_dwca.set_occurrences(occurrenceID=True,composite_id=['eventDate','catalogNumber'],sequential_id=True)
+    occ_dwca.set_occurrences(occurrenceID=['sequential','eventDate','catalogNumber'])
     assert 'occurrenceID' in occ_dwca.occurrences.columns
 
 def test_set_occurrences_add_occurrenceIDs_composite_sequential_last():
@@ -152,6 +152,6 @@ def test_set_occurrences_add_occurrenceIDs_composite_sequential_last():
                        'eventDate': ['2024-10-10','2024-10-10'],
                        'catalogNumber': ['1','2']})
     occ_dwca = galaxias.dwca(occurrences=df,create_md=False)
-    occ_dwca.set_occurrences(occurrenceID=True,composite_id=['eventDate','catalogNumber'],sequential_id=True,add_sequential_id='last')
+    occ_dwca.set_occurrences(occurrenceID=['eventDate','catalogNumber','sequential'])
     assert 'occurrenceID' in occ_dwca.occurrences.columns
 #'''

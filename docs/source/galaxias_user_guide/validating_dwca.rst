@@ -5,12 +5,11 @@ Validating the DwCA against GBIF
 
 .. note::
 
-    This is an optional step; however, validating the format of your 
-    archive is recommended, as it could save you from having to fix 
-    potential mistakes in your archive.
+    This currently doesn't work very well. This will point to an ALA validator 
+    in the future, and should be used with caution.
 
-After you have successfully built your archive, now is the time to 
-validate your archive against GBIF's standard.  To do this, ``galaxias`` 
+After you have successfully built your archive, you might want to 
+validate your archive against the GBIF API.  To do this, ``galaxias`` 
 has a function called ``check_archive()``, which will send your archive 
 to GBIF's validator tool, and give you back a report.
 
@@ -19,5 +18,3 @@ to GBIF's validator tool, and give you back a report.
     >>> my_dwca.check_archive()
 
 .. program-output:: python galaxias_user_guide/check_archive_occurrences.py
-
-Something more here.

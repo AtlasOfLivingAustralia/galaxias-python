@@ -408,7 +408,8 @@ span.prompt1:before {
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">events</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;&lt;NAME_OF_EVENTS&gt;.csv&#39;</span><span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">check_data</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                    <span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">)</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Number of Errors    Pass/Fail    Column name
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>cp: /Users/buy003/Documents/GitHub/galaxias-python/docs/source/dwca_data_events/metadata.md: No such file or directory
+Number of Errors    Pass/Fail    Column name
 ------------------  -----------  -------------
 
 
@@ -430,14 +431,16 @@ do this, we have developed an all-purpose function called <code class="docutils 
 are the results of this particular dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">suggest_workflow</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                          <span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">)</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>cp: /Users/buy003/Documents/GitHub/galaxias-python/docs/source/dwca_data_events/metadata.md: No such file or directory
+
+── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ── All DwC terms ──
 
 Matched 0 of 9 column names to DwC terms:
 
 ✓ Matched: 
-✗ Unmatched: Latitude, Species, Longitude, number_birds, Collection_date, name, location, date, type
+✗ Unmatched: Latitude, Longitude, Species, Collection_date, number_birds, type, date, name, location
 
 ── Minimum required DwC terms occurrences ──
 

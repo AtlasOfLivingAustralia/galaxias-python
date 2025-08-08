@@ -411,10 +411,13 @@ span.prompt1:before {
   content: " ";
 }
 </style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">set_locality</span><span class="p">(</span><span class="n">continent</span><span class="o">=</span><span class="s1">&#39;Australia&#39;</span><span class="p">)</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>There is already a metadata file.
+There is already a metadata file.
+There is already a metadata file.
+Traceback (most recent call last):
   File &quot;/Users/buy003/Documents/GitHub/galaxias-python/docs/source/galaxias_user_guide/independent_observations/data_cleaning.py&quot;, line 166, in &lt;module&gt;
     temp_dwca.set_locality(continent=&#39;Australia&#39;)
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/galaxias/dwca_build.py&quot;, line 735, in set_locality
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/galaxias/dwca_build.py&quot;, line 762, in set_locality
     self.occurrences = corella.set_locality(dataframe=self.occurrences,continent=continent,
                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/set_locality.py&quot;, line 71, in set_locality
@@ -430,7 +433,10 @@ Africa, Antarctica, Asia, Europe, North America, Oceania, South America
 continent that Australia is part of.  Therefore, we can set <code class="docutils literal notranslate"><span class="pre">continent='Oceania'</span></code> and
 <code class="docutils literal notranslate"><span class="pre">country='Australia'</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">set_locality</span><span class="p">(</span><span class="n">continent</span><span class="o">=</span><span class="s1">&#39;Oceania&#39;</span><span class="p">,</span><span class="n">country</span><span class="o">=</span><span class="s1">&#39;Australia&#39;</span><span class="p">)</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                   Species  Latitude  Longitude Collection_date continent    country
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>There is already a metadata file.
+There is already a metadata file.
+There is already a metadata file.
+                   Species  Latitude  Longitude Collection_date continent    country
 0       Corymbia latifolia    -13.04     131.07       29/3/2022   Oceania  Australia
 1     Eucalyptus tectifica    -13.04     131.07       13/9/2022   Oceania  Australia
 2           Banksia aemula    -33.60     150.72       15/8/2022   Oceania  Australia

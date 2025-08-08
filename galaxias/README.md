@@ -1,56 +1,76 @@
-# galaxias
+# galaxias <a href="https://galaxias.ala.org.au/Python/"><img src="docs/source/_static/logo/logo.png" align="right" style="margin: 0px 10px 0px 10px;" alt="" height="138"/></a>
 
-Code repository for the galaxias-python package, which will create Darwin Core Archives and ship them to the ALA
+<!-- badges: start -->
 
-## Packaging
+[![pypi](https://img.shields.io/pypi/v/galaxias-python.svg)](https://pypi.org/project/galaxias-python/)
 
-```
-poetry build
-```
+<!-- badges: end -->
 
-## Publishing
+## Overview
 
-```
+## Overview
 
-```
+`galaxias-python` is a Python package that helps users describe, package 
+and share biodiversity information using the [‘Darwin Core’](https://dwc.tdwg.org)
+data standard. It was created by the [Science & Decision Support
+Team](https://labs.ala.org.au) at the [Atlas of Living
+Australia](https://www.ala.org.au) (ALA).
+
+The package is named for a genus of freshwater fish that is found only
+in the Southern Hemisphere, and predominantly in Australia and New
+Zealand. The logo shows a [Spotted
+Galaxias](https://bie.ala.org.au/species/https://biodiversity.org.au/afd/taxa/e4d85845-3e34-4112-90a9-f954176721ec)
+(*Galaxias truttaceus*) drawn by Ian Brennan.
+
+If you have any comments, questions or suggestions, please [contact
+us](mailto:support@ala.org.au).
 
 ## Installation
 
-#### Use locally built package in a virtual environment:
-```
-pip install <folder>/galaxias-python/galaxias/dist/galaxias-<version>.tar.gz
-```
+This package is under active development, and is not yet available on
+PyPI. You can install the latest development version from GitHub with:
 
-
-####To install published package:
-
-
-```bash
-$ pip install galaxias
+``` bash
+git clone https://github.com/AtlasOfLivingAustralia/galaxias-python.git
+cd galaxias-python/galaxias
+pip install .
 ```
 
-## Usage
+Load the package:
 
-#### Create Darwin Core Archive
-```
-from galaxias import CsvFileType
-from galaxias import DwcaHandler
-
-core_csv = CsvFileType(files=['/tmp/occurrence.csv'], type='occurrence', keys='occurrenceID')
-ext_csvs = [CsvFileType(files=['/tmp/multimedia.csv'], type='multimedia')]
-
-DwcaHandler.create_dwca(core_csv=core_csv, ext_csv_list=ext_csvs, output_dwca_path='/tmp/dwca.zip')
+``` python
+import galaxias
 ```
 
+## Features
 
-## Contributing
+`galaxias-python` contains tools to:
 
-Interested in contributing? Check out the contributing guidelines. Please note that this project is released with a Code of Conduct. By contributing to this project, you agree to abide by its terms.
+- Create documents to describe the origin and structure of your data
+  using `build_metadata()` and `build_schema()`.
+- Zip up your data for sharing or publication using `build_archive()`.
+- Check data for consistency with the Darwin Core standard, either
+  locally using `check_archive()`, or via API using
+  `validate_archive()`.
 
-## License
+`galaxias-python` is part of a group of packages that help users publish data
+using the Darwin Core standard. The other packages are:
 
-`galaxias` was created by Atlas of Living Australia. It is licensed under the terms of the GNU General Public License v3.0 license.
+- [`corella-python`](https://corella.ala.org.au/Python) for converting tibbles to the
+  required column names
+- [`delma-python`](https://delma.ala.org.au/Python) for converting markdown files to
+  `xml`.
 
-## Credits
+## Citing galaxias
 
-`galaxias` was created with [`cookiecutter`](https://cookiecutter.readthedocs.io/en/latest/) and the `py-pkgs-cookiecutter` [template](https://github.com/py-pkgs/py-pkgs-cookiecutter).
+The current recommended citation is:
+
+> Buyan A & Westgate MJ (2025) galaxias: Standardise, Document and Share
+> Biodiversity Data. Python Package version 0.1.0.
+
+## Contributors
+
+Developers who have contributed to `galaxias` are listed here (in
+alphabetical order by surname):
+
+Amanda Buyan ([@acbuyan](https://github.com/acbuyan))

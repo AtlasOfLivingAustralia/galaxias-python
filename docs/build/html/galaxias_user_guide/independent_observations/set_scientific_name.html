@@ -411,7 +411,8 @@ span.prompt1:before {
 }
 </style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">set_scientific_name</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span><span class="n">scientificName</span><span class="o">=</span><span class="s1">&#39;Species&#39;</span><span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>            scientificName  Latitude  Longitude Collection_date
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>There is already a metadata file.
+            scientificName  Latitude  Longitude Collection_date
 0       Corymbia latifolia    -13.04     131.07       29/3/2022
 1     Eucalyptus tectifica    -13.04     131.07       13/9/2022
 2           Banksia aemula    -33.60     150.72       15/8/2022
@@ -427,7 +428,8 @@ Darwin core standard, but it’s always good to double-check your data.</p>
 <p>Now, we can check that our data column do comply with the Darwin Core standard.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">set_scientific_name</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span><span class="n">scientificName</span><span class="o">=</span><span class="s1">&#39;Species&#39;</span><span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">check_dataset</span><span class="p">()</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  Number of Errors  Pass/Fail    Column name
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>There is already a metadata file.
+  Number of Errors  Pass/Fail    Column name
 ------------------  -----------  --------------
                  0  ✓            scientificName
 
@@ -444,14 +446,16 @@ Use corella.suggest_workflow()
 <p>However, since we don’t have all of the required columns, we can run <code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code>
 again to see how our data is doing this time round.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">suggest_workflow</span><span class="p">()</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>There is already a metadata file.
+
+── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ── All DwC terms ──
 
 Matched 1 of 4 column names to DwC terms:
 
 ✓ Matched: scientificName
-✗ Unmatched: Longitude, Collection_date, Latitude
+✗ Unmatched: Latitude, Collection_date, Longitude
 
 ── Minimum required DwC terms occurrences ──
 

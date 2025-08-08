@@ -452,10 +452,11 @@ in principle is supplying three arguments:</p>
 <span class="prompt1"><span class="o">...</span>                         <span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                         <span class="n">eventType</span><span class="o">=</span><span class="s1">&#39;Observation&#39;</span><span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">my_dwca</span><span class="o">.</span><span class="n">occurrences</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>cp: /Users/buy003/Documents/GitHub/galaxias-python/docs/source/dwca_data_events/metadata.md: No such file or directory
+Traceback (most recent call last):
   File &quot;/Users/buy003/Documents/GitHub/galaxias-python/docs/source/galaxias_user_guide/longitudinal_studies/events_workflow.py&quot;, line 104, in &lt;module&gt;
     my_dwca.set_events(eventType=&#39;type&#39;,
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/galaxias/dwca_build.py&quot;, line 618, in set_events
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/galaxias/dwca_build.py&quot;, line 645, in set_events
     self.events = corella.set_events(dataframe=self.events,eventID=eventID,parentEventID=parentEventID,
                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/set_events.py&quot;, line 118, in set_events

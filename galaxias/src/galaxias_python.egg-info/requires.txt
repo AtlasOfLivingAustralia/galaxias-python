@@ -7,3 +7,5 @@ xmlschema
 shutils
 metapype
 tabulate
+corella-python
+delma-python

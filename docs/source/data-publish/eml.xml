@@ -1,0 +1,48 @@
+<eml:eml packageId="edi.23.1" system="https://doi.org" scope="system" xmlns:eml="https://eml.ecoinformatics.org/eml-2.2.0" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://eml.ecoinformatics.org/eml-2.2.0 https://nis.lternet.edu/schemas/EML/eml-2.2.0/xsd/eml.xsd">
+    <dataset>
+        <title>Your Title</title>
+        <creator>
+            <individualName>
+                <givenName>Firstname</givenName>
+                <surName>Lastname</surName>
+            </individualName>
+            <address>
+                <deliveryPoint>215 Road Street</deliveryPoint>
+                <city>Canberra</city>
+                <administrativeArea>ACT</administrativeArea>
+                <postalCode>2601</postalCode>
+                <country>Australia</country>
+            </address>
+            <electronicMailAddress>firstname.lastname@email.com</electronicMailAddress>
+            <userId directory="https://orcid.org">This is optional; however, if you would like to include ORCIDs, this is great</userId>
+        </creator>
+        <pubDate>2025-08-08</pubDate>
+        <language>EN</language>
+        <abstract>A brief overview of the resource. This should provide enough information to help potential users of the data to understand if it may be of interest. Example content may include what the study was designed to investigate, what taxa were observed, and over what time period.</abstract>
+        <keywordSet>
+            <keyword>Occurrence</keyword>
+            <keywordThesaurus>https://ipt.gbif.org/manual/en/ipt/latest/dwca-guide#dwc-a-components</keywordThesaurus>
+        </keywordSet>
+        <licensed>
+            <licenseName>Creative Commons Attribution 4.0 International</licenseName>
+            <url>https://creativecommons.org/licenses/by/4.0/</url>
+            <identifier>CC-BY 4.0 (Int) 4.0</identifier>
+        </licensed>
+        <introduction>This section can include any methods you like, but should, at minimum, give a simple description of how the data were collected. To link to a publication with more complete information, add a level-2 heading called `Reference Publication` and add the citation to your paper. 
+ If applicable, you can also choose to add information on data processing that are specific to this version of your dataset. This may include information on whether data on threatened species have been removed, or spatial data have been generalised (i.e. set to a lower spatial precision than the source dataset).</introduction>
+        <contact>
+            <individualName>
+                <givenName>Firstname</givenName>
+                <surName>Lastname</surName>
+            </individualName>
+            <address>
+                <deliveryPoint>215 Road Street</deliveryPoint>
+                <city>Canberra</city>
+                <administrativeArea>ACT</administrativeArea>
+                <postalCode>2601</postalCode>
+                <country>Australia</country>
+            </address>
+            <electronicMailAddress>firstname.lastname@email.com</electronicMailAddress>
+        </contact>
+    </dataset>
+</eml:eml>
