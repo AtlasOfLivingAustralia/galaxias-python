@@ -16,7 +16,7 @@
             <electronicMailAddress>firstname.lastname@email.com</electronicMailAddress>
             <userId directory="https://orcid.org">This is optional; however, if you would like to include ORCIDs, this is great</userId>
         </creator>
-        <pubDate>2025-09-29</pubDate>
+        <pubDate>2025-10-02</pubDate>
         <language>EN</language>
         <abstract>A brief overview of the resource. This should provide enough information to help potential users of the data to understand if it may be of interest. Example content may include what the study was designed to investigate, what taxa were observed, and over what time period.</abstract>
         <keywordSet>

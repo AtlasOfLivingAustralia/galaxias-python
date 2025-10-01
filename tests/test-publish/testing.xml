@@ -36,7 +36,7 @@
             <organizationName>Department of Planning, Industry and Environment representing the State of New South Wales</organizationName>
             <address></address>
             <role>distributor</role>
-        <pubDate>2025-09-24</pubDate>
+        <pubDate>2025-09-30</pubDate>
         <language>English</language>
         <abstract></abstract>
             <para>Records from DPIE's NSW BioNet Atlas database of flora and fauna sightings. Includes records from other custodians such as the National Herbarium of NSW, Forests NSW, Australian Bird and Bat Banding Scheme and the Australian Museum.</para>
@@ -67,7 +67,7 @@
     <additionalMetadata></additionalMetadata>
         <metadata></metadata>
             <gbif></gbif>
-                <datestamp>2025-09-23T09:29:34</datestamp>
+                <datestamp>2025-09-30T10:00:19</datestamp>
                 <hierarchylevel>dataset</hierarchylevel>
                 <citation>BioNet Species Sightings occurrence data held by the NSW Office of Environment and Heritage (OEH).   The BioNet repository holds data from a number of sources and custodians. (Accessed through ALA Data Portal,&lt;Date of Access&gt;).</citation>
                 <rights></rights>
