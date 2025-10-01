@@ -68,9 +68,7 @@ html_static_path = ['_static']
 
 html_logo = "_static/logo/logo.png"
 
-# html_logo = "_static/logo/cake_logo.png"
-
-# html_favicon = '_static/logo/favicon.ico'
+html_favicon = '_static/logo/favicon.ico'
 
 html_css_files = ['css/extra.css']
 

@@ -46,6 +46,7 @@
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/design-tabs.js?v=36754332"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'galaxias_user_guide/preparing_dwca';</script>
+    <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -390,29 +391,24 @@ document.write(`
                   
   <section id="preparing-the-dwca-itself">
 <h1>Preparing the DwCA itself<a class="headerlink" href="#preparing-the-dwca-itself" title="Link to this heading">#</a></h1>
-<p>Preparing your Darwin Core Archive is a straightforward process.
-However, this also assumes that you have already prepared your data
-and metadata to comply with Darwin Core standards.  If you have not done
-this, please see our vignettes on preparing an
-<a class="reference external" href="independent_observations/index.html">independent observations dataset</a>
-or a <a class="reference external" href="longitudinal_studies/index.html">longitudinal studies dataset</a>.</p>
-<section id="creating-a-darwin-core-archive">
-<h2>Creating a Darwin Core Archive<a class="headerlink" href="#creating-a-darwin-core-archive" title="Link to this heading">#</a></h2>
-<p>When your data passes all of the internal data checks, and you have
-written out your metadata statement into XML format, you can then
-run the <code class="docutils literal notranslate"><span class="pre">create_dwca()</span></code> function.</p>
+<p>At the end of the above process, we should have a folder named data-publish that contains at least two files:</p>
+<ul class="simple">
+<li><p>One or more <code class="docutils literal notranslate"><span class="pre">.csv</span></code> files containing data (e.g. <code class="docutils literal notranslate"><span class="pre">occurrences.csv</span></code>, <code class="docutils literal notranslate"><span class="pre">events.csv</span></code>, <code class="docutils literal notranslate"><span class="pre">multimedia.csv</span></code>)</p></li>
+<li><p>An <code class="docutils literal notranslate"><span class="pre">eml.xml</span></code> file containing your metadata</p></li>
+</ul>
+<p>We can now run <code class="docutils literal notranslate"><span class="pre">build_archive()</span></code> to build our Darwin Core Archive!</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
 span.prompt1:before {
   content: " ";
 }
-</style><span class="prompt1">&gt;&gt;&gt; my_dwca.build_archive()</span>
-</pre></div></div><p>Before this function creates the archive file, it will again check your
-data and metadata.  If something doesn’t comply with Darwin Core standards,
-you will get an error message.  If everything passes, this will produce a
-Darwin Core Archive titled <code class="docutils literal notranslate"><span class="pre">dwca.zip</span></code>, which contains all of your data
-and metadata, and is located in the <code class="docutils literal notranslate"><span class="pre">data-publish</span></code> folder in your
-current working directory.</p>
-</section>
+</style><span class="prompt1">&gt;&gt;&gt; galaxias.build_archive()</span>
+</pre></div></div><p>Running <code class="docutils literal notranslate"><span class="pre">build_archive()</span></code> first checks whether we have a ‘schema’ document (<code class="docutils literal notranslate"><span class="pre">meta.xml</span></code>) in our <code class="docutils literal notranslate"><span class="pre">data-publish</span></code>
+folder. This is a machine-readable xml document that describes the content of the archive’s data files and their
+structure. The schema document is a required file in a Darwin Core Archive. If it is missing, <code class="docutils literal notranslate"><span class="pre">build_archive()</span></code>
+will build one. We can also build a schema document ourselves using <code class="docutils literal notranslate"><span class="pre">use_schema()</span></code>.</p>
+<p>At the end of this process, you should have a Darwin Core Archive zip file (<code class="docutils literal notranslate"><span class="pre">dwca.zip</span></code>) in your parent directory.
+You should also have a <code class="docutils literal notranslate"><span class="pre">data-publish</span></code> folder in your working directory containing standardised data files
+(e.g. <code class="docutils literal notranslate"><span class="pre">occurrences.csv</span></code>), a metadata statement in EML format (<code class="docutils literal notranslate"><span class="pre">eml.xml</span></code>), and a schema document (<code class="docutils literal notranslate"><span class="pre">meta.xml</span></code>).</p>
 </section>
 
 
@@ -432,22 +428,7 @@ current working directory.</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-<div
-    id="pst-page-navigation-heading-2"
-    class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> On this page
-  </div>
-  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-darwin-core-archive">Creating a Darwin Core Archive</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
+                <div class="bd-sidebar-secondary bd-toc"></div>
               
             
           </div>

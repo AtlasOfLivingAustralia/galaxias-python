@@ -1,0 +1,1024 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Standardising an Events Dataset &#8212; Galaxias 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/extra.css?v=2b5a6c60" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/extra.css?v=2b5a6c60" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+
+    <script src="../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'galaxias_user_guide/events/index';</script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <header>
+  
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Galaxias 0.1.0 documentation - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Galaxias 0.1.0 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../getting_started/index.html">
+                        Getting Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../index.html">
+                        Galaxias User Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../apidoc/galaxias.html">
+                        API Docs
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../authors/index.html">
+                        Authors
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/AtlasOfLivingAustralia/galaxias-python" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </div>
+  
+  </header>
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../getting_started/index.html">
+                        Getting Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../index.html">
+                        Galaxias User Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../apidoc/galaxias.html">
+                        API Docs
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../authors/index.html">
+                        Authors
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/AtlasOfLivingAustralia/galaxias-python" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Standardisin...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="standardising-an-events-dataset">
+<h1>Standardising an Events Dataset<a class="headerlink" href="#standardising-an-events-dataset" title="Link to this heading">#</a></h1>
+<p>In a research project, data collection can take place at multiple locations and times.
+At each location and time, there often multiple collected samples to capture variation
+in a study area or time-period. In Darwin Core, the data collected from this type of
+project is Event-based.</p>
+<p>Events are any action that “occurs at some location during some time.”
+(<a class="reference external" href="https://dwc.tdwg.org/list/#dwc_Event">from TDWG</a>).
+Each sample, for example, is a unique event, with its own environmental attributes
+(like topography, tree cover and soil composition) that affect what organisms occur
+there and how likely they are to occur. Observations of organisms take place <em>within</em>
+each Event. As such, Events add hierarchy to a dataset by grouping simultaneous
+observations into groups, as opposed to Occurrence-only data which is processed as
+if all occurrences are independent. Event-based data collection adds richness to
+ecological data that can be useful for more advanced modelling techniques.</p>
+<p>Here we will demonstrate an example of how to convert Event-based data to Darwin Core
+standard. To do so, we will create two <code class="docutils literal notranslate"><span class="pre">csv</span></code> files, <code class="docutils literal notranslate"><span class="pre">events.csv</span></code> and <code class="docutils literal notranslate"><span class="pre">occurrences.csv</span></code>,
+to build a Darwin Core Archive.</p>
+<section id="the-dataset">
+<h2>The dataset<a class="headerlink" href="#the-dataset" title="Link to this heading">#</a></h2>
+<p><a class="reference download internal" download="" href="../../_downloads/3f03862d12a9a85d3730fb7e1d241db2/sites.csv"><code class="xref download docutils literal notranslate"><span class="pre">Sites</span></code></a>
+<a class="reference download internal" download="" href="../../_downloads/864ef11efb145fd380d12b0efa32a03b/observations.csv"><code class="xref download docutils literal notranslate"><span class="pre">Observations</span></code></a>
+<a class="reference download internal" download="" href="../../_downloads/4508a6e92b8bbd4653824e273161c47b/species_list.csv"><code class="xref download docutils literal notranslate"><span class="pre">Species</span> <span class="pre">List</span></code></a></p>
+<p>For this example, we’ll use a dataset of frog observations from a
+<a class="reference external" href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0140973">2015 paper in PLOS ONE</a>.
+Data were collected by volunteers using 5-minute audio surveys, where each row documents
+whether each frog species was detected over that 5-minute recording, recorded as present
+(1) or absent (0). For the purpose of this vignette, we have downloaded the source data
+from <a class="reference external" href="https://datadryad.org/dataset/doi:10.5061/dryad.75s51">Dryad</a>, reduced the number
+of rows, and converted the original excel spreadsheet to three .csv files:
+<code class="docutils literal notranslate"><span class="pre">sites.csv</span></code>, <code class="docutils literal notranslate"><span class="pre">observations.csv</span></code> and <code class="docutils literal notranslate"><span class="pre">species_list.csv</span></code>.</p>
+<section id="sites">
+<h3>Sites<a class="headerlink" href="#sites" title="Link to this heading">#</a></h3>
+<p>The sites spreadsheet contains columns that describe each survey location (e.g. <code class="docutils literal notranslate"><span class="pre">depth</span></code>,
+<code class="docutils literal notranslate"><span class="pre">water_type</span></code>, <code class="docutils literal notranslate"><span class="pre">latitude</span></code>, <code class="docutils literal notranslate"><span class="pre">longitude</span></code>) and overall presence/absence of each frog
+species in a site (e.g. <code class="docutils literal notranslate"><span class="pre">cpar</span></code>, <code class="docutils literal notranslate"><span class="pre">csig</span></code>, <code class="docutils literal notranslate"><span class="pre">limdum</span></code>). We won’t use the aggregated
+species data stored here - we’ll instead export the raw observations - but we’ll still
+import the data, because it’s the only place that spatial information are stored.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
+span.prompt1:before {
+  content: " ";
+}
+</style><span class="prompt1">&gt;&gt;&gt; import pandas as pd</span>
+<span class="prompt1">&gt;&gt;&gt; sites = pd.read_csv(&#39;sites.csv&#39;)</span>
+<span class="prompt1">&gt;&gt;&gt; sites</span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  site_code  log_size    depth water_type   latitude   longitude  cpar  csig  limdum  limper  limtas  lper  lver  ulae  richness
+0    AMA100  2.914535     deep     moving -35.168178  149.119212     1     1       1       0       1     1     1     0         6
+1    AMH100  0.554287  shallow     moving -35.235300  149.045351     0     0       0       1       1     0     0     0         2
+2    ANB100  2.012837     deep     moving -35.278130  149.110090     0     1       1       1       0     0     0     0         3
+3    ANU004  1.753792     deep     moving -35.280547  149.111692     0     1       1       0       1     0     0     0         3
+4    ANU018  2.377488     deep      still -35.281900  149.112100     0     1       0       1       0     0     0     0         2
+5    ANU020  2.155047     deep      still -35.279600  149.116900     1     1       1       1       1     0     0     0         5
+6    ANU022  0.957248  shallow     moving -35.278586  149.120161     1     1       0       1       1     0     0     1         5
+7    ARA100  2.301030     deep      still -35.276400  149.077900     1     1       0       0       1     1     0     0         4
+</pre></div>
+</div>
+</section>
+<section id="observations">
+<h3>Observations<a class="headerlink" href="#observations" title="Link to this heading">#</a></h3>
+<p>The observations spreadsheet contains columns that describe the sample’s physical
+properties (e.g. <code class="docutils literal notranslate"><span class="pre">water_type</span></code>, <code class="docutils literal notranslate"><span class="pre">veg_canopy</span></code>), linked to sites by the <code class="docutils literal notranslate"><span class="pre">site_code</span></code>
+column. More importantly, it records whether each species in the region was recorded
+during that particular survey (e.g. <code class="docutils literal notranslate"><span class="pre">cpar</span></code>, <code class="docutils literal notranslate"><span class="pre">csig</span></code>, <code class="docutils literal notranslate"><span class="pre">limdum</span></code>).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">&gt;&gt;&gt; import pandas as pd</span>
+<span class="prompt1">&gt;&gt;&gt; observations = pd.read_csv(&#39;observations.csv&#39;)</span>
+<span class="prompt1">&gt;&gt;&gt; observations</span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>    site_code  year depth water_type  log_size  veg_aqu  veg_canopy  veg_bank  pc_urban  pc_canopy  cpar  csig  limdum  limper  limtas  lper  lver  ulae
+0      AMA100  2004  deep     moving  2.914535        1           0         1    0.2260     0.0427     1     0       0       0       1     1     0     0
+1      AMA100  2007  deep     moving  2.914535        1           0         1    0.2067     0.0987     1     0       1       0       1     0     0     0
+2      AMA100  2007  deep     moving  2.914535        1           0         1    0.2067     0.0987     1     0       1       0       1     0     0     0
+3      AMA100  2005  deep     moving  2.914535        1           0         1    0.2813     0.0567     1     1       1       0       1     0     0     0
+4      AMA100  2008  deep     moving  2.914535        1           0         1    0.2067     0.0607     1     0       1       0       0     1     0     0
+..        ...   ...   ...        ...       ...      ...         ...       ...       ...        ...   ...   ...     ...     ...     ...   ...   ...   ...
+118    ARA100  2009  deep      still  2.301030        1           0         1    0.0779     0.0329     1     0       0       0       1     0     0     0
+119    ARA100  2010  deep      still  2.301030        1           0         1    0.0307     0.1450     1     0       0       0       1     1     0     0
+120    ARA100  2008  deep      still  2.301030        1           0         1    0.1593     0.0307     0     0       0       0       0     0     0     0
+121    ARA100  2010  deep      still  2.301030        1           0         1    0.0307     0.1450     1     0       0       0       1     0     0     0
+122    ARA100  2011  deep      still  2.301030        1           0         1    0.1171     0.0607     1     0       0       0       0     1     0     0
+
+[123 rows x 18 columns]
+</pre></div>
+</div>
+</section>
+<section id="species-list">
+<h3>Species list<a class="headerlink" href="#species-list" title="Link to this heading">#</a></h3>
+<p>Finally, the species list spreadsheet lists the eight frog species recorded in this
+dataset, and the <code class="docutils literal notranslate"><span class="pre">abbreviation</span></code> column contains the abbreviated column name used
+in the observations dataset.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">&gt;&gt;&gt; import pandas as pd</span>
+<span class="prompt1">&gt;&gt;&gt; species = pd.read_csv(&#39;species_list.csv&#39;)</span>
+<span class="prompt1">&gt;&gt;&gt; species</span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>              scientific_name             common_name abbreviation
+0       Crinia parinsignifera          Plains Froglet         cpar
+1            Crinia signifera  Common Eastern Froglet         csig
+2     Limnodynastes dumerilii              Pobblebonk       limdum
+3       Limnodynastes peronii      Striped Marsh Frog       limper
+4  Limnodynastes tasmaniensis      Spotted Grass Frog       limtas
+5             Litoria peronii    Emerald Spotted Frog         lper
+6          Litoria verreauxii        Alpine Tree Frog         lver
+7         Uperoleia laevigata          Smooth Toadlet         ulae
+</pre></div>
+</div>
+</section>
+</section>
+<section id="preparing-data-for-both-events-csv-and-occurrences-csv">
+<h2>Preparing data for both <code class="docutils literal notranslate"><span class="pre">events.csv</span></code> and <code class="docutils literal notranslate"><span class="pre">occurrences.csv</span></code><a class="headerlink" href="#preparing-data-for-both-events-csv-and-occurrences-csv" title="Link to this heading">#</a></h2>
+<p>For <code class="docutils literal notranslate"><span class="pre">events.csv</span></code>, we want the following types of data to be represented:</p>
+<ul class="simple">
+<li><p>Geographic location of site (latitude/longitude)</p></li>
+<li><p>The coordinate reference system of the device used to measure geographic location</p></li>
+<li><p>Uncertainty of the measurement of your location</p></li>
+<li><p>Date of the event</p></li>
+<li><p>A unique identifier for each event</p></li>
+</ul>
+<p>For <code class="docutils literal notranslate"><span class="pre">occurrences.csv</span></code>, we want the following types of data to be represented:</p>
+<ul class="simple">
+<li><p>Scientific name (common name as well if available)</p></li>
+<li><p>How the record was observed</p></li>
+<li><p>Presence/absence</p></li>
+<li><p>Identifier linking this observation to an event</p></li>
+<li><p>A unique identifier for each observation</p></li>
+</ul>
+<p>Figuring out how to get all this information to link can be difficult! However, the
+Darwin Core standard has provided a field to link both <code class="docutils literal notranslate"><span class="pre">events.csv</span></code> and <code class="docutils literal notranslate"><span class="pre">occurrences.csv</span></code>:
+<code class="docutils literal notranslate"><span class="pre">eventID</span></code>.  This is a unique identifier which will be used to denote the unique events
+in <code class="docutils literal notranslate"><span class="pre">events.csv</span></code>, and will be able to link the sightings in <code class="docutils literal notranslate"><span class="pre">occurrences.csv</span></code> with specific
+events in your study.</p>
+</section>
+<section id="preparing-eventid-to-link-events-csv-and-occurrences-csv">
+<h2>Preparing <code class="docutils literal notranslate"><span class="pre">eventID</span></code> to link <code class="docutils literal notranslate"><span class="pre">events.csv</span></code> and <code class="docutils literal notranslate"><span class="pre">occurrences.csv</span></code><a class="headerlink" href="#preparing-eventid-to-link-events-csv-and-occurrences-csv" title="Link to this heading">#</a></h2>
+<p>As mentioned above, the <code class="docutils literal notranslate"><span class="pre">eventID</span></code> field will be the common key that links your <code class="docutils literal notranslate"><span class="pre">events.csv</span></code>
+and <code class="docutils literal notranslate"><span class="pre">occurrences.csv</span></code> file at the end of the workflow.  For our example, we will be doing
+some initial preparation and merging of the three aforementioned data frames to ensure we have
+all information we need in one table to easily link all information together.</p>
+<p>Looking at the tables, we can see that <code class="docutils literal notranslate"><span class="pre">site_code</span></code> will link the <code class="docutils literal notranslate"><span class="pre">sites</span></code> and <code class="docutils literal notranslate"><span class="pre">observations</span></code>
+dataframes together, and the <code class="docutils literal notranslate"><span class="pre">abbreviations</span></code> column values in the <code class="docutils literal notranslate"><span class="pre">species</span></code> dataframe  are
+column names in the <code class="docutils literal notranslate"><span class="pre">observations</span></code> table.</p>
+<p>How that we have the two ways to link our table, we know we want the <code class="docutils literal notranslate"><span class="pre">site_code</span></code> and <code class="docutils literal notranslate"><span class="pre">year</span></code>
+columns represented in our composite table, as well as the columns with species’ name abbreviations.
+We will also create a composite <code class="docutils literal notranslate"><span class="pre">eventID</span></code> from a <code class="docutils literal notranslate"><span class="pre">sequential</span></code> number, the <code class="docutils literal notranslate"><span class="pre">site_code</span></code> and
+the <code class="docutils literal notranslate"><span class="pre">year</span></code> in which the site was visited.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">&gt;&gt;&gt; # get list of all species abbreviations</span>
+<span class="prompt1">&gt;&gt;&gt; species_abb = list(species[&#39;abbreviation&#39;])</span>
+<span class="prompt1">&gt;&gt;&gt;</span>
+<span class="prompt1">&gt;&gt;&gt; # join observations and select sites columns by site_code</span>
+<span class="prompt1">&gt;&gt;&gt; observations_site = observations[[&#39;site_code&#39;,&#39;year&#39;] + species_abb]</span>
+<span class="prompt1">&gt;&gt;&gt;</span>
+<span class="prompt1">&gt;&gt;&gt; # add composite eventID</span>
+<span class="prompt1">&gt;&gt;&gt; observations_site_id = galaxias.set_events(dataframe=observations_site,eventID=[&#39;sequential&#39;,&#39;site_code&#39;,&#39;year&#39;])</span>
+<span class="prompt1">&gt;&gt;&gt; observations_site_id</span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>             eventID site_code  year  cpar  csig  limdum  limper  limtas  lper  lver  ulae
+0      0-AMA100-2004    AMA100  2004     1     0       0       0       1     1     0     0
+1      1-AMA100-2007    AMA100  2007     1     0       1       0       1     0     0     0
+2      2-AMA100-2007    AMA100  2007     1     0       1       0       1     0     0     0
+3      3-AMA100-2005    AMA100  2005     1     1       1       0       1     0     0     0
+4      4-AMA100-2008    AMA100  2008     1     0       1       0       0     1     0     0
+..               ...       ...   ...   ...   ...     ...     ...     ...   ...   ...   ...
+118  118-ARA100-2009    ARA100  2009     1     0       0       0       1     0     0     0
+119  119-ARA100-2010    ARA100  2010     1     0       0       0       1     1     0     0
+120  120-ARA100-2008    ARA100  2008     0     0       0       0       0     0     0     0
+121  121-ARA100-2010    ARA100  2010     1     0       0       0       1     0     0     0
+122  122-ARA100-2011    ARA100  2011     1     0       0       0       0     1     0     0
+
+[123 rows x 11 columns]
+</pre></div>
+</div>
+</section>
+<section id="preparing-events-csv">
+<h2>Preparing  <code class="docutils literal notranslate"><span class="pre">events.csv</span></code><a class="headerlink" href="#preparing-events-csv" title="Link to this heading">#</a></h2>
+<p>In your <code class="docutils literal notranslate"><span class="pre">events.csv</span></code>, you will be capturing the “where” and “when” of the data, as outlined
+in the “Preparing data for both <code class="docutils literal notranslate"><span class="pre">events.csv</span></code> and <code class="docutils literal notranslate"><span class="pre">occurrences.csv</span></code>” section.  We already
+have the unique identifier of the event, as well as a date for the event (the <code class="docutils literal notranslate"><span class="pre">year</span></code> column.)
+All that is left to do is to include the geographic location of these sites, and then write the
+<code class="docutils literal notranslate"><span class="pre">events.csv</span></code> file to your disk.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We are including the geographic location in the <code class="docutils literal notranslate"><span class="pre">events.csv</span></code>, as the coordinates for each
+observation are tied to the location of the site in question. If you have sites, but you instead
+want to include coordinates for individual sightings, then coordinates are more appropriately
+placed in the <code class="docutils literal notranslate"><span class="pre">occurrences.csv</span></code> file.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">&gt;&gt;&gt; observations_site_id_coords = observations_site_id.merge(sites[[&#39;site_code&#39;,&#39;latitude&#39;,&#39;longitude&#39;]],on=&#39;site_code&#39;,how=&#39;left&#39;)</span>
+<span class="prompt1">&gt;&gt;&gt; events_all = galaxias.set_coordinates(dataframe=observations_site_id_coords,</span>
+<span class="prompt1">...                                                          decimalLatitude=&#39;latitude&#39;,</span>
+<span class="prompt1">...                                                          decimalLongitude=&#39;longitude&#39;,</span>
+<span class="prompt1">...                                                          coordinateUncertaintyInMeters = 30,</span>
+<span class="prompt1">...                                                          geodeticDatum = &#39;WGS84&#39;)</span>
+<span class="prompt1">&gt;&gt;&gt; events_all</span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>             eventID site_code  year  cpar  csig  limdum  limper  limtas  lper  lver  ulae  decimalLatitude  decimalLongitude geodeticDatum  coordinateUncertaintyInMeters
+0      0-AMA100-2004    AMA100  2004     1     0       0       0       1     1     0     0       -35.168178        149.119212         WGS84                             30
+1      1-AMA100-2007    AMA100  2007     1     0       1       0       1     0     0     0       -35.168178        149.119212         WGS84                             30
+2      2-AMA100-2007    AMA100  2007     1     0       1       0       1     0     0     0       -35.168178        149.119212         WGS84                             30
+3      3-AMA100-2005    AMA100  2005     1     1       1       0       1     0     0     0       -35.168178        149.119212         WGS84                             30
+4      4-AMA100-2008    AMA100  2008     1     0       1       0       0     1     0     0       -35.168178        149.119212         WGS84                             30
+..               ...       ...   ...   ...   ...     ...     ...     ...   ...   ...   ...              ...               ...           ...                            ...
+118  118-ARA100-2009    ARA100  2009     1     0       0       0       1     0     0     0       -35.276400        149.077900         WGS84                             30
+119  119-ARA100-2010    ARA100  2010     1     0       0       0       1     1     0     0       -35.276400        149.077900         WGS84                             30
+120  120-ARA100-2008    ARA100  2008     0     0       0       0       0     0     0     0       -35.276400        149.077900         WGS84                             30
+121  121-ARA100-2010    ARA100  2010     1     0       0       0       1     0     0     0       -35.276400        149.077900         WGS84                             30
+122  122-ARA100-2011    ARA100  2011     1     0       0       0       0     1     0     0       -35.276400        149.077900         WGS84                             30
+
+[123 rows x 15 columns]
+</pre></div>
+</div>
+<p>Here, you can do one of two things:</p>
+<ol class="arabic simple">
+<li><p>Select only the columns which are currently Darwin core compliant</p></li>
+<li><p>Use optional functions to ensure other parts of your data are Darwin core compliant, and include those in your final dataset.</p></li>
+</ol>
+<p>To see which Darwin core terms are included in checks in <code class="docutils literal notranslate"><span class="pre">galaxias</span></code>, consult the list below.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header sd-bg-info sd-bg-text-info">
+Supported Darwin Core Terms and Their Associated Functions<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<table class="table">
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 66.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p class="sd-card-text">Darwin Core Term</p></th>
+<th class="head"><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">set</span></code> Function</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p class="sd-card-text">basisOfRecord</p></td>
+<td><p class="sd-card-text">set_occurrences()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">occurrenceID</p></td>
+<td><p class="sd-card-text">set_occurrences()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">scientificName</p></td>
+<td><p class="sd-card-text">set_scientific_name()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">decimalLatitude</p></td>
+<td><p class="sd-card-text">set_coordinates()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">decimalLongitude</p></td>
+<td><p class="sd-card-text">set_coordinates()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">geodeticDatum</p></td>
+<td><p class="sd-card-text">set_coordinates()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">coordinateUncertaintyInMeters</p></td>
+<td><p class="sd-card-text">set_coordinates()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">eventDate</p></td>
+<td><p class="sd-card-text">set_datetime()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">kingdom</p></td>
+<td><p class="sd-card-text">set_taxonomy()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">phylum</p></td>
+<td><p class="sd-card-text">set_taxonomy()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">class</p></td>
+<td><p class="sd-card-text">set_taxonomy()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">order</p></td>
+<td><p class="sd-card-text">set_taxonomy()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">family</p></td>
+<td><p class="sd-card-text">set_taxonomy()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">genus</p></td>
+<td><p class="sd-card-text">set_taxonomy()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">specificEpithet</p></td>
+<td><p class="sd-card-text">set_taxonomy()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">vernacularName</p></td>
+<td><p class="sd-card-text">set_taxonomy()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">taxonRank</p></td>
+<td><p class="sd-card-text">set_scientific_name()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">scientificNameAuthorship</p></td>
+<td><p class="sd-card-text">set_scientific_name()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">recordedBy</p></td>
+<td><p class="sd-card-text">set_observer()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">recordedByID</p></td>
+<td><p class="sd-card-text">set_observer()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">measurementID</p></td>
+<td><p class="sd-card-text">set_measurements()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">measurementType</p></td>
+<td><p class="sd-card-text">set_measurements()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">measurementValue</p></td>
+<td><p class="sd-card-text">set_measurements()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">measurementUnit</p></td>
+<td><p class="sd-card-text">set_measurements()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">continent</p></td>
+<td><p class="sd-card-text">set_locality()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">country</p></td>
+<td><p class="sd-card-text">set_locality()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">countryCode</p></td>
+<td><p class="sd-card-text">set_locality()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">stateProvince</p></td>
+<td><p class="sd-card-text">set_locality()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">locality</p></td>
+<td><p class="sd-card-text">set_locality()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">license</p></td>
+<td><p class="sd-card-text">set_license()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">rightsHolder</p></td>
+<td><p class="sd-card-text">set_license()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">accessRights</p></td>
+<td><p class="sd-card-text">set_license()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">sex</p></td>
+<td><p class="sd-card-text">set_individual_traits()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">lifeStage</p></td>
+<td><p class="sd-card-text">set_individual_traits()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">reproductiveCondition</p></td>
+<td><p class="sd-card-text">set_individual_traits()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">vitality</p></td>
+<td><p class="sd-card-text">set_individual_traits()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">individualID</p></td>
+<td><p class="sd-card-text">set_individual_traits()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">eventID</p></td>
+<td><p class="sd-card-text">set_events()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">parentEventID</p></td>
+<td><p class="sd-card-text">set_events()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">eventType</p></td>
+<td><p class="sd-card-text">set_events()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">eventTime</p></td>
+<td><p class="sd-card-text">set_datetime()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">year</p></td>
+<td><p class="sd-card-text">set_datetime()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">month</p></td>
+<td><p class="sd-card-text">set_datetime()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">day</p></td>
+<td><p class="sd-card-text">set_datetime()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">coordinatePrecision</p></td>
+<td><p class="sd-card-text">set_coordinates()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">datasetID</p></td>
+<td><p class="sd-card-text">set_collection()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">datasetName</p></td>
+<td><p class="sd-card-text">set_collection()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">catalogNumber</p></td>
+<td><p class="sd-card-text">set_collection()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">individualCount</p></td>
+<td><p class="sd-card-text">set_abundance()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">organismQuantity</p></td>
+<td><p class="sd-card-text">set_abundance()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">organismQuantity</p></td>
+<td><p class="sd-card-text">set_abundance()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">organismQuantityType</p></td>
+<td><p class="sd-card-text">set_abundance()</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</details><p>To select only the columns that are Darwin core compliant, run the following snippet of code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">&gt;&gt;&gt; event_terms = list(galaxias.event_terms())</span>
+<span class="prompt1">&gt;&gt;&gt; event_terms_dwca = list(set(event_terms).intersection(list(events_all.columns)))</span>
+<span class="prompt1">&gt;&gt;&gt; events = events_all[event_terms_dwca]</span>
+<span class="prompt1">&gt;&gt;&gt; events</span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>     decimalLongitude  decimalLatitude  year geodeticDatum          eventID  coordinateUncertaintyInMeters
+0          149.119212       -35.168178  2004         WGS84    0-AMA100-2004                             30
+1          149.119212       -35.168178  2007         WGS84    1-AMA100-2007                             30
+2          149.119212       -35.168178  2007         WGS84    2-AMA100-2007                             30
+3          149.119212       -35.168178  2005         WGS84    3-AMA100-2005                             30
+4          149.119212       -35.168178  2008         WGS84    4-AMA100-2008                             30
+..                ...              ...   ...           ...              ...                            ...
+118        149.077900       -35.276400  2009         WGS84  118-ARA100-2009                             30
+119        149.077900       -35.276400  2010         WGS84  119-ARA100-2010                             30
+120        149.077900       -35.276400  2008         WGS84  120-ARA100-2008                             30
+121        149.077900       -35.276400  2010         WGS84  121-ARA100-2010                             30
+122        149.077900       -35.276400  2011         WGS84  122-ARA100-2011                             30
+
+[123 rows x 6 columns]
+</pre></div>
+</div>
+</section>
+<section id="prepare-occurrences-csv">
+<h2>Prepare occurrences.csv<a class="headerlink" href="#prepare-occurrences-csv" title="Link to this heading">#</a></h2>
+<p>Let’s return to the <code class="docutils literal notranslate"><span class="pre">observations_site_id</span></code> variable, which contains the <code class="docutils literal notranslate"><span class="pre">eventID</span></code> field
+that will link our <code class="docutils literal notranslate"><span class="pre">events.csv</span></code> and <code class="docutils literal notranslate"><span class="pre">occurrences.csv</span></code>.  When we are formatting these
+occurrences, we are going to need to have the species abbreviations as values under a column
+name, rather than the column names themselves.  But how do we do this while keeping all the
+information we need for linking the files?</p>
+<p>Luckily, we can use the <code class="docutils literal notranslate"><span class="pre">melt</span></code> function inherent in each <code class="docutils literal notranslate"><span class="pre">pandas</span></code> dataframe. We will specify
+the <code class="docutils literal notranslate"><span class="pre">eventID</span></code> column as our <code class="docutils literal notranslate"><span class="pre">id_vars</span></code>, as this is the key we want associated with each observation.
+We will then choose the name <code class="docutils literal notranslate"><span class="pre">abbreviation</span></code> for the <code class="docutils literal notranslate"><span class="pre">var_name</span></code>, as <code class="docutils literal notranslate"><span class="pre">var_name</span></code> will become
+the column names (aka the abbreviations for each species).  Finally, the <code class="docutils literal notranslate"><span class="pre">value_name</span></code> will be named
+<code class="docutils literal notranslate"><span class="pre">presence</span></code> for now, as this will contain all of our presence/absence data.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">&gt;&gt;&gt; observations_site_id_select = observations_site_id[[&#39;eventID&#39;] + species_abb]</span>
+<span class="prompt1">&gt;&gt;&gt; observations_site_id_abbr = observations_site_id_select.melt(id_vars=[&#39;eventID&#39;],</span>
+<span class="prompt1">...                                                              var_name=&#39;abbreviation&#39;,</span>
+<span class="prompt1">...                                                              value_name=&#39;status&#39;)</span>
+<span class="prompt1">&gt;&gt;&gt; observations_site_id_abbr</span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>             eventID abbreviation  status
+0      0-AMA100-2004         cpar       1
+1      1-AMA100-2007         cpar       1
+2      2-AMA100-2007         cpar       1
+3      3-AMA100-2005         cpar       1
+4      4-AMA100-2008         cpar       1
+..               ...          ...     ...
+979  118-ARA100-2009         ulae       0
+980  119-ARA100-2010         ulae       0
+981  120-ARA100-2008         ulae       0
+982  121-ARA100-2010         ulae       0
+983  122-ARA100-2011         ulae       0
+
+[984 rows x 3 columns]
+</pre></div>
+</div>
+<p>Now we’ll merge the correct names to our frog species by joining <code class="docutils literal notranslate"><span class="pre">species</span></code> with <code class="docutils literal notranslate"><span class="pre">observations_site_id_abbr</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">&gt;&gt;&gt; observations_site_id_spec = observations_site_id_abbr.merge(species,on=&#39;abbreviation&#39;,how=&#39;left&#39;)</span>
+<span class="prompt1">&gt;&gt;&gt; observations_site_id_spec</span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>             eventID abbreviation  status        scientific_name     common_name
+0      0-AMA100-2004         cpar       1  Crinia parinsignifera  Plains Froglet
+1      1-AMA100-2007         cpar       1  Crinia parinsignifera  Plains Froglet
+2      2-AMA100-2007         cpar       1  Crinia parinsignifera  Plains Froglet
+3      3-AMA100-2005         cpar       1  Crinia parinsignifera  Plains Froglet
+4      4-AMA100-2008         cpar       1  Crinia parinsignifera  Plains Froglet
+..               ...          ...     ...                    ...             ...
+979  118-ARA100-2009         ulae       0    Uperoleia laevigata  Smooth Toadlet
+980  119-ARA100-2010         ulae       0    Uperoleia laevigata  Smooth Toadlet
+981  120-ARA100-2008         ulae       0    Uperoleia laevigata  Smooth Toadlet
+982  121-ARA100-2010         ulae       0    Uperoleia laevigata  Smooth Toadlet
+983  122-ARA100-2011         ulae       0    Uperoleia laevigata  Smooth Toadlet
+
+[984 rows x 5 columns]
+</pre></div>
+</div>
+<p>Now we can reformat our data to use valid Darwin Core column names using <code class="docutils literal notranslate"><span class="pre">set_</span></code>
+functions. Importantly, Darwin Core Standard requires that we add a unique <code class="docutils literal notranslate"><span class="pre">occurrenceID</span></code>
+and the type of observation in the column <code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">&gt;&gt;&gt; # first, change the 1&#39;s and 0&#39;s to PRESENT and ABSENT</span>
+<span class="prompt1">&gt;&gt;&gt; observations_site_id_spec[&#39;status&#39;] = observations_site_id_spec[&#39;status&#39;].map({1: &#39;PRESENT&#39;, 0: &#39;ABSENT&#39;})</span>
+<span class="prompt1">&gt;&gt;&gt;</span>
+<span class="prompt1">&gt;&gt;&gt; # now, we will reformat the data to use valid Darwin Core columns</span>
+<span class="prompt1">&gt;&gt;&gt; obs = galaxias.set_occurrences(occurrences=observations_site_id_spec,</span>
+<span class="prompt1">...                                occurrenceID=[&#39;eventID&#39;,&#39;sequential&#39;],</span>
+<span class="prompt1">...                                basisOfRecord = &#39;HumanObservation&#39;,</span>
+<span class="prompt1">...                                occurrenceStatus = &#39;status&#39;)</span>
+<span class="prompt1">&gt;&gt;&gt; obs_name = galaxias.set_scientific_name(dataframe=obs,scientificName=&#39;scientific_name&#39;)</span>
+<span class="prompt1">&gt;&gt;&gt; obs_dwc = galaxias.set_taxonomy(dataframe=obs,vernacularName=&#39;common_name&#39;)</span>
+<span class="prompt1">&gt;&gt;&gt; obs_dwc</span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>            occurrenceID          eventID abbreviation occurrenceStatus        scientific_name  vernacularName     basisOfRecord
+0        0-AMA100-2004-0    0-AMA100-2004         cpar          PRESENT  Crinia parinsignifera  Plains Froglet  HumanObservation
+1        1-AMA100-2007-1    1-AMA100-2007         cpar          PRESENT  Crinia parinsignifera  Plains Froglet  HumanObservation
+2        2-AMA100-2007-2    2-AMA100-2007         cpar          PRESENT  Crinia parinsignifera  Plains Froglet  HumanObservation
+3        3-AMA100-2005-3    3-AMA100-2005         cpar          PRESENT  Crinia parinsignifera  Plains Froglet  HumanObservation
+4        4-AMA100-2008-4    4-AMA100-2008         cpar          PRESENT  Crinia parinsignifera  Plains Froglet  HumanObservation
+..                   ...              ...          ...              ...                    ...             ...               ...
+979  118-ARA100-2009-979  118-ARA100-2009         ulae           ABSENT    Uperoleia laevigata  Smooth Toadlet  HumanObservation
+980  119-ARA100-2010-980  119-ARA100-2010         ulae           ABSENT    Uperoleia laevigata  Smooth Toadlet  HumanObservation
+981  120-ARA100-2008-981  120-ARA100-2008         ulae           ABSENT    Uperoleia laevigata  Smooth Toadlet  HumanObservation
+982  121-ARA100-2010-982  121-ARA100-2010         ulae           ABSENT    Uperoleia laevigata  Smooth Toadlet  HumanObservation
+983  122-ARA100-2011-983  122-ARA100-2011         ulae           ABSENT    Uperoleia laevigata  Smooth Toadlet  HumanObservation
+
+[984 rows x 7 columns]
+</pre></div>
+</div>
+<p>We now have a dataframe with observations organised at the occurrence-level. Our
+final step is to reduce <code class="docutils literal notranslate"><span class="pre">obs_long_dwc</span></code> to only include columns with valid column
+names in Occurrence-based datasets. This drops the abbreviation column from our
+dataframe.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">&gt;&gt;&gt; occ_terms = list(galaxias.occurrence_terms())</span>
+<span class="prompt1">&gt;&gt;&gt; occ_terms_dwca = list(set(occ_terms).intersection(list(obs_dwc.columns)))</span>
+<span class="prompt1">&gt;&gt;&gt; occurrences = obs_dwc[occ_terms_dwca]</span>
+<span class="prompt1">&gt;&gt;&gt; occurrences</span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>             eventID occurrenceStatus         occurrenceID  vernacularName     basisOfRecord
+0      0-AMA100-2004          PRESENT      0-AMA100-2004-0  Plains Froglet  HumanObservation
+1      1-AMA100-2007          PRESENT      1-AMA100-2007-1  Plains Froglet  HumanObservation
+2      2-AMA100-2007          PRESENT      2-AMA100-2007-2  Plains Froglet  HumanObservation
+3      3-AMA100-2005          PRESENT      3-AMA100-2005-3  Plains Froglet  HumanObservation
+4      4-AMA100-2008          PRESENT      4-AMA100-2008-4  Plains Froglet  HumanObservation
+..               ...              ...                  ...             ...               ...
+979  118-ARA100-2009           ABSENT  118-ARA100-2009-979  Smooth Toadlet  HumanObservation
+980  119-ARA100-2010           ABSENT  119-ARA100-2010-980  Smooth Toadlet  HumanObservation
+981  120-ARA100-2008           ABSENT  120-ARA100-2008-981  Smooth Toadlet  HumanObservation
+982  121-ARA100-2010           ABSENT  121-ARA100-2010-982  Smooth Toadlet  HumanObservation
+983  122-ARA100-2011           ABSENT  122-ARA100-2011-983  Smooth Toadlet  HumanObservation
+
+[984 rows x 5 columns]
+</pre></div>
+</div>
+<p>We can specify that we wish to use occurrences and events in our Darwin Core Archive
+with <code class="docutils literal notranslate"><span class="pre">use_data()</span></code>, which will save both occurrences and events as individual <code class="docutils literal notranslate"><span class="pre">csv</span></code>
+files in the default directory <code class="docutils literal notranslate"><span class="pre">data-publish</span></code>.  The names of these files are, by
+default, <code class="docutils literal notranslate"><span class="pre">occurrences.csv</span></code> and <code class="docutils literal notranslate"><span class="pre">events.csv</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">&gt;&gt;&gt; galaxias.use_data(occurrences=occurrences,events=events)</span>
+</pre></div></div><p>In data terms, that’s it! Don’t forget to add metadata.  An explanation of how to add metadata
+is <a class="reference external" href="../creating_your_metadata.html">here</a>.</p>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>The hierarchical structure of Event-based data (ie Site -&gt; Sample -&gt; Occurrence)
+adds richness, allowing for information like repeated sampling and presence/absence
+information to be preserved. This richness can enable more nuanced probabilistic
+analyses like species distribution models or occupancy models. We encourage users
+with Event-based data to use galaxias to standardise their data for publication
+and sharing.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-dataset">The dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sites">Sites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observations">Observations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#species-list">Species list</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-data-for-both-events-csv-and-occurrences-csv">Preparing data for both <code class="docutils literal notranslate"><span class="pre">events.csv</span></code> and <code class="docutils literal notranslate"><span class="pre">occurrences.csv</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-eventid-to-link-events-csv-and-occurrences-csv">Preparing <code class="docutils literal notranslate"><span class="pre">eventID</span></code> to link <code class="docutils literal notranslate"><span class="pre">events.csv</span></code> and <code class="docutils literal notranslate"><span class="pre">occurrences.csv</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-events-csv">Preparing  <code class="docutils literal notranslate"><span class="pre">events.csv</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-occurrences-csv">Prepare occurrences.csv</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Amanda Buyan, Atlas of Living Australia.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

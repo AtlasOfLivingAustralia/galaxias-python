@@ -14,30 +14,26 @@ Preparing data and metadata
     
     .. grid-item-card:: 
         :class-card: sd-text-black
-        :link: independent_observations/index.html
+        :link: occurrences/index.html
         :text-align: center
 
         .. raw:: html
             :file: ../../source/_static/icons/occurrences.svg
 
-        **Independent Observations**
-
-        Do you only have one set of data?
+        **Occurrences**
 
     .. grid-item-card:: 
-        :link: longitudinal_studies/index.html
+        :link: events/index.html
         :class-card: sd-text-black
         :text-align: center
 
         .. raw:: html
             :file: ../../source/_static/icons/event.svg
                 
-        **Longitudinal Studies** 
-
-        Do you have regular data over periods of time?
+        **Events** 
 
     .. grid-item-card:: 
-        :link: writing_eml_xml.html
+        :link: creating_your_metadata.html
         :class-card: sd-text-black
         :text-align: center
 
@@ -45,8 +41,6 @@ Preparing data and metadata
             :file: ../../source/_static/icons/metadata.svg
                 
         **Capturing Metadata** 
-
-        How do I prepare my metadata?
 
 Preparing archive
 ---------------------------

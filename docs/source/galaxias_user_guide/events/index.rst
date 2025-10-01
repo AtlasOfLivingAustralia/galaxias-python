@@ -1,0 +1,287 @@
+:orphan:
+
+Standardising an Events Dataset
+=================================
+
+In a research project, data collection can take place at multiple locations and times. 
+At each location and time, there often multiple collected samples to capture variation 
+in a study area or time-period. In Darwin Core, the data collected from this type of 
+project is Event-based.
+
+Events are any action that “occurs at some location during some time.” 
+(`from TDWG <https://dwc.tdwg.org/list/#dwc_Event>`_). 
+Each sample, for example, is a unique event, with its own environmental attributes 
+(like topography, tree cover and soil composition) that affect what organisms occur 
+there and how likely they are to occur. Observations of organisms take place *within* 
+each Event. As such, Events add hierarchy to a dataset by grouping simultaneous 
+observations into groups, as opposed to Occurrence-only data which is processed as 
+if all occurrences are independent. Event-based data collection adds richness to 
+ecological data that can be useful for more advanced modelling techniques.
+
+Here we will demonstrate an example of how to convert Event-based data to Darwin Core 
+standard. To do so, we will create two ``csv`` files, ``events.csv`` and ``occurrences.csv``, 
+to build a Darwin Core Archive.
+
+The dataset
+--------------------------------------------------
+
+:download:`Sites <../data/sites.csv>`
+:download:`Observations <../data/observations.csv>`
+:download:`Species List <../data/species_list.csv>`
+
+For this example, we’ll use a dataset of frog observations from a 
+`2015 paper in PLOS ONE <https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0140973>`_. 
+Data were collected by volunteers using 5-minute audio surveys, where each row documents 
+whether each frog species was detected over that 5-minute recording, recorded as present 
+(1) or absent (0). For the purpose of this vignette, we have downloaded the source data 
+from `Dryad <https://datadryad.org/dataset/doi:10.5061/dryad.75s51>`_, reduced the number 
+of rows, and converted the original excel spreadsheet to three .csv files: 
+``sites.csv``, ``observations.csv`` and ``species_list.csv``.
+
+Sites
+^^^^^^^^^^^^
+The sites spreadsheet contains columns that describe each survey location (e.g. ``depth``, 
+``water_type``, ``latitude``, ``longitude``) and overall presence/absence of each frog 
+species in a site (e.g. ``cpar``, ``csig``, ``limdum``). We won’t use the aggregated 
+species data stored here - we’ll instead export the raw observations - but we’ll still 
+import the data, because it’s the only place that spatial information are stored.
+
+.. prompt:: Python
+
+    >>> import pandas as pd
+    >>> sites = pd.read_csv('sites.csv')
+    >>> sites
+
+.. program-output:: python galaxias_user_guide/events/events_workflow.py 1
+
+Observations
+^^^^^^^^^^^^
+
+The observations spreadsheet contains columns that describe the sample’s physical 
+properties (e.g. ``water_type``, ``veg_canopy``), linked to sites by the ``site_code`` 
+column. More importantly, it records whether each species in the region was recorded 
+during that particular survey (e.g. ``cpar``, ``csig``, ``limdum``).
+
+.. prompt:: Python
+
+    >>> import pandas as pd
+    >>> observations = pd.read_csv('observations.csv')
+    >>> observations
+
+.. program-output:: python galaxias_user_guide/events/events_workflow.py 2
+
+Species list
+^^^^^^^^^^^^^^^^^^^
+
+Finally, the species list spreadsheet lists the eight frog species recorded in this 
+dataset, and the ``abbreviation`` column contains the abbreviated column name used 
+in the observations dataset.
+
+.. prompt:: Python
+
+    >>> import pandas as pd
+    >>> species = pd.read_csv('species_list.csv')
+    >>> species
+
+.. program-output:: python galaxias_user_guide/events/events_workflow.py 3
+
+
+Preparing data for both ``events.csv`` and ``occurrences.csv``
+--------------------------------------------------------------------------
+
+For ``events.csv``, we want the following types of data to be represented:
+
+- Geographic location of site (latitude/longitude)
+- The coordinate reference system of the device used to measure geographic location
+- Uncertainty of the measurement of your location
+- Date of the event
+- A unique identifier for each event
+
+For ``occurrences.csv``, we want the following types of data to be represented:
+
+- Scientific name (common name as well if available)
+- How the record was observed
+- Presence/absence
+- Identifier linking this observation to an event
+- A unique identifier for each observation
+
+Figuring out how to get all this information to link can be difficult! However, the 
+Darwin Core standard has provided a field to link both ``events.csv`` and ``occurrences.csv``:
+``eventID``.  This is a unique identifier which will be used to denote the unique events 
+in ``events.csv``, and will be able to link the sightings in ``occurrences.csv`` with specific 
+events in your study.
+
+Preparing ``eventID`` to link ``events.csv`` and ``occurrences.csv``
+--------------------------------------------------------------------------
+
+As mentioned above, the ``eventID`` field will be the common key that links your ``events.csv`` 
+and ``occurrences.csv`` file at the end of the workflow.  For our example, we will be doing 
+some initial preparation and merging of the three aforementioned data frames to ensure we have 
+all information we need in one table to easily link all information together.
+
+Looking at the tables, we can see that ``site_code`` will link the ``sites`` and ``observations`` 
+dataframes together, and the ``abbreviations`` column values in the ``species`` dataframe  are 
+column names in the ``observations`` table.  
+
+How that we have the two ways to link our table, we know we want the ``site_code`` and ``year`` 
+columns represented in our composite table, as well as the columns with species' name abbreviations.  
+We will also create a composite ``eventID`` from a ``sequential`` number, the ``site_code`` and 
+the ``year`` in which the site was visited.  
+
+.. prompt:: Python
+
+    >>> # get list of all species abbreviations 
+    >>> species_abb = list(species['abbreviation'])
+    >>>
+    >>> # join observations and select sites columns by site_code
+    >>> observations_site = observations[['site_code','year'] + species_abb]
+    >>> 
+    >>> # add composite eventID
+    >>> observations_site_id = galaxias.set_events(dataframe=observations_site,eventID=['sequential','site_code','year'])
+    >>> observations_site_id
+
+.. program-output:: python galaxias_user_guide/events/events_workflow.py 4
+
+Preparing  ``events.csv``
+-------------------------------------
+
+In your ``events.csv``, you will be capturing the "where" and "when" of the data, as outlined 
+in the "Preparing data for both ``events.csv`` and ``occurrences.csv``" section.  We already 
+have the unique identifier of the event, as well as a date for the event (the ``year`` column.) 
+All that is left to do is to include the geographic location of these sites, and then write the 
+``events.csv`` file to your disk.
+
+.. Note::
+
+  We are including the geographic location in the ``events.csv``, as the coordinates for each 
+  observation are tied to the location of the site in question. If you have sites, but you instead 
+  want to include coordinates for individual sightings, then coordinates are more appropriately 
+  placed in the ``occurrences.csv`` file.
+
+.. prompt:: Python
+
+    >>> observations_site_id_coords = observations_site_id.merge(sites[['site_code','latitude','longitude']],on='site_code',how='left')
+    >>> events_all = galaxias.set_coordinates(dataframe=observations_site_id_coords,
+    ...                                       decimalLatitude='latitude',
+    ...                                       decimalLongitude='longitude',
+    ...                                       coordinateUncertaintyInMeters = 30,
+    ...                                       geodeticDatum = 'WGS84')
+    >>> events_all
+
+.. program-output:: python galaxias_user_guide/events/events_workflow.py 5
+
+Here, you can do one of two things:
+
+1. Select only the columns which are currently Darwin core compliant
+2. Use optional functions to ensure other parts of your data are Darwin core compliant, and include those in your final dataset.
+
+To see which Darwin core terms are included in checks in ``galaxias``, consult the list below.
+
+.. dropdown:: Supported Darwin Core Terms and Their Associated Functions 
+    :color: info
+    
+    .. csv-table:: 
+        :file: ../data/supported-terms.csv
+        :widths: 20, 40  
+        :header-rows: 1
+
+To select only the columns that are Darwin core compliant, run the following snippet of code:
+
+.. prompt:: Python
+
+    >>> event_terms = list(galaxias.event_terms())
+    >>> event_terms_dwca = list(set(event_terms).intersection(list(events_all.columns)))
+    >>> events = events_all[event_terms_dwca]
+    >>> events
+
+.. program-output:: python galaxias_user_guide/events/events_workflow.py 6
+
+Prepare occurrences.csv
+-------------------------------------------
+
+Let’s return to the ``observations_site_id`` variable, which contains the ``eventID`` field 
+that will link our ``events.csv`` and ``occurrences.csv``.  When we are formatting these 
+occurrences, we are going to need to have the species abbreviations as values under a column 
+name, rather than the column names themselves.  But how do we do this while keeping all the 
+information we need for linking the files?
+
+Luckily, we can use the ``melt`` function inherent in each ``pandas`` dataframe. We will specify 
+the ``eventID`` column as our ``id_vars``, as this is the key we want associated with each observation.  
+We will then choose the name ``abbreviation`` for the ``var_name``, as ``var_name`` will become 
+the column names (aka the abbreviations for each species).  Finally, the ``value_name`` will be named 
+``presence`` for now, as this will contain all of our presence/absence data.
+
+.. prompt:: Python
+
+    >>> observations_site_id_select = observations_site_id[['eventID'] + species_abb]
+    >>> observations_site_id_abbr = observations_site_id_select.melt(id_vars=['eventID'], 
+    ...                                                              var_name='abbreviation',
+    ...                                                              value_name='status')
+    >>> observations_site_id_abbr
+
+.. program-output:: python galaxias_user_guide/events/events_workflow.py 7
+
+Now we’ll merge the correct names to our frog species by joining ``species`` with ``observations_site_id_abbr``.
+
+.. prompt:: Python
+
+    >>> observations_site_id_spec = observations_site_id_abbr.merge(species,on='abbreviation',how='left')
+    >>> observations_site_id_spec
+
+.. program-output:: python galaxias_user_guide/events/events_workflow.py 8
+
+Now we can reformat our data to use valid Darwin Core column names using ``set_`` 
+functions. Importantly, Darwin Core Standard requires that we add a unique ``occurrenceID`` 
+and the type of observation in the column ``basisOfRecord``.
+
+
+.. prompt:: Python
+
+    >>> # first, change the 1's and 0's to PRESENT and ABSENT
+    >>> observations_site_id_spec['status'] = observations_site_id_spec['status'].map({1: 'PRESENT', 0: 'ABSENT'})
+    >>>
+    >>> # now, we will reformat the data to use valid Darwin Core columns
+    >>> obs = galaxias.set_occurrences(occurrences=observations_site_id_spec,
+    ...                                occurrenceID=['eventID','sequential'],
+    ...                                basisOfRecord = 'HumanObservation',
+    ...                                occurrenceStatus = 'status')
+    >>> obs_name = galaxias.set_scientific_name(dataframe=obs,scientificName='scientific_name')
+    >>> obs_dwc = galaxias.set_taxonomy(dataframe=obs_name,vernacularName='common_name')
+    >>> obs_dwc
+
+.. program-output:: python galaxias_user_guide/events/events_workflow.py 9
+
+We now have a dataframe with observations organised at the occurrence-level. Our 
+final step is to reduce ``obs_long_dwc`` to only include columns with valid column 
+names in Occurrence-based datasets. This drops the abbreviation column from our 
+dataframe.
+
+.. prompt:: Python
+
+    >>> occ_terms = list(galaxias.occurrence_terms())
+    >>> occ_terms_dwca = list(set(occ_terms).intersection(list(obs_dwc.columns)))
+    >>> occurrences = obs_dwc[occ_terms_dwca]
+    >>> occurrences
+
+.. program-output:: python galaxias_user_guide/events/events_workflow.py 10
+
+We can specify that we wish to use occurrences and events in our Darwin Core Archive 
+with ``use_data()``, which will save both occurrences and events as individual ``csv`` 
+files in the default directory ``data-publish``.  The names of these files are, by 
+default, ``occurrences.csv`` and ``events.csv``.
+
+.. prompt:: Python
+
+    >>> galaxias.use_data(occurrences=occurrences,events=events)
+
+In data terms, that’s it! Don’t forget to add metadata.  An explanation of how to add metadata
+is `here <../creating_your_metadata.html>`_.
+
+Summary
+-----------------------------------------
+The hierarchical structure of Event-based data (ie Site -> Sample -> Occurrence) 
+adds richness, allowing for information like repeated sampling and presence/absence 
+information to be preserved. This richness can enable more nuanced probabilistic 
+analyses like species distribution models or occupancy models. We encourage users 
+with Event-based data to use galaxias to standardise their data for publication 
+and sharing.

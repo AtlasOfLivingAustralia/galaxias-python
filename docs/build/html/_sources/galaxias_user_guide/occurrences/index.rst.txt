@@ -1,0 +1,186 @@
+:orphan:
+
+Standardising an Occurrence Dataset
+===================================
+
+*Amanda Buyan, Dax Kellie & Martin Westgate*
+
+Data of species observations is referred to as *occurrence* data. In Living Atlases like 
+the Atlas of Living Australia (ALA), this is the default type of data stored.
+
+Using occurrence-based datasets assume that all observations are independent of each 
+other. The benefit of this assumption is that observational data can remain simple in 
+structure - every observation is made at a specific place and time. This simplicity 
+allows all occurrence-based data to be aggregated and used together.
+
+Let’s see how to build an occurrence-based dataset using ``galaxias``.
+
+The dataset
+--------------------------------------------------
+
+:download:`Example Occurrences<../data/dummy-dataset-sb.csv>`
+
+Let’s use an small example dataset of bird observations taken from 4 different site 
+locations. This dataset has many different types of data like landscape type and age 
+class. Importantly for standardising to Darwin Core, this dataset contains the scientific 
+name (species), coordinate location (lat & lon) and date of observation (date).
+
+.. prompt:: Python
+
+    >>> import galaxias
+    >>> occurrences = pd.read_csv('dummy-dataset-sb.csv')
+    >>> # set all titles to lowercase
+    >>> occurrences.columns = map(str.lower, occurrences.columns)
+    >>> occurrences
+
+.. program-output:: python galaxias_user_guide/occurrences/data_cleaning.py 1
+
+Standardise to Darwin Core
+--------------------------------------------------
+
+To determine what we need to do to standardise our dataset, let’s use ``suggest_workflow()``. 
+The output tells us we have one matching Darwin Core term in our data already (``sex``), 
+but we are missing all minimum required Darwin Core terms.
+
+.. prompt:: Python
+
+    >>> galaxias.suggest_workflow(occurrences=occurrences)
+
+.. program-output:: python galaxias_user_guide/occurrences/data_cleaning.py 2
+
+Under “Suggest workflow”, the output above suggests a series of piped ``set_`` functions 
+that we can use to rename, modify or add columns that are missing from ``occurrences`` 
+but required by Darwin Core. ``set_`` functions are specialised wrappers around the 
+``{pandas}`` package, with additional functionality to support using Darwin Core Standard.
+
+For simplicity, let’s do the easy part first of renaming columns we already have in our 
+dataset to use accepted standard Darwin Core terms. ``set_`` functions will automatically 
+check to make sure each column is correctly formatted. Our dataframe will automatically be 
+saved into the ``occurrences`` variable in our ``dwca object``.
+
+.. prompt:: Python
+
+    >>> occurrences = galaxias.set_scientific_name(scientificName = 'species')
+    >>> occurrences = galaxias.set_coordinates(decimalLatitude = 'lat',
+    ...                                        decimalLongitude = 'lon')
+    >>> occurrences = galaxias.set_datetime(eventDate = 'date',
+    ...                                     string_to_datetime=True,
+    ...                                     yearfirst = True)
+
+Running ``suggest_workflow()`` again will reflect our progress and show us what’s left to do. Now the output tells us that we still need to add several columns to our dataset to meet minimum Darwin Core requirements.
+
+.. prompt:: Python
+
+    >>> galaxias.suggest_workflow(occurrences=occurrences)
+
+.. program-output:: python galaxias_user_guide/occurrences/data_cleaning.py 3
+
+Here’s a rundown of the columns we need to add:
+
+- ``occurrenceID``: Unique identifiers of each record. This ensures that we can identify the specific record for any future updates or corrections. We can create composite IDs, sequential IDs, or unique IDs to add a unique IDs to each row.
+- ``basisOfRecord``: The type of record (e.g. human observation, specimen, machine observation). See a list of acceptable values with ``galaxias.basisOfRecord_values()``.
+- ``geodeticDatum``: The Coordinate Reference System (CRS) projection of your data (for example, the CRS of Google Maps is “WGS84”).
+- ``coordinateUncertaintyInMeters``: The area of uncertainty around your observation. You may know this value based on your method of data collection
+
+Now let’s add these columns using ``set_occurrences()`` and ``set_coordinates()``. We 
+can also use an optional function, ``set_individual_traits()``, which will automatically 
+identify the matched column name ``sex`` and check the column’s format.
+
+.. dropdown:: Creating unique ``occurrenceID`` 
+    :color: info
+    
+    There are multiple ways of creating unique IDs for your occurrences.  For creating either 
+    sequential or random IDs, you only have to provide the keywords ``sequential`` or ``random``.
+
+    To create a unique ID using column names, simply provide the column names in a list to the 
+    ``occurrenceID`` argument, and 
+
+    .. prompt:: Python
+
+        >>> #example code snippet of having a sequential ID first
+        >>> occurrences = galaxias.set_occurrences(occurrences=occurrences,occurrenceID = ['sequential','site','landscape'])
+        >>> 
+        >>> #example code snippet of having a random ID last
+        >>> occurrences = galaxias.set_occurrences(occurrences=occurrences,occurrenceID = ['site','landscape','random'])
+
+.. prompt:: Python
+
+    >>> occurrences = galaxias.set_occurrences(occurrences=occurrences,occurrenceID = ['sequential','site','landscape'],
+    ...                                        basisOfRecord = 'HumanObservation')
+    >>> occurrences = galaxias.set_coordinates(dataframe=occurrences,geodeticDatum = 'WGS84',
+    ...                                         coordinateUncertaintyInMeters = 30)
+    >>> occurrences = galaxias.set_individual_traits(dataframe=occurrences)
+
+.. dropdown:: What if my lat/long are in degrees, minutes, seconds? 
+    :color: info
+    
+    The Atlas of Living Australia requires that lat/longs be in decimal degrees.  
+    If your lat/longs are in degrees, minutes and seconds (DMS), there is a Python package 
+    that will convert your lat/longs into decimal degrees: `lat_lon_parser <https://github.com/NOAA-ORR-ERD/lat_lon_parser>`_.  
+
+    Below is a code snippet used on an example dataframe to convert from DMS to 
+    decimal degrees.  To do this on an ``occurrences`` dataframe in a ``dwca`` 
+    object, replace the variable ``occ`` with ``<NAME_OF_DWCA_OBJECT>.occurrences``.
+
+    .. prompt:: python
+
+        >>> from lat_lon_parser import parse
+        >>> import pandas as pd 
+        >>> occ = pd.DataFrame(
+        ...     {
+        ...         'decimalLatitude': ["35\° 50' 11\"", "45\° 51' 13\"", "30\° 20' 10\""], 
+        ...         'decimalLongitude': ["138\° 01\' 26\"", "139\° 11\' 16\"", "128\° 05\' 29\""]
+        ...     }
+        ... )
+        >>> for i, row in occ.iterrows():
+        ...     occ.at[i, 'decimalLatitude'] = round(parse(row['decimalLatitude']),2)
+        ...     occ.at[i, 'decimalLongitude'] = round(parse(row['decimalLongitude']),2)
+        >>> occ
+
+    .. program-output:: python galaxias_user_guide/occurrences/convert_coords.py
+
+Running ``suggest_workflow()`` once more will confirm that our dataset has all the required 
+information to be put into a Darwin Core Archive!
+
+.. prompt:: Python
+
+    >>> galaxias.suggest_workflow(occurrences=occurrences)
+
+.. program-output:: python galaxias_user_guide/occurrences/data_cleaning.py 4
+
+Here, you can do one of two things:
+
+1. Select only the columns which are currently Darwin core compliant
+2. Use optional functions to ensure other parts of your data are Darwin core compliant, and include those in your final dataset.
+
+To see which Darwin core terms are included in checks in ``galaxias``, consult the list below.
+
+.. dropdown:: Supported Darwin Core Terms and Their Associated Functions 
+    :color: info
+    
+    .. csv-table:: 
+        :file: ../data/supported-terms.csv
+        :widths: 20, 40  
+        :header-rows: 1
+
+To select only the columns that are Darwin core compliant, run the following snippet of code:
+
+.. prompt:: Python
+
+    >>> occ_terms = list(galaxias.occurrence_terms())
+    >>> occ_terms_dwca = list(set(occ_terms).intersection(list(occurrences.columns)))
+    >>> occurrences_final = occurrences[occ_terms_dwca]
+    >>> occurrences_final
+
+.. program-output:: python galaxias_user_guide/occurrences/data_cleaning.py 5
+
+We can specify that we wish to use occurrences and events in our Darwin Core Archive 
+with ``use_data()``, which will save your occurrences as individual ``csv`` 
+files in the default directory ``data-publish`` as ``occurrences.csv``.
+
+.. prompt:: Python
+
+    >>> galaxias.use_data(occurrences=occurrences_final)
+
+In data terms, that’s it! Don’t forget to add metadata.  An explanation of how to add metadata
+is `here <../creating_your_metadata.html>`_.

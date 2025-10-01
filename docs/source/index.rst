@@ -9,17 +9,18 @@
 
 **Date**: |today|  **Version**: |version|  
 
-The ``galaxias`` package offers a streamlined workflow for users to prepare 
-their biodiversity data for submission to the living atlases. This package 
-helps users to reformat their data according to Darwin Core standards 
-prior to submission, while still maintaining control over their data.
+``galaxias`` is a Python package that helps users describe, bundle, and share biodiversity 
+information using the `‘Darwin Core’ <https://dwc.tdwg.org/>`_ data standard. ``galaxias`` 
+provides tools in Python to build a Darwin Core Archive, a zip file containing standardised 
+data and metadata accepted by global data infrastructures. The package mirrors functionality 
+in `zipfile <https://docs.python.org/3/library/zipfile.html>`_, `shutils <https://pypi.org/project/shutils/>`_, 
+and `os <https://docs.python.org/3/library/os.html>`_ to manage data, files, and folders. 
+``galaxias`` was created by the `Science & Decision Support Team <https://labs.ala.org.au/>`_ 
+at the `Atlas of Living Australia (ALA) <https://www.ala.org.au/>`_.
 
-``galaxias-python`` was built and is maintained by the 
-`Science & Decision Support Team <https://labs.ala.org.au/>`_ 
-at the `Atlas of Living Australia (ALA) <https://www.ala.org.au/>`_.  
-``galaxias-python`` is a genus of small freshwater fish (under the family 
-*Galaxiidae*), a widely-distributed endemic Australian species.  
-The logo was designed by `Ian Brennan <http://www.iangbrennan.org/>`_.
+The package is named for a genus of freshwater fish that is found only in the Southern 
+Hemisphere, and predominantly in Australia and Aotearoa New Zealand. The logo shows a 
+Spotted Galaxias (Galaxias truttaceus) drawn by `Ian Brennan <https://www.iangbrennan.org/>`_.
 
 If you have any comments, questions or suggestions, please `contact us <mailto:support@ala.org.au>`_.
 

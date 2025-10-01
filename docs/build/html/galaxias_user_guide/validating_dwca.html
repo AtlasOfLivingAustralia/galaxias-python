@@ -46,6 +46,7 @@
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/design-tabs.js?v=36754332"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'galaxias_user_guide/validating_dwca';</script>
+    <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -390,31 +391,24 @@ document.write(`
                   
   <section id="validating-the-dwca-against-gbif">
 <h1>Validating the DwCA against GBIF<a class="headerlink" href="#validating-the-dwca-against-gbif" title="Link to this heading">#</a></h1>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This currently doesn’t work very well. This will point to an ALA validator
-in the future, and should be used with caution.</p>
-</div>
-<p>After you have successfully built your archive, you might want to
-validate your archive against the GBIF API.  To do this, <code class="docutils literal notranslate"><span class="pre">galaxias</span></code>
-has a function called <code class="docutils literal notranslate"><span class="pre">check_archive()</span></code>, which will send your archive
-to GBIF’s validator tool, and give you back a report.</p>
+<p>There are two ways to check whether the contents of your Darwin Core Archive meet the Darwin Core Standard.</p>
+<p>The first is to run local tests on the files inside a local folder directory that will be used to build a
+Darwin Core Archive. <code class="docutils literal notranslate"><span class="pre">check_directory()</span></code> allows us to check <code class="docutils literal notranslate"><span class="pre">csv</span></code> files and <code class="docutils literal notranslate"><span class="pre">xml</span></code> files in the directory
+against Darwin Core Standard criteria, using the same checking functionality that is built into the <code class="docutils literal notranslate"><span class="pre">set_</span></code>
+functions. This function is especially beneficial if you have standardized your data to Darwin Core headers
+using functions outside of <code class="docutils literal notranslate"><span class="pre">galaxias</span></code> / <code class="docutils literal notranslate"><span class="pre">corella</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
 span.prompt1:before {
   content: " ";
 }
-</style><span class="prompt1">&gt;&gt;&gt; my_dwca.check_archive()</span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>There is already a metadata file.
-Number of errors: 2
-
-fileName: eml.xml
-issues: {&#39;EML document&#39;: &#39;https://nis.lternet.edu/schemas/EML/eml-2.2.0/xsd/eml.xsdXML schema not supported&#39;}
-
-rowType: http://rs.tdwg.org/dwc/terms/Occurrence
-issues: {&#39;FATAL&#39;: &#39;Only darwin core archives with a single quotation character are supported, but found &gt;&gt;&gt;&amp;quot;&lt;&lt;&lt;&#39;}
-</pre></div>
-</div>
-</section>
+</style><span class="prompt1">&gt;&gt;&gt; galaxias.check_directory()</span>
+</pre></div></div><p>The second is to check whether a complete Darwin Core Archive meets institution’s Darwin Core criteria via an API.
+For example, we can test an archive against GBIF’s API tests.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">&gt;&gt;&gt; my_dwca.check_archive(archive=&quot;dwc-dwca.zip&quot;,</span>
+<span class="prompt1">...                       email=&quot;your-email&quot;,</span>
+<span class="prompt1">...                       username = &quot;your-username&quot;,</span>
+<span class="prompt1">...                       password = &quot;your-password&quot;)</span>
+</pre></div></div></section>
 
 
                 </article>

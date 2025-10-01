@@ -1,0 +1,716 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Quick Start Guide &#8212; Galaxias 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/extra.css?v=2b5a6c60" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/extra.css?v=2b5a6c60" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+
+    <script src="../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/Quick_Start_Guide';</script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Installation" href="installation.html" />
+    <link rel="prev" title="Getting Started" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <header>
+  
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Galaxias 0.1.0 documentation - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Galaxias 0.1.0 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="index.html">
+                        Getting Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../galaxias_user_guide/index.html">
+                        Galaxias User Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../apidoc/galaxias.html">
+                        API Docs
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../authors/index.html">
+                        Authors
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/AtlasOfLivingAustralia/galaxias-python" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </div>
+  
+  </header>
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="index.html">
+                        Getting Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../galaxias_user_guide/index.html">
+                        Galaxias User Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../apidoc/galaxias.html">
+                        API Docs
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../authors/index.html">
+                        Authors
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/AtlasOfLivingAustralia/galaxias-python" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Getting Started</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">Quick Start Guide</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="quick-start-guide">
+<span id="id1"></span><h1>Quick Start Guide<a class="headerlink" href="#quick-start-guide" title="Link to this heading">#</a></h1>
+<p>galaxias is a Python package that helps users bundle their data into a standardised format
+optimised for storing, documenting, and sharing biodiversity data. This standardised format
+is called a <a class="reference external" href="https://ipt.gbif.org/manual/en/ipt/latest/dwca-guide#what-is-darwin-core-archive-dwc-a">Darwin Core Archive</a> —
+a zip file containing data and metadata that conform to the Darwin Core Standard, the accepted data standard of the Global Biodiversity Information Facility (GBIF) and its partner nodes (e.g. the Atlas of Living Australia).</p>
+<p>Sharing Darwin Core Archives with data infrastructures allows data to be reconstructed and aggregated accurately. Let’s see how to prepare a Darwin Core Archive using galaxias.</p>
+<section id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h2>
+<p>Here we have an existing folder structure containing data collected over the course of a research project. Our project uses a fairly standard folder structure.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
+span.prompt1:before {
+  content: " ";
+}
+</style><span class="prompt1">├── README.md                        : Description of the repository</span>
+<span class="prompt1">├── data                             : Folder to store cleaned data</span>
+<span class="prompt1">|  └── my_data.csv</span>
+<span class="prompt1">├── data-raw                         : Folder to store original/source data</span>
+<span class="prompt1">|  └── my_raw_data.csv</span>
+<span class="prompt1">├── plots                            : Folder containing plots/dataviz</span>
+<span class="prompt1">└── scripts                          : Folder with analytic coding scripts</span>
+</pre></div></div><p>Let’s see how galaxias can help us to package our data as a Darwin Core Archive.</p>
+</section>
+<section id="use-standardised-data-in-an-archive">
+<h2>Use standardised data in an archive<a class="headerlink" href="#use-standardised-data-in-an-archive" title="Link to this heading">#</a></h2>
+<p>Data that we wish to share are in the data folder. When the data is read into Python,
+they might look something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">&gt;&gt;&gt; import pandas as pd</span>
+<span class="prompt1">&gt;&gt;&gt; my_data = pd.read_csv(&#39;data/my_data.csv&#39;)</span>
+<span class="prompt1">&gt;&gt;&gt; my_data</span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>   latitude  longitude        date   time                   species location_id
+0     -35.3      149.0  14-01-2023  10:23  Callocephalon fimbriatum      ARD001
+1     -35.3      149.0  15-01-2023  11:25     Eolophus roseicapilla      ARD001
+</pre></div>
+</div>
+<p>First, we’ll need to standardise our data to conform to the Darwin Core Standard. suggest_workflow() can help by summarising our dataset and suggesting the steps we should take.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">&gt;&gt;&gt; galaxias.suggest_workflow(occurrences=my_data)</span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+── All DwC terms ──
+
+Matched 0 of 6 column names to DwC terms:
+
+✓ Matched: 
+✗ Unmatched: species, location_id, date, time, longitude, latitude
+
+── Minimum required DwC terms occurrences ──
+
+Type                       Matched term(s)    Missing term(s)
+-------------------------  -----------------  -------------------------------------------------------------------------------
+Identifier (at least one)  -                  occurrenceID OR catalogNumber OR recordNumber
+Record type                -                  basisOfRecord
+Scientific name            -                  scientificName
+Location                   -                  decimalLatitude, decimalLongitude, geodeticDatum, coordinateUncertaintyInMeters
+Date/Time                  -                  eventDate
+
+── Suggested workflow ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+── Occurrences ──
+
+To make your occurrences Darwin Core compliant, use the following workflow:
+
+corella.set_occurrences()
+corella.set_scientific_name()
+corella.set_coordinates()
+corella.set_datetime()
+
+Additional functions: set_abundance(), set_collection(), set_individual_traits(), set_license(), set_locality(), set_taxonomy()
+</pre></div>
+</div>
+<p>Following the advice of suggest_workflow(), we can use the <code class="docutils literal notranslate"><span class="pre">set_</span></code> functions to standardise
+the <code class="docutils literal notranslate"><span class="pre">my_dwca</span></code> occurrences data. <code class="docutils literal notranslate"><span class="pre">set_</span></code> functions work a lot like extant functions in <code class="docutils literal notranslate"><span class="pre">pandas</span></code>:
+they modify existing columns or create new columns. The suffix of each <code class="docutils literal notranslate"><span class="pre">set_</span></code> function
+gives an indication of the type of data it accepts (e.g. <code class="docutils literal notranslate"><span class="pre">set_coordinates()</span></code>,
+<code class="docutils literal notranslate"><span class="pre">set_scientific_name</span></code>), and function arguments are valid Darwin Core terms to use as
+column names. Each <code class="docutils literal notranslate"><span class="pre">set_</span></code> function also checks to make sure that each column contains
+valid data according to Darwin Core Standard.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">&gt;&gt;&gt; # basic requirements of Darwin Core</span>
+<span class="prompt1">&gt;&gt;&gt; my_data = galaxias.set_occurrences(occurrences=my_data,</span>
+<span class="prompt1">...                                    occurrenceID = &#39;sequential&#39;,</span>
+<span class="prompt1">...                                    basisOfRecord = &#39;HumanObservation&#39;)</span>
+<span class="prompt1">&gt;&gt;&gt; # place and time</span>
+<span class="prompt1">&gt;&gt;&gt; my_data = galaxias.set_coordinates(dataframe=my_data,</span>
+<span class="prompt1">...                                    decimalLatitude = &#39;latitude&#39;,</span>
+<span class="prompt1">...                                    decimalLongitude = &#39;longitude&#39;)</span>
+<span class="prompt1">&gt;&gt;&gt; my_data = galaxias.set_locality(dataframe=my_data,</span>
+<span class="prompt1">...                                 country = &quot;Australia&quot;,</span>
+<span class="prompt1">...                                 locality = &quot;Canberra&quot;)</span>
+<span class="prompt1">&gt;&gt;&gt; my_data = galaxias.set_datetime(dataframe=my_data,</span>
+<span class="prompt1">...                                 eventDate = &#39;date&#39;,</span>
+<span class="prompt1">...                                 eventTime = &#39;time&#39;,</span>
+<span class="prompt1">...                                 string_to_datetime=True,</span>
+<span class="prompt1">...                                 dayfirst=True,</span>
+<span class="prompt1">...                                 yearfirst=False,</span>
+<span class="prompt1">...                                 time_format=&#39;mixed&#39;)</span>
+<span class="prompt1">&gt;&gt;&gt; # taxonomy</span>
+<span class="prompt1">&gt;&gt;&gt; my_data = galaxias.set_scientific_name(dataframe=my_data,</span>
+<span class="prompt1">...                                        scientificName = &#39;species&#39;,</span>
+<span class="prompt1">...                                        taxonRank = &#39;species&#39;)</span>
+<span class="prompt1">&gt;&gt;&gt; my_data = galaxias.set_taxonomy(dataframe=my_data,</span>
+<span class="prompt1">...                                 kingdom = &#39;Animalia&#39;,</span>
+<span class="prompt1">...                                 family = &#39;Cacatuidae&#39;)</span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  occurrenceID  decimalLatitude  decimalLongitude  eventDate eventTime                 taxonRank location_id     basisOfRecord    country  locality   kingdom      family
+0            0            -35.3             149.0 2023-01-14  10:23:00  Callocephalon fimbriatum      ARD001  HumanObservation  Australia  Canberra  Animalia  Cacatuidae
+1            1            -35.3             149.0 2023-01-15  11:25:00     Eolophus roseicapilla      ARD001  HumanObservation  Australia  Canberra  Animalia  Cacatuidae
+</pre></div>
+</div>
+<p>You may have noticed that we added some additional columns that were not included in the
+advice of <code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code> (<code class="docutils literal notranslate"><span class="pre">country</span></code>, <code class="docutils literal notranslate"><span class="pre">locality</span></code>, <code class="docutils literal notranslate"><span class="pre">taxonRank</span></code>, <code class="docutils literal notranslate"><span class="pre">kingdom</span></code>,
+<code class="docutils literal notranslate"><span class="pre">family</span></code>). We encourage users to specify additional information where possible to avoid
+ambiguity once their data are shared.</p>
+<p>To use our standardised data in a Darwin Core Archive, we can select columns that use
+valid Darwin Core terms as column names. Invalid columns won’t be accepted when we try
+to build our Darwin Core Archive. Our data is an occurrence-based dataset (each row
+contains information at the observation level, as opposed to site/survey level), so
+we’ll select columns that match names in <code class="docutils literal notranslate"><span class="pre">occurrence_terms()</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">&gt;&gt;&gt; occ_terms = list(galaxias.occurrence_terms())</span>
+<span class="prompt1">&gt;&gt;&gt; occ_terms_dwca = list(set(occ_terms).intersection(list(my_data.columns)))</span>
+<span class="prompt1">&gt;&gt;&gt; my_data_final = my_data[occ_terms_dwca]</span>
+<span class="prompt1">&gt;&gt;&gt; my_data_final</span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>   decimalLatitude occurrenceID                 taxonRank      family  eventDate eventTime   kingdom  decimalLongitude  locality     basisOfRecord    country
+0            -35.3            0  Callocephalon fimbriatum  Cacatuidae 2023-01-14  10:23:00  Animalia             149.0  Canberra  HumanObservation  Australia
+1            -35.3            1     Eolophus roseicapilla  Cacatuidae 2023-01-15  11:25:00  Animalia             149.0  Canberra  HumanObservation  Australia
+</pre></div>
+</div>
+</section>
+<section id="add-metadata">
+<h2>Add metadata<a class="headerlink" href="#add-metadata" title="Link to this heading">#</a></h2>
+<p>A critical part of a Darwin Core archive is a metadata statement: this tells users who
+owns the data, what the data were collected for, and what uses they can be put to
+(i.e. a data licence). A boilerplate metadata statement is made when you create your
+<code class="docutils literal notranslate"><span class="pre">dwca</span></code> object.  By default, this creates a markdown template named metadata.md in
+your working directory.  We can edit this template to include information about our
+dataset, and write the metadata to disk using <code class="docutils literal notranslate"><span class="pre">write_eml()</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">&gt;&gt;&gt; galaxias.use_metadata_template()</span>
+<span class="prompt1">&gt;&gt;&gt; galaxias.use_metadata()</span>
+</pre></div></div><p>This converts our metadata statement to Ecological Meta Language (EML), the accepted
+format of metadata for Darwin Core Archives, and saves it as <code class="docutils literal notranslate"><span class="pre">eml.xml</span></code> in the
+<code class="docutils literal notranslate"><span class="pre">data-publish</span></code> folder.</p>
+</section>
+<section id="build-an-archive">
+<h2>Build an archive<a class="headerlink" href="#build-an-archive" title="Link to this heading">#</a></h2>
+<p>At the end of the above process, we should have a folder named <code class="docutils literal notranslate"><span class="pre">data-publish</span></code>
+that contains at least one file, and potentially two:</p>
+<ul class="simple">
+<li><p>An eml.xml file containing your metadata</p></li>
+<li><p>One or more <code class="docutils literal notranslate"><span class="pre">.csv</span></code> files containing data (e.g. <code class="docutils literal notranslate"><span class="pre">occurrences.csv</span></code>, <code class="docutils literal notranslate"><span class="pre">events.csv</span></code>, <code class="docutils literal notranslate"><span class="pre">multimedia.csv</span></code>)</p></li>
+</ul>
+<p>We can now run <code class="docutils literal notranslate"><span class="pre">build_archive()</span></code> to build our Darwin Core Archive!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">&gt;&gt;&gt; galaxias.build_archive()</span>
+</pre></div></div><p>Running <code class="docutils literal notranslate"><span class="pre">build_archive()</span></code> will go through the following steps:</p>
+<ul class="simple">
+<li><p>Writes all the processed data into <code class="docutils literal notranslate"><span class="pre">csv</span></code> files</p></li>
+<li><p>Checks whether we have completed the <code class="docutils literal notranslate"><span class="pre">eml.xml</span></code> file</p></li>
+<li><p>Checks whether we have a ‘schema’ document (meta.xml) in our <code class="docutils literal notranslate"><span class="pre">data-publish</span></code> folder</p></li>
+<li><p>Puts all required files into a darwin core archive</p></li>
+</ul>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header sd-bg-primary sd-bg-text-primary">
+Schema (<code class="docutils literal notranslate"><span class="pre">meta.xml</span></code>)<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">This is a machine-readable xml document that describes the content of the archive’s
+data files and their structure. The schema document is a required file in a Darwin
+Core Archive. If it is missing, <code class="docutils literal notranslate"><span class="pre">build_archive()</span></code> will build one. We can also
+build a schema document ourselves using <code class="docutils literal notranslate"><span class="pre">make_meta_xml()</span></code>.</p>
+</div>
+</details><p>At the end of this process, you should have a Darwin Core Archive zip file (<code class="docutils literal notranslate"><span class="pre">dwca.zip</span></code>)
+in your parent directory. You should also have a <code class="docutils literal notranslate"><span class="pre">data-publish</span></code> folder in your working
+directory containing standardised data files (e.g. <code class="docutils literal notranslate"><span class="pre">occurrences.csv</span></code>), a metadata
+statement in EML format (<code class="docutils literal notranslate"><span class="pre">eml.xml</span></code>), and a schema document (<code class="docutils literal notranslate"><span class="pre">meta.xml</span></code>).</p>
+</section>
+<section id="check-archive">
+<h2>Check archive<a class="headerlink" href="#check-archive" title="Link to this heading">#</a></h2>
+<p>There are two ways to check whether the contents of your Darwin Core Archive meet the
+Darwin Core Standard.</p>
+<p>The first is to run local tests on the files inside a local folder directory that will
+be used to build a Darwin Core Archive. <code class="docutils literal notranslate"><span class="pre">check_directory()</span></code> allows us to check csv
+files and xml files in the directory against Darwin Core Standard criteria, using the
+same checking functionality that is built into the <code class="docutils literal notranslate"><span class="pre">set_</span></code> functions. This function
+is especially beneficial if you have standardized your data to Darwin Core headers
+using functions outside of <code class="docutils literal notranslate"><span class="pre">galaxias</span></code> / <code class="docutils literal notranslate"><span class="pre">corella</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">&gt;&gt;&gt; galaxias.check_directory()</span>
+</pre></div></div><p>The second is to check whether a complete Darwin Core Archive meets institution’s
+Darwin Core criteria via an API. For example, we can test an archive against GBIF’s API
+tests.  This is not currently recommended, however, as</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">&gt;&gt;&gt; # Check against GBIF API</span>
+<span class="prompt1">&gt;&gt;&gt; galaxias.check_archive(&quot;dwc-archive.zip&quot;,</span>
+<span class="prompt1">...                        email = &quot;your-email&quot;,</span>
+<span class="prompt1">...                        username = &quot;your-username&quot;,</span>
+<span class="prompt1">...                        password = &quot;your-password&quot;)</span>
+</pre></div></div></section>
+<section id="publish-share-your-archive">
+<h2>Publish/share your archive<a class="headerlink" href="#publish-share-your-archive" title="Link to this heading">#</a></h2>
+<p>The final step is to share your completed Darwin Core Archive with a data infrastructure
+like the Atlas of Living Australia. To share with the ALA, you can launch our data
+submission process in your browser by calling:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">&gt;&gt;&gt; galaxias.submit_archive()</span>
+</pre></div></div><p>This function will provide you with the option to open a GitHub issue where you can
+attach your archive. We will run the galaxias test suite on your dataset and respond
+as soon as we can.</p>
+<p>If you’d prefer not to use GitHub, you can send your file and a brief description to
+<a class="reference external" href="mailto:support&#37;&#52;&#48;ala&#46;org&#46;au">support<span>&#64;</span>ala<span>&#46;</span>org<span>&#46;</span>au</a>.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Getting Started</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="installation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Installation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting Started</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-standardised-data-in-an-archive">Use standardised data in an archive</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-metadata">Add metadata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-an-archive">Build an archive</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-archive">Check archive</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publish-share-your-archive">Publish/share your archive</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Amanda Buyan, Atlas of Living Australia.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

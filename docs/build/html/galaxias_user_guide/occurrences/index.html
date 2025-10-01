@@ -1,0 +1,928 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Standardising an Occurrence Dataset &#8212; Galaxias 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/extra.css?v=2b5a6c60" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/extra.css?v=2b5a6c60" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+
+    <script src="../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'galaxias_user_guide/occurrences/index';</script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <header>
+  
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Galaxias 0.1.0 documentation - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Galaxias 0.1.0 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../getting_started/index.html">
+                        Getting Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../index.html">
+                        Galaxias User Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../apidoc/galaxias.html">
+                        API Docs
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../authors/index.html">
+                        Authors
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/AtlasOfLivingAustralia/galaxias-python" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </div>
+  
+  </header>
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../getting_started/index.html">
+                        Getting Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../index.html">
+                        Galaxias User Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../apidoc/galaxias.html">
+                        API Docs
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../authors/index.html">
+                        Authors
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/AtlasOfLivingAustralia/galaxias-python" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Standardisin...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="standardising-an-occurrence-dataset">
+<h1>Standardising an Occurrence Dataset<a class="headerlink" href="#standardising-an-occurrence-dataset" title="Link to this heading">#</a></h1>
+<p><em>Amanda Buyan, Dax Kellie &amp; Martin Westgate</em></p>
+<p>Data of species observations is referred to as <em>occurrence</em> data. In Living Atlases like
+the Atlas of Living Australia (ALA), this is the default type of data stored.</p>
+<p>Using occurrence-based datasets assume that all observations are independent of each
+other. The benefit of this assumption is that observational data can remain simple in
+structure - every observation is made at a specific place and time. This simplicity
+allows all occurrence-based data to be aggregated and used together.</p>
+<p>Let’s see how to build an occurrence-based dataset using <code class="docutils literal notranslate"><span class="pre">galaxias</span></code>.</p>
+<section id="the-dataset">
+<h2>The dataset<a class="headerlink" href="#the-dataset" title="Link to this heading">#</a></h2>
+<p><a class="reference download internal" download="" href="../../_downloads/2355e86e615b0869cfe1c52c50a44eb2/dummy-dataset-sb.csv"><code class="xref download docutils literal notranslate"><span class="pre">Example</span> <span class="pre">Occurrences</span></code></a></p>
+<p>Let’s use an small example dataset of bird observations taken from 4 different site
+locations. This dataset has many different types of data like landscape type and age
+class. Importantly for standardising to Darwin Core, this dataset contains the scientific
+name (species), coordinate location (lat &amp; lon) and date of observation (date).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
+span.prompt1:before {
+  content: " ";
+}
+</style><span class="prompt1">&gt;&gt;&gt; import galaxias</span>
+<span class="prompt1">&gt;&gt;&gt; occurrences = pd.read_csv(&#39;dummy-dataset-sb.csv&#39;)</span>
+<span class="prompt1">&gt;&gt;&gt; # set all titles to lowercase</span>
+<span class="prompt1">&gt;&gt;&gt; occurrences.columns = map(str.lower, occurrences.columns)</span>
+<span class="prompt1">&gt;&gt;&gt; occurrences</span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>   landscape     site        date                    species        lat         lon             comments species code sex age class sample id molecular sex
+0       KKNP  KKNP-01  2008-05-05       Climacteris picumnus -36.867536  143.258586     secondaries worn          BTC   F        Ad      SB01             F
+1       KKNP  KKNP-01  2008-08-22       Climacteris picumnus -36.877767  143.254638                  NaN          BTC   F         J      SB02             F
+2       KKNP  KKNP-02  2008-02-05       Climacteris picumnus -36.850162  143.293905                  NaN          BTC   F         J      SB03             F
+3       KKNP  KKNP-02  2008-08-22       Climacteris picumnus -36.852531  143.313389                  NaN          BTC   F        Ad      SB04             F
+4       KKNP  KKNP-03  2008-02-06        Artamus cyanopterus -36.881165  143.306694  heavy parasite load          DWS   ?        Ad      SB05             M
+5       KKNP  KKNP-03  2008-08-22          Acanthiza lineata -36.891223  143.311887  heavy parasite load          STT   M         J      SB06             M
+6       PRSP  PRSP-01  2008-08-21        Artamus cyanopterus -37.069201  143.690593                  NaN          DWS   ?         J      SB07             F
+7       PRSP  PRSP-01  2008-02-06       Acanthiza reguloides -37.077008  143.693082                  NaN          BRT   M         J      SB08             M
+8       PRSP  PRSP-02  2008-02-06            Malurus cyaneus -37.084711  143.701537                  NaN          SFW   M         J      SB09             M
+9       PRSP  PRSP-02  2008-02-06            Malurus cyaneus -37.087244  143.696344                  NaN          SFW   M        Ad      SB10             M
+10      PRSP  PRSP-03  2008-02-05       Acanthiza reguloides -37.104941  143.691580                  NaN          BRT   M        Ad      SB11             M
+11      PRSP  PRSP-03  2008-02-06          Acanthiza lineata -37.108501  143.689778                  NaN          STT   F        Ad      SB12             F
+12      MBRP  MBRP-01  2008-02-06            Ptilotula fusca -37.069663  143.720473                  NaN          FHE   ?        Ad      SB13             F
+13      MBRP  MBRP-01  2008-02-06            Ptilotula fusca -37.070489  143.721127                  NaN          FHE   ?        Ad      SB14             M
+14      MBRP  MBRP-02  2008-02-06  Melithreptus brevirostris -37.067090  143.725065                  NaN          BHE   ?        Ad      SB15             F
+15      MBRP  MBRP-02  2008-08-22  Melithreptus brevirostris -37.067780  143.727297                  NaN          BHE   ?        Ad      SB16             M
+16      RSNC  RSNC-01  2008-08-21            Malurus cyaneus -37.177554  144.070257                  NaN          SFW   F        Ad      SB17             F
+17      RSNC  RSNC-01  2008-02-06            Ptilotula fusca -37.162234  144.063391                  NaN          FHE   ?         J      SB18             M
+18      RSNC  RSNC-02  2008-02-06       Pardalotus punctatus -37.232654  144.046911                  NaN          SPP   F        Ad      SB19             F
+19      RSNC  RSNC-02  2008-02-06       Pardalotus punctatus -37.286758  144.066481                  NaN          SPP   F        Ad      SB20             F
+</pre></div>
+</div>
+</section>
+<section id="standardise-to-darwin-core">
+<h2>Standardise to Darwin Core<a class="headerlink" href="#standardise-to-darwin-core" title="Link to this heading">#</a></h2>
+<p>To determine what we need to do to standardise our dataset, let’s use <code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code>.
+The output tells us we have one matching Darwin Core term in our data already (<code class="docutils literal notranslate"><span class="pre">sex</span></code>),
+but we are missing all minimum required Darwin Core terms.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">&gt;&gt;&gt; galaxias.suggest_workflow(occurrences=occurrences)</span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+── All DwC terms ──
+
+Matched 1 of 12 column names to DwC terms:
+
+✓ Matched: sex
+✗ Unmatched: comments, date, sample id, species code, species, landscape, molecular sex, lat, site, lon, age class
+
+── Minimum required DwC terms occurrences ──
+
+Type                       Matched term(s)    Missing term(s)
+-------------------------  -----------------  -------------------------------------------------------------------------------
+Identifier (at least one)  -                  occurrenceID OR catalogNumber OR recordNumber
+Record type                -                  basisOfRecord
+Scientific name            -                  scientificName
+Location                   -                  decimalLatitude, decimalLongitude, geodeticDatum, coordinateUncertaintyInMeters
+Date/Time                  -                  eventDate
+
+── Suggested workflow ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+── Occurrences ──
+
+To make your occurrences Darwin Core compliant, use the following workflow:
+
+corella.set_occurrences()
+corella.set_scientific_name()
+corella.set_coordinates()
+corella.set_datetime()
+
+Additional functions: set_abundance(), set_collection(), set_individual_traits(), set_license(), set_locality(), set_taxonomy()
+</pre></div>
+</div>
+<p>Under “Suggest workflow”, the output above suggests a series of piped <code class="docutils literal notranslate"><span class="pre">set_</span></code> functions
+that we can use to rename, modify or add columns that are missing from <code class="docutils literal notranslate"><span class="pre">occurrences</span></code>
+but required by Darwin Core. <code class="docutils literal notranslate"><span class="pre">set_</span></code> functions are specialised wrappers around the
+<code class="docutils literal notranslate"><span class="pre">{pandas}</span></code> package, with additional functionality to support using Darwin Core Standard.</p>
+<p>For simplicity, let’s do the easy part first of renaming columns we already have in our
+dataset to use accepted standard Darwin Core terms. <code class="docutils literal notranslate"><span class="pre">set_</span></code> functions will automatically
+check to make sure each column is correctly formatted. Our dataframe will automatically be
+saved into the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> variable in our <code class="docutils literal notranslate"><span class="pre">dwca</span> <span class="pre">object</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">&gt;&gt;&gt; occurrences = galaxias.set_scientific_name(scientificName = &#39;species&#39;)</span>
+<span class="prompt1">&gt;&gt;&gt; occurrences = galaxias.set_coordinates(decimalLatitude = &#39;lat&#39;,</span>
+<span class="prompt1">...                                        decimalLongitude = &#39;lon&#39;)</span>
+<span class="prompt1">&gt;&gt;&gt; occurrences = galaxias.set_datetime(eventDate = &#39;date&#39;,</span>
+<span class="prompt1">...                                     string_to_datetime=True,</span>
+<span class="prompt1">...                                     yearfirst = True)</span>
+</pre></div></div><p>Running <code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code> again will reflect our progress and show us what’s left to do. Now the output tells us that we still need to add several columns to our dataset to meet minimum Darwin Core requirements.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">&gt;&gt;&gt; galaxias.suggest_workflow(occurrences=occurrences)</span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+── All DwC terms ──
+
+Matched 5 of 12 column names to DwC terms:
+
+✓ Matched: eventDate, scientificName, decimalLatitude, decimalLongitude, sex
+✗ Unmatched: age class, landscape, molecular sex, species code, site, sample id, comments
+
+── Minimum required DwC terms occurrences ──
+
+Type                       Matched term(s)                    Missing term(s)
+-------------------------  ---------------------------------  ---------------------------------------------
+Identifier (at least one)  -                                  occurrenceID OR catalogNumber OR recordNumber
+Record type                -                                  basisOfRecord
+Scientific name            scientificName                     -
+Location                   decimalLatitude, decimalLongitude  geodeticDatum, coordinateUncertaintyInMeters
+Date/Time                  eventDate                          -
+
+── Suggested workflow ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+── Occurrences ──
+
+To make your occurrences Darwin Core compliant, use the following workflow:
+
+corella.set_occurrences()
+corella.set_coordinates()
+
+Additional functions: set_abundance(), set_collection(), set_individual_traits(), set_license(), set_locality(), set_taxonomy()
+</pre></div>
+</div>
+<p>Here’s a rundown of the columns we need to add:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">occurrenceID</span></code>: Unique identifiers of each record. This ensures that we can identify the specific record for any future updates or corrections. We can create composite IDs, sequential IDs, or unique IDs to add a unique IDs to each row.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code>: The type of record (e.g. human observation, specimen, machine observation). See a list of acceptable values with <code class="docutils literal notranslate"><span class="pre">galaxias.basisOfRecord_values()</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geodeticDatum</span></code>: The Coordinate Reference System (CRS) projection of your data (for example, the CRS of Google Maps is “WGS84”).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">coordinateUncertaintyInMeters</span></code>: The area of uncertainty around your observation. You may know this value based on your method of data collection</p></li>
+</ul>
+<p>Now let’s add these columns using <code class="docutils literal notranslate"><span class="pre">set_occurrences()</span></code> and <code class="docutils literal notranslate"><span class="pre">set_coordinates()</span></code>. We
+can also use an optional function, <code class="docutils literal notranslate"><span class="pre">set_individual_traits()</span></code>, which will automatically
+identify the matched column name <code class="docutils literal notranslate"><span class="pre">sex</span></code> and check the column’s format.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header sd-bg-info sd-bg-text-info">
+Creating unique <code class="docutils literal notranslate"><span class="pre">occurrenceID</span></code><div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">There are multiple ways of creating unique IDs for your occurrences.  For creating either
+sequential or random IDs, you only have to provide the keywords <code class="docutils literal notranslate"><span class="pre">sequential</span></code> or <code class="docutils literal notranslate"><span class="pre">random</span></code>.</p>
+<p class="sd-card-text">To create a unique ID using column names, simply provide the column names in a list to the
+<code class="docutils literal notranslate"><span class="pre">occurrenceID</span></code> argument, and</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">&gt;&gt;&gt; #example code snippet of having a sequential ID first</span>
+<span class="prompt1">&gt;&gt;&gt; occurrences = galaxias.set_occurrences(occurrences=occurrences,occurrenceID = [&#39;sequential&#39;,&#39;site&#39;,&#39;landscape&#39;])</span>
+<span class="prompt1">&gt;&gt;&gt;</span>
+<span class="prompt1">&gt;&gt;&gt; #example code snippet of having a random ID last</span>
+<span class="prompt1">&gt;&gt;&gt; occurrences = galaxias.set_occurrences(occurrences=occurrences,occurrenceID = [&#39;site&#39;,&#39;landscape&#39;,&#39;random&#39;])</span>
+</pre></div></div></div>
+</details><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">&gt;&gt;&gt; occurrences = galaxias.set_occurrences(occurrences=occurrences,occurrenceID = [&#39;sequential&#39;,&#39;site&#39;,&#39;landscape&#39;],</span>
+<span class="prompt1">...                                        basisOfRecord = &#39;HumanObservation&#39;)</span>
+<span class="prompt1">&gt;&gt;&gt; occurrences = galaxias.set_coordinates(dataframe=occurrences,geodeticDatum = &#39;WGS84&#39;,</span>
+<span class="prompt1">...                                         coordinateUncertaintyInMeters = 30)</span>
+<span class="prompt1">&gt;&gt;&gt; occurrences = galaxias.set_individual_traits(dataframe=occurrences)</span>
+</pre></div></div><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header sd-bg-info sd-bg-text-info">
+What if my lat/long are in degrees, minutes, seconds?<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The Atlas of Living Australia requires that lat/longs be in decimal degrees.
+If your lat/longs are in degrees, minutes and seconds (DMS), there is a Python package
+that will convert your lat/longs into decimal degrees: <a class="reference external" href="https://github.com/NOAA-ORR-ERD/lat_lon_parser">lat_lon_parser</a>.</p>
+<p class="sd-card-text">Below is a code snippet used on an example dataframe to convert from DMS to
+decimal degrees.  To do this on an <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> dataframe in a <code class="docutils literal notranslate"><span class="pre">dwca</span></code>
+object, replace the variable <code class="docutils literal notranslate"><span class="pre">occ</span></code> with <code class="docutils literal notranslate"><span class="pre">&lt;NAME_OF_DWCA_OBJECT&gt;.occurrences</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">lat_lon_parser</span> <span class="kn">import</span> <span class="n">parse</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="p">{</span></span>
+<span class="prompt1"><span class="o">...</span>         <span class="s1">&#39;decimalLatitude&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;35\° 50&#39; 11</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;45\° 51&#39; 13</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;30\° 20&#39; 10</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">],</span></span>
+<span class="prompt1"><span class="o">...</span>         <span class="s1">&#39;decimalLongitude&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;138\° 01</span><span class="se">\&#39;</span><span class="s2"> 26</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;139\° 11</span><span class="se">\&#39;</span><span class="s2"> 16</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;128\° 05</span><span class="se">\&#39;</span><span class="s2"> 29</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">]</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="p">}</span></span>
+<span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">occ</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="n">occ</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;decimalLatitude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">parse</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;decimalLatitude&#39;</span><span class="p">]),</span><span class="mi">2</span><span class="p">)</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="n">occ</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;decimalLongitude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">parse</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;decimalLongitude&#39;</span><span class="p">]),</span><span class="mi">2</span><span class="p">)</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span></span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  decimalLatitude decimalLongitude
+0           35.84           138.02
+1           45.85           139.19
+2           30.34           128.09
+</pre></div>
+</div>
+</div>
+</details><p>Running <code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code> once more will confirm that our dataset has all the required
+information to be put into a Darwin Core Archive!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">&gt;&gt;&gt; galaxias.suggest_workflow(occurrences=occurrences)</span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+── All DwC terms ──
+
+Matched 9 of 16 column names to DwC terms:
+
+✓ Matched: occurrenceID, eventDate, scientificName, decimalLatitude, decimalLongitude, sex, basisOfRecord, geodeticDatum, coordinateUncertaintyInMeters
+✗ Unmatched: comments, sample id, age class, molecular sex, landscape, site, species code
+
+── Minimum required DwC terms occurrences ──
+
+Type                       Matched term(s)                                                                  Missing term(s)
+-------------------------  -------------------------------------------------------------------------------  -----------------
+Identifier (at least one)  occurrenceID                                                                     -
+Record type                basisOfRecord                                                                    -
+Scientific name            scientificName                                                                   -
+Location                   decimalLatitude, decimalLongitude, geodeticDatum, coordinateUncertaintyInMeters  -
+Date/Time                  eventDate                                                                        -
+
+── Suggested workflow ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Congratulations! You have the required Darwin Core terms for occurrences. Use corella.check_occurrences() to check whether your data is also Darwin Core compliant.
+</pre></div>
+</div>
+<p>Here, you can do one of two things:</p>
+<ol class="arabic simple">
+<li><p>Select only the columns which are currently Darwin core compliant</p></li>
+<li><p>Use optional functions to ensure other parts of your data are Darwin core compliant, and include those in your final dataset.</p></li>
+</ol>
+<p>To see which Darwin core terms are included in checks in <code class="docutils literal notranslate"><span class="pre">galaxias</span></code>, consult the list below.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header sd-bg-info sd-bg-text-info">
+Supported Darwin Core Terms and Their Associated Functions<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<table class="table">
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 66.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p class="sd-card-text">Darwin Core Term</p></th>
+<th class="head"><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">set</span></code> Function</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p class="sd-card-text">basisOfRecord</p></td>
+<td><p class="sd-card-text">set_occurrences()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">occurrenceID</p></td>
+<td><p class="sd-card-text">set_occurrences()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">scientificName</p></td>
+<td><p class="sd-card-text">set_scientific_name()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">decimalLatitude</p></td>
+<td><p class="sd-card-text">set_coordinates()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">decimalLongitude</p></td>
+<td><p class="sd-card-text">set_coordinates()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">geodeticDatum</p></td>
+<td><p class="sd-card-text">set_coordinates()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">coordinateUncertaintyInMeters</p></td>
+<td><p class="sd-card-text">set_coordinates()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">eventDate</p></td>
+<td><p class="sd-card-text">set_datetime()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">kingdom</p></td>
+<td><p class="sd-card-text">set_taxonomy()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">phylum</p></td>
+<td><p class="sd-card-text">set_taxonomy()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">class</p></td>
+<td><p class="sd-card-text">set_taxonomy()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">order</p></td>
+<td><p class="sd-card-text">set_taxonomy()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">family</p></td>
+<td><p class="sd-card-text">set_taxonomy()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">genus</p></td>
+<td><p class="sd-card-text">set_taxonomy()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">specificEpithet</p></td>
+<td><p class="sd-card-text">set_taxonomy()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">vernacularName</p></td>
+<td><p class="sd-card-text">set_taxonomy()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">taxonRank</p></td>
+<td><p class="sd-card-text">set_scientific_name()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">scientificNameAuthorship</p></td>
+<td><p class="sd-card-text">set_scientific_name()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">recordedBy</p></td>
+<td><p class="sd-card-text">set_observer()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">recordedByID</p></td>
+<td><p class="sd-card-text">set_observer()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">measurementID</p></td>
+<td><p class="sd-card-text">set_measurements()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">measurementType</p></td>
+<td><p class="sd-card-text">set_measurements()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">measurementValue</p></td>
+<td><p class="sd-card-text">set_measurements()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">measurementUnit</p></td>
+<td><p class="sd-card-text">set_measurements()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">continent</p></td>
+<td><p class="sd-card-text">set_locality()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">country</p></td>
+<td><p class="sd-card-text">set_locality()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">countryCode</p></td>
+<td><p class="sd-card-text">set_locality()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">stateProvince</p></td>
+<td><p class="sd-card-text">set_locality()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">locality</p></td>
+<td><p class="sd-card-text">set_locality()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">license</p></td>
+<td><p class="sd-card-text">set_license()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">rightsHolder</p></td>
+<td><p class="sd-card-text">set_license()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">accessRights</p></td>
+<td><p class="sd-card-text">set_license()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">sex</p></td>
+<td><p class="sd-card-text">set_individual_traits()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">lifeStage</p></td>
+<td><p class="sd-card-text">set_individual_traits()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">reproductiveCondition</p></td>
+<td><p class="sd-card-text">set_individual_traits()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">vitality</p></td>
+<td><p class="sd-card-text">set_individual_traits()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">individualID</p></td>
+<td><p class="sd-card-text">set_individual_traits()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">eventID</p></td>
+<td><p class="sd-card-text">set_events()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">parentEventID</p></td>
+<td><p class="sd-card-text">set_events()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">eventType</p></td>
+<td><p class="sd-card-text">set_events()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">eventTime</p></td>
+<td><p class="sd-card-text">set_datetime()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">year</p></td>
+<td><p class="sd-card-text">set_datetime()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">month</p></td>
+<td><p class="sd-card-text">set_datetime()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">day</p></td>
+<td><p class="sd-card-text">set_datetime()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">coordinatePrecision</p></td>
+<td><p class="sd-card-text">set_coordinates()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">datasetID</p></td>
+<td><p class="sd-card-text">set_collection()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">datasetName</p></td>
+<td><p class="sd-card-text">set_collection()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">catalogNumber</p></td>
+<td><p class="sd-card-text">set_collection()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">individualCount</p></td>
+<td><p class="sd-card-text">set_abundance()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">organismQuantity</p></td>
+<td><p class="sd-card-text">set_abundance()</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">organismQuantity</p></td>
+<td><p class="sd-card-text">set_abundance()</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">organismQuantityType</p></td>
+<td><p class="sd-card-text">set_abundance()</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</details><p>To select only the columns that are Darwin core compliant, run the following snippet of code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">&gt;&gt;&gt; occ_terms = list(galaxias.occurrence_terms())</span>
+<span class="prompt1">&gt;&gt;&gt; occ_terms_dwca = list(set(occ_terms).intersection(list(occurrences.columns)))</span>
+<span class="prompt1">&gt;&gt;&gt; occurrences_final = occurrences[occ_terms_dwca]</span>
+<span class="prompt1">&gt;&gt;&gt; occurrences_final</span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>   sex  eventDate             scientificName     basisOfRecord  coordinateUncertaintyInMeters geodeticDatum     occurrenceID  decimalLongitude  decimalLatitude
+0    F 2008-05-05       Climacteris picumnus  HumanObservation                             30         WGS84   0-KKNP-01-KKNP        143.258586       -36.867536
+1    F 2008-08-22       Climacteris picumnus  HumanObservation                             30         WGS84   1-KKNP-01-KKNP        143.254638       -36.877767
+2    F 2008-02-05       Climacteris picumnus  HumanObservation                             30         WGS84   2-KKNP-02-KKNP        143.293905       -36.850162
+3    F 2008-08-22       Climacteris picumnus  HumanObservation                             30         WGS84   3-KKNP-02-KKNP        143.313389       -36.852531
+4    ? 2008-02-06        Artamus cyanopterus  HumanObservation                             30         WGS84   4-KKNP-03-KKNP        143.306694       -36.881165
+5    M 2008-08-22          Acanthiza lineata  HumanObservation                             30         WGS84   5-KKNP-03-KKNP        143.311887       -36.891223
+6    ? 2008-08-21        Artamus cyanopterus  HumanObservation                             30         WGS84   6-PRSP-01-PRSP        143.690593       -37.069201
+7    M 2008-02-06       Acanthiza reguloides  HumanObservation                             30         WGS84   7-PRSP-01-PRSP        143.693082       -37.077008
+8    M 2008-02-06            Malurus cyaneus  HumanObservation                             30         WGS84   8-PRSP-02-PRSP        143.701537       -37.084711
+9    M 2008-02-06            Malurus cyaneus  HumanObservation                             30         WGS84   9-PRSP-02-PRSP        143.696344       -37.087244
+10   M 2008-02-05       Acanthiza reguloides  HumanObservation                             30         WGS84  10-PRSP-03-PRSP        143.691580       -37.104941
+11   F 2008-02-06          Acanthiza lineata  HumanObservation                             30         WGS84  11-PRSP-03-PRSP        143.689778       -37.108501
+12   ? 2008-02-06            Ptilotula fusca  HumanObservation                             30         WGS84  12-MBRP-01-MBRP        143.720473       -37.069663
+13   ? 2008-02-06            Ptilotula fusca  HumanObservation                             30         WGS84  13-MBRP-01-MBRP        143.721127       -37.070489
+14   ? 2008-02-06  Melithreptus brevirostris  HumanObservation                             30         WGS84  14-MBRP-02-MBRP        143.725065       -37.067090
+15   ? 2008-08-22  Melithreptus brevirostris  HumanObservation                             30         WGS84  15-MBRP-02-MBRP        143.727297       -37.067780
+16   F 2008-08-21            Malurus cyaneus  HumanObservation                             30         WGS84  16-RSNC-01-RSNC        144.070257       -37.177554
+17   ? 2008-02-06            Ptilotula fusca  HumanObservation                             30         WGS84  17-RSNC-01-RSNC        144.063391       -37.162234
+18   F 2008-02-06       Pardalotus punctatus  HumanObservation                             30         WGS84  18-RSNC-02-RSNC        144.046911       -37.232654
+19   F 2008-02-06       Pardalotus punctatus  HumanObservation                             30         WGS84  19-RSNC-02-RSNC        144.066481       -37.286758
+</pre></div>
+</div>
+<p>We can specify that we wish to use occurrences and events in our Darwin Core Archive
+with <code class="docutils literal notranslate"><span class="pre">use_data()</span></code>, which will save your occurrences as individual <code class="docutils literal notranslate"><span class="pre">csv</span></code>
+files in the default directory <code class="docutils literal notranslate"><span class="pre">data-publish</span></code> as <code class="docutils literal notranslate"><span class="pre">occurrences.csv</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">&gt;&gt;&gt; galaxias.use_data(occurrences=occurrences_final)</span>
+</pre></div></div><p>In data terms, that’s it! Don’t forget to add metadata.  An explanation of how to add metadata
+is <a class="reference external" href="../creating_your_metadata.html">here</a>.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-dataset">The dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standardise-to-darwin-core">Standardise to Darwin Core</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Amanda Buyan, Atlas of Living Australia.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

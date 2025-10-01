@@ -3,27 +3,22 @@
 Preparing the DwCA itself 
 ==========================
 
-Preparing your Darwin Core Archive is a straightforward process.  
-However, this also assumes that you have already prepared your data 
-and metadata to comply with Darwin Core standards.  If you have not done 
-this, please see our vignettes on preparing an 
-`independent observations dataset <independent_observations/index.html>`_ 
-or a `longitudinal studies dataset <longitudinal_studies/index.html>`_.
+At the end of the above process, we should have a folder named data-publish that contains at least two files:
 
-Creating a Darwin Core Archive
--------------------------------------------
+- One or more ``.csv`` files containing data (e.g. ``occurrences.csv``, ``events.csv``, ``multimedia.csv``)
+- An ``eml.xml`` file containing your metadata
 
-When your data passes all of the internal data checks, and you have 
-written out your metadata statement into XML format, you can then 
-run the ``create_dwca()`` function.
+We can now run ``build_archive()`` to build our Darwin Core Archive!
 
 .. prompt:: Python
 
-    >>> my_dwca.build_archive()
+    >>> galaxias.build_archive()
 
-Before this function creates the archive file, it will again check your 
-data and metadata.  If something doesn't comply with Darwin Core standards, 
-you will get an error message.  If everything passes, this will produce a 
-Darwin Core Archive titled ``dwca.zip``, which contains all of your data 
-and metadata, and is located in the ``data-publish`` folder in your 
-current working directory.  
+Running ``build_archive()`` first checks whether we have a ‘schema’ document (``meta.xml``) in our ``data-publish`` 
+folder. This is a machine-readable xml document that describes the content of the archive’s data files and their 
+structure. The schema document is a required file in a Darwin Core Archive. If it is missing, ``build_archive()`` 
+will build one. We can also build a schema document ourselves using ``use_schema()``.
+
+At the end of this process, you should have a Darwin Core Archive zip file (``dwca.zip``) in your parent directory. 
+You should also have a ``data-publish`` folder in your working directory containing standardised data files 
+(e.g. ``occurrences.csv``), a metadata statement in EML format (``eml.xml``), and a schema document (``meta.xml``).

@@ -3,18 +3,24 @@
 Validating the DwCA against GBIF 
 ================================
 
-.. note::
+There are two ways to check whether the contents of your Darwin Core Archive meet the Darwin Core Standard.
 
-    This currently doesn't work very well. This will point to an ALA validator 
-    in the future, and should be used with caution.
-
-After you have successfully built your archive, you might want to 
-validate your archive against the GBIF API.  To do this, ``galaxias`` 
-has a function called ``check_archive()``, which will send your archive 
-to GBIF's validator tool, and give you back a report.
+The first is to run local tests on the files inside a local folder directory that will be used to build a 
+Darwin Core Archive. ``check_directory()`` allows us to check ``csv`` files and ``xml`` files in the directory 
+against Darwin Core Standard criteria, using the same checking functionality that is built into the ``set_`` 
+functions. This function is especially beneficial if you have standardized your data to Darwin Core headers 
+using functions outside of ``galaxias`` / ``corella``.
 
 .. prompt:: Python
 
-    >>> my_dwca.check_archive()
+    >>> galaxias.check_directory()
 
-.. program-output:: python galaxias_user_guide/check_archive_occurrences.py
+The second is to check whether a complete Darwin Core Archive meets institution’s Darwin Core criteria via an API. 
+For example, we can test an archive against GBIF’s API tests.
+
+.. prompt:: Python
+
+    >>> my_dwca.check_archive(archive="dwc-dwca.zip",
+    ...                       email="your-email",
+    ...                       username = "your-username",
+    ...                       password = "your-password")
