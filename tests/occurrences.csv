@@ -1,0 +1,21 @@
+sex,coordinateUncertaintyInMeters,eventDate,occurrenceID,decimalLatitude,scientificName,geodeticDatum,basisOfRecord,decimalLongitude
+F,30,2008-05-05,0-KKNP-01-KKNP,-36.86753623,Climacteris picumnus,WGS84,HumanObservation,143.2585859
+F,30,2008-08-22,1-KKNP-01-KKNP,-36.87776688,Climacteris picumnus,WGS84,HumanObservation,143.2546377
+F,30,2008-02-05,2-KKNP-02-KKNP,-36.85016158,Climacteris picumnus,WGS84,HumanObservation,143.2939053
+F,30,2008-08-22,3-KKNP-02-KKNP,-36.85253109,Climacteris picumnus,WGS84,HumanObservation,143.3133888
+?,30,2008-02-06,4-KKNP-03-KKNP,-36.88116535,Artamus cyanopterus,WGS84,HumanObservation,143.306694
+M,30,2008-08-22,5-KKNP-03-KKNP,-36.89122256,Acanthiza lineata,WGS84,HumanObservation,143.3118868
+?,30,2008-08-21,6-PRSP-01-PRSP,-37.06920071,Artamus cyanopterus,WGS84,HumanObservation,143.6905932
+M,30,2008-02-06,7-PRSP-01-PRSP,-37.07700759,Acanthiza reguloides,WGS84,HumanObservation,143.6930823
+M,30,2008-02-06,8-PRSP-02-PRSP,-37.08471097,Malurus cyaneus,WGS84,HumanObservation,143.7015366
+M,30,2008-02-06,9-PRSP-02-PRSP,-37.08724436,Malurus cyaneus,WGS84,HumanObservation,143.6963439
+M,30,2008-02-05,10-PRSP-03-PRSP,-37.10494145,Acanthiza reguloides,WGS84,HumanObservation,143.6915803
+F,30,2008-02-06,11-PRSP-03-PRSP,-37.10850091,Acanthiza lineata,WGS84,HumanObservation,143.6897778
+?,30,2008-02-06,12-MBRP-01-MBRP,-37.06966298,Ptilotula fusca,WGS84,HumanObservation,143.720473
+?,30,2008-02-06,13-MBRP-01-MBRP,-37.07048907,Ptilotula fusca,WGS84,HumanObservation,143.7211275
+?,30,2008-02-06,14-MBRP-02-MBRP,-37.06709048,Melithreptus brevirostris,WGS84,HumanObservation,143.725065
+?,30,2008-08-22,15-MBRP-02-MBRP,-37.06777963,Melithreptus brevirostris,WGS84,HumanObservation,143.7272966
+F,30,2008-08-21,16-RSNC-01-RSNC,-37.17755418,Malurus cyaneus,WGS84,HumanObservation,144.0702572
+?,30,2008-02-06,17-RSNC-01-RSNC,-37.16223393,Ptilotula fusca,WGS84,HumanObservation,144.0633908
+F,30,2008-02-06,18-RSNC-02-RSNC,-37.23265402,Pardalotus punctatus,WGS84,HumanObservation,144.0469113
+F,30,2008-02-06,19-RSNC-02-RSNC,-37.28675759,Pardalotus punctatus,WGS84,HumanObservation,144.0664807

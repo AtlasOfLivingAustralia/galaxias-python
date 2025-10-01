@@ -1,0 +1,74 @@
+<eml:eml packageId="edi.23.1" system="https://doi.org" scope="system" xmlns:eml="https://eml.ecoinformatics.org/eml-2.2.0" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://eml.ecoinformatics.org/eml-2.2.0 https://nis.lternet.edu/schemas/EML/eml-2.2.0/xsd/eml.xsd">
+    <dataset>
+        <alternateIdentifier>0101d74b-afc2-3b0f-817c-dc350d2a6fe4 10.15468/14jd9g 0645ccdb-e001-4ab0-9729-51f1755e007e https://collections.ala.org.au/public/show/dr368</alternateIdentifier>
+        <creator>
+            <organizationName>Department of Planning, Industry and Environment representing the State of New South Wales</organizationName>
+            <address></address>
+        </creator>
+        <metadataProvider></metadataProvider>
+            <organizationName>Department of Planning, Industry and Environment representing the State of New South Wales</organizationName>
+            <address></address>
+        <associatedParty></associatedParty>
+            <organizationName>Department of Planning, Industry and Environment representing the State of New South Wales</organizationName>
+            <address>
+                <deliveryPoint>CSIRO Ecosystems Services</deliveryPoint>
+                <city>Canberra</city>
+                <administrativeArea>ACT</administrativeArea>
+                <postalCode>2601</postalCode>
+                <country>Australia</country>
+            </address>
+            <electronicMailAddress>info@ala.org.au</electronicMailAddress>
+            <role>distributor</role>
+            <organizationName>Department of Planning, Industry and Environment representing the State of New South Wales</organizationName>
+            <address></address>
+            <role>distributor</role>
+        <associatedParty></associatedParty>
+            <organizationName>Department of Planning, Industry and Environment representing the State of New South Wales</organizationName>
+            <address>
+                <deliveryPoint>CSIRO Ecosystems Services</deliveryPoint>
+                <city>Canberra</city>
+                <administrativeArea>ACT</administrativeArea>
+                <postalCode>2601</postalCode>
+                <country>Australia</country>
+            </address>
+            <electronicMailAddress>info@ala.org.au</electronicMailAddress>
+            <role>distributor</role>
+            <organizationName>Department of Planning, Industry and Environment representing the State of New South Wales</organizationName>
+            <address></address>
+            <role>distributor</role>
+        <pubDate>2025-09-30</pubDate>
+        <language>English</language>
+        <abstract></abstract>
+            <para>Records from DPIE's NSW BioNet Atlas database of flora and fauna sightings. Includes records from other custodians such as the National Herbarium of NSW, Forests NSW, Australian Bird and Bat Banding Scheme and the Australian Museum.</para>
+        <intellectualRights></intellectualRights>
+            <para>Records from DPIE's NSW BioNet Atlas database of flora and fauna sightings. Includes records from other custodians such as the National Herbarium of NSW, Forests NSW, Australian Bird and Bat Banding Scheme and the Australian Museum.</para>
+                <ulink></ulink>
+                    <citetitle>Creative Commons Attribution (International) (CC-BY 4.0 (Int) 4.0)</citetitle>
+                    <citetitle>Creative Commons Attribution (International) (CC-BY 4.0 (Int) 4.0)</citetitle>
+        <distribution></distribution>
+            <online></online>
+                <url></url>
+        <coverage></coverage>
+        <purpose></purpose>
+            <para>Records from DPIE's NSW BioNet Atlas database of flora and fauna sightings. Includes records from other custodians such as the National Herbarium of NSW, Forests NSW, Australian Bird and Bat Banding Scheme and the Australian Museum.</para>
+        <contact>
+            <organizationName>Department of Planning, Industry and Environment representing the State of New South Wales</organizationName>
+            <address>
+                <deliveryPoint>CSIRO Ecosystems Services</deliveryPoint>
+                <city>Canberra</city>
+                <administrativeArea>ACT</administrativeArea>
+                <postalCode>2601</postalCode>
+                <country>Australia</country>
+            </address>
+            <electronicMailAddress>info@ala.org.au</electronicMailAddress>
+        </contact>
+        <methods></methods>
+    </dataset>
+    <additionalMetadata></additionalMetadata>
+        <metadata></metadata>
+            <gbif></gbif>
+                <datestamp>2025-09-30T10:00:19</datestamp>
+                <hierarchylevel>dataset</hierarchylevel>
+                <citation>BioNet Species Sightings occurrence data held by the NSW Office of Environment and Heritage (OEH).   The BioNet repository holds data from a number of sources and custodians. (Accessed through ALA Data Portal,&lt;Date of Access&gt;).</citation>
+                <rights></rights>
+</eml:eml>

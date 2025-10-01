@@ -1,0 +1,32 @@
+Metadata-Version: 2.4
+Name: galaxias-python
+Version: 0.1.0
+Summary: Package for creating Darwin Core Archives
+Home-page: https://galaxias.ala.org.au/Python/
+Author: Amanda Buyan
+Author-email: amanda.buyan@csiro.au
+License: MPL-2.0
+Keywords: galaxias
+Description-Content-Type: text/markdown
+Requires-Dist: pandas
+Requires-Dist: beautifulsoup4
+Requires-Dist: configparser
+Requires-Dist: pytest
+Requires-Dist: requests
+Requires-Dist: xmlschema
+Requires-Dist: shutils
+Requires-Dist: metapype
+Requires-Dist: tabulate
+Requires-Dist: corella-python
+Requires-Dist: delma-python
+Dynamic: author
+Dynamic: author-email
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: keywords
+Dynamic: license
+Dynamic: requires-dist
+Dynamic: summary
+
+Package for creating Darwin Core Archives
