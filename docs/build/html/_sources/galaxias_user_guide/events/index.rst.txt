@@ -162,10 +162,10 @@ All that is left to do is to include the geographic location of these sites, and
 
     >>> observations_site_id_coords = observations_site_id.merge(sites[['site_code','latitude','longitude']],on='site_code',how='left')
     >>> events_all = galaxias.set_coordinates(dataframe=observations_site_id_coords,
-    ...                                                          decimalLatitude='latitude',
-    ...                                                          decimalLongitude='longitude',
-    ...                                                          coordinateUncertaintyInMeters = 30,
-    ...                                                          geodeticDatum = 'WGS84')
+    ...                                       decimalLatitude='latitude',
+    ...                                       decimalLongitude='longitude',
+    ...                                       coordinateUncertaintyInMeters = 30,
+    ...                                       geodeticDatum = 'WGS84')
     >>> events_all
 
 .. program-output:: python galaxias_user_guide/events/events_workflow.py 5
@@ -246,7 +246,7 @@ and the type of observation in the column ``basisOfRecord``.
     ...                                basisOfRecord = 'HumanObservation',
     ...                                occurrenceStatus = 'status')
     >>> obs_name = galaxias.set_scientific_name(dataframe=obs,scientificName='scientific_name')
-    >>> obs_dwc = galaxias.set_taxonomy(dataframe=obs,vernacularName='common_name')
+    >>> obs_dwc = galaxias.set_taxonomy(dataframe=obs_name,vernacularName='common_name')
     >>> obs_dwc
 
 .. program-output:: python galaxias_user_guide/events/events_workflow.py 9

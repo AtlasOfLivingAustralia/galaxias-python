@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>API Docs &#8212; Galaxias 0.1.0 documentation</title>
+    <title>API Docs &#8212; Galaxias 0.1.1 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
 
-    <script src="../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../_static/documentation_options.js?v=a58bc63e"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -130,8 +130,8 @@
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Galaxias 0.1.0 documentation - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Galaxias 0.1.0 documentation - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Galaxias 0.1.1 documentation - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Galaxias 0.1.1 documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -454,11 +454,12 @@ Darwin Core archive in your working directory.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>archive</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – OPTIONAL: This is the dataframe holding your occurrence data.  Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
-<li><p><strong>publishing_dir</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – Name of the directory where all your processed data lives.  Default value is <code class="docutils literal notranslate"><span class="pre">'./data-publish/'</span></code>.</p></li>
-<li><p><strong>username</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – OPTIONAL: This is the dataframe holding your occurrence data.  Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
-<li><p><strong>email</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – Name of your occurrences file.  Default value is <code class="docutils literal notranslate"><span class="pre">'occurrences.csv'</span></code>.</p></li>
-<li><p><strong>password</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – Name of your events file.  Default value is <code class="docutils literal notranslate"><span class="pre">'events.csv'</span></code>.</p></li>
+<li><p><strong>archive</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – Name of your Darwin Core Archive.  Default is <code class="docutils literal notranslate"><span class="pre">dwca.zip</span></code>.</p></li>
+<li><p><strong>publishing_dir</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – Name of the directory where all your finalised data lives.  Default value is <code class="docutils literal notranslate"><span class="pre">'./data-publish/'</span></code>.</p></li>
+<li><p><strong>GBIF</strong> (<code class="docutils literal notranslate"><span class="pre">logical</span></code>) – Flag to check if you are using the GBIF Validation tool.  Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><strong>username</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – GBIF username.  Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>email</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – GBIF registered email.  Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>password</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – GBIF password.  Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -469,7 +470,7 @@ Darwin Core archive in your working directory.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="galaxias.check_dataset">
-<span class="sig-prename descclassname"><span class="pre">galaxias.</span></span><span class="sig-name descname"><span class="pre">check_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">occurrences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">events</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">publishing_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./data-publish'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_report</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.check_dataset" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">galaxias.</span></span><span class="sig-name descname"><span class="pre">check_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">occurrences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">events</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">occurrences_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'occurrences.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">events_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'events.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">publishing_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./data-publish'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_report</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.check_dataset" title="Link to this definition">#</a></dt>
 <dd><p>Checks whether or not your data meets the predefined Darwin Core
 standard.  Calls the <code class="docutils literal notranslate"><span class="pre">corella</span></code> package for this.</p>
 <dl class="field-list simple">
@@ -489,7 +490,7 @@ standard.  Calls the <code class="docutils literal notranslate"><span class="pre
 
 <dl class="py function">
 <dt class="sig sig-object py" id="galaxias.check_directory">
-<span class="sig-prename descclassname"><span class="pre">galaxias.</span></span><span class="sig-name descname"><span class="pre">check_directory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">occurrences_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'occurrences.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">events_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'events.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'eml.xml'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">schema</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'meta.xml'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">publishing_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./data-publish/'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_report</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.check_directory" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">galaxias.</span></span><span class="sig-name descname"><span class="pre">check_directory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">archive_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dwca.zip'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">occurrences_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'occurrences.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">events_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'events.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'eml.xml'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">schema</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'meta.xml'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">publishing_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./data-publish/'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_report</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#galaxias.check_directory" title="Link to this definition">#</a></dt>
 <dd><p>Checks whether or not your Darwin Core Archive is formatted correctly.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1037,7 +1038,7 @@ correct data type.</p>
 Matched 1 of 5 column names to DwC terms:
 
 ✓ Matched: eventDate
-✗ Unmatched: latitude, species, longitude, status
+✗ Unmatched: longitude, species, status, latitude
 
 ── Minimum required DwC terms occurrences ──
 

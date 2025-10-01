@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Standardising an Occurrence Dataset &#8212; Galaxias 0.1.0 documentation</title>
+    <title>Standardising an Occurrence Dataset &#8212; Galaxias 0.1.1 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
   <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
 
-    <script src="../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../_static/documentation_options.js?v=a58bc63e"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -128,8 +128,8 @@
       
     
     
-    <img src="../../_static/logo.png" class="logo__image only-light" alt="Galaxias 0.1.0 documentation - Home"/>
-    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Galaxias 0.1.0 documentation - Home"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Galaxias 0.1.1 documentation - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Galaxias 0.1.1 documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -392,20 +392,19 @@ document.write(`
   <section id="standardising-an-occurrence-dataset">
 <h1>Standardising an Occurrence Dataset<a class="headerlink" href="#standardising-an-occurrence-dataset" title="Link to this heading">#</a></h1>
 <p><em>Amanda Buyan, Dax Kellie &amp; Martin Westgate</em></p>
-<p>Data of species observations is referred to as <em>occurrence</em> data. In Living Atlases like
-the Atlas of Living Australia (ALA), this is the default type of data stored.</p>
-<p>Using occurrence-based datasets assume that all observations are independent of each
-other. The benefit of this assumption is that observational data can remain simple in
-structure - every observation is made at a specific place and time. This simplicity
-allows all occurrence-based data to be aggregated and used together.</p>
-<p>Let’s see how to build an occurrence-based dataset using <code class="docutils literal notranslate"><span class="pre">galaxias</span></code>.</p>
+<p>In Living Atlases like the Atlas of Living Australia (ALA), the default type of data is
+<em>occurrence</em> data, where a record refers to the presence/absence of an organism or taxon
+in a particular place at a specific time. This is a relatively simple data structure, where
+it is assumed that each observation or record is independent of each other. This simplicity
+also allows occurrence-based data to be easily aggregated.</p>
+<p>Here, we’ll go through the steps to standardise and build an occurrence dataset using <code class="docutils literal notranslate"><span class="pre">galaxias</span></code>.</p>
 <section id="the-dataset">
 <h2>The dataset<a class="headerlink" href="#the-dataset" title="Link to this heading">#</a></h2>
 <p><a class="reference download internal" download="" href="../../_downloads/2355e86e615b0869cfe1c52c50a44eb2/dummy-dataset-sb.csv"><code class="xref download docutils literal notranslate"><span class="pre">Example</span> <span class="pre">Occurrences</span></code></a></p>
-<p>Let’s use an small example dataset of bird observations taken from 4 different site
-locations. This dataset has many different types of data like landscape type and age
-class. Importantly for standardising to Darwin Core, this dataset contains the scientific
-name (species), coordinate location (lat &amp; lon) and date of observation (date).</p>
+<p>The data we’ll use are of bird observations from 4 different sites. As these are <em>occurrence</em> data,
+this dataset contains evidence of the presence of certain bird species (<code class="docutils literal notranslate"><span class="pre">species</span></code>) at particular
+locations (<code class="docutils literal notranslate"><span class="pre">lat</span></code>, <code class="docutils literal notranslate"><span class="pre">lon</span></code>) at specific times (<code class="docutils literal notranslate"><span class="pre">date</span></code>). It also contains additional information
+about the landscape type, and sex and age class of birds.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
 span.prompt1:before {
   content: " ";
@@ -441,9 +440,7 @@ span.prompt1:before {
 </section>
 <section id="standardise-to-darwin-core">
 <h2>Standardise to Darwin Core<a class="headerlink" href="#standardise-to-darwin-core" title="Link to this heading">#</a></h2>
-<p>To determine what we need to do to standardise our dataset, let’s use <code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code>.
-The output tells us we have one matching Darwin Core term in our data already (<code class="docutils literal notranslate"><span class="pre">sex</span></code>),
-but we are missing all minimum required Darwin Core terms.</p>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code> to determine what we need to do to standardise this dataset.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">&gt;&gt;&gt; galaxias.suggest_workflow(occurrences=occurrences)</span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
@@ -452,7 +449,7 @@ but we are missing all minimum required Darwin Core terms.</p>
 Matched 1 of 12 column names to DwC terms:
 
 ✓ Matched: sex
-✗ Unmatched: comments, date, sample id, species code, species, landscape, molecular sex, lat, site, lon, age class
+✗ Unmatched: date, landscape, sample id, lat, lon, species code, molecular sex, site, age class, comments, species
 
 ── Minimum required DwC terms occurrences ──
 
@@ -478,21 +475,21 @@ corella.set_datetime()
 Additional functions: set_abundance(), set_collection(), set_individual_traits(), set_license(), set_locality(), set_taxonomy()
 </pre></div>
 </div>
-<p>Under “Suggest workflow”, the output above suggests a series of piped <code class="docutils literal notranslate"><span class="pre">set_</span></code> functions
-that we can use to rename, modify or add columns that are missing from <code class="docutils literal notranslate"><span class="pre">occurrences</span></code>
-but required by Darwin Core. <code class="docutils literal notranslate"><span class="pre">set_</span></code> functions are specialised wrappers around the
+<p>Calling <code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code> tells us that one column in the dataset matches Darwin Core
+terms (<code class="docutils literal notranslate"><span class="pre">sex</span></code>), and we are missing all the minimum required Darwin Core terms. We’re also
+given a suggested workflow consisting of a series of <code class="docutils literal notranslate"><span class="pre">set_</span></code> functions for renaming,
+modifying, or adding missing columns. <code class="docutils literal notranslate"><span class="pre">set_</span></code> functions are specialised wrappers around the
 <code class="docutils literal notranslate"><span class="pre">{pandas}</span></code> package, with additional functionality to support using Darwin Core Standard.</p>
-<p>For simplicity, let’s do the easy part first of renaming columns we already have in our
-dataset to use accepted standard Darwin Core terms. <code class="docutils literal notranslate"><span class="pre">set_</span></code> functions will automatically
-check to make sure each column is correctly formatted. Our dataframe will automatically be
-saved into the <code class="docutils literal notranslate"><span class="pre">occurrences</span></code> variable in our <code class="docutils literal notranslate"><span class="pre">dwca</span> <span class="pre">object</span></code>.</p>
+<p>Let’s start by renaming existing columns to align with Darwin Core terms. <code class="docutils literal notranslate"><span class="pre">set_</span></code> functions
+will automatically check to make sure each column is correctly formatted.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">&gt;&gt;&gt; occurrences = galaxias.set_scientific_name(scientificName = &#39;species&#39;)</span>
 <span class="prompt1">&gt;&gt;&gt; occurrences = galaxias.set_coordinates(decimalLatitude = &#39;lat&#39;,</span>
 <span class="prompt1">...                                        decimalLongitude = &#39;lon&#39;)</span>
 <span class="prompt1">&gt;&gt;&gt; occurrences = galaxias.set_datetime(eventDate = &#39;date&#39;,</span>
 <span class="prompt1">...                                     string_to_datetime=True,</span>
 <span class="prompt1">...                                     yearfirst = True)</span>
-</pre></div></div><p>Running <code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code> again will reflect our progress and show us what’s left to do. Now the output tells us that we still need to add several columns to our dataset to meet minimum Darwin Core requirements.</p>
+</pre></div></div><p>Calling <cite>suggest_workflow()</cite> again accounts for our progress and shows us what still needs to be done.
+Here, we can see that we’re still missing a couple of minimum required terms.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">&gt;&gt;&gt; galaxias.suggest_workflow(occurrences=occurrences)</span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
@@ -501,7 +498,7 @@ saved into the <code class="docutils literal notranslate"><span class="pre">occu
 Matched 5 of 12 column names to DwC terms:
 
 ✓ Matched: eventDate, scientificName, decimalLatitude, decimalLongitude, sex
-✗ Unmatched: age class, landscape, molecular sex, species code, site, sample id, comments
+✗ Unmatched: molecular sex, site, species code, landscape, comments, age class, sample id
 
 ── Minimum required DwC terms occurrences ──
 
@@ -527,12 +524,12 @@ Additional functions: set_abundance(), set_collection(), set_individual_traits()
 </div>
 <p>Here’s a rundown of the columns we need to add:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">occurrenceID</span></code>: Unique identifiers of each record. This ensures that we can identify the specific record for any future updates or corrections. We can create composite IDs, sequential IDs, or unique IDs to add a unique IDs to each row.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code>: The type of record (e.g. human observation, specimen, machine observation). See a list of acceptable values with <code class="docutils literal notranslate"><span class="pre">galaxias.basisOfRecord_values()</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">geodeticDatum</span></code>: The Coordinate Reference System (CRS) projection of your data (for example, the CRS of Google Maps is “WGS84”).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">coordinateUncertaintyInMeters</span></code>: The area of uncertainty around your observation. You may know this value based on your method of data collection</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">occurrenceID</span></code>: Unique identifier for each record, which ensures that we can identify specific records for future updates or corrections. We can use <cite>composite_id()</cite>, <cite>sequential_id()</cite>, or <cite>random_id()</cite> to add a unique ID to each row.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code>: The type of record (e.g. human observation, specimen from a museum collection, machine observation). See a list of acceptable values with <cite>corella::basisOfRecord_values()</cite>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geodeticDatum</span></code>: The geographic coordinate reference system (CRS), which is a framework for representing spatial data (for example, the CRS of Google Maps is “WGS84”).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">coordinateUncertaintyInMeters</span></code>: The area of uncertainty around your observation, which you may be able to infer based on your data collection method.</p></li>
 </ul>
-<p>Now let’s add these columns using <code class="docutils literal notranslate"><span class="pre">set_occurrences()</span></code> and <code class="docutils literal notranslate"><span class="pre">set_coordinates()</span></code>. We
+<p>As suggested, let’s add these columns using <code class="docutils literal notranslate"><span class="pre">set_occurrences()</span></code> and <code class="docutils literal notranslate"><span class="pre">set_coordinates()</span></code>. We
 can also use an optional function, <code class="docutils literal notranslate"><span class="pre">set_individual_traits()</span></code>, which will automatically
 identify the matched column name <code class="docutils literal notranslate"><span class="pre">sex</span></code> and check the column’s format.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
@@ -589,7 +586,7 @@ object, replace the variable <code class="docutils literal notranslate"><span cl
 </pre></div>
 </div>
 </div>
-</details><p>Running <code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code> once more will confirm that our dataset has all the required
+</details><p>Running <code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code> once more confirms that our dataset has all the required
 information to be put into a Darwin Core Archive!</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">&gt;&gt;&gt; galaxias.suggest_workflow(occurrences=occurrences)</span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -599,7 +596,7 @@ information to be put into a Darwin Core Archive!</p>
 Matched 9 of 16 column names to DwC terms:
 
 ✓ Matched: occurrenceID, eventDate, scientificName, decimalLatitude, decimalLongitude, sex, basisOfRecord, geodeticDatum, coordinateUncertaintyInMeters
-✗ Unmatched: comments, sample id, age class, molecular sex, landscape, site, species code
+✗ Unmatched: landscape, site, molecular sex, comments, sample id, age class, species code
 
 ── Minimum required DwC terms occurrences ──
 
@@ -804,27 +801,27 @@ Supported Darwin Core Terms and Their Associated Functions<div class="sd-summary
 <span class="prompt1">&gt;&gt;&gt; occ_terms_dwca = list(set(occ_terms).intersection(list(occurrences.columns)))</span>
 <span class="prompt1">&gt;&gt;&gt; occurrences_final = occurrences[occ_terms_dwca]</span>
 <span class="prompt1">&gt;&gt;&gt; occurrences_final</span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>   sex  eventDate             scientificName     basisOfRecord  coordinateUncertaintyInMeters geodeticDatum     occurrenceID  decimalLongitude  decimalLatitude
-0    F 2008-05-05       Climacteris picumnus  HumanObservation                             30         WGS84   0-KKNP-01-KKNP        143.258586       -36.867536
-1    F 2008-08-22       Climacteris picumnus  HumanObservation                             30         WGS84   1-KKNP-01-KKNP        143.254638       -36.877767
-2    F 2008-02-05       Climacteris picumnus  HumanObservation                             30         WGS84   2-KKNP-02-KKNP        143.293905       -36.850162
-3    F 2008-08-22       Climacteris picumnus  HumanObservation                             30         WGS84   3-KKNP-02-KKNP        143.313389       -36.852531
-4    ? 2008-02-06        Artamus cyanopterus  HumanObservation                             30         WGS84   4-KKNP-03-KKNP        143.306694       -36.881165
-5    M 2008-08-22          Acanthiza lineata  HumanObservation                             30         WGS84   5-KKNP-03-KKNP        143.311887       -36.891223
-6    ? 2008-08-21        Artamus cyanopterus  HumanObservation                             30         WGS84   6-PRSP-01-PRSP        143.690593       -37.069201
-7    M 2008-02-06       Acanthiza reguloides  HumanObservation                             30         WGS84   7-PRSP-01-PRSP        143.693082       -37.077008
-8    M 2008-02-06            Malurus cyaneus  HumanObservation                             30         WGS84   8-PRSP-02-PRSP        143.701537       -37.084711
-9    M 2008-02-06            Malurus cyaneus  HumanObservation                             30         WGS84   9-PRSP-02-PRSP        143.696344       -37.087244
-10   M 2008-02-05       Acanthiza reguloides  HumanObservation                             30         WGS84  10-PRSP-03-PRSP        143.691580       -37.104941
-11   F 2008-02-06          Acanthiza lineata  HumanObservation                             30         WGS84  11-PRSP-03-PRSP        143.689778       -37.108501
-12   ? 2008-02-06            Ptilotula fusca  HumanObservation                             30         WGS84  12-MBRP-01-MBRP        143.720473       -37.069663
-13   ? 2008-02-06            Ptilotula fusca  HumanObservation                             30         WGS84  13-MBRP-01-MBRP        143.721127       -37.070489
-14   ? 2008-02-06  Melithreptus brevirostris  HumanObservation                             30         WGS84  14-MBRP-02-MBRP        143.725065       -37.067090
-15   ? 2008-08-22  Melithreptus brevirostris  HumanObservation                             30         WGS84  15-MBRP-02-MBRP        143.727297       -37.067780
-16   F 2008-08-21            Malurus cyaneus  HumanObservation                             30         WGS84  16-RSNC-01-RSNC        144.070257       -37.177554
-17   ? 2008-02-06            Ptilotula fusca  HumanObservation                             30         WGS84  17-RSNC-01-RSNC        144.063391       -37.162234
-18   F 2008-02-06       Pardalotus punctatus  HumanObservation                             30         WGS84  18-RSNC-02-RSNC        144.046911       -37.232654
-19   F 2008-02-06       Pardalotus punctatus  HumanObservation                             30         WGS84  19-RSNC-02-RSNC        144.066481       -37.286758
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>       basisOfRecord  decimalLongitude  coordinateUncertaintyInMeters  eventDate  decimalLatitude             scientificName geodeticDatum     occurrenceID sex
+0   HumanObservation        143.258586                             30 2008-05-05       -36.867536       Climacteris picumnus         WGS84   0-KKNP-01-KKNP   F
+1   HumanObservation        143.254638                             30 2008-08-22       -36.877767       Climacteris picumnus         WGS84   1-KKNP-01-KKNP   F
+2   HumanObservation        143.293905                             30 2008-02-05       -36.850162       Climacteris picumnus         WGS84   2-KKNP-02-KKNP   F
+3   HumanObservation        143.313389                             30 2008-08-22       -36.852531       Climacteris picumnus         WGS84   3-KKNP-02-KKNP   F
+4   HumanObservation        143.306694                             30 2008-02-06       -36.881165        Artamus cyanopterus         WGS84   4-KKNP-03-KKNP   ?
+5   HumanObservation        143.311887                             30 2008-08-22       -36.891223          Acanthiza lineata         WGS84   5-KKNP-03-KKNP   M
+6   HumanObservation        143.690593                             30 2008-08-21       -37.069201        Artamus cyanopterus         WGS84   6-PRSP-01-PRSP   ?
+7   HumanObservation        143.693082                             30 2008-02-06       -37.077008       Acanthiza reguloides         WGS84   7-PRSP-01-PRSP   M
+8   HumanObservation        143.701537                             30 2008-02-06       -37.084711            Malurus cyaneus         WGS84   8-PRSP-02-PRSP   M
+9   HumanObservation        143.696344                             30 2008-02-06       -37.087244            Malurus cyaneus         WGS84   9-PRSP-02-PRSP   M
+10  HumanObservation        143.691580                             30 2008-02-05       -37.104941       Acanthiza reguloides         WGS84  10-PRSP-03-PRSP   M
+11  HumanObservation        143.689778                             30 2008-02-06       -37.108501          Acanthiza lineata         WGS84  11-PRSP-03-PRSP   F
+12  HumanObservation        143.720473                             30 2008-02-06       -37.069663            Ptilotula fusca         WGS84  12-MBRP-01-MBRP   ?
+13  HumanObservation        143.721127                             30 2008-02-06       -37.070489            Ptilotula fusca         WGS84  13-MBRP-01-MBRP   ?
+14  HumanObservation        143.725065                             30 2008-02-06       -37.067090  Melithreptus brevirostris         WGS84  14-MBRP-02-MBRP   ?
+15  HumanObservation        143.727297                             30 2008-08-22       -37.067780  Melithreptus brevirostris         WGS84  15-MBRP-02-MBRP   ?
+16  HumanObservation        144.070257                             30 2008-08-21       -37.177554            Malurus cyaneus         WGS84  16-RSNC-01-RSNC   F
+17  HumanObservation        144.063391                             30 2008-02-06       -37.162234            Ptilotula fusca         WGS84  17-RSNC-01-RSNC   ?
+18  HumanObservation        144.046911                             30 2008-02-06       -37.232654       Pardalotus punctatus         WGS84  18-RSNC-02-RSNC   F
+19  HumanObservation        144.066481                             30 2008-02-06       -37.286758       Pardalotus punctatus         WGS84  19-RSNC-02-RSNC   F
 </pre></div>
 </div>
 <p>We can specify that we wish to use occurrences and events in our Darwin Core Archive

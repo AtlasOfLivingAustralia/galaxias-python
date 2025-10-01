@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Standardising an Events Dataset &#8212; Galaxias 0.1.0 documentation</title>
+    <title>Standardising an Events Dataset &#8212; Galaxias 0.1.1 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
   <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
 
-    <script src="../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../_static/documentation_options.js?v=a58bc63e"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -128,8 +128,8 @@
       
     
     
-    <img src="../../_static/logo.png" class="logo__image only-light" alt="Galaxias 0.1.0 documentation - Home"/>
-    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Galaxias 0.1.0 documentation - Home"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Galaxias 0.1.1 documentation - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Galaxias 0.1.1 documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -572,10 +572,10 @@ placed in the <code class="docutils literal notranslate"><span class="pre">occur
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">&gt;&gt;&gt; observations_site_id_coords = observations_site_id.merge(sites[[&#39;site_code&#39;,&#39;latitude&#39;,&#39;longitude&#39;]],on=&#39;site_code&#39;,how=&#39;left&#39;)</span>
 <span class="prompt1">&gt;&gt;&gt; events_all = galaxias.set_coordinates(dataframe=observations_site_id_coords,</span>
-<span class="prompt1">...                                                          decimalLatitude=&#39;latitude&#39;,</span>
-<span class="prompt1">...                                                          decimalLongitude=&#39;longitude&#39;,</span>
-<span class="prompt1">...                                                          coordinateUncertaintyInMeters = 30,</span>
-<span class="prompt1">...                                                          geodeticDatum = &#39;WGS84&#39;)</span>
+<span class="prompt1">...                                       decimalLatitude=&#39;latitude&#39;,</span>
+<span class="prompt1">...                                       decimalLongitude=&#39;longitude&#39;,</span>
+<span class="prompt1">...                                       coordinateUncertaintyInMeters = 30,</span>
+<span class="prompt1">...                                       geodeticDatum = &#39;WGS84&#39;)</span>
 <span class="prompt1">&gt;&gt;&gt; events_all</span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>             eventID site_code  year  cpar  csig  limdum  limper  limtas  lper  lver  ulae  decimalLatitude  decimalLongitude geodeticDatum  coordinateUncertaintyInMeters
 0      0-AMA100-2004    AMA100  2004     1     0       0       0       1     1     0     0       -35.168178        149.119212         WGS84                             30
@@ -781,18 +781,18 @@ Supported Darwin Core Terms and Their Associated Functions<div class="sd-summary
 <span class="prompt1">&gt;&gt;&gt; event_terms_dwca = list(set(event_terms).intersection(list(events_all.columns)))</span>
 <span class="prompt1">&gt;&gt;&gt; events = events_all[event_terms_dwca]</span>
 <span class="prompt1">&gt;&gt;&gt; events</span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>     decimalLongitude  decimalLatitude  year geodeticDatum          eventID  coordinateUncertaintyInMeters
-0          149.119212       -35.168178  2004         WGS84    0-AMA100-2004                             30
-1          149.119212       -35.168178  2007         WGS84    1-AMA100-2007                             30
-2          149.119212       -35.168178  2007         WGS84    2-AMA100-2007                             30
-3          149.119212       -35.168178  2005         WGS84    3-AMA100-2005                             30
-4          149.119212       -35.168178  2008         WGS84    4-AMA100-2008                             30
-..                ...              ...   ...           ...              ...                            ...
-118        149.077900       -35.276400  2009         WGS84  118-ARA100-2009                             30
-119        149.077900       -35.276400  2010         WGS84  119-ARA100-2010                             30
-120        149.077900       -35.276400  2008         WGS84  120-ARA100-2008                             30
-121        149.077900       -35.276400  2010         WGS84  121-ARA100-2010                             30
-122        149.077900       -35.276400  2011         WGS84  122-ARA100-2011                             30
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>     year  coordinateUncertaintyInMeters          eventID  decimalLongitude geodeticDatum  decimalLatitude
+0    2004                             30    0-AMA100-2004        149.119212         WGS84       -35.168178
+1    2007                             30    1-AMA100-2007        149.119212         WGS84       -35.168178
+2    2007                             30    2-AMA100-2007        149.119212         WGS84       -35.168178
+3    2005                             30    3-AMA100-2005        149.119212         WGS84       -35.168178
+4    2008                             30    4-AMA100-2008        149.119212         WGS84       -35.168178
+..    ...                            ...              ...               ...           ...              ...
+118  2009                             30  118-ARA100-2009        149.077900         WGS84       -35.276400
+119  2010                             30  119-ARA100-2010        149.077900         WGS84       -35.276400
+120  2008                             30  120-ARA100-2008        149.077900         WGS84       -35.276400
+121  2010                             30  121-ARA100-2010        149.077900         WGS84       -35.276400
+122  2011                             30  122-ARA100-2011        149.077900         WGS84       -35.276400
 
 [123 rows x 6 columns]
 </pre></div>
@@ -862,9 +862,9 @@ and the type of observation in the column <code class="docutils literal notransl
 <span class="prompt1">...                                basisOfRecord = &#39;HumanObservation&#39;,</span>
 <span class="prompt1">...                                occurrenceStatus = &#39;status&#39;)</span>
 <span class="prompt1">&gt;&gt;&gt; obs_name = galaxias.set_scientific_name(dataframe=obs,scientificName=&#39;scientific_name&#39;)</span>
-<span class="prompt1">&gt;&gt;&gt; obs_dwc = galaxias.set_taxonomy(dataframe=obs,vernacularName=&#39;common_name&#39;)</span>
+<span class="prompt1">&gt;&gt;&gt; obs_dwc = galaxias.set_taxonomy(dataframe=obs_name,vernacularName=&#39;common_name&#39;)</span>
 <span class="prompt1">&gt;&gt;&gt; obs_dwc</span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>            occurrenceID          eventID abbreviation occurrenceStatus        scientific_name  vernacularName     basisOfRecord
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>            occurrenceID          eventID abbreviation occurrenceStatus         scientificName  vernacularName     basisOfRecord
 0        0-AMA100-2004-0    0-AMA100-2004         cpar          PRESENT  Crinia parinsignifera  Plains Froglet  HumanObservation
 1        1-AMA100-2007-1    1-AMA100-2007         cpar          PRESENT  Crinia parinsignifera  Plains Froglet  HumanObservation
 2        2-AMA100-2007-2    2-AMA100-2007         cpar          PRESENT  Crinia parinsignifera  Plains Froglet  HumanObservation
@@ -888,20 +888,20 @@ dataframe.</p>
 <span class="prompt1">&gt;&gt;&gt; occ_terms_dwca = list(set(occ_terms).intersection(list(obs_dwc.columns)))</span>
 <span class="prompt1">&gt;&gt;&gt; occurrences = obs_dwc[occ_terms_dwca]</span>
 <span class="prompt1">&gt;&gt;&gt; occurrences</span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>             eventID occurrenceStatus         occurrenceID  vernacularName     basisOfRecord
-0      0-AMA100-2004          PRESENT      0-AMA100-2004-0  Plains Froglet  HumanObservation
-1      1-AMA100-2007          PRESENT      1-AMA100-2007-1  Plains Froglet  HumanObservation
-2      2-AMA100-2007          PRESENT      2-AMA100-2007-2  Plains Froglet  HumanObservation
-3      3-AMA100-2005          PRESENT      3-AMA100-2005-3  Plains Froglet  HumanObservation
-4      4-AMA100-2008          PRESENT      4-AMA100-2008-4  Plains Froglet  HumanObservation
-..               ...              ...                  ...             ...               ...
-979  118-ARA100-2009           ABSENT  118-ARA100-2009-979  Smooth Toadlet  HumanObservation
-980  119-ARA100-2010           ABSENT  119-ARA100-2010-980  Smooth Toadlet  HumanObservation
-981  120-ARA100-2008           ABSENT  120-ARA100-2008-981  Smooth Toadlet  HumanObservation
-982  121-ARA100-2010           ABSENT  121-ARA100-2010-982  Smooth Toadlet  HumanObservation
-983  122-ARA100-2011           ABSENT  122-ARA100-2011-983  Smooth Toadlet  HumanObservation
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>            occurrenceID          eventID occurrenceStatus         scientificName     basisOfRecord  vernacularName
+0        0-AMA100-2004-0    0-AMA100-2004          PRESENT  Crinia parinsignifera  HumanObservation  Plains Froglet
+1        1-AMA100-2007-1    1-AMA100-2007          PRESENT  Crinia parinsignifera  HumanObservation  Plains Froglet
+2        2-AMA100-2007-2    2-AMA100-2007          PRESENT  Crinia parinsignifera  HumanObservation  Plains Froglet
+3        3-AMA100-2005-3    3-AMA100-2005          PRESENT  Crinia parinsignifera  HumanObservation  Plains Froglet
+4        4-AMA100-2008-4    4-AMA100-2008          PRESENT  Crinia parinsignifera  HumanObservation  Plains Froglet
+..                   ...              ...              ...                    ...               ...             ...
+979  118-ARA100-2009-979  118-ARA100-2009           ABSENT    Uperoleia laevigata  HumanObservation  Smooth Toadlet
+980  119-ARA100-2010-980  119-ARA100-2010           ABSENT    Uperoleia laevigata  HumanObservation  Smooth Toadlet
+981  120-ARA100-2008-981  120-ARA100-2008           ABSENT    Uperoleia laevigata  HumanObservation  Smooth Toadlet
+982  121-ARA100-2010-982  121-ARA100-2010           ABSENT    Uperoleia laevigata  HumanObservation  Smooth Toadlet
+983  122-ARA100-2011-983  122-ARA100-2011           ABSENT    Uperoleia laevigata  HumanObservation  Smooth Toadlet
 
-[984 rows x 5 columns]
+[984 rows x 6 columns]
 </pre></div>
 </div>
 <p>We can specify that we wish to use occurrences and events in our Darwin Core Archive
