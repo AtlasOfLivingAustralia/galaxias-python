@@ -27,3 +27,14 @@ requests = "^2.31.0"
 metapype = "^0.1.1"
 
 [tool.poetry.dev-dependencies]
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+tag_format = "$version"
+update_changelog_on_bump = true
+version = "0.1.0"
+version_files = [
+    "pyproject.toml:version",
+    "src/galaxias/version.py:version",
+    "setup.py:version"
+]
