@@ -1,0 +1,36 @@
+occurrenceID,scientificName,decimalLatitude,decimalLongitude,eventDate,coordinateUncertaintyInMeters,geodeticDatum,basisOfRecord,vernacularName,genus,family,order,class,phylum,kingdom
+101,Corymbia latifolia,-13.04,131.07,2022-03-29,100,WGS84,HUMAN_OBSERVATION,Round-leaf Bloodwood,Corymbia,Myrtaceae,Myrtales,Equisetopsida,Charophyta,Plantae
+102,Eucalyptus tectifica,-13.04,131.07,2022-09-13,100,WGS84,HUMAN_OBSERVATION,Darwin Box,Eucalyptus,Myrtaceae,Myrtales,Equisetopsida,Charophyta,Plantae
+103,Banksia aemula,-33.6,150.72,2022-08-15,100,WGS84,HUMAN_OBSERVATION,Wallum Banksia,Banksia,Proteaceae,Proteales,Equisetopsida,Charophyta,Plantae
+104,Eucalyptus racemosa,-33.6,150.72,2022-06-16,100,WGS84,HUMAN_OBSERVATION,Narrow-leaved Scribbly Gum,Eucalyptus,Myrtaceae,Myrtales,Equisetopsida,Charophyta,Plantae
+105,Persoonia laurina,-33.6,150.72,2022-10-19,100,WGS84,HUMAN_OBSERVATION,Laurel Geebung,Persoonia,Proteaceae,Proteales,Equisetopsida,Charophyta,Plantae
+106,Acacia aneura,-22.35,133.33,2022-10-11,100,WGS84,HUMAN_OBSERVATION,Broad-leaf Mulga,Acacia,Fabaceae,Fabales,Equisetopsida,Charophyta,Plantae
+107,Acacia cambagei,-22.35,133.33,2022-08-23,100,WGS84,HUMAN_OBSERVATION,Gidgee,Acacia,Fabaceae,Fabales,Equisetopsida,Charophyta,Plantae
+108,Acacia dictyophleba,-22.35,133.33,2022-01-11,100,WGS84,HUMAN_OBSERVATION,Net-veined Wattle,Acacia,Fabaceae,Fabales,Equisetopsida,Charophyta,Plantae
+109,Acacia estrophiolata,-22.35,133.33,2022-07-10,100,WGS84,HUMAN_OBSERVATION,Ironwood,Acacia,Fabaceae,Fabales,Equisetopsida,Charophyta,Plantae
+110,Acacia kempeana,-22.35,133.33,2022-07-18,100,WGS84,HUMAN_OBSERVATION,Witchetty Bush,Acacia,Fabaceae,Fabales,Equisetopsida,Charophyta,Plantae
+111,Acacia melleodora,-22.35,133.33,2022-04-25,100,WGS84,HUMAN_OBSERVATION,Waxy Wattle,Acacia,Fabaceae,Fabales,Equisetopsida,Charophyta,Plantae
+112,Acacia murrayana,-22.35,133.33,2022-12-15,100,WGS84,HUMAN_OBSERVATION,Murray's Wattle,Acacia,Fabaceae,Fabales,Equisetopsida,Charophyta,Plantae
+113,Corymbia opaca,-22.35,133.33,2022-02-06,100,WGS84,HUMAN_OBSERVATION,Bloodwood,Corymbia,Myrtaceae,Myrtales,Equisetopsida,Charophyta,Plantae
+114,Corymbia terminalis,-22.35,133.33,2022-04-21,100,WGS84,HUMAN_OBSERVATION,Northern Bloodwood,Corymbia,Myrtaceae,Myrtales,Equisetopsida,Charophyta,Plantae
+115,Eremophila latrobei,-22.35,133.33,2022-01-30,100,WGS84,HUMAN_OBSERVATION,Georgina Poison Bush,Eremophila,Scrophulariaceae,Lamiales,Equisetopsida,Charophyta,Plantae
+116,Eucalyptus camaldulensis,-22.35,133.33,2022-03-30,100,WGS84,HUMAN_OBSERVATION,Red Gum,Eucalyptus,Myrtaceae,Myrtales,Equisetopsida,Charophyta,Plantae
+117,Eucalyptus camaldulensis subsp. obtusa,-22.35,133.33,2022-07-25,100,WGS84,HUMAN_OBSERVATION,Red Gum,Eucalyptus,Myrtaceae,Myrtales,Equisetopsida,Charophyta,Plantae
+118,Hakea leucoptera,-22.35,133.33,2022-03-11,100,WGS84,HUMAN_OBSERVATION,Needle Hakea,Hakea,Proteaceae,Proteales,Equisetopsida,Charophyta,Plantae
+119,Hakea macrocarpa,-22.35,133.33,2022-07-28,100,WGS84,HUMAN_OBSERVATION,Flat-leaved Hakea,Hakea,Proteaceae,Proteales,Equisetopsida,Charophyta,Plantae
+120,Psydrax latifolia,-22.35,133.33,2022-03-06,100,WGS84,HUMAN_OBSERVATION,Broad-leaf Native Currant,Psydrax,Rubiaceae,Gentianales,Equisetopsida,Charophyta,Plantae
+121,Acacia celsa,-17.26,145.46,2022-09-05,100,WGS84,HUMAN_OBSERVATION,Brown Salwood,Acacia,Fabaceae,Fabales,Equisetopsida,Charophyta,Plantae
+122,Acronychia acidula,-17.26,145.46,2022-04-22,100,WGS84,HUMAN_OBSERVATION,Lemon Aspen,Acronychia,Rutaceae,Sapindales,Equisetopsida,Charophyta,Plantae
+123,Aleurites rockinghamensis,-17.26,145.46,2022-07-21,100,WGS84,HUMAN_OBSERVATION,Candlenut,Aleurites,Euphorbiaceae,Malpighiales,Equisetopsida,Charophyta,Plantae
+124,Alphitonia petriei,-17.26,145.46,2022-03-11,100,WGS84,HUMAN_OBSERVATION,White Ash,Alphitonia,Rhamnaceae,Rosales,Equisetopsida,Charophyta,Plantae
+125,Gillbeea adenopetala,-17.26,145.46,2022-02-15,100,WGS84,HUMAN_OBSERVATION,Pink Alder,Gillbeea,Cunoniaceae,Oxalidales,Equisetopsida,Charophyta,Plantae
+126,Litsea leefeana,-17.26,145.46,2022-05-11,100,WGS84,HUMAN_OBSERVATION,Sycamore,Litsea,Lauraceae,Laurales,Equisetopsida,Charophyta,Plantae
+127,Myrsine porosa,-17.26,145.46,2022-10-31,100,WGS84,HUMAN_OBSERVATION,Northern Muttonwood,Myrsine,Primulaceae,Ericales,Equisetopsida,Charophyta,Plantae
+128,Neolitsea dealbata,-17.26,145.46,2022-10-08,100,WGS84,HUMAN_OBSERVATION,White Bolly Gum,Neolitsea,Lauraceae,Laurales,Equisetopsida,Charophyta,Plantae
+129,Polyscias australiana,-17.26,145.46,2022-10-26,100,WGS84,HUMAN_OBSERVATION,Ivory Basswood,Polyscias,Araliaceae,Apiales,Equisetopsida,Charophyta,Plantae
+130,Coprosma hirtella,-35.66,148.15,2022-03-04,100,WGS84,HUMAN_OBSERVATION,Rough Coffee-berry,Coprosma,Rubiaceae,Gentianales,Equisetopsida,Charophyta,Plantae
+131,Daviesia latifolia,-35.66,148.15,2022-06-28,100,WGS84,HUMAN_OBSERVATION,Hop Bitter-pea,Daviesia,Fabaceae,Fabales,Equisetopsida,Charophyta,Plantae
+132,Eucalyptus delegatensis,-35.66,148.15,2022-01-22,100,WGS84,HUMAN_OBSERVATION,Woollybutt,Eucalyptus,Myrtaceae,Myrtales,Equisetopsida,Charophyta,Plantae
+133,Tasmannia lanceolata,-35.66,148.15,2022-06-24,100,WGS84,HUMAN_OBSERVATION,Mountain Pepperbush,Tasmannia,Winteraceae,Canellales,Equisetopsida,Charophyta,Plantae
+134,Eucalyptus miniata,-12.42,130.92,2022-10-28,100,WGS84,HUMAN_OBSERVATION,Darwin Woollybutt,Eucalyptus,Myrtaceae,Myrtales,Equisetopsida,Charophyta,Plantae
+135,Eucalyptus tetrodonta,-12.42,130.92,2022-06-21,100,WGS84,HUMAN_OBSERVATION,Darwin Stringybark,Eucalyptus,Myrtaceae,Myrtales,Equisetopsida,Charophyta,Plantae
