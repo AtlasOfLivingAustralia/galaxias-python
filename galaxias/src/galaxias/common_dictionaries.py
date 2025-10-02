@@ -28,7 +28,6 @@ TAXON_TERMS = {
 '''
 required_columns_event = [
     "eventDate",
-    "parentEventID",
     "eventID",
     "Event",
     "samplingProtocol"
