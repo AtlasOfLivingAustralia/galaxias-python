@@ -5,6 +5,7 @@ setup.py
 src/galaxias/__init__.py
 src/galaxias/basisOfRecord_values.py
 src/galaxias/build_archive.py
+src/galaxias/build_subelement.py
 src/galaxias/check_archive.py
 src/galaxias/check_dataset.py
 src/galaxias/check_directory.py
@@ -15,11 +16,14 @@ src/galaxias/common_functions.py
 src/galaxias/config.ini
 src/galaxias/countryCode_values.py
 src/galaxias/display_metadata_as_dataframe.py
+src/galaxias/dwca_build.py
 src/galaxias/event_terms.py
 src/galaxias/galaxias_config.py
 src/galaxias/get_dwc_noncompliant_terms.py
 src/galaxias/metadata_template.md
 src/galaxias/occurrence_terms.py
+src/galaxias/read_dwc_terms_links.py
+src/galaxias/read_dwc_terms_list.py
 src/galaxias/set_abundance.py
 src/galaxias/set_collection.py
 src/galaxias/set_coordinates.py
@@ -54,6 +58,7 @@ tests/test_check_schema.py
 tests/test_countryCode_values.py
 tests/test_display_metadata_as_dataframe.py
 tests/test_event_terms.py
+tests/test_metadata.py
 tests/test_occurrence_terms.py
 tests/test_set_abundance.py
 tests/test_set_collection.py

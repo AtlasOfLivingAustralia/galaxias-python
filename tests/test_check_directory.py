@@ -1,6 +1,7 @@
 import galaxias
 import os
 import shutil
+import zipfile
 from build_test_data import build_occurrences,build_events
 
 def test_check_directory_occurrences():
@@ -12,7 +13,7 @@ def test_check_directory_occurrences():
         os.remove('dwca.zip')
     build_occurrences()
     galaxias.build_archive()
-    result = galaxias.check_directory()
+    result = galaxias.check_directory(print_report=True)
     assert result is True
 
 #'''
@@ -23,7 +24,7 @@ def test_check_directory_occurrences_xml_url():
         os.remove('metadata.md')
     build_occurrences(xml_url="https://collections.ala.org.au/ws/eml/dr368")
     galaxias.build_archive()
-    result = galaxias.check_directory()
+    result = galaxias.check_directory(print_report=True)
     assert result is True
 #'''
 #'''
