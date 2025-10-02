@@ -781,18 +781,18 @@ Supported Darwin Core Terms and Their Associated Functions<div class="sd-summary
 <span class="prompt1">&gt;&gt;&gt; event_terms_dwca = list(set(event_terms).intersection(list(events_all.columns)))</span>
 <span class="prompt1">&gt;&gt;&gt; events = events_all[event_terms_dwca]</span>
 <span class="prompt1">&gt;&gt;&gt; events</span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>     year  coordinateUncertaintyInMeters          eventID  decimalLongitude geodeticDatum  decimalLatitude
-0    2004                             30    0-AMA100-2004        149.119212         WGS84       -35.168178
-1    2007                             30    1-AMA100-2007        149.119212         WGS84       -35.168178
-2    2007                             30    2-AMA100-2007        149.119212         WGS84       -35.168178
-3    2005                             30    3-AMA100-2005        149.119212         WGS84       -35.168178
-4    2008                             30    4-AMA100-2008        149.119212         WGS84       -35.168178
-..    ...                            ...              ...               ...           ...              ...
-118  2009                             30  118-ARA100-2009        149.077900         WGS84       -35.276400
-119  2010                             30  119-ARA100-2010        149.077900         WGS84       -35.276400
-120  2008                             30  120-ARA100-2008        149.077900         WGS84       -35.276400
-121  2010                             30  121-ARA100-2010        149.077900         WGS84       -35.276400
-122  2011                             30  122-ARA100-2011        149.077900         WGS84       -35.276400
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>     coordinateUncertaintyInMeters  year  decimalLatitude geodeticDatum  decimalLongitude          eventID
+0                               30  2004       -35.168178         WGS84        149.119212    0-AMA100-2004
+1                               30  2007       -35.168178         WGS84        149.119212    1-AMA100-2007
+2                               30  2007       -35.168178         WGS84        149.119212    2-AMA100-2007
+3                               30  2005       -35.168178         WGS84        149.119212    3-AMA100-2005
+4                               30  2008       -35.168178         WGS84        149.119212    4-AMA100-2008
+..                             ...   ...              ...           ...               ...              ...
+118                             30  2009       -35.276400         WGS84        149.077900  118-ARA100-2009
+119                             30  2010       -35.276400         WGS84        149.077900  119-ARA100-2010
+120                             30  2008       -35.276400         WGS84        149.077900  120-ARA100-2008
+121                             30  2010       -35.276400         WGS84        149.077900  121-ARA100-2010
+122                             30  2011       -35.276400         WGS84        149.077900  122-ARA100-2011
 
 [123 rows x 6 columns]
 </pre></div>
@@ -888,18 +888,18 @@ dataframe.</p>
 <span class="prompt1">&gt;&gt;&gt; occ_terms_dwca = list(set(occ_terms).intersection(list(obs_dwc.columns)))</span>
 <span class="prompt1">&gt;&gt;&gt; occurrences = obs_dwc[occ_terms_dwca]</span>
 <span class="prompt1">&gt;&gt;&gt; occurrences</span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>            occurrenceID          eventID occurrenceStatus         scientificName     basisOfRecord  vernacularName
-0        0-AMA100-2004-0    0-AMA100-2004          PRESENT  Crinia parinsignifera  HumanObservation  Plains Froglet
-1        1-AMA100-2007-1    1-AMA100-2007          PRESENT  Crinia parinsignifera  HumanObservation  Plains Froglet
-2        2-AMA100-2007-2    2-AMA100-2007          PRESENT  Crinia parinsignifera  HumanObservation  Plains Froglet
-3        3-AMA100-2005-3    3-AMA100-2005          PRESENT  Crinia parinsignifera  HumanObservation  Plains Froglet
-4        4-AMA100-2008-4    4-AMA100-2008          PRESENT  Crinia parinsignifera  HumanObservation  Plains Froglet
-..                   ...              ...              ...                    ...               ...             ...
-979  118-ARA100-2009-979  118-ARA100-2009           ABSENT    Uperoleia laevigata  HumanObservation  Smooth Toadlet
-980  119-ARA100-2010-980  119-ARA100-2010           ABSENT    Uperoleia laevigata  HumanObservation  Smooth Toadlet
-981  120-ARA100-2008-981  120-ARA100-2008           ABSENT    Uperoleia laevigata  HumanObservation  Smooth Toadlet
-982  121-ARA100-2010-982  121-ARA100-2010           ABSENT    Uperoleia laevigata  HumanObservation  Smooth Toadlet
-983  122-ARA100-2011-983  122-ARA100-2011           ABSENT    Uperoleia laevigata  HumanObservation  Smooth Toadlet
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>    occurrenceStatus     basisOfRecord         scientificName          eventID         occurrenceID  vernacularName
+0            PRESENT  HumanObservation  Crinia parinsignifera    0-AMA100-2004      0-AMA100-2004-0  Plains Froglet
+1            PRESENT  HumanObservation  Crinia parinsignifera    1-AMA100-2007      1-AMA100-2007-1  Plains Froglet
+2            PRESENT  HumanObservation  Crinia parinsignifera    2-AMA100-2007      2-AMA100-2007-2  Plains Froglet
+3            PRESENT  HumanObservation  Crinia parinsignifera    3-AMA100-2005      3-AMA100-2005-3  Plains Froglet
+4            PRESENT  HumanObservation  Crinia parinsignifera    4-AMA100-2008      4-AMA100-2008-4  Plains Froglet
+..               ...               ...                    ...              ...                  ...             ...
+979           ABSENT  HumanObservation    Uperoleia laevigata  118-ARA100-2009  118-ARA100-2009-979  Smooth Toadlet
+980           ABSENT  HumanObservation    Uperoleia laevigata  119-ARA100-2010  119-ARA100-2010-980  Smooth Toadlet
+981           ABSENT  HumanObservation    Uperoleia laevigata  120-ARA100-2008  120-ARA100-2008-981  Smooth Toadlet
+982           ABSENT  HumanObservation    Uperoleia laevigata  121-ARA100-2010  121-ARA100-2010-982  Smooth Toadlet
+983           ABSENT  HumanObservation    Uperoleia laevigata  122-ARA100-2011  122-ARA100-2011-983  Smooth Toadlet
 
 [984 rows x 6 columns]
 </pre></div>

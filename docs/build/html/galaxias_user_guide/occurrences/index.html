@@ -449,7 +449,7 @@ span.prompt1:before {
 Matched 1 of 12 column names to DwC terms:
 
 ✓ Matched: sex
-✗ Unmatched: date, landscape, sample id, lat, lon, species code, molecular sex, site, age class, comments, species
+✗ Unmatched: date, comments, species, lat, age class, species code, molecular sex, landscape, lon, sample id, site
 
 ── Minimum required DwC terms occurrences ──
 
@@ -498,7 +498,7 @@ Here, we can see that we’re still missing a couple of minimum required terms.<
 Matched 5 of 12 column names to DwC terms:
 
 ✓ Matched: eventDate, scientificName, decimalLatitude, decimalLongitude, sex
-✗ Unmatched: molecular sex, site, species code, landscape, comments, age class, sample id
+✗ Unmatched: molecular sex, landscape, site, sample id, comments, species code, age class
 
 ── Minimum required DwC terms occurrences ──
 
@@ -596,7 +596,7 @@ information to be put into a Darwin Core Archive!</p>
 Matched 9 of 16 column names to DwC terms:
 
 ✓ Matched: occurrenceID, eventDate, scientificName, decimalLatitude, decimalLongitude, sex, basisOfRecord, geodeticDatum, coordinateUncertaintyInMeters
-✗ Unmatched: landscape, site, molecular sex, comments, sample id, age class, species code
+✗ Unmatched: site, comments, landscape, molecular sex, species code, sample id, age class
 
 ── Minimum required DwC terms occurrences ──
 
@@ -801,27 +801,27 @@ Supported Darwin Core Terms and Their Associated Functions<div class="sd-summary
 <span class="prompt1">&gt;&gt;&gt; occ_terms_dwca = list(set(occ_terms).intersection(list(occurrences.columns)))</span>
 <span class="prompt1">&gt;&gt;&gt; occurrences_final = occurrences[occ_terms_dwca]</span>
 <span class="prompt1">&gt;&gt;&gt; occurrences_final</span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>       basisOfRecord  decimalLongitude  coordinateUncertaintyInMeters  eventDate  decimalLatitude             scientificName geodeticDatum     occurrenceID sex
-0   HumanObservation        143.258586                             30 2008-05-05       -36.867536       Climacteris picumnus         WGS84   0-KKNP-01-KKNP   F
-1   HumanObservation        143.254638                             30 2008-08-22       -36.877767       Climacteris picumnus         WGS84   1-KKNP-01-KKNP   F
-2   HumanObservation        143.293905                             30 2008-02-05       -36.850162       Climacteris picumnus         WGS84   2-KKNP-02-KKNP   F
-3   HumanObservation        143.313389                             30 2008-08-22       -36.852531       Climacteris picumnus         WGS84   3-KKNP-02-KKNP   F
-4   HumanObservation        143.306694                             30 2008-02-06       -36.881165        Artamus cyanopterus         WGS84   4-KKNP-03-KKNP   ?
-5   HumanObservation        143.311887                             30 2008-08-22       -36.891223          Acanthiza lineata         WGS84   5-KKNP-03-KKNP   M
-6   HumanObservation        143.690593                             30 2008-08-21       -37.069201        Artamus cyanopterus         WGS84   6-PRSP-01-PRSP   ?
-7   HumanObservation        143.693082                             30 2008-02-06       -37.077008       Acanthiza reguloides         WGS84   7-PRSP-01-PRSP   M
-8   HumanObservation        143.701537                             30 2008-02-06       -37.084711            Malurus cyaneus         WGS84   8-PRSP-02-PRSP   M
-9   HumanObservation        143.696344                             30 2008-02-06       -37.087244            Malurus cyaneus         WGS84   9-PRSP-02-PRSP   M
-10  HumanObservation        143.691580                             30 2008-02-05       -37.104941       Acanthiza reguloides         WGS84  10-PRSP-03-PRSP   M
-11  HumanObservation        143.689778                             30 2008-02-06       -37.108501          Acanthiza lineata         WGS84  11-PRSP-03-PRSP   F
-12  HumanObservation        143.720473                             30 2008-02-06       -37.069663            Ptilotula fusca         WGS84  12-MBRP-01-MBRP   ?
-13  HumanObservation        143.721127                             30 2008-02-06       -37.070489            Ptilotula fusca         WGS84  13-MBRP-01-MBRP   ?
-14  HumanObservation        143.725065                             30 2008-02-06       -37.067090  Melithreptus brevirostris         WGS84  14-MBRP-02-MBRP   ?
-15  HumanObservation        143.727297                             30 2008-08-22       -37.067780  Melithreptus brevirostris         WGS84  15-MBRP-02-MBRP   ?
-16  HumanObservation        144.070257                             30 2008-08-21       -37.177554            Malurus cyaneus         WGS84  16-RSNC-01-RSNC   F
-17  HumanObservation        144.063391                             30 2008-02-06       -37.162234            Ptilotula fusca         WGS84  17-RSNC-01-RSNC   ?
-18  HumanObservation        144.046911                             30 2008-02-06       -37.232654       Pardalotus punctatus         WGS84  18-RSNC-02-RSNC   F
-19  HumanObservation        144.066481                             30 2008-02-06       -37.286758       Pardalotus punctatus         WGS84  19-RSNC-02-RSNC   F
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>    eventDate  decimalLongitude geodeticDatum  decimalLatitude     basisOfRecord  coordinateUncertaintyInMeters     occurrenceID sex             scientificName
+0  2008-05-05        143.258586         WGS84       -36.867536  HumanObservation                             30   0-KKNP-01-KKNP   F       Climacteris picumnus
+1  2008-08-22        143.254638         WGS84       -36.877767  HumanObservation                             30   1-KKNP-01-KKNP   F       Climacteris picumnus
+2  2008-02-05        143.293905         WGS84       -36.850162  HumanObservation                             30   2-KKNP-02-KKNP   F       Climacteris picumnus
+3  2008-08-22        143.313389         WGS84       -36.852531  HumanObservation                             30   3-KKNP-02-KKNP   F       Climacteris picumnus
+4  2008-02-06        143.306694         WGS84       -36.881165  HumanObservation                             30   4-KKNP-03-KKNP   ?        Artamus cyanopterus
+5  2008-08-22        143.311887         WGS84       -36.891223  HumanObservation                             30   5-KKNP-03-KKNP   M          Acanthiza lineata
+6  2008-08-21        143.690593         WGS84       -37.069201  HumanObservation                             30   6-PRSP-01-PRSP   ?        Artamus cyanopterus
+7  2008-02-06        143.693082         WGS84       -37.077008  HumanObservation                             30   7-PRSP-01-PRSP   M       Acanthiza reguloides
+8  2008-02-06        143.701537         WGS84       -37.084711  HumanObservation                             30   8-PRSP-02-PRSP   M            Malurus cyaneus
+9  2008-02-06        143.696344         WGS84       -37.087244  HumanObservation                             30   9-PRSP-02-PRSP   M            Malurus cyaneus
+10 2008-02-05        143.691580         WGS84       -37.104941  HumanObservation                             30  10-PRSP-03-PRSP   M       Acanthiza reguloides
+11 2008-02-06        143.689778         WGS84       -37.108501  HumanObservation                             30  11-PRSP-03-PRSP   F          Acanthiza lineata
+12 2008-02-06        143.720473         WGS84       -37.069663  HumanObservation                             30  12-MBRP-01-MBRP   ?            Ptilotula fusca
+13 2008-02-06        143.721127         WGS84       -37.070489  HumanObservation                             30  13-MBRP-01-MBRP   ?            Ptilotula fusca
+14 2008-02-06        143.725065         WGS84       -37.067090  HumanObservation                             30  14-MBRP-02-MBRP   ?  Melithreptus brevirostris
+15 2008-08-22        143.727297         WGS84       -37.067780  HumanObservation                             30  15-MBRP-02-MBRP   ?  Melithreptus brevirostris
+16 2008-08-21        144.070257         WGS84       -37.177554  HumanObservation                             30  16-RSNC-01-RSNC   F            Malurus cyaneus
+17 2008-02-06        144.063391         WGS84       -37.162234  HumanObservation                             30  17-RSNC-01-RSNC   ?            Ptilotula fusca
+18 2008-02-06        144.046911         WGS84       -37.232654  HumanObservation                             30  18-RSNC-02-RSNC   F       Pardalotus punctatus
+19 2008-02-06        144.066481         WGS84       -37.286758  HumanObservation                             30  19-RSNC-02-RSNC   F       Pardalotus punctatus
 </pre></div>
 </div>
 <p>We can specify that we wish to use occurrences and events in our Darwin Core Archive

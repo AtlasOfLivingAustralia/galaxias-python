@@ -438,7 +438,7 @@ they might look something like this:</p>
 Matched 0 of 6 column names to DwC terms:
 
 ✓ Matched: 
-✗ Unmatched: latitude, time, species, date, location_id, longitude
+✗ Unmatched: location_id, time, species, longitude, latitude, date
 
 ── Minimum required DwC terms occurrences ──
 
@@ -514,9 +514,9 @@ we’ll select columns that match names in <code class="docutils literal notrans
 <span class="prompt1">&gt;&gt;&gt; occ_terms_dwca = list(set(occ_terms).intersection(list(my_data.columns)))</span>
 <span class="prompt1">&gt;&gt;&gt; my_data_final = my_data[occ_terms_dwca]</span>
 <span class="prompt1">&gt;&gt;&gt; my_data_final</span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>       family  decimalLatitude  decimalLongitude     basisOfRecord                 taxonRank  locality occurrenceID eventTime    country  eventDate   kingdom
-0  Cacatuidae            -35.3             149.0  HumanObservation  Callocephalon fimbriatum  Canberra            0  10:23:00  Australia 2023-01-14  Animalia
-1  Cacatuidae            -35.3             149.0  HumanObservation     Eolophus roseicapilla  Canberra            1  11:25:00  Australia 2023-01-15  Animalia
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>      basisOfRecord                 taxonRank   kingdom  locality    country occurrenceID  eventDate      family eventTime  decimalLatitude  decimalLongitude
+0  HumanObservation  Callocephalon fimbriatum  Animalia  Canberra  Australia            0 2023-01-14  Cacatuidae  10:23:00            -35.3             149.0
+1  HumanObservation     Eolophus roseicapilla  Animalia  Canberra  Australia            1 2023-01-15  Cacatuidae  11:25:00            -35.3             149.0
 </pre></div>
 </div>
 </section>
